@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Jim_Nightshade } from "next/font/google";
 import Header from '@/components/Header';
+import LoadingScreen from '@/components/LoadingScreen';
 import "./globals.css";
 
 const inter = Inter({
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jimNightshade.variable} antialiased font-sans`}
       >
+        <LoadingScreen />
         <Header />
         {children}
       </body>
