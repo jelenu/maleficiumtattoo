@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { SectionWrapper } from '@/components/ui';
+import { SectionWrapper, WhiteBox } from '@/components/ui';
 import ContactInfo from '@/components/ui/ContactInfo';
 import ContactForm from '@/components/forms/ContactForm';
 import GoogleReviews from '@/components/features/GoogleReviews';
@@ -13,22 +13,24 @@ export default function ContactSection() {
   return (
     <SectionWrapper
       backgroundImage="/images/fondo.png"
-      contentClassName="flex items-center justify-center overflow-hidden"
+      contentClassName="flex items-center justify-center px-8"
     >
       {/* Contenido */}
-      <div className="w-full max-w-7xl mx-auto px-8 py-20 mt-20">
-        <div className="border-2 border-white bg-black p-10 rounded-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <WhiteBox background="black" padding rounded>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 h-full">
             
             {/* Columna izquierda - Información de contacto */}
-            <ContactInfo onShowReviews={() => setShowReviews(true)} />
+            <div className="flex flex-col h-full">
+              <ContactInfo onShowReviews={() => setShowReviews(true)} />
+            </div>
             
             {/* Columna derecha - Formulario */}
-            <ContactForm />
+            <div className="flex flex-col h-full">
+              <ContactForm />
+            </div>
             
           </div>
-        </div>
-      </div>
+      </WhiteBox>
 
       {/* Reviews Popup */}
       <GoogleReviews 

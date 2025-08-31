@@ -1,18 +1,17 @@
 import Image from 'next/image';
-import { SectionWrapper, Button } from '@/components/ui';
+import { SectionWrapper, Button, WhiteBox } from '@/components/ui';
 import { aboutStudioContent } from '@/constants/content';
 
 export default function AboutStudioSection() {
   return (
     <SectionWrapper
       backgroundImage="/images/fondo.png"
-      contentClassName="flex flex-col items-center justify-center p-24 pt-50"
+      contentClassName="flex items-center justify-center px-8"
     >
       {/* Recuadro con borde blanco */}
-      <div className="border-2 border-white max-w-6xl w-full bg-transparent relative overflow-hidden">
-        
+      <WhiteBox background="transparent">
         {/* Contenido */}
-        <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 items-stretch bg-black/80">
+        <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 items-stretch bg-black/80 h-full">
           
           {/* Contenido izquierdo */}
           <div className="p-12 space-y-6 flex flex-col justify-center">
@@ -42,7 +41,7 @@ export default function AboutStudioSection() {
           </div>
         
         </div>
-      </div>
+      </WhiteBox>
     </SectionWrapper>
   );
 }

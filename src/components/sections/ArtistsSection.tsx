@@ -25,65 +25,73 @@ export default function ArtistsSection() {
         </div>
 
         <div className="container mx-auto px-4">
-        <div className="flex justify-center items-center gap-24">
+        <div className="flex justify-center items-center gap-32">
           
           {/* Carta 1 - Alexis */}
-          <div className="flip-card w-80 h-96">
-            <div className="flip-card-inner">
-              {/* Frente de la carta */}
-              <div className="flip-card-front">
-                <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/alexis.jpg"
-                    alt="Alexis - Tattoo Artist"
-                    width={320}
-                    height={384}
-                    className="object-cover w-full h-full"
-                  />
+          <div className="flex flex-col items-center">
+            {/* Nombre del artista arriba */}
+            <h3 className="text-4xl font-display text-white mb-6">Alexis</h3>
+            
+            <div className="flip-card w-96 h-[500px]">
+              <div className="flip-card-inner">
+                {/* Frente de la carta */}
+                <div className="flip-card-front">
+                  <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
+                    <Image
+                      src="/images/alexis.jpg"
+                      alt="Alexis - Tattoo Artist"
+                      width={384}
+                      height={500}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
                 </div>
-              </div>
-              
-              {/* Parte trasera de la carta */}
-              <div className="flip-card-back">
-                <div className="w-full h-full bg-black rounded-lg shadow-2xl p-6 flex flex-col justify-center items-center text-center">
-                  <h3 className="text-3xl font-display text-white mb-4">Alexis</h3>
-                  <p className="text-gray-300 font-body mb-6 leading-relaxed">
-                    Especialista en tatuajes realistas y blackwork. Con más de 8 años de experiencia creando obras únicas que reflejan la personalidad de cada cliente.
-                  </p>
-                  <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300">
-                    Ver Portfolio
-                  </button>
+                
+                {/* Parte trasera de la carta */}
+                <div className="flip-card-back">
+                  <div className="w-full h-full bg-black rounded-lg shadow-2xl p-8 flex flex-col justify-center items-center text-center">
+                    <p className="text-gray-300 font-body mb-8 leading-relaxed text-lg">
+                      Especialista en tatuajes realistas y blackwork. Con más de 8 años de experiencia creando obras únicas que reflejan la personalidad de cada cliente.
+                    </p>
+                    <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 text-lg">
+                      View Portfolio
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Carta 2 - Segundo Artista */}
-          <div className="flip-card w-80 h-96">
-            <div className="flip-card-inner">
-              {/* Frente de la carta */}
-              <div className="flip-card-front">
-                <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/alexis.jpg"
-                    alt="Segundo Artista"
-                    width={320}
-                    height={384}
-                    className="object-cover w-full h-full"
-                  />
+          <div className="flex flex-col items-center">
+            {/* Nombre del artista arriba */}
+            <h3 className="text-4xl font-display text-white mb-6">Manu</h3>
+            
+            <div className="flip-card w-96 h-[500px]">
+              <div className="flip-card-inner">
+                {/* Frente de la carta */}
+                <div className="flip-card-front">
+                  <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
+                    <Image
+                      src="/images/alexis.jpg"
+                      alt="Segundo Artista"
+                      width={384}
+                      height={500}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
                 </div>
-              </div>
-              
-              {/* Parte trasera de la carta */}
-              <div className="flip-card-back">
-                <div className="w-full h-full bg-black rounded-lg shadow-2xl p-6 flex flex-col justify-center items-center text-center">
-                  <h3 className="text-3xl font-display text-white mb-4">Artista 2</h3>
-                  <p className="text-gray-300 font-body mb-6 leading-relaxed">
-                    Maestro en tatuajes tradicionales y neo-tradicionales. Su estilo único combina técnicas clásicas con elementos modernos.
-                  </p>
-                  <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300">
-                    Ver Portfolio
-                  </button>
+                
+                {/* Parte trasera de la carta */}
+                <div className="flip-card-back">
+                  <div className="w-full h-full bg-black rounded-lg shadow-2xl p-8 flex flex-col justify-center items-center text-center">
+                    <p className="text-gray-300 font-body mb-8 leading-relaxed text-lg">
+                      Maestro en tatuajes tradicionales y neo-tradicionales. Su estilo único combina técnicas clásicas con elementos modernos.
+                    </p>
+                    <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 text-lg">
+                      View Portfolio
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

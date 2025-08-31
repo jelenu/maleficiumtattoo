@@ -11,3 +11,4 @@ export { default as FormField } from './FormField';
 export { default as PhoneInput } from './PhoneInput';
 export { default as Alert } from './Alert';
 export { default as StyleCard } from './StyleCard';
+export { default as WhiteBox } from './WhiteBox';

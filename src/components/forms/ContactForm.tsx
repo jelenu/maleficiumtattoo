@@ -80,21 +80,21 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
   };
 
   return (
-    <div className="bg-black/60 p-6 backdrop-blur-sm relative">
+    <div className="bg-black/60 p-4 backdrop-blur-sm relative h-full flex flex-col">
       {/* Mensaje de estado - Overlay sin afectar layout */}
       {message && (
         <Alert
           type={message.type}
           message={message.text}
           onClose={() => setMessage(null)}
-          className="absolute top-4 left-4 right-4 z-10"
+          className="absolute top-2 left-2 right-2 z-10"
         />
       )}
 
-      <form className="space-y-4" onSubmit={handleSubmit}>
+      <form className="space-y-3 flex-1 flex flex-col" onSubmit={handleSubmit}>
         
         {/* First Name y Last Name */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <FormField label="First Name" htmlFor="firstName" required>
             <Input
               type="text"
@@ -144,7 +144,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           <TextArea
             id="description"
             name="description"
-            rows={4}
+            rows={3}
             required
             placeholder="Please describe your tattoo idea, preferred artist, budget, and availability..."
           />
@@ -160,6 +160,9 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-200"
           />
         </FormField>
+        
+        {/* Spacer para empujar el botón hacia abajo */}
+        <div className="flex-1"></div>
         
         {/* Submit Button */}
         <Button

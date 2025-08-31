@@ -21,7 +21,7 @@ const getVariantClasses = (variant: ButtonVariant): string => {
 
 const getSizeClasses = (size: ButtonSize): string => {
   const sizes = {
-    md: 'px-8 py-3 text-lg',
+    md: 'px-8 py-3 text-2xl',
     lg: 'px-14 py-2 text-3xl'
   };
   return sizes[size];

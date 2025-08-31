@@ -16,8 +16,8 @@ export default function StyleCard({
   imagePosition = 'right'
 }: StyleCardProps) {
   const content = (
-    <div className="p-4 space-y-4 flex flex-col justify-center h-full">
-      <h3 className="text-2xl font-bold font-display text-white">
+    <div className="p-8 space-y-4 flex flex-col  h-full">
+      <h3 className="text-3xl font-bold font-display text-white">
         {title}
       </h3>
       <p className="text-sm text-gray-300 font-body leading-relaxed">
