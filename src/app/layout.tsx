@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Jim_Nightshade } from "next/font/google";
-import Header from '@/components/Header';
-import LoadingScreen from '@/components/LoadingScreen';
+import Header from '@/components/layout/Header';
+import LoadingScreen from '@/components/ui/LoadingScreen';
 import "./globals.css";
+import "leaflet/dist/leaflet.css";
 
 const inter = Inter({
   variable: "--font-inter",

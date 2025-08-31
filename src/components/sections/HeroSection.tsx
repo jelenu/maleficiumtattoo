@@ -17,7 +17,7 @@ export default function HeroSection() {
             className="max-w-full max-h-full object-contain"
             priority
           />
-          <button className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-black border-2 border-white text-white px-8 py-3 rounded-full font-body text-lg hover:bg-white hover:text-black transition-colors duration-300">
+          <button className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-black border-4 border-white text-white px-14 py-2 rounded-full font-display text-3xl hover:bg-white hover:text-black transition-colors duration-300">
             Contact Us
           </button>
         </div>
