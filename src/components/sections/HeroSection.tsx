@@ -8,7 +8,23 @@ export default function HeroSection() {
       backgroundAlt="Fondo"
       contentClassName="flex items-center justify-center h-full"
     >
-      <div className="relative">
+      {/* Layout para móvil */}
+      <div className="flex flex-col items-center space-y-8 md:hidden">
+        <Image
+          src="/images/mf.png"
+          alt="Maleficium Tattoo Logo Mobile"
+          width={300}
+          height={300}
+          className="max-w-full max-h-full object-contain"
+          priority
+        />
+        <Button variant="outline" size="lg">
+          Contact Us
+        </Button>
+      </div>
+
+      {/* Layout para desktop */}
+      <div className="relative hidden md:block">
         <Image
           src="/images/maleficium.png"
           alt="Maleficium Tattoo Logo"
