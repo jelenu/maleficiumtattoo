@@ -2,6 +2,8 @@
 
 import { ContactFormProps } from '@/types';
 import { useState } from 'react';
+import { Button, Input, TextArea, FormField, PhoneInput, Alert } from '@/components/ui';
+import { validateCountryCode, validatePhoneNumber } from '@/utils/validation';
 
 export default function ContactForm({ onSubmit }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,23 +24,17 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       const phoneNumber = formData.get('phone') as string;
       
       // Validar código de país
-      if (!countryCode || !countryCode.startsWith('+') || countryCode.length < 2) {
-        setPhoneError('Please enter a valid country code (e.g., +43)');
+      const countryCodeValidation = validateCountryCode(countryCode);
+      if (!countryCodeValidation.isValid) {
+        setPhoneError(countryCodeValidation.error || '');
         setIsSubmitting(false);
         return;
       }
       
       // Validar número de teléfono
-      if (!phoneNumber || phoneNumber.trim().length < 6) {
-        setPhoneError('Phone number must be at least 6 digits long');
-        setIsSubmitting(false);
-        return;
-      }
-      
-      // Validar que solo contenga números
-      const phoneRegex = /^[0-9]+$/;
-      if (!phoneRegex.test(phoneNumber)) {
-        setPhoneError('Phone number can only contain numbers');
+      const phoneValidation = validatePhoneNumber(phoneNumber);
+      if (!phoneValidation.isValid) {
+        setPhoneError(phoneValidation.error || '');
         setIsSubmitting(false);
         return;
       }
@@ -87,175 +83,95 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     <div className="bg-black/60 p-6 backdrop-blur-sm relative">
       {/* Mensaje de estado - Overlay sin afectar layout */}
       {message && (
-        <div className={`absolute top-4 left-4 right-4 p-4 rounded-md z-10 shadow-lg transition-all duration-300 ${
-          message.type === 'success' 
-            ? 'bg-green-800 border border-green-600 text-green-100' 
-            : 'bg-red-800 border border-red-600 text-red-100'
-        }`}>
-          <div className="flex items-center justify-between">
-            <p className="text-sm flex items-center">
-              {message.type === 'success' ? '✅' : '❌'} {message.text}
-            </p>
-            <button
-              onClick={() => setMessage(null)}
-              className="ml-4 text-white hover:text-gray-300 focus:outline-none"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
+        <Alert
+          type={message.type}
+          message={message.text}
+          onClose={() => setMessage(null)}
+          className="absolute top-4 left-4 right-4 z-10"
+        />
       )}
 
       <form className="space-y-4" onSubmit={handleSubmit}>
         
         {/* First Name y Last Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-white mb-2">
-              First Name *
-            </label>
-            <input
+          <FormField label="First Name" htmlFor="firstName" required>
+            <Input
               type="text"
               id="firstName"
               name="firstName"
               required
-              className="w-full px-3 py-2 bg-gray-600 border border-gray-600 rounded-md text-gray-100 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent focus:text-white"
               placeholder="Your first name"
             />
-          </div>
+          </FormField>
           
-          <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-white mb-2">
-              Last Name *
-            </label>
-            <input
+          <FormField label="Last Name" htmlFor="lastName" required>
+            <Input
               type="text"
               id="lastName"
               name="lastName"
               required
-              className="w-full px-3 py-2 bg-gray-600 border border-gray-600 rounded-md text-gray-100 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent focus:text-white"
               placeholder="Your last name"
             />
-          </div>
+          </FormField>
         </div>
         
         {/* Phone */}
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
-            Phone Number *
-          </label>
-          <div className="flex">
-            <input
-              type="text"
-              name="countryCode"
-              defaultValue="+43"
-              className="w-20 px-2 py-2 bg-gray-600 border border-gray-600 rounded-l-md text-gray-100 text-center focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent focus:text-white"
-              placeholder="+43"
-              onInput={(e) => {
-                // Solo permitir + al inicio seguido de números
-                const target = e.target as HTMLInputElement;
-                let value = target.value;
-                
-                // Si no empieza con +, añadirlo
-                if (!value.startsWith('+')) {
-                  value = '+' + value.replace(/\+/g, '');
-                }
-                
-                // Solo permitir + al inicio y números después
-                value = value.replace(/^(\+)(.*)/, (match, plus, rest) => {
-                  return plus + rest.replace(/[^\d]/g, '');
-                });
-                
-                target.value = value;
-              }}
-            />
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              required
-              pattern="[0-9]+"
-              title="Please enter a valid phone number (numbers only)"
-              className={`flex-1 px-3 py-2 bg-gray-600 border rounded-r-md text-gray-100 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent focus:text-white ${
-                phoneError ? 'border-red-500' : 'border-gray-600'
-              }`}
-              placeholder="e.g., 6641234567"
-              onChange={() => setPhoneError('')} // Limpiar error al escribir
-              onInput={(e) => {
-                // Solo permitir números
-                const target = e.target as HTMLInputElement;
-                target.value = target.value.replace(/[^\d]/g, '');
-              }}
-            />
-          </div>
-          {phoneError && (
-            <p className="text-red-400 text-sm mt-1">{phoneError}</p>
-          )}
-        </div>
+        <FormField label="Phone Number" htmlFor="phone" required error={phoneError}>
+          <PhoneInput
+            countryCodeName="countryCode"
+            phoneNumberName="phone"
+            defaultCountryCode="+43"
+            error={phoneError}
+            onErrorChange={setPhoneError}
+            required
+          />
+        </FormField>
         
         {/* Email */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-            Email *
-          </label>
-          <input
+        <FormField label="Email" htmlFor="email" required>
+          <Input
             type="email"
             id="email"
             name="email"
             required
-            className="w-full px-3 py-2 bg-gray-600 border border-gray-600 rounded-md text-gray-100 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent focus:text-white"
             placeholder="your.email@example.com"
           />
-        </div>
+        </FormField>
         
         {/* Detailed Description */}
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium text-white mb-2">
-            Detailed Description *
-          </label>
-          <textarea
+        <FormField label="Detailed Description" htmlFor="description" required>
+          <TextArea
             id="description"
             name="description"
             rows={4}
             required
-            className="w-full px-3 py-2 bg-gray-600 border border-gray-600 rounded-md text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent focus:text-white resize-vertical"
             placeholder="Please describe your tattoo idea, preferred artist, budget, and availability..."
           />
-        </div>
+        </FormField>
         
         {/* Image Upload */}
-        <div>
-          <label htmlFor="image" className="block text-sm font-medium text-white mb-2">
-            Reference Image (optional)
-          </label>
-          <input
+        <FormField label="Reference Image (optional)" htmlFor="image">
+          <Input
             type="file"
             id="image"
             name="image"
             accept="image/*"
-            className="w-full px-3 py-2 bg-gray-600 border border-gray-600 rounded-md text-gray-100 focus:text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-200"
+            className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-200"
           />
-        </div>
+        </FormField>
         
         {/* Submit Button */}
-        <button
+        <Button
           type="submit"
+          variant="primary"
+          size="md"
+          fullWidth
+          isLoading={isSubmitting}
           disabled={isSubmitting}
-          className={`w-full px-6 py-3 rounded-md font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black ${
-            isSubmitting
-              ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-              : 'bg-white text-black hover:bg-gray-200'
-          }`}
         >
-          {isSubmitting ? (
-            <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-700 mr-2"></div>
-              Enviando...
-            </div>
-          ) : (
-            'Submit Request'
-          )}
-        </button>
+          Submit Request
+        </Button>
         
       </form>
     </div>

@@ -1,33 +1,28 @@
 import { ContactInfoProps } from '@/types';
 import GoogleReviewsButton from '@/components/ui/GoogleReviewsButton';
+import { contactContent } from '@/constants/content';
 
 export default function ContactInfo({ onShowReviews }: ContactInfoProps) {
   return (
     <div className="flex flex-col h-full p-6">
       <div className="flex-grow">
         <h2 className="text-4xl md:text-5xl font-display text-white mb-8">
-          Contact Us
+          {contactContent.title}
         </h2>
         
         <div className="space-y-4 text-gray-300 font-body leading-relaxed">
-          <p className="text-sm">
-            Please check your spam folder for our response a few days after sending— some of our replies have been going there.
-          </p>
-          
-          <p className="text-sm">
-            Please let us know which artist you would like to contact. Provide as much written detail as you can regarding your desired tattoo, appointment availability, and budget ($150.00 minimum), and we will get back to you as soon as we can. All deposits are non refundable.
-          </p>
-          
-          <p className="text-sm">
-            You must be 18 years of age to get tattooed. (ID required) Washington state law.
-          </p>
+          {contactContent.info.map((text, index) => (
+            <p key={index} className="text-sm">
+              {text}
+            </p>
+          ))}
           
           <div className="pt-4">
             <h3 className="text-lg font-display text-white mb-2">
-              TOUCH UPS (please read!!!!)
+              {contactContent.touchUps.title}
             </h3>
             <p className="text-sm">
-              Any touch ups on tattoos are up to the artist discretion. 4 weeks is enough time to know if your tattoo needs to be touched up by the artist and schedule your appointment. (any time after that is considered natural aging.)
+              {contactContent.touchUps.content}
             </p>
           </div>
         </div>
