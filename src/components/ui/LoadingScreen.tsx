@@ -34,7 +34,7 @@ export default function LoadingScreen() {
       {/* Logo animado */}
       <div className="relative mb-8 animate-pulse">
         <Image
-          src="/images/maleficiumLogo.PNG"
+          src="/images/maleficiumLogo.png"
           alt="Maleficium Tattoo Logo"
           width={300}
           height={400}
