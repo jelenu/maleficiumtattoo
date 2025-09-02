@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import Image from 'next/image';
+import { ReactNode } from "react";
+import Image from "next/image";
 
 interface SectionWrapperProps {
   children: ReactNode;
@@ -8,24 +8,41 @@ interface SectionWrapperProps {
   snapStart?: boolean;
   className?: string;
   contentClassName?: string;
+  /** Tailwind classes for the dark overlay above the background image */
+  overlayClassName?: string;
+  /** Disable the overlay entirely */
+  disableOverlay?: boolean;
 }
 
 export default function SectionWrapper({
   children,
   backgroundImage,
-  backgroundAlt = 'Background',
+  backgroundAlt = "Background",
   snapStart = true,
-  className = '',
-  contentClassName = ''
+  className = "",
+  contentClassName = "",
+  overlayClassName = "bg-black/90",
+  disableOverlay = false,
 }: SectionWrapperProps) {
-  const snapClass = snapStart ? 'snap-start' : '';
-  
+  const snapClass = snapStart ? "snap-start" : "";
+
   return (
-    <section className={`relative h-screen ${snapClass} ${className}`}>
-      {/* Background Image (if provided) */}
-      {backgroundImage && (
+    <section
+      className={`relative mobile-viewport h-screen-dynamic ${snapClass} ${className}`}
+    >
+      {/* Header Spacer - Always present for all sections */}
+      <div className="h-18 md:h-22 lg:h-24 xl:h-26"></div>
+
+      {/* Content */}
+      <div
+        className={`relative z-20 h-[calc(100vh-4.5rem)] h-[calc(-webkit-fill-available-4.5rem)] md:h-[calc(100vh-5.5rem)] md:h-[calc(-webkit-fill-available-5.5rem)] lg:h-[calc(100vh-6rem)] lg:h-[calc(-webkit-fill-available-6rem)] xl:h-[calc(100vh-6.5rem)] xl:h-[calc(-webkit-fill-available-6.5rem)] p-0 md:py-16 lg:py-16 xl:py-16 2xl:py-16 3xl:py-20 ${contentClassName}`}
+      >
+        {children}
+      </div>
+
+      {/* Background */}
+      {backgroundImage ? (
         <>
-          {/* Background Image */}
           <Image
             src={backgroundImage}
             alt={backgroundAlt}
@@ -33,16 +50,13 @@ export default function SectionWrapper({
             className="object-cover z-0"
             priority
           />
-          
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 z-10 bg-black/90" />
+          {!disableOverlay && (
+            <div className={`absolute inset-0 z-10 pointer-events-none ${overlayClassName}`} />
+          )}
         </>
+      ) : (
+        <div className="absolute inset-0 z-0 bg-black" />
       )}
-      
-      {/* Content */}
-      <div className={`relative z-20 ${contentClassName}`}>
-        {children}
-      </div>
     </section>
   );
 }

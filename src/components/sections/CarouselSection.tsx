@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { SectionWrapper } from '@/components/ui';
 
 export default function CarouselSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -61,7 +62,9 @@ export default function CarouselSection() {
   };
 
   return (
-    <section className="h-screen snap-start relative overflow-hidden">
+    <SectionWrapper
+      contentClassName="relative h-full overflow-hidden"
+    >
       {/* Carousel Container */}
       <div className="relative h-full w-full">
         {/* Images */}
@@ -143,6 +146,6 @@ export default function CarouselSection() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

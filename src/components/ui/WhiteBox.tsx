@@ -2,36 +2,44 @@ import { ReactNode } from 'react';
 
 interface WhiteBoxProps {
   children: ReactNode;
-  padding?: boolean;
-  rounded?: boolean;
-  background?: 'transparent' | 'black';
+  /**
+   * Background style options:
+   *  - 'black': solid black background
+   *  - 'image': uses /images/fondo.png as background
+   *  - 'transparent': no background (fully transparent)
+   */
+  background?: 'black' | 'image' | 'transparent';
   className?: string;
 }
 
-export default function WhiteBox({
-  children,
-  padding = false,
-  rounded = false,
-  background = 'transparent',
-  className = ''
-}: WhiteBoxProps) {
-  const paddingClasses = padding ? 'p-10' : '';
-  const roundedClasses = rounded ? 'rounded-lg' : '';
-  const backgroundClasses = background === 'black' ? 'bg-black' : 'bg-transparent';
-  const overflowClasses = background === 'transparent' ? 'overflow-hidden' : '';
-  
+export default function WhiteBox({ children, background = 'image', className = '' }: WhiteBoxProps) {
+  const isBlack = background === 'black';
+  const isImage = background === 'image';
+  const backgroundClasses = isBlack ? 'bg-black' : '';
+
+  const imageStyle = isImage
+    ? ({
+        backgroundImage: 'url(/images/fondo.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      } as const)
+    : undefined;
+
   return (
-    <div 
+    <div
       className={`
-        border-2 border-white max-w-6xl w-full h-[650px] relative mt-45
-        ${backgroundClasses}
-        ${paddingClasses}
-        ${roundedClasses}
-        ${overflowClasses}
+        relative h-full
+        w-full max-w-6xl mx-auto
+        border-0 sm:border-2 border-white
+  ${backgroundClasses}
         ${className}
-      `.trim()}
+      `}
+      style={imageStyle}
     >
       {children}
+      
     </div>
+    
   );
 }

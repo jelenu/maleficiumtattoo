@@ -6,7 +6,7 @@ export default function HeroSection() {
     <SectionWrapper 
       backgroundImage="/images/bg.jpg"
       backgroundAlt="Fondo"
-      contentClassName="flex items-center justify-center h-full"
+      contentClassName="flex items-center justify-center"
     >
       {/* Layout para móvil */}
       <div className="flex flex-col items-center space-y-8 md:hidden">

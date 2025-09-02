@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { InteractiveMap } from '@/components/ui';
+import { InteractiveMap, SectionWrapper } from '@/components/ui';
 import { Footer } from '@/components/layout';
 
 export default function MapSection() {
@@ -12,7 +12,10 @@ export default function MapSection() {
   }, []);
 
   return (
-    <section className="h-screen snap-start bg-black pt-45 flex flex-col">
+    <SectionWrapper
+      className="bg-black"
+      contentClassName="flex flex-col h-full pt-45"
+    >
       <div className="flex-1 w-full">
         <div className="h-130 w-full">
           {isClient && (
@@ -29,6 +32,6 @@ export default function MapSection() {
       
       {/* Footer integrado en la sección del mapa */}
       <Footer />
-    </section>
+    </SectionWrapper>
   );
 }

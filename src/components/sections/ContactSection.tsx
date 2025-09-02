@@ -16,8 +16,8 @@ export default function ContactSection() {
       contentClassName="flex items-center justify-center px-8"
     >
       {/* Contenido */}
-      <WhiteBox background="black" padding rounded>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 h-full">
+      <WhiteBox background="black">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 h-full p-4">
             
             {/* Columna izquierda - Información de contacto */}
             <div className="flex flex-col h-full">
