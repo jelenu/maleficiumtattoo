@@ -125,9 +125,9 @@ export default function ArtistsSection() {
         >
           <WhiteBox
             background="transparent"
-            className="border-none backdrop-blur-[1px] flex flex-col items-center text-center gap-3 py-0  px-0 sm:px-4 w-full mt-20 md:mt-0"
+            className="border-none backdrop-blur-[1px] flex flex-col items-center text-center gap-3 py-0  px-0 sm:px-4 w-full mt-0"
           >
-            <h2 className="w-full max-w-5xl mx-auto text-center text-4xl lg:text-5xl font-display text-white tracking-tight px-8 mb-4">
+            <h2 className="w-full max-w-5xl mx-auto text-center text-4xl lg:text-5xl font-display text-white tracking-tight px-8 mb-4 mt-10 ">
               Meet the Artists
             </h2>
             <div

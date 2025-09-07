@@ -1,7 +1,7 @@
 export const stylesData = [
   {
     title: "Blackwork",
-    description: "Especializados en tatuajes Blackwork en Sankt Pölten. Líneas precisas, negros profundos y diseños impactantes que resaltan tu estilo único. Perfecto para quienes buscan un arte audaz y atemporal.",
+    description: "Especializados en tatuajes Blackwork en Sankt Pölten. Líneas precisas, negros profundos y diseños impactantes que resaltan tu estilo único.",
     imageSrc: "/images/tattoo.jpg",
     imageAlt: "Blackwork Tattoo",
     imagePosition: "right" as const
@@ -20,13 +20,6 @@ export const stylesData = [
     imageAlt: "Fine Line Tattoo",
     imagePosition: "left" as const
   },
-  {
-    title: "Dark Art",
-    description: "Arte oscuro y expresivo que explora temas profundos y místicos. Especialidad en diseños góticos, horror y arte surrealista que capturan la esencia del lado oscuro.",
-    imageSrc: "/images/tattoo.jpg",
-    imageAlt: "Dark Art Tattoo", 
-    imagePosition: "left" as const
-  }
 ];
 
 export const aboutStudioContent = {

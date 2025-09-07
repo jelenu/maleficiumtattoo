@@ -31,7 +31,7 @@ export default function WhiteBox({ children, background = 'image', className = '
       className={`
         relative h-full
         w-full max-w-6xl mx-auto
-        border-0 sm:border-2 border-white
+        border-0 md:border-2 border-white
   ${backgroundClasses}
         ${className}
       `}

@@ -1,39 +1,116 @@
-import { SectionWrapper, StyleCard, WhiteBox } from '@/components/ui';
+// StylesSection.tsx
+import { SectionWrapper, WhiteBox } from '@/components/ui';
 import { stylesData } from '@/constants/content';
+import Image from 'next/image';
 
 export default function StylesSection() {
+  const s0 = stylesData[0];
+  const s1 = stylesData[1] ?? stylesData[0];
+  const s2 = stylesData[2] ?? stylesData[0];
+
   return (
-    <SectionWrapper
-      backgroundImage="/images/fondo.png"
-      contentClassName="flex items-center justify-center md:px-8"
-    >
-      {/* Layout para desktop (md+) - Con WhiteBox */}
-      <div className="hidden md:flex w-full h-full items-center justify-center">
-        <WhiteBox background="transparent">
-          <div className="grid grid-cols-3 gap-0 h-full bg-black">
-            <StyleCard {...stylesData[0]} layout="text-top" />
-            <StyleCard {...stylesData[1]} layout="text-bottom" />
-            <StyleCard {...stylesData[2]} layout="text-top" />
-          </div>
-        </WhiteBox>
-      </div>
-
-      {/* Layout para móvil/tablet (menor a md) - Sin WhiteBox, ancho completo */}
-      <div className="md:hidden max-w-md sm:max-w-full sm:px-20 h-full flex flex-col">
-
-        <div className="h-3/10 bg-black">
-          <StyleCard {...stylesData[0]} layout="horizontal" imagePosition="right" />
+    <>
+      {/* Desktop only section */}
+      <SectionWrapper
+        backgroundImage="/images/fondo.png"
+        contentClassName="flex items-center justify-center md:px-8"
+        className="hidden md:block"
+      >
+        <div className="p-4 w-full lg:w-[calc(3*(80vh/2))]">
+          <WhiteBox background="black" className="p-0">
+            <div className="w-full mx-auto">
+              <div className="grid grid-cols-3 gap-0 w-full">
+                {/* Columna 1 */}
+                <div className="grid grid-rows-2 gap-0">
+                  <SquareText title={s0.title} description={s0.description} />
+                  <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
+                </div>
+                {/* Columna 2 */}
+                <div className="grid grid-rows-2 gap-0">
+                  <SquareImage src={s1.imageSrc} alt={s1.imageAlt} />
+                  <SquareText title={s1.title} description={s1.description} />
+                </div>
+                {/* Columna 3 */}
+                <div className="grid grid-rows-2 gap-0">
+                  <SquareText title={s2.title} description={s2.description} />
+                  <SquareImage src={s2.imageSrc} alt={s2.imageAlt} />
+                </div>
+              </div>
+            </div>
+          </WhiteBox>
         </div>
+      </SectionWrapper>
 
-        <div className="h-3/10 bg-black">
-          <StyleCard {...stylesData[1]} layout="horizontal" imagePosition="left" />
+      {/* Tablet only section */}
+      <SectionWrapper
+        backgroundImage="/images/fondo.png"
+        contentClassName="flex items-center justify-center h-"
+        className="hidden sm:block md:hidden"
+      >
+        <div className="h-[80vh] w-[calc(2*(80vh/3))]">
+          <WhiteBox background="black" className="border-0 sm:border-2 sm:border-white">
+            <div className="grid grid-cols-2 gap-0 w-full">
+              <SquareText title={s0.title} description={s0.description} />
+              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
+            </div>
+            <div className="grid grid-cols-2 gap-0 w-full">
+              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
+              <SquareText title={s0.title} description={s0.description} />
+            </div>
+            <div className="grid grid-cols-2 gap-0 w-full">
+              <SquareText title={s0.title} description={s0.description} />
+              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
+            </div>
+          </WhiteBox>
         </div>
+      </SectionWrapper>
 
-        <div className="h-3/10 bg-black">
-          <StyleCard {...stylesData[2]} layout="horizontal" imagePosition="right" />
+      {/* Mobile only section */}
+      <SectionWrapper
+        contentClassName="flex items-start justify-center"
+        className="block sm:hidden"
+      >
+        <div className="h-[80vh]">
+          <WhiteBox background="black" className="">
+            <div className="grid grid-cols-2 gap-0 w-full h-1/3">
+              <SquareText title={s0.title} description={s0.description} />
+              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
+            </div>
+            <div className="grid grid-cols-2 gap-0 w-full h-1/3">
+              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
+              <SquareText title={s0.title} description={s0.description} />
+            </div>
+            <div className="grid grid-cols-2 gap-0 w-full h-1/3 ">
+              <SquareText title={s0.title} description={s0.description} />
+              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
+            </div>
+          </WhiteBox>
         </div>
-      
-      </div>
-    </SectionWrapper>
+      </SectionWrapper>
+    </>
   );
 }
+
+function SquareText({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="relative overflow-hidden  aspect-auto sm:aspect-square">
+      <div className="absolute inset-0 flex flex-col pt-4 lg:pt-8 px-4 lg:px-6">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold tracking-wide uppercase text-white mb-2 ">
+          {title}
+        </h3>
+        <p className="text-xs sm:text-[clamp(0.6rem,1.7vh,1.15rem)] leading-relaxed text-gray-200">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function SquareImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+  return (
+    <div className={`relative overflow-hidden aspect-[10/11] sm:aspect-square ${className}`}>
+      <Image src={src} alt={alt} fill className="object-cover" />
+    </div>
+  );
+}
+
