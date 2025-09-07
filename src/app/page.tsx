@@ -6,7 +6,6 @@ import InstagramSection from '@/components/sections/InstagramSection';
 import ContactSection from '@/components/sections/ContactSection';
 import MapSection from '@/components/sections/MapSection';
 
-import { ArtistsSectionAlt } from '@/components/sections';
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
       <AboutStudioSection />
       <StylesSection />
       <ArtistsSection />
-      <ArtistsSectionAlt />
       <InstagramSection />
       <ContactSection />
       <MapSection />

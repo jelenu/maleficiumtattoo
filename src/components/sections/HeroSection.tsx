@@ -7,6 +7,8 @@ export default function HeroSection() {
       backgroundImage="/images/bg.jpg"
       backgroundAlt="Fondo"
       contentClassName="flex items-center justify-center"
+      overlayClassName="bg-black/80"
+
     >
       {/* Layout para móvil */}
       <div className="flex flex-col items-center space-y-8 md:hidden">

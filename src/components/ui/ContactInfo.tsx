@@ -12,7 +12,7 @@ export default function ContactInfo({ onShowReviews }: ContactInfoProps) {
 
         <div className="space-y-4 text-gray-300 font-body leading-relaxed">
           {contactContent.info.map((text, index) => (
-            <p key={index} className="text-sm">
+            <p key={index} className="text-md">
               {text}
             </p>
           ))}

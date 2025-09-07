@@ -144,7 +144,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           <TextArea
             id="description"
             name="description"
-            rows={3}
+            rows={4}
             required
             placeholder="Please describe your tattoo idea, preferred artist, budget, and availability..."
           />
