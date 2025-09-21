@@ -4,7 +4,7 @@ export default function GoogleReviewsButton({ onClick, className = "" }: GoogleR
   return (
     <button
       onClick={onClick}
-      className={`inline-flex items-center bg-white hover:bg-gray-100 border border-gray-300 rounded-lg px-4 py-3 transition-colors duration-300 shadow-md hover:shadow-lg cursor-pointer ${className}`}
+      className={`inline-flex items-center bg-white hover:bg-gray-100 border border-gray-300 rounded-lg px-4 py-2.5 transition-colors duration-300 shadow-md hover:shadow-lg cursor-pointer ${className}`}
     >
       {/* Google Logo */}
       <div className="flex items-center mr-3">

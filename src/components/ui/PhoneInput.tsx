@@ -57,7 +57,7 @@ export default function PhoneInput({
         type="text"
         name={countryCodeName}
         defaultValue={defaultCountryCode}
-        className="!w-20 rounded-r-none text-center"
+        className="!w-13 rounded-r-none text-center"
         placeholder="+43"
         onInput={handleCountryCodeInput}
         fullWidth={false}
@@ -68,7 +68,7 @@ export default function PhoneInput({
         required={required}
         pattern="[0-9]+"
         title="Please enter a valid phone number (numbers only)"
-        className="flex-1 rounded-l-none border-l-0"
+        className="rounded-l-none border-l-0 w-full"
         placeholder="e.g., 6641234567"
         onChange={handlePhoneNumberChange}
         onInput={handlePhoneNumberInput}

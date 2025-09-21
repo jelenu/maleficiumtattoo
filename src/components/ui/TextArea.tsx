@@ -7,7 +7,24 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ error, fullWidth = true, className = '', ...props }, ref) => {
-    const baseClasses = 'px-3 py-1.5 bg-gray-600 border rounded-md text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent focus:text-white resize-vertical transition-colors duration-200';
+    const baseClasses = `
+      px-3 
+      py-1 md:py-2 
+      bg-gray-600 
+      border 
+      rounded-md 
+      text-gray-100 
+      placeholder-gray-400 
+      focus:outline-none 
+      focus:ring-2 
+      focus:ring-white 
+      focus:border-transparent 
+      focus:text-white 
+      resize-vertical 
+      text-[clamp(0.75rem,1vh,0.85rem)] 
+      transition-colors 
+      duration-200
+    `;
     const widthClasses = fullWidth ? 'w-full' : '';
     const errorClasses = error ? 'border-red-500' : 'border-gray-600';
 

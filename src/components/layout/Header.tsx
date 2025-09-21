@@ -15,7 +15,11 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full h-18 md:h-22 lg:h-24 xl:h-26 bg-black text-white px-2 md:px-6 lg:px-8 xl:px-20 py-3 md:py-4 lg:py-5 xl:py-6 shadow-lg border-b-2 border-white z-50">
       <div className="max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto flex items-center justify-between px-4 md:px-0">
         {/* Title */}
-        <div className="flex items-center">
+        
+        
+        
+        
+               <div className="flex items-center">
           {/* Logo para móvil */}
           <div className="md:hidden">
             <Image

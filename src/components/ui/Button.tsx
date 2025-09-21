@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 export type ButtonVariant = 'primary' | 'outline';
-export type ButtonSize = 'md' | 'lg';
+export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -21,6 +21,7 @@ const getVariantClasses = (variant: ButtonVariant): string => {
 
 const getSizeClasses = (size: ButtonSize): string => {
   const sizes = {
+    sm: 'px-4 py-2 text-md',
     md: 'px-8 py-3 text-2xl',
     lg: 'px-14 py-2 text-3xl'
   };

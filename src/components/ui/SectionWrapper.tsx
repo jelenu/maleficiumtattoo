@@ -35,7 +35,7 @@ export default function SectionWrapper({
 
       {/* Content */}
       <div
-        className={`relative z-20 h-[calc(100vh-4.5rem)] h-[calc(-webkit-fill-available-4.5rem)] md:h-[calc(100vh-5.5rem)] md:h-[calc(-webkit-fill-available-5.5rem)] lg:h-[calc(100vh-6rem)] lg:h-[calc(-webkit-fill-available-6rem)] xl:h-[calc(100vh-6.5rem)] xl:h-[calc(-webkit-fill-available-6.5rem)] p-0 md:py-16 lg:py-16 xl:py-16 2xl:py-16 3xl:py-20 ${contentClassName}`}
+        className={`relative z-20 h-[calc(100vh-4.5rem)] h-[calc(-webkit-fill-available-4.5rem)] md:h-[calc(100vh-5.5rem)] md:h-[calc(-webkit-fill-available-5.5rem)] lg:h-[calc(100vh-6rem)] lg:h-[calc(-webkit-fill-available-6rem)] xl:h-[calc(100vh-6.5rem)] xl:h-[calc(-webkit-fill-available-6.5rem)] p-0 md:py-16  ${contentClassName}`}
       >
         {children}
       </div>
