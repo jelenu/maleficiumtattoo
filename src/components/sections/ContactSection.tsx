@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SectionWrapper, WhiteBox } from "@/components/ui";
-import ContactInfo from "@/components/ui/ContactInfo";
+import { ContactInfo } from "@/components/ui";
 import ContactForm from "@/components/forms/ContactForm";
 import GoogleReviews from "@/components/features/GoogleReviews";
 import { reviewsData } from "@/utils/reviewsData";

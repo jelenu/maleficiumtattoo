@@ -1,7 +1,6 @@
 "use client";
 
-import SectionWrapper from "../ui/SectionWrapper";
-import WhiteBox from "../ui/WhiteBox";
+import { SectionWrapper, WhiteBox } from "../ui";
 
 export default function ArtistsSectionAlt() {
   const artists = [

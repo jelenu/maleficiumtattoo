@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import SectionWrapper from "../ui/SectionWrapper";
-import WhiteBox from "../ui/WhiteBox";
+import { SectionWrapper, WhiteBox } from "../ui";
 import { useState } from "react";
 
 interface Artist {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Jim_Nightshade } from "next/font/google";
 import Header from '@/components/layout/Header';
-import LoadingScreen from '@/components/ui/LoadingScreen';
+import { LoadingScreen } from '@/components/ui';
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 

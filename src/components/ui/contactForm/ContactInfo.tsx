@@ -1,7 +1,6 @@
 import { ContactInfoProps } from "@/types";
-import GoogleReviewsButton from "@/components/ui/GoogleReviewsButton";
+import { GoogleReviewsButton, Button } from "@/components/ui";
 import { contactContent } from "@/constants/content";
-import Button from "./Button";
 import { ChevronDown } from "lucide-react"; //
 
 export default function ContactInfo({ onShowReviews }: ContactInfoProps) {
