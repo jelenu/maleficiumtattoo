@@ -35,8 +35,8 @@ export default function SectionWrapper({
   snapStart = true,
   id,
   className = "",
-  contentClassName = "",
-  overlayClassName = "bg-black/90",
+  contentClassName = "flex items-center justify-center",
+  overlayClassName = "bg-black/80",
   disableOverlay = false,
   priority = false,
   sizes = "100vw",
@@ -45,6 +45,7 @@ export default function SectionWrapper({
 }: SectionWrapperProps) {
   const snapClass = snapStart ? "snap-start" : "";
   const WrapperTag = as as keyof JSX.IntrinsicElements;
+  const bgImage = backgroundImage ?? "/images/fondo.png";
 
   return (
     <WrapperTag
@@ -62,10 +63,10 @@ export default function SectionWrapper({
       </div>
 
       {/* Background */}
-      {backgroundImage ? (
+      {bgImage ? (
         <>
           <Image
-            src={backgroundImage}
+            src={bgImage}
             alt={backgroundAlt}
             fill
             className={imgClassName}

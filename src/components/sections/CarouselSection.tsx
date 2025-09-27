@@ -62,9 +62,7 @@ export default function CarouselSection() {
   };
 
   return (
-    <SectionWrapper
-      contentClassName="relative h-full overflow-hidden"
-    >
+    <SectionWrapper>
       {/* Carousel Container */}
       <div className="relative h-full w-full">
         {/* Images */}

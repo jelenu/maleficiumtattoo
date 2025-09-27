@@ -12,8 +12,6 @@ export default function StylesSection() {
     <>
       {/* Desktop only section */}
       <SectionWrapper
-        backgroundImage="/images/fondo.png"
-        contentClassName="flex items-center justify-center md:px-8"
         className="hidden md:block"
       >
         <div className="p-4 w-full lg:w-[calc(3*(80vh/2))]">
@@ -43,7 +41,6 @@ export default function StylesSection() {
 
       {/* Tablet only section */}
       <SectionWrapper
-        backgroundImage="/images/fondo.png"
         contentClassName="flex items-center justify-center h-"
         className="hidden sm:block md:hidden"
       >

@@ -2,9 +2,7 @@ import { SectionWrapper } from '@/components/ui';
 
 export default function InstagramSection() {
   return (
-    <SectionWrapper
-      contentClassName="flex flex-col items-center justify-center py-20"
-    >
+    <SectionWrapper>
       <h2 className="text-4xl md:text-6xl font-display text-white mb-4">
         @maleficium.tattoo
       </h2>

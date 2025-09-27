@@ -41,11 +41,7 @@ export default function ArtistsSection() {
     <>
       {/* Desktop: artistas lado a lado */}
       <SectionWrapper
-        backgroundImage="/images/fondo.png"
-        backgroundAlt="Background"
         className="hidden lg:block"
-        contentClassName="flex flex-col items-center justify-center"
-        overlayClassName="bg-black/80"
       >
         <WhiteBox
           background="transparent"
@@ -116,11 +112,9 @@ export default function ArtistsSection() {
       {artists.map((artist, index) => (
         <SectionWrapper
           key={artist.name}
-          backgroundImage="/images/fondo.png"
           backgroundAlt="Background"
           className="lg:hidden"
           contentClassName="flex items-center justify-center px-0 sm:px-6"
-          overlayClassName="bg-black/70"
         >
           <WhiteBox
             background="transparent"

@@ -12,10 +12,7 @@ export default function MapSection() {
   }, []);
 
   return (
-    <SectionWrapper
-      className="bg-black"
-      contentClassName="flex flex-col h-full pt-45"
-    >
+    <SectionWrapper contentClassName="flex flex-col">
       <div className="flex-1 w-full">
         <div className="h-130 w-full">
           {isClient && (
