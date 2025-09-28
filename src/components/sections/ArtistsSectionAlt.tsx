@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionWrapper, WhiteBox } from "../ui";
+import { SectionWrapper } from "../ui";
 
 export default function ArtistsSectionAlt() {
   const artists = [
@@ -27,9 +27,8 @@ export default function ArtistsSectionAlt() {
         className="hidden md:block"
         contentClassName="flex items-center justify-center"
       >
-        <WhiteBox
-          background="transparent"
-          className="border-none flex h-full items-stretch w-full gap-12 xl:gap-24 2xl:gap-32 py-8 lg:py-12 px-6 lg:px-10 xl:px-14 2xl:px-16"
+        <div
+          className="border-none bg-transparent flex h-full items-stretch w-full gap-12 xl:gap-24 2xl:gap-32 py-8 lg:py-12 px-6 lg:px-10 xl:px-14 2xl:px-16"
         >
           {artists.map((artist, index) => (
             <div
@@ -55,7 +54,7 @@ export default function ArtistsSectionAlt() {
               </div>
             </div>
           ))}
-        </WhiteBox>
+        </div>
       </SectionWrapper>
 
       {/* Variante ALT Mobile */}

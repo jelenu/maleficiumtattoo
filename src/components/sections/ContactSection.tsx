@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SectionWrapper, WhiteBox } from "@/components/ui";
+import { SectionWrapper } from "@/components/ui";
 import { ContactInfo } from "@/components/ui";
 import ContactForm from "@/components/forms/ContactForm";
 import GoogleReviews from "@/components/features/GoogleReviews";
@@ -19,7 +19,7 @@ export default function ContactSection() {
 
         contentClassName="items-center justify-center px-4 md:!py-10 lg:!py-16"
       >
-        <WhiteBox background="black" className="max-h-[650px]">
+        <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black max-h-[650px]">
           <div className="grid grid-cols-[55%_45%] h-full   p-6">
             {/* Columna izquierda - Información de contacto */}
             <div className="flex flex-col h-full">
@@ -31,7 +31,7 @@ export default function ContactSection() {
               <ContactForm />
             </div>
           </div>
-        </WhiteBox>
+  </div>
 
         {/* Reviews Popup */}
         <GoogleReviews
@@ -48,11 +48,11 @@ export default function ContactSection() {
         className="lg:hidden"
 
       >
-        <WhiteBox background="black" className="md:max-h-[600px] border-2 border-b-0 ">
+        <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 border-b-0 rounded-xl bg-black md:max-h-[600px]">
           <div className="flex flex-col h-full p-8 pb-20">
             <ContactInfo onShowReviews={() => setShowReviews(true)} />
           </div>
-        </WhiteBox>
+        </div>
 
         {/* Reviews Popup */}
         <GoogleReviews
@@ -69,11 +69,11 @@ export default function ContactSection() {
         className="lg:hidden"
 
       >
-        <WhiteBox background="black" className="md:max-h-[600px]">
+        <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black md:max-h-[600px]">
           <div className="flex flex-col h-full p-6">
             <ContactForm />
           </div>
-        </WhiteBox>
+        </div>
       </SectionWrapper>
     </>
   );

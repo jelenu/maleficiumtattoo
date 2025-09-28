@@ -1,87 +1,97 @@
 import Image from "next/image";
-import { SectionWrapper, Button, WhiteBox } from "@/components/ui";
+import alexisMobile from "../../../public/images/alexishorizontal21.jpg";
+import alexisTablet from "../../../public/images/alexishorizontal.jpg";
+import { SectionWrapper, Button, Text } from "@/components/ui";
 import { aboutStudioContent } from "@/constants/content";
 
 export default function AboutStudioSection() {
   return (
-    <SectionWrapper>
-      {/* Layout para desktop (md+) - Con WhiteBox */}
-      <div className="hidden md:flex w-full h-full items-center justify-center px-10">
-        <WhiteBox background="black">
-          <div className="relative z-20 grid grid-cols-2 items-stretch bg-black/90 h-full backdrop-blur-[2px]">
+    <>
+      {/* Sección Desktop/PC */}
+  <SectionWrapper className="hidden xl:flex">
+        <div className="max-w-[90rem] max-h-[52rem] h-full py-10 px-30">
+          <div className="flex bg-black h-full">
             {/* Contenido izquierdo */}
-            <div className="p-8 lg:p-10 xl:p-12 space-y-4 lg:space-y-6 flex flex-col justify-center">
-              <h2 className="text-3xl lg:text-4xl font-bold font-display text-white mb-4 lg:mb-6">
+            <div className="flex-[2] border-2 border-r-0 border-white p-8 lg:p-10 xl:p-12 flex flex-col justify-between h-full">
+              <Text variant="h2" className="text-white">
                 {aboutStudioContent.title}
-              </h2>
+              </Text>
 
-              {aboutStudioContent.paragraphs.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-sm lg:text-md text-gray-300 font-body leading-relaxed"
-                >
-                  {paragraph}
-                </p>
-              ))}
+              <div className="space-y-4 lg:space-y-6">
+                {aboutStudioContent.paragraphs.map((paragraph, index) => (
+                  <Text key={index} variant="body" muted>
+                    {paragraph}
+                  </Text>
+                ))}
+              </div>
 
-              <Button
-                variant="outline"
-                size="md"
-                className="mt-6 lg:mt-8 self-start"
-              >
+              <Button variant="outline" size="lg" className="self-start">
                 {aboutStudioContent.buttonText}
               </Button>
             </div>
 
-            {/* Imagen derecha */}
-            <div className="relative h-full">
+            <div className="h-full flex items-center">
               <Image
                 src={aboutStudioContent.image.src}
                 alt={aboutStudioContent.image.alt}
-                fill
-                className="object-cover"
+                width={1600}
+                height={1067}
+                className="h-full w-auto object-contain"
+                style={{ height: "100%", width: "auto" }}
+                priority
               />
             </div>
           </div>
-        </WhiteBox>
-      </div>
-
-      {/* Layout para móvil/tablet (menor a md) - Sin WhiteBox, ancho completo */}
-      <div className="md:hidden w-full h-full bg-black flex flex-col">
-        {/* Imagen arriba */}
-        <div className="relative h-60 sm:h-100 md:h-100 w-full">
-          <Image
-            src={aboutStudioContent.image.src}
-            alt={aboutStudioContent.image.alt}
-            fill
-            className="object-cover"
-          />
         </div>
+      </SectionWrapper>
 
-        {/* Contenido abajo */}
-        <div className="flex-1 p-4 sm:p-6 md:p-8 space-y-3 sm:space-y-4 md:space-y-5 flex flex-col justify-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-display text-white mb-3 sm:mb-4 md:mb-5">
-            {aboutStudioContent.title}
-          </h2>
+      {/* Sección Móvil/Tablet */}
+  <SectionWrapper className="xl:hidden">
+        <div className=" w-full h-full bg-black flex flex-col">
+          {/* Imagen arriba */}
+          <div className="md:hidden w-full">
+            <Image
+              src={alexisMobile}
+              alt={aboutStudioContent.image.alt}
+              width={alexisMobile.width}
+              height={alexisMobile.height}
+              style={{ width: "100%", height: "auto" }}
+              className="w-full h-auto object-contain"
+              priority
+            />
+          </div>
+          <div className="hidden md:flex w-full">
+            <Image
+              src={alexisTablet}
+              alt={aboutStudioContent.image.alt}
+              width={alexisTablet.width}
+              height={alexisTablet.height}
+              style={{ width: "100%", height: "auto" }}
+              className="w-full h-auto object-contain"
+              priority
+            />
+          </div>
 
-          {aboutStudioContent.paragraphs.map((paragraph, index) => (
-            <p
-              key={index}
-              className="text-sm sm:text-sm md:text-md text-gray-300 font-body leading-relaxed"
-            >
-              {paragraph}
-            </p>
-          ))}
+          {/* Contenido abajo */}
+          <div className="flex-1 p-3 py-2 flex flex-col justify-evenly">
+            <Text variant="h2" className="text-white" fluidMobile>
+              {aboutStudioContent.title}
+            </Text>
 
-          <Button
-            variant="outline"
-            size="md"
-            className="mt-4 sm:mt-5 md:mt-6 self-center "
-          >
-            {aboutStudioContent.buttonText}
-          </Button>
+            <div className="space-y-3 sm:space-y-4 md:space-y-5">
+              {aboutStudioContent.paragraphs.map((paragraph, index) => (
+                <Text key={index} variant="body" muted fluidMobile>
+                  {paragraph}
+                </Text>
+              ))}
+            </div>
+
+            <Button variant="outline" size="lg" className="self-center md:self-start">
+              {aboutStudioContent.buttonText}
+            </Button>
+          </div>
         </div>
-      </div>
-    </SectionWrapper>
+      </SectionWrapper>
+    </>
   );
 }

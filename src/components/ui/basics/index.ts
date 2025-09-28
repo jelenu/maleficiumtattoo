@@ -13,5 +13,6 @@ export * from "./LoadingScreen";
 export { default as SectionWrapper } from "./SectionWrapper";
 export * from "./SectionWrapper";
 
-export { default as WhiteBox } from "./WhiteBox";
-export * from "./WhiteBox";
+// WhiteBox removed
+export { default as Text } from "./Text";
+export * from "./Text";

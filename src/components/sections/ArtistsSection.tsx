@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { SectionWrapper, WhiteBox } from "../ui";
+import { SectionWrapper } from "../ui";
 import { useState } from "react";
 
 interface Artist {
@@ -43,10 +43,7 @@ export default function ArtistsSection() {
       <SectionWrapper
         className="hidden lg:block"
       >
-        <WhiteBox
-          background="transparent"
-          className="border-none flex flex-col items-center w-full px-16 pb-16 gap-12 "
-        >
+
           <h2 className="w-full max-w-5xl mx-auto text-center text-4xl lg:text-5xl font-display text-white tracking-tight px-8">
             Meet the Artists
           </h2>
@@ -105,7 +102,6 @@ export default function ArtistsSection() {
               </div>
             ))}
           </div>
-        </WhiteBox>
       </SectionWrapper>
 
       {/* Mobile & Tablet: flip card por artista inline */}
@@ -116,10 +112,7 @@ export default function ArtistsSection() {
           className="lg:hidden"
           contentClassName="flex items-center justify-center px-0 sm:px-6"
         >
-          <WhiteBox
-            background="transparent"
-            className="border-none backdrop-blur-[1px] flex flex-col items-center text-center gap-3 py-0  px-0 sm:px-4 w-full mt-0"
-          >
+
             <h2 className="w-full max-w-5xl mx-auto text-center text-4xl lg:text-5xl font-display text-white tracking-tight px-8 mb-4 mt-10 ">
               Meet the Artists
             </h2>
@@ -190,7 +183,6 @@ export default function ArtistsSection() {
                 </div>
               </div>
             </div>
-          </WhiteBox>
         </SectionWrapper>
       ))}
     </>

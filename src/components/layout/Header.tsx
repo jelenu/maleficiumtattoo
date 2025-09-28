@@ -12,7 +12,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full h-16 md:h-18 lg:h-20 xl:h-22 bg-black text-white px-4 md:px-8 lg:px-10 xl:px-20 shadow-lg border-b-2 border-white z-50">
+    <header className="fixed top-0 left-0 w-full pt-safe-top h-16 md:h-[4.5rem] lg:h-20 xl:h-[5.5rem] bg-black text-white px-4 md:px-8 lg:px-10 xl:px-20 shadow-lg border-b-2 border-white z-50">
       <div className="max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-4 h-full">
         {/* Brand */}
         <div className="flex items-center">
@@ -28,9 +28,16 @@ export default function Header() {
             />
           </div>
 
-          {/* Texto para desktop */}
-          <div className="hidden md:flex flex-col">
-            <h1 className="text-lg lg:text-2xl xl:text-3xl font-bold font-display leading-none">Maleficium Tattoo</h1>
+          {/* Logo para desktop */}
+          <div className="hidden md:flex items-center">
+            <Image
+              src="/images/maleficium.png"
+              alt="Maleficium Tattoo"
+              width={220}
+              height={50}
+              priority
+              className="h-8 lg:h-10 xl:h-20 w-auto object-contain"
+            />
           </div>
         </div>
 

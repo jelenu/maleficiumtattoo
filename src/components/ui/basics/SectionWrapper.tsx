@@ -1,31 +1,24 @@
-import { ReactNode } from "react";
+"use client";
+
+import { ReactNode, ElementType, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 
 interface SectionWrapperProps {
   children: ReactNode;
-  /** Accept either a path string or a StaticImageData from next/image */
   backgroundImage?: string | StaticImageData;
   backgroundAlt?: string;
-  /** Enable CSS scroll-snap alignment at start */
   snapStart?: boolean;
-  /** Optional id for anchor links */
   id?: string;
-  /** Wrapper extra classes */
   className?: string;
-  /** Content container classes */
   contentClassName?: string;
-  /** Overlay classes (color/opacity) */
   overlayClassName?: string;
-  /** Disable the dark overlay over the background */
   disableOverlay?: boolean;
-  /** Control background <Image> priority. Default false */
   priority?: boolean;
-  /** Provide sizes for responsive image with fill. Default "100vw" */
   sizes?: string;
-  /** Extra classes for the background image element */
   imgClassName?: string;
-  /** Render as a different HTML tag (e.g., 'div'). Default 'section' */
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
+  /** Activar altura dinámica tipo mobile/tablet */
+  dynamicHeight?: boolean;
 }
 
 export default function SectionWrapper({
@@ -42,22 +35,42 @@ export default function SectionWrapper({
   sizes = "100vw",
   imgClassName = "object-cover z-0",
   as = "section",
+  dynamicHeight = true,
 }: SectionWrapperProps) {
   const snapClass = snapStart ? "snap-start" : "";
-  const WrapperTag = as as keyof JSX.IntrinsicElements;
+  const WrapperTag: ElementType = as || "section";
   const bgImage = backgroundImage ?? "/images/fondo.png";
+
+  // Solo activamos useEffect para mobile/tablet
+  useEffect(() => {
+    if (!dynamicHeight) return;
+
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+    setVh();
+    window.addEventListener("resize", setVh);
+    window.visualViewport?.addEventListener("resize", setVh);
+
+    return () => {
+      window.removeEventListener("resize", setVh);
+      window.visualViewport?.removeEventListener("resize", setVh);
+    };
+  }, [dynamicHeight]);
 
   return (
     <WrapperTag
       id={id}
-      className={`relative mobile-viewport h-screen-dynamic ${snapClass} ${className}`}
+      className={`relative ${
+        dynamicHeight ? "h-[calc(var(--vh)*100)]" : "h-screen"
+      } ${snapClass} ${className}`}
     >
-  {/* Header Spacer - match Header heights */}
-  <div className="h-16 md:h-18 lg:h-20 xl:h-22"></div>
+
 
       {/* Content */}
       <div
-        className={`relative z-20 h-[calc(100vh-4rem)] h-[calc(-webkit-fill-available-4rem)] md:h-[calc(100vh-4.5rem)] md:h-[calc(-webkit-fill-available-4.5rem)] lg:h-[calc(100vh-5rem)] lg:h-[calc(-webkit-fill-available-5rem)] xl:h-[calc(100vh-5.5rem)] xl:h-[calc(-webkit-fill-available-5.5rem)] p-0 md:py-16  ${contentClassName}`}
+        className={`p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border ${contentClassName}`}
       >
         {children}
       </div>

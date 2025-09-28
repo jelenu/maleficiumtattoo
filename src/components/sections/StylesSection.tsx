@@ -1,5 +1,5 @@
 // StylesSection.tsx
-import { SectionWrapper, WhiteBox } from '@/components/ui';
+import { SectionWrapper } from '@/components/ui';
 import { stylesData } from '@/constants/content';
 import Image from 'next/image';
 
@@ -15,7 +15,7 @@ export default function StylesSection() {
         className="hidden md:block"
       >
         <div className="p-4 w-full lg:w-[calc(3*(80vh/2))]">
-          <WhiteBox background="black" className="p-0">
+          <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black p-0">
             <div className="w-full mx-auto">
               <div className="grid grid-cols-3 gap-0 w-full">
                 {/* Columna 1 */}
@@ -35,7 +35,7 @@ export default function StylesSection() {
                 </div>
               </div>
             </div>
-          </WhiteBox>
+          </div>
         </div>
       </SectionWrapper>
 
@@ -45,7 +45,7 @@ export default function StylesSection() {
         className="hidden sm:block md:hidden"
       >
         <div className="h-[80vh] w-[calc(2*(80vh/3))]">
-          <WhiteBox background="black" className="border-0 sm:border-2 sm:border-white">
+          <div className="relative h-full w-full max-w-6xl mx-auto border-0 sm:border-2 sm:border-white rounded-xl bg-black">
             <div className="grid grid-cols-2 gap-0 w-full">
               <SquareText title={s0.title} description={s0.description} />
               <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
@@ -58,7 +58,7 @@ export default function StylesSection() {
               <SquareText title={s0.title} description={s0.description} />
               <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
             </div>
-          </WhiteBox>
+          </div>
         </div>
       </SectionWrapper>
 
@@ -68,7 +68,7 @@ export default function StylesSection() {
         className="block sm:hidden"
       >
         <div className="h-[80vh]">
-          <WhiteBox background="black" className="">
+          <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black">
             <div className="grid grid-cols-2 gap-0 w-full h-1/3">
               <SquareText title={s0.title} description={s0.description} />
               <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
@@ -81,7 +81,7 @@ export default function StylesSection() {
               <SquareText title={s0.title} description={s0.description} />
               <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
             </div>
-          </WhiteBox>
+          </div>
         </div>
       </SectionWrapper>
     </>

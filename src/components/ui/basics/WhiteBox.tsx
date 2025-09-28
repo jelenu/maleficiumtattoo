@@ -10,9 +10,22 @@ interface WhiteBoxProps {
    */
   background?: 'black' | 'image' | 'transparent';
   className?: string;
+  /** Optional rounded size, defaults to xl */
+  rounded?: 'none' | 'md' | 'lg' | 'xl' | '2xl';
+  /** Apply a subtle backdrop blur on top (useful with overlays) */
+  backdrop?: boolean;
+  /** Default inner padding shortcut (p-6 md:p-8) when true */
+  padded?: boolean;
 }
 
-export default function WhiteBox({ children, background = 'image', className = '' }: WhiteBoxProps) {
+export default function WhiteBox({
+  children,
+  background = 'black',
+  className = '',
+  rounded = 'xl',
+  backdrop = false,
+  padded = false,
+}: WhiteBoxProps) {
   const isBlack = background === 'black';
   const isImage = background === 'image';
   const backgroundClasses = isBlack ? 'bg-black' : '';
@@ -26,13 +39,16 @@ export default function WhiteBox({ children, background = 'image', className = '
       } as const)
     : undefined;
 
+  const roundedClass = rounded === 'none' ? '' : `rounded-${rounded}`;
+  const backdropClass = backdrop ? 'backdrop-blur-[2px]' : '';
+  const paddingClass = padded ? 'p-6 md:p-8' : '';
+
   return (
     <div
       className={`
-        relative h-full
-        w-full max-w-6xl mx-auto
-        border-0 md:border-2 border-white
-  ${backgroundClasses}
+        relative h-full w-full max-w-6xl mx-auto
+        border-0 md:border-2 border-white/90 ${roundedClass}
+        ${backgroundClasses} ${backdropClass} ${paddingClass}
         ${className}
       `}
       style={imageStyle}
