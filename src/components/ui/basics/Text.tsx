@@ -30,6 +30,8 @@ export interface TextProps {
   className?: string;
   /** When true, apply fluid mobile font sizes based on viewport height (only affects base < md). */
   fluidMobile?: boolean;
+  /** When true, apply fluid tablet font sizes at md breakpoint (uses viewport height). */
+  fluidTablet?: boolean;
 }
 
 const defaultTagByVariant: Record<TextVariant, ElementType> = {
@@ -100,6 +102,7 @@ export default function Text({
   uppercase = false,
   className,
   fluidMobile = false,
+  fluidTablet = false,
 }: TextProps) {
   const Tag: ElementType = as || defaultTagByVariant[variant];
 
@@ -124,6 +127,19 @@ export default function Text({
           body: "text-[clamp(0.8rem,2vh,1.5rem)]",
           small: "text-[clamp(0.875rem,1.9vh,1rem)]",
           caption: "text-[clamp(0.75rem,1.6vh,0.875rem)]",
+        }[variant]
+      : undefined,
+    // Optional fluid sizes for tablet (md) using viewport height
+    fluidTablet
+      ? {
+          display: "md:text-[clamp(2.25rem,5vh,3.75rem)]",
+          h1: "md:text-[clamp(2rem,4.4vh,3.25rem)]",
+          h2: "md:text-[clamp(1.6rem,3.2vh,2.5rem)]",
+          h3: "md:text-[clamp(1.25rem,2.6vh,1.875rem)]",
+          subtitle: "md:text-[clamp(1.125rem,2.3vh,1.5rem)]",
+          body: "md:text-[clamp(0.9rem,1.7vh,1.4rem)]",
+          small: "md:text-[clamp(0.875rem,1.7vh,1.0625rem)]",
+          caption: "md:text-[clamp(0.75rem,1.5vh,0.9rem)]",
         }[variant]
       : undefined,
     weightClasses[weight || defaultWeight],

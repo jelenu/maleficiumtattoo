@@ -73,14 +73,14 @@ export default function AboutStudioSection() {
           </div>
 
           {/* Contenido abajo */}
-          <div className="flex-1 p-3 py-2 flex flex-col justify-evenly">
-            <Text variant="h2" className="text-white" fluidMobile>
+          <div className="flex-1 p-3 py-2 md:px-10 flex flex-col justify-evenly">
+            <Text variant="h2" className="text-white" fluidMobile fluidTablet>
               {aboutStudioContent.title}
             </Text>
 
             <div className="space-y-3 sm:space-y-4 md:space-y-5">
               {aboutStudioContent.paragraphs.map((paragraph, index) => (
-                <Text key={index} variant="body" muted fluidMobile>
+                <Text key={index} variant="body" muted fluidMobile fluidTablet>
                   {paragraph}
                 </Text>
               ))}
