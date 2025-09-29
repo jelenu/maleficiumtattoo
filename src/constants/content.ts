@@ -8,14 +8,14 @@ export const stylesData = [
   },
   {
     title: "Custom Design", 
-    description: "Cada diseño es único y personalizado según tus ideas y preferencias. Trabajamos contigo para crear arte corporal que refleje tu personalidad y estilo individual.",
+    description: "Cada diseño es único y personalizado según tus ideas y preferencias. Trabajamos contigo para crear arte corporal que refleje.",
     imageSrc: "/images/tattoo.jpg",
     imageAlt: "Custom Design Tattoo",
     imagePosition: "right" as const
   },
   {
     title: "Fine Lines",
-    description: "Técnica de líneas finas para diseños delicados y detallados. Perfecta para tatuajes minimalistas que mantienen su elegancia y precisión a lo largo del tiempo.",
+    description: "Técnica de líneas finas para diseños delicados y detallados. Perfecta para tatuajes minimalistas que mantienen su elegancia.",
     imageSrc: "/images/tattoo.jpg", 
     imageAlt: "Fine Line Tattoo",
     imagePosition: "left" as const

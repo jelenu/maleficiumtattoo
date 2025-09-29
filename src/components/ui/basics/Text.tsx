@@ -7,6 +7,7 @@ type TextVariant =
   | "h1"
   | "h2"
   | "h3"
+  | "description"
   | "subtitle"
   | "body"
   | "small"
@@ -41,6 +42,7 @@ const defaultTagByVariant: Record<TextVariant, ElementType> = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
+  description: "p",
   subtitle: "h4",
   body: "p",
   small: "p",
@@ -58,6 +60,7 @@ const variantClasses: Record<TextVariant, string> = {
   h1: "font-display leading-tight",
   h2: "font-display leading-tight",
   h3: "font-display leading-snug",
+  description: "font-body leading-relaxed",
   subtitle: "font-display leading-snug text-gray-200",
   body: "font-body leading-relaxed",
   small: "font-body leading-relaxed",
@@ -124,9 +127,10 @@ export default function Text({
           h1: "text-[clamp(1.75rem,5vh,3rem)]",
           h2: "text-[clamp(1.5rem,4vh,2.25rem)]",
           h3: "text-[clamp(1.125rem,3vh,1.75rem)]",
+          description: "text-[clamp(0.8rem,1.75vh,1.25rem)]",
           subtitle: "text-[clamp(1rem,2.6vh,1.25rem)]",
           body: "text-[clamp(0.8rem,2vh,1.5rem)]",
-          small: "text-[clamp(0.875rem,1.9vh,1rem)]",
+          small: "text-[clamp(0.7rem,1.7vh,1rem)]",
           caption: "text-[clamp(0.75rem,1.6vh,0.875rem)]",
         }[variant]
       : undefined,
@@ -136,7 +140,8 @@ export default function Text({
           display: "md:text-[clamp(2.25rem,5vh,3.75rem)]",
           h1: "md:text-[clamp(2rem,4.4vh,3.25rem)]",
           h2: "md:text-[clamp(1.6rem,3.2vh,2.5rem)]",
-          h3: "md:text-[clamp(1.25rem,2.6vh,1.875rem)]",
+          h3: "md:text-[clamp(1.5rem,3vh,2.6rem)]",
+          description: "md:text-[clamp(0.9rem,1.8vh,2.2rem)]",
           subtitle: "md:text-[clamp(1.125rem,2.3vh,1.5rem)]",
           body: "md:text-[clamp(0.9rem,1.7vh,1.4rem)]",
           small: "md:text-[clamp(0.875rem,1.7vh,1.0625rem)]",
@@ -149,7 +154,8 @@ export default function Text({
           display: "xl:text-[clamp(2.5rem,5.5vmin,5.25rem)]",
           h1: "xl:text-[clamp(2.25rem,4.8vmin,4.5rem)]",
           h2: "xl:text-[clamp(2rem,3.9vmin,3.3rem)]",
-          h3: "xl:text-[clamp(1.5rem,2.9vmin,2.25rem)]",
+          h3: "xl:text-[clamp(1.5rem,3.4vmin,2.5rem)]",
+          description: "xl:text-[clamp(1.1rem,1.85vmin,1.6rem)]",
           subtitle: "xl:text-[clamp(1.25rem,2.4vmin,1.75rem)]",
           body: "xl:text-[clamp(1.0625rem,1.8vmin,1.32rem)]",
           small: "xl:text-[clamp(0.95rem,1.5vmin,1.25rem)]",

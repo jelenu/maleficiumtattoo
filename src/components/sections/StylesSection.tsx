@@ -1,7 +1,6 @@
-// StylesSection.tsx
-import { SectionWrapper } from '@/components/ui';
-import { stylesData } from '@/constants/content';
-import Image from 'next/image';
+import { SectionWrapper, Text } from "@/components/ui";
+import { stylesData } from "@/constants/content";
+import Image from "next/image";
 
 export default function StylesSection() {
   const s0 = stylesData[0];
@@ -10,77 +9,77 @@ export default function StylesSection() {
 
   return (
     <>
-      {/* Desktop only section */}
-      <SectionWrapper
-        className="hidden md:block"
-      >
-        <div className="p-4 w-full lg:w-[calc(3*(80vh/2))]">
-          <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black p-0">
-            <div className="w-full mx-auto">
-              <div className="grid grid-cols-3 gap-0 w-full">
-                {/* Columna 1 */}
-                <div className="grid grid-rows-2 gap-0">
-                  <SquareText title={s0.title} description={s0.description} />
-                  <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
-                </div>
-                {/* Columna 2 */}
-                <div className="grid grid-rows-2 gap-0">
-                  <SquareImage src={s1.imageSrc} alt={s1.imageAlt} />
-                  <SquareText title={s1.title} description={s1.description} />
-                </div>
-                {/* Columna 3 */}
-                <div className="grid grid-rows-2 gap-0">
-                  <SquareText title={s2.title} description={s2.description} />
-                  <SquareImage src={s2.imageSrc} alt={s2.imageAlt} />
-                </div>
-              </div>
+      {/* Desktop/PC section: 2 rows x 3 columns, matching AboutStudioSection size */}
+      <SectionWrapper className="hidden xl:flex justify-center">
+        <div className="max-w-[85rem] max-h-[50rem] h-full py-10 xl:py-15 px-30">
+          <div className="bg-black h-full w-full grid grid-cols-3 grid-rows-2 border-2 border-white">
+            {/* Column 1: Text (top) | Image (bottom) */}
+            <div className="h-full w-full">
+              <TextTile title={s0.title} description={s0.description} className="h-full" />
+            </div>
+            <div className="h-full w-full">
+              <ImgTile src={s1.imageSrc} alt={s1.imageAlt} className="h-full" />
+            </div>
+            <div className="h-full w-full">
+              <TextTile title={s2.title} description={s2.description} className="h-full" />
+            </div>
+
+            {/* Bottom row */}
+            <div className="h-full w-full">
+              <ImgTile src={s0.imageSrc} alt={s0.imageAlt} className="h-full" />
+            </div>
+            <div className="h-full w-full">
+              <TextTile title={s1.title} description={s1.description} className="h-full" />
+            </div>
+            <div className="h-full w-full">
+              <ImgTile src={s2.imageSrc} alt={s2.imageAlt} className="h-full" />
             </div>
           </div>
         </div>
       </SectionWrapper>
 
-      {/* Tablet only section */}
-      <SectionWrapper
-        contentClassName="flex items-center justify-center h-"
-        className="hidden sm:block md:hidden"
-      >
-        <div className="h-[80vh] w-[calc(2*(80vh/3))]">
-          <div className="relative h-full w-full max-w-6xl mx-auto border-0 sm:border-2 sm:border-white rounded-xl bg-black">
-            <div className="grid grid-cols-2 gap-0 w-full">
-              <SquareText title={s0.title} description={s0.description} />
-              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
-            </div>
-            <div className="grid grid-cols-2 gap-0 w-full">
-              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
-              <SquareText title={s0.title} description={s0.description} />
-            </div>
-            <div className="grid grid-cols-2 gap-0 w-full">
-              <SquareText title={s0.title} description={s0.description} />
-              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
-            </div>
+    {/* Tablet only section */}
+      <SectionWrapper className="hidden sm:block xl:hidden">
+        <div className="bg-black h-full w-full">
+          {/* Row 1: Text | Image */}
+          <div className="grid grid-cols-2 h-1/3 w-full">
+            <TextTile title={s0.title} description={s0.description}  />
+            <ImgTile src={s0.imageSrc} alt={s0.imageAlt} />
+          </div>
+
+          {/* Row 2: Image | Text */}
+          <div className="grid grid-cols-2 h-1/3 w-full">
+            <ImgTile src={s1.imageSrc} alt={s1.imageAlt} />
+            <TextTile title={s1.title} description={s1.description}  />
+          </div>
+
+          {/* Row 3: Text | Image */}
+          <div className="grid grid-cols-2 h-1/3 w-full">
+            <TextTile title={s2.title} description={s2.description}  />
+            <ImgTile src={s2.imageSrc} alt={s2.imageAlt} />
           </div>
         </div>
       </SectionWrapper>
 
       {/* Mobile only section */}
-      <SectionWrapper
-        contentClassName="flex items-start justify-center"
-        className="block sm:hidden"
-      >
-        <div className="h-[80vh]">
-          <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black">
-            <div className="grid grid-cols-2 gap-0 w-full h-1/3">
-              <SquareText title={s0.title} description={s0.description} />
-              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
-            </div>
-            <div className="grid grid-cols-2 gap-0 w-full h-1/3">
-              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
-              <SquareText title={s0.title} description={s0.description} />
-            </div>
-            <div className="grid grid-cols-2 gap-0 w-full h-1/3 ">
-              <SquareText title={s0.title} description={s0.description} />
-              <SquareImage src={s0.imageSrc} alt={s0.imageAlt} />
-            </div>
+      <SectionWrapper className="block sm:hidden">
+        <div className="bg-black h-full w-full">
+          {/* Row 1: Text | Image */}
+          <div className="grid grid-cols-2 h-1/3 w-full">
+            <TextTile title={s0.title} description={s0.description}  />
+            <ImgTile src={s0.imageSrc} alt={s0.imageAlt} />
+          </div>
+
+          {/* Row 2: Image | Text */}
+          <div className="grid grid-cols-2 h-1/3 w-full">
+            <ImgTile src={s1.imageSrc} alt={s1.imageAlt} />
+            <TextTile title={s1.title} description={s1.description}  />
+          </div>
+
+          {/* Row 3: Text | Image */}
+          <div className="grid grid-cols-2 h-1/3 w-full">
+            <TextTile title={s2.title} description={s2.description}  />
+            <ImgTile src={s2.imageSrc} alt={s2.imageAlt} />
           </div>
         </div>
       </SectionWrapper>
@@ -88,26 +87,23 @@ export default function StylesSection() {
   );
 }
 
-function SquareText({ title, description }: { title: string; description: string }) {
+function TextTile({ title, description, className = "" }: { title: string; description: string; className?: string }) {
   return (
-    <div className="relative overflow-hidden  aspect-auto sm:aspect-square">
-      <div className="absolute inset-0 flex flex-col pt-4 lg:pt-8 px-4 lg:px-6">
-        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold tracking-wide uppercase text-white mb-2 ">
-          {title}
-        </h3>
-        <p className="text-xs sm:text-[clamp(0.6rem,1.7vh,1.15rem)] leading-relaxed text-gray-200">
-          {description}
-        </p>
-      </div>
+    <div className={`h-full flex flex-col p-3 sm:p-10 ${className}`}>
+      <Text variant="h3" className="uppercase tracking-wide text-white mb-2">
+        {title}
+      </Text>
+      <Text variant="description" muted>
+        {description}
+      </Text>
     </div>
   );
 }
 
-function SquareImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+function ImgTile({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
-    <div className={`relative overflow-hidden aspect-[10/11] sm:aspect-square ${className}`}>
-      <Image src={src} alt={alt} fill className="object-cover" />
+    <div className={`relative h-full w-full ${className}`}>
+      <Image src={src} alt={alt} fill className="h-full w-full object-cover" />
     </div>
   );
 }
-
