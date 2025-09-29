@@ -8,11 +8,11 @@ export default function AboutStudioSection() {
   return (
     <>
       {/* Sección Desktop/PC */}
-  <SectionWrapper className="hidden xl:flex">
-        <div className="max-w-[90rem] max-h-[52rem] h-full py-10 px-30">
+  <SectionWrapper className="hidden xl:flex justify-center">
+        <div className="max-w-[85rem] max-h-[50rem] h-full py-10 xl:py-15 px-30">
           <div className="flex bg-black h-full">
             {/* Contenido izquierdo */}
-            <div className="flex-[2] border-2 border-r-0 border-white p-8 lg:p-10 xl:p-12 flex flex-col justify-between h-full">
+            <div className="flex-[2] border-2 border-r-0 border-white p-8 lg:p-10 xl:p-13 flex flex-col justify-between h-full">
               <Text variant="h2" className="text-white">
                 {aboutStudioContent.title}
               </Text>

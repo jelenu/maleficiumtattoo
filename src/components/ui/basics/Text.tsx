@@ -32,6 +32,8 @@ export interface TextProps {
   fluidMobile?: boolean;
   /** When true, apply fluid tablet font sizes at md breakpoint (uses viewport height). */
   fluidTablet?: boolean;
+  /** When true, apply fluid desktop font sizes at lg+ (uses vmin). */
+  fluidDesktop?: boolean;
 }
 
 const defaultTagByVariant: Record<TextVariant, ElementType> = {
@@ -50,18 +52,16 @@ function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
-// Responsive size map using fixed sizes per breakpoint (no clamp)
+// Base styles per variant (no fixed font-size here)
 const variantClasses: Record<TextVariant, string> = {
-  display:
-    "font-display leading-tight tracking-wide text-4xl sm:text-5xl md:text-6xl xl:text-7xl",
-  h1: "font-display leading-tight text-3xl md:text-4xl xl:text-5xl",
-  h2: "font-display leading-tight text-2xl sm:text-2xl md:text-3xl xl:text-4xl",
-  h3: "font-display leading-snug text-lg md:text-2xl xl:text-3xl",
-  subtitle:
-    "font-display leading-snug text-gray-200 text-base sm:text-lg md:text-xl",
-  body: "font-body leading-relaxed text-xs md:text-base xl:text-lg",
-  small: "font-body leading-relaxed text-xs md:text-sm",
-  caption: "font-body leading-normal text-xs md:text-[0.875rem]",
+  display: "font-display leading-tight tracking-wide",
+  h1: "font-display leading-tight",
+  h2: "font-display leading-tight",
+  h3: "font-display leading-snug",
+  subtitle: "font-display leading-snug text-gray-200",
+  body: "font-body leading-relaxed",
+  small: "font-body leading-relaxed",
+  caption: "font-body leading-normal",
 };
 
 const weightClasses: Record<TextWeight, string> = {
@@ -101,8 +101,9 @@ export default function Text({
   muted = false,
   uppercase = false,
   className,
-  fluidMobile = false,
-  fluidTablet = false,
+  fluidMobile = true,
+  fluidTablet = true,
+  fluidDesktop = true,
 }: TextProps) {
   const Tag: ElementType = as || defaultTagByVariant[variant];
 
@@ -140,6 +141,19 @@ export default function Text({
           body: "md:text-[clamp(0.9rem,1.7vh,1.4rem)]",
           small: "md:text-[clamp(0.875rem,1.7vh,1.0625rem)]",
           caption: "md:text-[clamp(0.75rem,1.5vh,0.9rem)]",
+        }[variant]
+      : undefined,
+    // Optional fluid sizes for desktop (xl only) using vmin for balanced scaling
+    fluidDesktop
+      ? {
+          display: "xl:text-[clamp(2.5rem,5.5vmin,5.25rem)]",
+          h1: "xl:text-[clamp(2.25rem,4.8vmin,4.5rem)]",
+          h2: "xl:text-[clamp(2rem,3.9vmin,3.75rem)]",
+          h3: "xl:text-[clamp(1.5rem,2.9vmin,2.25rem)]",
+          subtitle: "xl:text-[clamp(1.25rem,2.4vmin,1.75rem)]",
+          body: "xl:text-[clamp(1.0625rem,1.8vmin,1.5rem)]",
+          small: "xl:text-[clamp(0.95rem,1.5vmin,1.25rem)]",
+          caption: "xl:text-[clamp(0.85rem,1.2vmin,1.0625rem)]",
         }[variant]
       : undefined,
     weightClasses[weight || defaultWeight],
