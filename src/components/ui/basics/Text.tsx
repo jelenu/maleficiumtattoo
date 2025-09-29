@@ -148,10 +148,10 @@ export default function Text({
       ? {
           display: "xl:text-[clamp(2.5rem,5.5vmin,5.25rem)]",
           h1: "xl:text-[clamp(2.25rem,4.8vmin,4.5rem)]",
-          h2: "xl:text-[clamp(2rem,3.9vmin,3.75rem)]",
+          h2: "xl:text-[clamp(2rem,3.9vmin,3.3rem)]",
           h3: "xl:text-[clamp(1.5rem,2.9vmin,2.25rem)]",
           subtitle: "xl:text-[clamp(1.25rem,2.4vmin,1.75rem)]",
-          body: "xl:text-[clamp(1.0625rem,1.8vmin,1.5rem)]",
+          body: "xl:text-[clamp(1.0625rem,1.8vmin,1.32rem)]",
           small: "xl:text-[clamp(0.95rem,1.5vmin,1.25rem)]",
           caption: "xl:text-[clamp(0.85rem,1.2vmin,1.0625rem)]",
         }[variant]

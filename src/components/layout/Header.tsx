@@ -17,7 +17,7 @@ export default function Header() {
         {/* Brand */}
         <div className="flex items-center">
           {/* Logo para móvil */}
-          <div className="md:hidden">
+          <div className="xl:hidden">
             <Image
               src="/images/mf.png"
               alt="Maleficium Tattoo Logo"
@@ -29,7 +29,7 @@ export default function Header() {
           </div>
 
           {/* Logo para desktop */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden xl:flex items-center">
             <Image
               src="/images/maleficium.png"
               alt="Maleficium Tattoo"
