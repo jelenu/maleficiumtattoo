@@ -1,31 +1,56 @@
 import { ContactInfoProps } from "@/types";
 import { GoogleReviewsButton, Button } from "@/components/ui";
 import { contactContent } from "@/constants/content";
-import { ChevronDown } from "lucide-react"; //
+import { ChevronDown } from "lucide-react";
+import Text from "@/components/ui/basics/Text";
 
 export default function ContactInfo({ onShowReviews }: ContactInfoProps) {
+  const scrollToNextSection = () => {
+    // Busca el <section> contenedor y luego el siguiente <section>
+    const currentSection = document.activeElement
+      ? (document.activeElement as HTMLElement).closest("section")
+      : null;
+    const section = currentSection || document.querySelector("section:has(button[data-next-section])");
+    if (section) {
+      let next = section.nextElementSibling;
+      while (next && next.tagName.toLowerCase() !== "section") {
+        next = next.nextElementSibling;
+      }
+      if (next instanceof HTMLElement) {
+        next.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
+
   return (
-    <div className="flex flex-col h-full px-2 py-1">
+    <div className="flex flex-col h-full xl:px-4 ">
       {/* Contenido que se reparte en toda la altura */}
       <div className="flex flex-col flex-grow justify-between mb-3">
-        <h2 className="text-[clamp(0.4rem,5vh,3rem)] font-display text-white">
+        <Text variant="h2" >
           {contactContent.title}
-        </h2>
+        </Text>
 
-        <div className="flex flex-col flex-grow justify-evenly text-gray-300 font-body leading-relaxed">
+        <div className="flex flex-col flex-grow justify-evenly text-gray-300">
           {contactContent.info.map((text, index) => (
-            <p key={index} className="text-[clamp(0.4rem,2vh,1rem)]">
+            <Text
+              key={index}
+              variant="body"
+            >
               {text}
-            </p>
+            </Text>
           ))}
 
           <div>
-            <h3 className="text-[clamp(0.4rem,2.7vh,1.40rem)] font-display text-white">
+            <Text
+              variant="h3"
+            >
               {contactContent.touchUps.title}
-            </h3>
-            <p className="text-[clamp(0.4rem,1.3vh,1.30rem)]">
+            </Text>
+            <Text
+              variant="caption"
+            >
               {contactContent.touchUps.content}
-            </p>
+            </Text>
           </div>
         </div>
       </div>
@@ -34,9 +59,12 @@ export default function ContactInfo({ onShowReviews }: ContactInfoProps) {
       <div className="mt-auto flex items-center justify-between">
         <GoogleReviewsButton onClick={onShowReviews} />
         <Button
-          className="lg:hidden"
+          className="md:hidden"
+          data-next-section
+          onClick={scrollToNextSection}
+          aria-label="Go to next section"
         >
-          <ChevronDown className="w-6 h-6" />
+          <ChevronDown className="w-6 h-8" />
         </Button>
       </div>
     </div>

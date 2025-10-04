@@ -19,7 +19,7 @@ export default function GoogleReviewsButton({ onClick, className = "" }: GoogleR
       {/* Content */}
       <div className="flex flex-col">
         <div className="flex items-center mb-1">
-          <span className="text-sm font-semibold text-gray-800 mr-2">Google</span>
+          <span className="hidden md:inline text-sm font-semibold text-gray-800 mr-2">Google</span>
           <div className="flex items-center">
             {/* 5 Stars */}
             {[...Array(5)].map((_, i) => (

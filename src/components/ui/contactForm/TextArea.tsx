@@ -21,7 +21,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       focus:border-transparent 
       focus:text-white 
       resize-vertical 
-      text-[clamp(0.75rem,1vh,0.85rem)] 
+      text-[clamp(0.8rem,1vh,1rem)] 
       transition-colors 
       duration-200
     `;

@@ -9,7 +9,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ error, fullWidth = true, className = '', ...props }, ref) => {
     const baseClasses = `
       px-3 
-      py-1 md:py-2 
+      py-2 md:py-2 
       bg-gray-600 
       border 
       rounded-md 
@@ -20,7 +20,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       focus:ring-white 
       focus:border-transparent 
       focus:text-white 
-      text-[clamp(0.75rem,1vh,0.85rem)] 
+      text-[clamp(0.75rem,1.6vh,1rem)] 
       transition-colors 
       duration-200
     `;

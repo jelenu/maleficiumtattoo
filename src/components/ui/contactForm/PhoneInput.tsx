@@ -57,7 +57,7 @@ export default function PhoneInput({
         type="text"
         name={countryCodeName}
         defaultValue={defaultCountryCode}
-        className="!w-13 rounded-r-none text-center"
+        className="!w-15 rounded-r-none text-center"
         placeholder="+43"
         onInput={handleCountryCodeInput}
         fullWidth={false}

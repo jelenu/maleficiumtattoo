@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { SectionWrapper } from "@/components/ui";
 import { ContactInfo } from "@/components/ui";
-import ContactForm from "@/components/forms/ContactForm";
+import ContactForm from "@/components/ui/contactForm/ContactForm";
 import GoogleReviews from "@/components/features/GoogleReviews";
 import { reviewsData } from "@/utils/reviewsData";
 
@@ -12,17 +12,12 @@ export default function ContactSection() {
 
   return (
     <>
-      {/* Sección para md y arriba */}
-      <SectionWrapper
-        backgroundImage="/images/fondo.png"
-        className="hidden lg:block "
-
-        contentClassName="items-center justify-center px-4 md:!py-10 lg:!py-16"
-      >
-        <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black max-h-[650px]">
-          <div className="grid grid-cols-[55%_45%] h-full   p-6">
+      {/* Desktop (xl) */}
+      <SectionWrapper className="hidden xl:flex justify-center ">
+        <div className="max-w-[85rem] max-h-[50rem] h-full py-10 xl:py-15 px-30">
+          <div className="grid grid-cols-[55%_45%] h-full   p-6 bg-black border-2 border-white">
             {/* Columna izquierda - Información de contacto */}
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full ">
               <ContactInfo onShowReviews={() => setShowReviews(true)} />
             </div>
 
@@ -30,27 +25,6 @@ export default function ContactSection() {
             <div className="flex flex-col h-full">
               <ContactForm />
             </div>
-          </div>
-  </div>
-
-        {/* Reviews Popup */}
-        <GoogleReviews
-          showReviews={showReviews}
-          setShowReviews={setShowReviews}
-          reviews={reviewsData}
-        />
-      </SectionWrapper>
-
-      {/* Sección móvil 1: ContactInfo + Google Reviews */}
-      <SectionWrapper
-        backgroundImage="/images/fondo.png"
-        contentClassName=" px-15 pt-10"
-        className="lg:hidden"
-
-      >
-        <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 border-b-0 rounded-xl bg-black md:max-h-[600px]">
-          <div className="flex flex-col h-full p-8 pb-20">
-            <ContactInfo onShowReviews={() => setShowReviews(true)} />
           </div>
         </div>
 
@@ -61,18 +35,39 @@ export default function ContactSection() {
           reviews={reviewsData}
         />
       </SectionWrapper>
-
-      {/* Sección móvil 2: ContactForm */}
-      <SectionWrapper
-        backgroundImage="/images/fondo.png"
-        contentClassName="  px-4 py-6"
-        className="lg:hidden"
-
-      >
-        <div className="relative h-full w-full max-w-6xl mx-auto border-0 md:border-2 border-white/90 rounded-xl bg-black md:max-h-[600px]">
-          <div className="flex flex-col h-full p-6">
+      {/* Tablet (md to < xl): Contact Info + Form en el mismo section */}
+      <SectionWrapper className="hidden md:block xl:hidden">
+        <div className="w-full h-full bg-black  px-15 py-10 flex flex-col gap-5">
+          <div className="flex h-full">
+            <ContactInfo onShowReviews={() => setShowReviews(true)} />
+          </div>
+          <div className="h-full">
             <ContactForm />
           </div>
+        </div>
+        <GoogleReviews
+          showReviews={showReviews}
+          setShowReviews={setShowReviews}
+          reviews={reviewsData}
+        />
+      </SectionWrapper>
+
+      {/* Mobile (< md): Contact Info */}
+      <SectionWrapper className="md:hidden xl:hidden">
+        <div className="w-full h-full bg-black p-8">
+          <ContactInfo onShowReviews={() => setShowReviews(true)} />
+        </div>
+        <GoogleReviews
+          showReviews={showReviews}
+          setShowReviews={setShowReviews}
+          reviews={reviewsData}
+        />
+      </SectionWrapper>
+
+      {/* Mobile (< md): Contact Form */}
+      <SectionWrapper className="md:hidden xl:hidden">
+        <div className="w-full h-full bg-black p-6 pb-20">
+          <ContactForm />
         </div>
       </SectionWrapper>
     </>

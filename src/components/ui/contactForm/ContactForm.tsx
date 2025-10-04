@@ -1,7 +1,7 @@
 "use client";
 
 import { ContactFormProps } from "@/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Input,
@@ -10,6 +10,7 @@ import {
   PhoneInput,
   Alert,
 } from "@/components/ui";
+import Text from "@/components/ui/basics/Text";
 import { validateCountryCode, validatePhoneNumber } from "@/utils/validation";
 
 export default function ContactForm({ onSubmit }: ContactFormProps) {
@@ -19,6 +20,16 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     text: string;
   } | null>(null);
   const [phoneError, setPhoneError] = useState<string>("");
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    // Antes:  Ahora: móvil + tablet (<=1279px)
+    const mq = window.matchMedia("(max-width: 1279px)");
+    const update = () => setIsTablet(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -91,7 +102,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
   };
 
   return (
-    <div className="bg-black/60 p-2 backdrop-blur-sm relative h-full flex flex-col">
+    <div className=" relative h-full flex flex-col ">
       {message && (
         <Alert
           type={message.type}
@@ -101,9 +112,13 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         />
       )}
 
+      {/* Heading solo móvil */}
+      <Text variant="h2" className="md:hidden w-full !text-center">
+        Contact Us
+      </Text>
+
       <form className="flex flex-col h-full" onSubmit={handleSubmit}>
-        {/* Contenedor de filas distribuidas */}
-        <div className="flex flex-col flex-grow justify-evenly h-full mb-3">
+        <div className="flex flex-col  justify-evenly h-full mb-6">
           {/* First Name y Last Name */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <FormField label="First Name" htmlFor="firstName" required>
@@ -127,8 +142,8 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             </FormField>
           </div>
 
-          {/* Phone + Email */}
-          <div className="grid grid-cols-2  gap-3">
+          {/* Phone + Email: juntos solo entre md y xl */}
+          <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
             <FormField
               label="Phone Number"
               htmlFor="phone"
@@ -165,7 +180,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             <TextArea
               id="description"
               name="description"
-              rows={3}
+              rows={isTablet ? 2 : 4} // cambiado: 3 en tablet, 4 resto
               required
               placeholder="Please describe your tattoo idea, preferred artist, budget, and availability..."
             />
