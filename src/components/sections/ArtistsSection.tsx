@@ -214,8 +214,8 @@ export default function ArtistsSection() {
                             {artist.name}
                           </Text>
                           <Text
-                            variant="description"
-                            className="mt-2 inline-block text-[11px] tracking-wide uppercase bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-md border border-white/20"
+                            variant="subtitle"
+                            className="my-2 bg-white/10 backdrop-blur-sm text-white px-4 py-1 rounded-md border border-white/20"
                           >
                             {artist.role}
                           </Text>
@@ -223,7 +223,7 @@ export default function ArtistsSection() {
                         </div>
                       </div>
                       {/* Back */}
-                      <div className="absolute inset-0 flex flex-col items-center rounded-xl bg-black/95 p-6 text-center [backface-visibility:hidden] [transform:rotateY(180deg)] ring-1 ring-white/10">
+                      <div className="absolute inset-0 flex flex-col items-center rounded-xl bg-black/95 p-6 md:py-20 md:px-15 text-center [backface-visibility:hidden] [transform:rotateY(180deg)] ring-1 ring-white/10">
                         <Text variant="h2" className="text-white mb-4">
                           {artist.name}
                         </Text>
