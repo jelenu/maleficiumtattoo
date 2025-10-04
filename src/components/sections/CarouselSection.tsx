@@ -1,149 +1,187 @@
 "use client";
 
+import { useCallback, useMemo, useState, useRef } from "react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { SectionWrapper } from '@/components/ui';
+import { SectionWrapper } from "@/components/ui";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import Text from "@/components/ui/basics/Text";
 
 export default function CarouselSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const slides = useMemo(
+    () => Array.from({ length: 6 }, () => "/images/tattoo.jpg"),
+    []
+  );
 
-  const images = [
-    {
-      src: "/images/tattoo.jpg",
-      alt: "Tattoo Work 1",
-      title: "Trabajo 1",
-      description: "Descripción del primer trabajo",
-    },
-    {
-      src: "/images/tattoo.jpg",
-      alt: "Tattoo Work 2",
-      title: "Trabajo 2",
-      description: "Descripción del segundo trabajo",
-    },
-    {
-      src: "/images/tattoo.jpg",
-      alt: "Tattoo Work 3",
-      title: "Trabajo 3",
-      description: "Descripción del tercer trabajo",
-    },
-    {
-      src: "/images/tattoo.jpg",
-      alt: "Tattoo Work 4",
-      title: "Trabajo 4",
-      description: "Descripción del cuarto trabajo",
-    },
-  ];
+  const [index, setIndex] = useState(1);
+  const last = slides.length - 1;
 
-  // Auto-advance carousel
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % images.length);
-    }, 4000);
+  const next = useCallback(() => setIndex((i) => (i >= last ? 0 : i + 1)), [last]);
+  const prev = useCallback(() => setIndex((i) => (i <= 0 ? last : i - 1)), [last]);
 
-    return () => clearInterval(timer);
-  }, [images.length, isAutoPlaying]);
+  // 👉 Variables para manejar el gesto táctil
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  const nextSlide = () => {
-    setIsAutoPlaying(false);
-    setCurrentSlide((prev) => (prev + 1) % images.length);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  const prevSlide = () => {
-    setIsAutoPlaying(false);
-    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
   };
 
-  const goToSlide = (index: number) => {
-    setIsAutoPlaying(false);
-    setCurrentSlide(index);
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50; // distancia mínima en px para detectar swipe
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) next(); // swipe left
+      else prev(); // swipe right
+    }
   };
 
   return (
-    <SectionWrapper>
-      {/* Carousel Container */}
-      <div className="relative h-full w-full">
-        {/* Images */}
-        <div
-          className="flex h-full transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative h-full w-full flex-shrink-0"
+    <>
+      {/* ----------- Versión Desktop ----------- */}
+      <SectionWrapper className="hidden xl:flex justify-center" contentClassName="flex w-full">
+        <div className="flex flex-col items-center gap-4 h-full w-full py-10  px-30">
+          {/* Overlay text now above carousel without absolute */}
+          <div className="flex flex-col items-center justify-center text-center text-white">
+            <Text variant="h1" align="center">
+              Our Gallery
+            </Text>
+            <Text
+              variant="description"
+              align="center"
+              className="opacity-80"
             >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover"
-                priority={index === 0}
-              />
-              {/* Dark overlay */}
-              <div className="absolute bg-black bg-opacity-40"></div>
-            </div>
-          ))}
-        </div>
+              Where art meets skin.
+            </Text>
+          </div>
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300 z-10"
-          aria-label="Anterior"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300 z-10"
-          aria-label="Siguiente"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-
-        {/* Dots Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-          {images.map((_, index) => (
+          {/* Carousel (unchanged structure) */}
+          <div className="flex items-center w-full h-full">
             <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? "bg-white scale-125"
-                  : "bg-white bg-opacity-50 hover:bg-opacity-80"
-              }`}
-            />
-          ))}
+              onClick={prev}
+              className="w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow flex items-center justify-center focus:outline-none z-10"
+            >
+              <HiChevronLeft className="w-6 h-6 text-black" />
+            </button>
+
+            <div className="flex-1 overflow-hidden h-full">
+              <div
+                className="flex transition-transform duration-500 ease-out h-full"
+                style={{
+                  transform: `translateX(calc(-${index * 33.333}% + 33.333%))`,
+                }}
+              >
+                {slides.map((src, i) => (
+                  <div
+                    key={i}
+                    className="min-w-1/3 flex items-center justify-center h-full transition-transform duration-500"
+                  >
+                    <div
+                      className={`relative w-[90%] h-[80%] transition-transform duration-500 ${
+                        i === index ? "scale-120 z-10" : "scale-90 opacity-50"
+                      }`}
+                    >
+                      <Image
+                        src={src}
+                        alt={`Tattoo ${i + 1}`}
+                        fill
+                        className="object-contain rounded-lg"
+                        sizes="33vw"
+                        priority={i === 0}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={next}
+              className="w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow flex items-center justify-center focus:outline-none z-10"
+            >
+              <HiChevronRight className="w-6 h-6 text-black" />
+            </button>
+          </div>
+
+          <div className="w-full flex justify-center gap-2 mt-4">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => setIndex(i)}
+                className={`h-2.5 rounded-full transition-all ${
+                  i === index ? "w-6 bg-white" : "w-2.5 bg-white/60 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </SectionWrapper>
+      </SectionWrapper>
+
+      {/* ----------- Versión Tablet y Móvil ----------- */}
+      <SectionWrapper className="xl:hidden">
+        <div
+          className="flex flex-col items-center gap-4 h-full w-full py-5 pb-10"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Overlay text para móvil/tablet */}
+          <div className="flex flex-col items-center justify-center text-center text-white">
+            <Text variant="h1" align="center">
+              Our Gallery
+            </Text>
+            <Text
+              variant="description"
+              align="center"
+              className="opacity-80"
+            >
+              Where art meets skin.
+            </Text>
+          </div>
+
+          <div className="overflow-hidden w-full h-full">
+            <div
+              className="flex transition-transform duration-500 ease-out h-full"
+              style={{
+                transform: `translateX(-${index * 100}%)`,
+              }}
+            >
+              {slides.map((src, i) => (
+                <div key={i} className="min-w-full flex items-center justify-center h-full">
+                  <div className="relative w-full h-full transition-transform duration-500">
+                    <Image
+                      src={src}
+                      alt={`Tattoo ${i + 1}`}
+                      fill
+                      className="object-contain"
+                      sizes="100vw"
+                      priority={i === 0}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="w-full flex justify-center gap-2 mt-4">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => setIndex(i)}
+                className={`h-2.5 rounded-full transition-all ${
+                  i === index ? "w-6 bg-white" : "w-2.5 bg-white/60 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+    </>
   );
 }

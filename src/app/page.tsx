@@ -1,9 +1,12 @@
-import HeroSection from '@/components/sections/HeroSection';
-import AboutStudioSection from '@/components/sections/AboutStudioSection';
-import StylesSection from '@/components/sections/StylesSection';
-import ArtistsSection from '@/components/sections/ArtistsSection';
-import ContactSection from '@/components/sections/ContactSection';
-import MapSection from '@/components/sections/MapSection';
+import {
+  HeroSection,
+  AboutStudioSection,
+  StylesSection,
+  CarouselSection,
+  ArtistsSection,
+  ContactSection,
+  MapSection,
+} from '@/components/sections';
 
 
 export default function Home() {
@@ -12,6 +15,7 @@ export default function Home() {
       <HeroSection />
       <AboutStudioSection />
       <StylesSection />
+      <CarouselSection />
       <ArtistsSection />
       <ContactSection />
       <MapSection />

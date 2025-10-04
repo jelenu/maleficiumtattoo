@@ -41,7 +41,7 @@ export default function ArtistsSection() {
     <>
       {/* Desktop: artistas lado a lado */}
       <SectionWrapper
-        className="hidden lg:block"
+        className="hidden xl:block"
       >
 
           <h2 className="w-full max-w-5xl mx-auto text-center text-4xl lg:text-5xl font-display text-white tracking-tight px-8">
@@ -109,7 +109,7 @@ export default function ArtistsSection() {
         <SectionWrapper
           key={artist.name}
           backgroundAlt="Background"
-          className="lg:hidden"
+          className="xl:hidden"
           contentClassName="flex items-center justify-center px-0 sm:px-6"
         >
 
