@@ -157,7 +157,7 @@ export default function Text({
           h3: "xl:text-[clamp(1.5rem,3.4vmin,2.5rem)]",
           description: "xl:text-[clamp(1.1rem,1.90vmin,1.4rem)]",
           subtitle: "xl:text-[clamp(1.25rem,2.4vmin,1.75rem)]",
-          body: "xl:text-[clamp(1.0625rem,1.8vmin,1.32rem)]",
+          body: "xl:text-[clamp(1.0625rem,1.3vmin,1.32rem)]",
           small: "xl:text-[clamp(0.95rem,1.5vmin,1.25rem)]",
           caption: "xl:text-[clamp(0.85rem,1.2vmin,1.0625rem)]",
         }[variant]

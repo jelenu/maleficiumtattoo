@@ -19,6 +19,7 @@ export default function Home() {
       <ArtistsSection />
       <ContactSection />
       <MapSection />
+      <div className='pt-[4rem] '> </div>
     </div>
   );
 }
