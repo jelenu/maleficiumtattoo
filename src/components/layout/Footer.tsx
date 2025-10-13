@@ -86,7 +86,7 @@ export default function Footer() {
         </div>
 
         {/* Versión tablet/desktop (>= md) */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 items-center px-20">
           <div className="flex justify-center md:justify-start">
             <Image
               src="/images/maleficiumLogo.png"
