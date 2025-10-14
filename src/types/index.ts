@@ -4,7 +4,11 @@ export interface Review {
   name: string;
   rating: number;
   date: string;
-  text: string;
+  text: {
+    en: string;
+    de: string;
+    es: string;
+  };
   avatar: string;
   reviewUrl: string;
 }

@@ -1,8 +1,45 @@
+"use client";
 import { SectionWrapper, Text } from "@/components/ui";
-import { stylesData } from "@/constants/content";
 import Image from "next/image";
+import { useParams } from 'next/navigation';
+import { getLang, tr } from '@/utils/i18n';
 
 export default function StylesSection() {
+  const { locale } = useParams<{ locale?: string }>();
+  const lang = getLang(locale);
+  const stylesData = [
+    {
+      title: tr(lang, { en: 'Blackwork', de: 'Blackwork', es: 'Blackwork' }),
+      description: tr(lang, {
+        en: 'Specialized in Blackwork tattoos in Sankt Pölten. Crisp lines, deep blacks, and striking designs that highlight your unique style.',
+        de: 'Spezialisiert auf Blackwork-Tattoos in Sankt Pölten. Präzise Linien, tiefes Schwarz und ausdrucksstarke Designs für deinen einzigartigen Stil.',
+        es: 'Especializados en tatuajes Blackwork en Sankt Pölten. Líneas precisas, negros profundos y diseños impactantes que resaltan tu estilo único.',
+      }),
+      imageSrc: '/images/tattoo.jpg',
+      imageAlt: tr(lang, { en: 'Blackwork Tattoo', de: 'Blackwork Tattoo', es: 'Tatuaje Blackwork' }),
+    },
+    {
+      title: tr(lang, { en: 'Custom Design', de: 'Custom Design', es: 'Diseño personalizado' }),
+      description: tr(lang, {
+        en: 'Every design is unique and tailored to your ideas and preferences. We work with you to create body art that truly reflects you.',
+        de: 'Jedes Design ist individuell und auf deine Ideen und Vorlieben abgestimmt. Gemeinsam schaffen wir Körperschmuck, der dich widerspiegelt.',
+        es: 'Cada diseño es único y personalizado según tus ideas y preferencias. Trabajamos contigo para crear arte corporal que te refleje.',
+      }),
+      imageSrc: '/images/tattoo.jpg',
+      imageAlt: tr(lang, { en: 'Custom Design Tattoo', de: 'Custom Design Tattoo', es: 'Tatuaje de diseño personalizado' }),
+    },
+    {
+      title: tr(lang, { en: 'Fine Lines', de: 'Feine Linien', es: 'Líneas finas' }),
+      description: tr(lang, {
+        en: 'Fine line technique for delicate, detailed designs. Perfect for minimalist tattoos that keep their elegance.',
+        de: 'Feinlinientechnik für zarte, detaillierte Designs. Perfekt für minimalistische Tattoos, die ihre Eleganz bewahren.',
+        es: 'Técnica de líneas finas para diseños delicados y detallados. Perfecta para tatuajes minimalistas que mantienen su elegancia.',
+      }),
+      imageSrc: '/images/tattoo.jpg',
+      imageAlt: tr(lang, { en: 'Fine Line Tattoo', de: 'Fine Line Tattoo', es: 'Tatuaje de líneas finas' }),
+    },
+  ];
+
   const s0 = stylesData[0];
   const s1 = stylesData[1] ?? stylesData[0];
   const s2 = stylesData[2] ?? stylesData[0];

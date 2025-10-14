@@ -1,9 +1,24 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Instagram, Facebook, Music2, Globe } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { getLang, tr } from '@/utils/i18n';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { locale } = useParams<{ locale?: string }>();
+  const lang = getLang(locale);
+  const t = {
+    rights: tr(lang, {
+      en: `© ${currentYear} Maleficium Tattoo Studio. All rights reserved.`,
+      de: `© ${currentYear} Maleficium Tattoo Studio. Alle Rechte vorbehalten.`,
+      es: `© ${currentYear} Maleficium Tattoo Studio. Todos los derechos reservados.`,
+    }),
+    privacy: tr(lang, { en: 'Privacy Policy', de: 'Datenschutz', es: 'Política de privacidad' }),
+    terms: tr(lang, { en: 'Terms of Service', de: 'Nutzungsbedingungen', es: 'Términos del servicio' }),
+  } as const;
 
   return (
     <footer className="bg-black border-t-2 border-white">
@@ -66,20 +81,20 @@ export default function Footer() {
 
           <div className="text-center text-white">
             <p className="text-xs mb-3">
-              © {currentYear} Maleficium Tattoo Studio. All rights reserved.
+              {t.rights}
             </p>
             <div className="flex flex-row justify-center gap-4 text-xs">
               <Link
-                href="/privacy-policy"
+                href={`/${locale || 'de'}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Privacy Policy
+                {t.privacy}
               </Link>
               <Link
-                href="/terms-of-service"
+                href={`/${locale || 'de'}/terms-of-service`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Terms of Service
+                {t.terms}
               </Link>
             </div>
           </div>
@@ -99,20 +114,20 @@ export default function Footer() {
 
           <div className="text-center text-white">
             <p className="text-sm mb-3">
-              © {currentYear} Maleficium Tattoo Studio. All rights reserved.
+              {t.rights}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 text-xs">
               <Link
-                href="/privacy-policy"
+                href={`/${locale || 'de'}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Privacy Policy
+                {t.privacy}
               </Link>
               <Link
-                href="/terms-of-service"
+                href={`/${locale || 'de'}/terms-of-service`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Terms of Service
+                {t.terms}
               </Link>
             </div>
           </div>

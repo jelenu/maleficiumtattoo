@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Text from "@/components/ui/basics/Text";
+import { useParams } from 'next/navigation';
+import { getLang } from '@/utils/i18n';
 
 interface FlipCardProps {
   name: string;
@@ -48,10 +50,18 @@ export default function FlipCard({
   hintText,
   backHintText,
   showCta = true,
-  ctaLabel = "View Portfolio",
+  ctaLabel,
   onCtaClick,
   imagePriority = false,
 }: FlipCardProps) {
+  const { locale } = useParams<{ locale?: string }>();
+  const lang = getLang(locale);
+  const i18n = {
+    viewPortfolio: { en: 'View Portfolio', de: 'Portfolio ansehen', es: 'Ver portfolio' }[lang],
+    hoverToRead: { en: 'Hover to read bio', de: 'Zum Lesen der Bio hover', es: 'Pasa el ratón para leer la bio' }[lang],
+    tapToRead: { en: 'Tap to read bio', de: 'Tippen, um Bio zu lesen', es: 'Toca para leer la bio' }[lang],
+    tapToFlip: { en: 'Tap to flip back', de: 'Tippen zum Zurückdrehen', es: 'Toca para volver' }[lang],
+  };
   const interactive = !!onToggle && !hoverFlip;
 
   // Defaults adaptados a desktop (hover) o móvil (tap)
@@ -65,11 +75,10 @@ export default function FlipCard({
     backClass ??
     (hoverFlip ? "bg-black p-15" : "bg-black/95 p-6 md:py-20 md:px-15");
 
-  const resolvedHintText =
-    hintText ?? (hoverFlip ? "Hover to read bio" : "Tap to read bio");
+  const resolvedHintText = hintText ?? (hoverFlip ? i18n.hoverToRead : i18n.tapToRead);
 
-  const resolvedBackHintText =
-    backHintText ?? (hoverFlip ? undefined : "Tap to flip back");
+  const resolvedBackHintText = backHintText ?? (hoverFlip ? undefined : i18n.tapToFlip);
+  const computedCtaLabel = ctaLabel ?? i18n.viewPortfolio;
 
   const handleClick = () => {
     if (!interactive) return;
@@ -163,7 +172,7 @@ export default function FlipCard({
               }}
             >
               <Text variant="description" className="font-semibold text-black" align="center">
-                {ctaLabel}
+                {computedCtaLabel}
               </Text>
             </button>
           ) : null}

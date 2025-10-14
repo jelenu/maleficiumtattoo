@@ -1,10 +1,13 @@
 "use client";
 
-import { SectionWrapper } from "../ui";
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
+import type React from "react";
 import Text from "@/components/ui/basics/Text";
 import FlipCard from "@/components/ui/cards/FlipCard";
-import { useParams, useRouter } from "next/navigation";
+import { SectionWrapper } from "@/components/ui";
+import { Footer } from "@/components/layout";
+import { useRouter, useParams } from "next/navigation";
+import { getLang, tr } from '@/utils/i18n';
 
 interface Artist {
   name: string;
@@ -13,7 +16,12 @@ interface Artist {
   description: string;
 }
 
-export default function ArtistsSection() {
+export default function ArtistsPage() {
+  const { locale } = useParams<{ locale: string }>();
+  const lang = getLang(locale);
+  const t = {
+    title: tr(lang, { en: 'Meet the Artists', de: 'Lerne die Künstler kennen', es: 'Conoce a los artistas' })
+  };
   const artists: Artist[] = [
     {
       name: "Alexis",
@@ -39,7 +47,6 @@ export default function ArtistsSection() {
   const touchEndX = useRef(0);
   const touchMoved = useRef(false);
   const router = useRouter();
-  const { locale } = useParams<{ locale: string }>();
 
   const toggleMobileFlip = (idx: number) => {
     setMobileFlips((prev) => prev.map((v, i) => (i === idx ? !v : v)));
@@ -67,16 +74,15 @@ export default function ArtistsSection() {
     }
   };
 
-  const goToArtist = (name: string) => router.push(`/${locale}/artists/${name.toLowerCase()}`);
+  const goToArtist = (name: string) =>
+    router.push(`/${locale}/artists/${name.toLowerCase()}`);
 
   return (
-    <>
+    <main>
       {/* Desktop */}
       <SectionWrapper className="hidden xl:flex justify-center items-center ">
-        <div className="w-full h-full flex flex-col max-h-[55rem] justify-center items-center py-15 px-20">
-          <Text variant="h1" align="center" className="w-full text-center text-white mb-4">
-            Meet the Artists
-          </Text>
+        <div className="w-full h-full flex flex-col max-h-[55rem] justify-center items-center py-10 px-20">
+          <Text variant="h1" align="center" className="w-full text-center text-white mb-4">{t.title}</Text>
           <div className="flex items-center justify-center gap-40 w-full h-full">
             {artists.map((artist, index) => (
               <FlipCard
@@ -103,9 +109,7 @@ export default function ArtistsSection() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <Text variant="h1" align="center" className="w-full text-white">
-            Meet the Artists
-          </Text>
+          <Text variant="h1" align="center" className="w-full text-white">{t.title}</Text>
 
           {/* Carrusel */}
           <div className="relative w-full overflow-hidden">
@@ -114,7 +118,10 @@ export default function ArtistsSection() {
               style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
             >
               {artists.map((artist, index) => (
-                <div key={artist.name} className="min-w-full flex items-center justify-center px-5 py-15">
+                <div
+                  key={artist.name}
+                  className="min-w-full flex items-center justify-center px-5 py-15"
+                >
                   <FlipCard
                     name={artist.name}
                     image={artist.image}
@@ -140,13 +147,16 @@ export default function ArtistsSection() {
                 aria-label={`Ir al artista ${i + 1}`}
                 onClick={() => setMobileIndex(i)}
                 className={`h-2.5 rounded-full transition-all ${
-                  i === mobileIndex ? "w-6 bg-white" : "w-2.5 bg-white/50 hover:bg-white/80"
+                  i === mobileIndex
+                    ? "w-6 bg-white"
+                    : "w-2.5 bg-white/50 hover:bg-white/80"
                 }`}
               />
             ))}
           </div>
         </div>
       </SectionWrapper>
-    </>
+      <Footer />
+    </main>
   );
 }

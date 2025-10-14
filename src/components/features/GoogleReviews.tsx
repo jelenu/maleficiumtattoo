@@ -1,8 +1,18 @@
 'use client';
 
 import { ReviewsPopupProps } from '@/types';
+import { useParams } from 'next/navigation';
+import { getLang, tr } from '@/utils/i18n';
 
 export default function ReviewsPopup({ showReviews, setShowReviews, reviews }: ReviewsPopupProps) {
+  const { locale } = useParams<{ locale?: string }>();
+  const lang = getLang(locale);
+  const t = {
+    studioName: tr(lang, { en: 'Maleficium Tattoo', de: 'Maleficium Tattoo', es: 'Maleficium Tattoo' }),
+    close: tr(lang, { en: 'Close', de: 'Schließen', es: 'Cerrar' }),
+    reviewsFromGoogle: tr(lang, { en: 'Reviews from Google', de: 'Bewertungen von Google', es: 'Reseñas de Google' }),
+    viewAll: tr(lang, { en: 'View all reviews', de: 'Alle Bewertungen anzeigen', es: 'Ver todas las reseñas' }),
+  } as const;
   if (!showReviews) return null;
 
   return (
@@ -19,7 +29,7 @@ export default function ReviewsPopup({ showReviews, setShowReviews, reviews }: R
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
             <div>
-              <h3 className="text-lg font-semibold text-white">Maleficium Tattoo</h3>
+              <h3 className="text-lg font-semibold text-white">{t.studioName}</h3>
               <div className="flex items-center">
                 <div className="flex items-center mr-2">
                   {[...Array(5)].map((_, i) => (
@@ -35,6 +45,7 @@ export default function ReviewsPopup({ showReviews, setShowReviews, reviews }: R
           <button 
             onClick={() => setShowReviews(false)}
             className="text-gray-400 hover:text-gray-200 text-2xl"
+            aria-label={t.close}
           >
             ×
           </button>
@@ -78,7 +89,7 @@ export default function ReviewsPopup({ showReviews, setShowReviews, reviews }: R
                 
                 {/* Review Text */}
                 <p className="text-xs text-gray-300 leading-relaxed">
-                  {review.text}
+                  {review.text[lang] || review.text.en}
                 </p>
               </a>
             ))}
@@ -120,7 +131,7 @@ export default function ReviewsPopup({ showReviews, setShowReviews, reviews }: R
                 
                 {/* Review Text */}
                 <p className="text-xs text-gray-300 leading-relaxed">
-                  {review.text}
+                  {review.text[lang] || review.text.en}
                 </p>
               </a>
             ))}
@@ -130,14 +141,14 @@ export default function ReviewsPopup({ showReviews, setShowReviews, reviews }: R
         {/* Footer */}
         <div className="bg-gray-800 px-4 py-3 border-t border-gray-700">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-400">Reviews from Google</span>
+            <span className="text-xs text-gray-400">{t.reviewsFromGoogle}</span>
             <a 
               href="https://www.google.com/search?q=maleficium+tattoo+st+polten+reviews" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-xs text-blue-400 hover:text-blue-300 underline"
             >
-              View all reviews
+              {t.viewAll}
             </a>
           </div>
         </div>

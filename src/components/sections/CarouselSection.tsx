@@ -5,8 +5,16 @@ import Image from "next/image";
 import { SectionWrapper } from "@/components/ui";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Text from "@/components/ui/basics/Text";
+import { useParams } from 'next/navigation';
+import { getLang, tr } from '@/utils/i18n';
 
 export default function CarouselSection() {
+  const { locale } = useParams<{ locale?: string }>();
+  const lang = getLang(locale);
+  const t = {
+    title: tr(lang, { en: 'Our Gallery', de: 'Unsere Galerie', es: 'Nuestra Galería' }),
+    subtitle: tr(lang, { en: 'Where art meets skin.', de: 'Wo Kunst auf Haut trifft.', es: 'Donde el arte se encuentra con la piel.' })
+  };
   const slides = useMemo(
     () => Array.from({ length: 6 }, () => "/images/tattoo.jpg"),
     []
@@ -47,15 +55,13 @@ export default function CarouselSection() {
         <div className="flex flex-col items-center gap-4 h-full w-full py-10  px-30">
           {/* Overlay text now above carousel without absolute */}
           <div className="flex flex-col items-center justify-center text-center text-white">
-            <Text variant="h1" align="center">
-              Our Gallery
-            </Text>
+            <Text variant="h1" align="center">{t.title}</Text>
             <Text
               variant="description"
               align="center"
               className="opacity-80"
             >
-              Where art meets skin.
+              {t.subtitle}
             </Text>
           </div>
 
@@ -132,15 +138,13 @@ export default function CarouselSection() {
         >
           {/* Overlay text para móvil/tablet */}
           <div className="flex flex-col items-center justify-center text-center text-white">
-            <Text variant="h1" align="center">
-              Our Gallery
-            </Text>
+            <Text variant="h1" align="center">{t.title}</Text>
             <Text
               variant="description"
               align="center"
               className="opacity-80"
             >
-              Where art meets skin.
+              {t.subtitle}
             </Text>
           </div>
 
