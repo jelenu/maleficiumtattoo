@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
+import { Inter, Jim_Nightshade } from "next/font/google";
+
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const jimNightshade = Jim_Nightshade({
+  variable: "--font-jim-nightshade",
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Maleficium Tattoo",
@@ -9,8 +17,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ 
-  children: React.ReactNode 
-}>) {
-  return children;
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} ${jimNightshade.variable} antialiased font-sans`}>
+        {children}
+      </body>
+    </html>
+  );
 }
