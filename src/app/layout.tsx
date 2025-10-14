@@ -3,11 +3,17 @@ import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import { Inter, Jim_Nightshade } from "next/font/google";
 
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  preload: false,
+  display: "swap",
+});
 const jimNightshade = Jim_Nightshade({
   variable: "--font-jim-nightshade",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
