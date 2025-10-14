@@ -20,7 +20,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${jimNightshade.variable} antialiased font-sans`}>
+      <body className={`${inter.variable} ${jimNightshade.variable} antialiased font-sans bg-black text-white`}>
         {children}
       </body>
     </html>
