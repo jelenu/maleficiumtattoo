@@ -2,32 +2,24 @@
 
 import { galleryImages } from "@/data/gallery";
 import { Text } from "@/components/ui/basics";
-import Gallery from "@/components/gallery/Gallery";
+import Gallery from "@/components/ui/gallery/Gallery";
 import { Footer } from "@/components/layout";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { useParams } from 'next/navigation';
-import { getLang, tr } from '@/utils/i18n';
+import { useIntlayer } from "react-intlayer";
 
 export default function ManuPage() {
-  const { locale } = useParams<{ locale?: string }>();
-  const lang = getLang(locale);
-  const t = {
-    about: tr(lang, { en: 'About Manu', de: 'Über Manu', es: 'Sobre Manu' }),
-    portfolio: tr(lang, { en: 'Manu Portfolio', de: 'Manu Portfolio', es: 'Portafolio de Manu' }),
-    styles: tr(lang, { en: 'Styles', de: 'Stile', es: 'Estilos' }),
-    allStyles: tr(lang, { en: 'All Styles', de: 'Alle Stile', es: 'Todos los estilos' }),
-    blackwork: tr(lang, { en: 'Blackwork', de: 'Blackwork', es: 'Blackwork' }),
-    realism: tr(lang, { en: 'Realism', de: 'Realismus', es: 'Realismo' }),
-  };
+  const t = useIntlayer("manu-page");
   const images = galleryImages.filter((img) => img.artist === "Manu");
 
   const [selectedStyle, setSelectedStyle] = useState<"all" | "blackwork" | "realism">("all");
+
   const styleOptions: Array<{ key: "all" | "blackwork" | "realism"; label: string }> = [
-    { key: "all", label: t.allStyles },
-    { key: "blackwork", label: t.blackwork },
-    { key: "realism", label: t.realism },
+    { key: "all", label: t.allStyles.value },
+    { key: "blackwork", label: t.blackwork.value },
+    { key: "realism", label: t.realism.value },
   ];
+
   const filteredImages = useMemo(
     () => images.filter((img) => selectedStyle === "all" || img.style === selectedStyle),
     [images, selectedStyle]
@@ -39,22 +31,14 @@ export default function ManuPage() {
   const inactiveBtn = "bg-zinc-800/60 text-zinc-300 border-zinc-700 hover:bg-zinc-700/70";
 
   return (
-    <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border ">
+    <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border">
       <section className="mb-10 grid grid-cols-1 xl:grid-cols-2 items-stretch">
         <div className="h-full p-5 xl:py-15 xl:pl-20 xl:pr-40 order-2 xl:order-1 border-y-2 xl:border-y-0 xl:border-r-2 xl:border-b-2 bg-black">
           <div className="flex flex-col h-full items-center xl:items-start text-center xl:text-left">
-            <Text variant="h2" className="mb-3 text-center xl:text-left">{t.about}</Text>
+            <Text variant="h2" className="mb-3 text-center xl:text-left">{t.about.value}</Text>
             <div className="flex-1 flex items-center justify-center xl:justify-start">
               <Text variant="description" className="text-zinc-300 text-center xl:text-left">
-                Artista especializado en realismo y blackwork. Apasionado por
-                transformar ideas en piezas únicas que cuentan historias a través de
-                la piel. 
-                Artista especializado en realismo y blackwork. Apasionado por
-                transformar ideas en piezas únicas que cuentan historias a través de
-                la piel.
-                Artista especializado en realismo y blackwork. Apasionado por
-                transformar ideas en piezas únicas que cuentan historias a través de
-                la piel.
+                {t.description.value}
               </Text>
             </div>
             <div className="mt-4 flex items-center gap-4 justify-center xl:justify-start">
@@ -62,7 +46,7 @@ export default function ManuPage() {
                 href="https://instagram.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Manu on Instagram"
+                aria-label={t.socialInstagramLabel.value}
                 className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-black hover:bg-zinc-200 transition-colors"
               >
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
@@ -73,7 +57,7 @@ export default function ManuPage() {
                 href="https://facebook.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Manu on Facebook"
+                aria-label={t.socialFacebookLabel.value}
                 className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-black hover:bg-zinc-200 transition-colors"
               >
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
@@ -86,7 +70,7 @@ export default function ManuPage() {
 
         <div className="relative w-full aspect-[1.91/1] order-1 xl:order-2">
           <Image
-            src="/images/alexis.jpg"
+            src="/images/manu.jpg"
             alt="Manu portrait"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -97,10 +81,10 @@ export default function ManuPage() {
       </section>
 
       <div className="py-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-30">
-        <Text variant="h1" align="center" className="mb-6">{t.portfolio}</Text>
+        <Text variant="h1" align="center" className="mb-6">{t.portfolio.value}</Text>
 
         <div className="mb-6 flex flex-col items-center text-center">
-          <span className="text-sm tracking-wider text-zinc-400 mb-2 uppercase">{t.styles}</span>
+          <span className="text-sm tracking-wider text-zinc-400 mb-2 uppercase">{t.styles.value}</span>
           <div className="flex flex-wrap justify-center gap-2">
             {styleOptions.map((opt) => (
               <button

@@ -1,7 +1,7 @@
 'use client';
 import { galleryImages } from '@/data/gallery';
 import { Text } from '@/components/ui/basics';
-import Gallery from '@/components/gallery/Gallery';
+import Gallery from '@/components/ui/gallery/Gallery';
 import { useState, useMemo } from 'react';
 import { Footer } from '@/components/layout';
 import { useParams } from 'next/navigation';

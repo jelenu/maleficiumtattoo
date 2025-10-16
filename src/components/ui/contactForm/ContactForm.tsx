@@ -1,7 +1,7 @@
 "use client";
 
 import { ContactFormProps } from "@/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import {
   Button,
   Input,
@@ -12,33 +12,11 @@ import {
 } from "@/components/ui";
 import Text from "@/components/ui/basics/Text";
 import { validateCountryCode, validatePhoneNumber } from "@/utils/validation";
-import { useParams } from "next/navigation";
-import { getLang, tr } from "@/utils/i18n";
+import { useIntlayer } from "next-intlayer";
 
 export default function ContactForm({ onSubmit }: ContactFormProps) {
-  const { locale } = useParams<{ locale?: string }>();
-  const lang = getLang(locale);
-  const t = {
-    heading: tr(lang, { en: "Contact Us", de: "Kontaktiere uns", es: "Contáctanos" }),
-    firstName: tr(lang, { en: "First Name", de: "Vorname", es: "Nombre" }),
-    lastName: tr(lang, { en: "Last Name", de: "Nachname", es: "Apellido" }),
-    firstNamePH: tr(lang, { en: "Your first name", de: "Dein Vorname", es: "Tu nombre" }),
-    lastNamePH: tr(lang, { en: "Your last name", de: "Dein Nachname", es: "Tu apellido" }),
-    phoneNumber: tr(lang, { en: "Phone Number", de: "Telefonnummer", es: "Número de teléfono" }),
-    email: tr(lang, { en: "Email", de: "E-Mail", es: "Correo electrónico" }),
-    emailPH: tr(lang, { en: "your.email@example.com", de: "dein.email@beispiel.de", es: "tu.email@ejemplo.com" }),
-    description: tr(lang, { en: "Detailed Description", de: "Detaillierte Beschreibung", es: "Descripción detallada" }),
-    descriptionPH: tr(lang, {
-      en: "Please describe your tattoo idea, preferred artist, budget, and availability...",
-      de: "Bitte beschreibe deine Tattoo-Idee, bevorzugten Künstler, Budget und Verfügbarkeit...",
-      es: "Describe tu idea de tatuaje, artista preferido, presupuesto y disponibilidad...",
-    }),
-    refImage: tr(lang, { en: "Reference Image (optional)", de: "Referenzbild (optional)", es: "Imagen de referencia (opcional)" }),
-    submit: tr(lang, { en: "Submit Request", de: "Anfrage senden", es: "Enviar solicitud" }),
-    success: tr(lang, { en: "Message sent successfully! We will contact you soon.", de: "Nachricht erfolgreich gesendet! Wir melden uns bald.", es: "¡Mensaje enviado con éxito! Nos pondremos en contacto pronto." }),
-    error: tr(lang, { en: "Error sending message", de: "Fehler beim Senden der Nachricht", es: "Error al enviar el mensaje" }),
-    connError: tr(lang, { en: "Connection error. Please try again.", de: "Verbindungsfehler. Bitte versuche es erneut.", es: "Error de conexión. Por favor, inténtalo de nuevo." }),
-  } as const;
+  const t = useIntlayer("contact-form");
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{
     type: "success" | "error";
@@ -95,7 +73,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       if (response.ok) {
         setMessage({
           type: "success",
-          text: t.success,
+          text: t.success.value,
         });
 
         const form = e.currentTarget;
@@ -113,13 +91,13 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       } else {
         setMessage({
           type: "error",
-          text: result.error || t.error,
+          text: result.error || t.error.value,
         });
       }
     } catch {
       setMessage({
         type: "error",
-        text: t.connError,
+        text: t.connError.value,
       });
     } finally {
       setIsSubmitting(false);
@@ -139,30 +117,30 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
 
       {/* Heading solo móvil */}
       <Text variant="h2" className="md:hidden w-full !text-center">
-        {t.heading}
+        {t.heading.value}
       </Text>
 
       <form className="flex flex-col h-full" onSubmit={handleSubmit}>
         <div className="flex flex-col  justify-evenly h-full mb-6">
           {/* First Name y Last Name */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <FormField label={t.firstName} htmlFor="firstName" required>
+            <FormField label={t.firstName.value} htmlFor="firstName" required>
               <Input
                 type="text"
                 id="firstName"
                 name="firstName"
                 required
-                placeholder={t.firstNamePH}
+                placeholder={t.firstNamePH.value}
               />
             </FormField>
 
-            <FormField label={t.lastName} htmlFor="lastName" required>
+            <FormField label={t.lastName.value} htmlFor="lastName" required>
               <Input
                 type="text"
                 id="lastName"
                 name="lastName"
                 required
-                placeholder={t.lastNamePH}
+                placeholder={t.lastNamePH.value}
               />
             </FormField>
           </div>
@@ -170,7 +148,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           {/* Phone + Email: juntos solo entre md y xl */}
           <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
             <FormField
-              label={t.phoneNumber}
+              label={t.phoneNumber.value}
               htmlFor="phone"
               required
               error={phoneError}
@@ -185,34 +163,34 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               />
             </FormField>
 
-            <FormField label={t.email} htmlFor="email" required>
+            <FormField label={t.email.value} htmlFor="email" required>
               <Input
                 type="email"
                 id="email"
                 name="email"
                 required
-                placeholder={t.emailPH}
+                placeholder={t.emailPH.value}
               />
             </FormField>
           </div>
 
           {/* Detailed Description */}
           <FormField
-            label={t.description}
+            label={t.description.value}
             htmlFor="description"
             required
           >
             <TextArea
               id="description"
               name="description"
-              rows={isTablet ? 2 : 4} 
+              rows={isTablet ? 2 : 4}
               required
-              placeholder={t.descriptionPH}
+              placeholder={t.descriptionPH.value}
             />
           </FormField>
 
           {/* Image Upload */}
-          <FormField label={t.refImage} htmlFor="image">
+          <FormField label={t.refImage.value} htmlFor="image">
             <Input
               type="file"
               id="image"
@@ -233,7 +211,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             isLoading={isSubmitting}
             disabled={isSubmitting}
           >
-            {t.submit}
+            {t.submit.value}
           </Button>
         </div>
       </form>

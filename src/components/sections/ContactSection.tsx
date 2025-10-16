@@ -5,7 +5,6 @@ import { SectionWrapper } from "@/components/ui";
 import { ContactInfo } from "@/components/ui";
 import ContactForm from "@/components/ui/contactForm/ContactForm";
 import GoogleReviews from "@/components/features/GoogleReviews";
-import { reviewsData } from "@/utils/reviewsData";
 
 export default function ContactSection() {
   const [showReviews, setShowReviews] = useState(false);
@@ -32,7 +31,6 @@ export default function ContactSection() {
         <GoogleReviews
           showReviews={showReviews}
           setShowReviews={setShowReviews}
-          reviews={reviewsData}
         />
       </SectionWrapper>
       {/* Tablet (md to < xl): Contact Info + Form en el mismo section */}
@@ -48,7 +46,7 @@ export default function ContactSection() {
         <GoogleReviews
           showReviews={showReviews}
           setShowReviews={setShowReviews}
-          reviews={reviewsData}
+         
         />
       </SectionWrapper>
 
@@ -60,7 +58,6 @@ export default function ContactSection() {
         <GoogleReviews
           showReviews={showReviews}
           setShowReviews={setShowReviews}
-          reviews={reviewsData}
         />
       </SectionWrapper>
 

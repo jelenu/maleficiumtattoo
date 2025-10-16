@@ -3,6 +3,13 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+// Añadir tipado para la propiedad global
+declare global {
+  interface Window {
+    __APP_LOADED?: boolean;
+  }
+}
+
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,6 +19,12 @@ export default function LoadingScreen() {
       // Esperar un poco más para asegurar que todo esté listo
       setTimeout(() => {
         setIsLoading(false);
+        // Notificar que la app está lista
+        requestAnimationFrame(() => {
+          window.__APP_LOADED = true; // <- sin any
+          document.documentElement.classList.add('app-loaded');
+          window.dispatchEvent(new Event('app-loaded'));
+        });
       }, 1500); // 1.5 segundos para una transición suave
     };
 

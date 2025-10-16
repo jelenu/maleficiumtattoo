@@ -24,14 +24,27 @@ export default function Header() {
     { code: 'en', label: 'English', flag: 'gb' },
     { code: 'es', label: 'Español', flag: 'es' },
   ];
-  const activeLocale = (locale as string) || 'en';
+  const supportedLocales = ['de', 'en', 'es'] as const;
+  const currentLocaleFromPath = supportedLocales.find((l) =>
+    (pathname || '/').startsWith(`/${l}`)
+  );
+  const activeLocale = (locale as string) || currentLocaleFromPath || 'en';
 
+  // Crear href para cambiar de idioma: quitar cualquier prefijo de locale y añadir el nuevo
   const getHrefForLocale = (target: string) => {
     const p = pathname || '/';
-    if (locale) {
-      return p.replace(new RegExp(`^/${locale}`), `/${target}`);
-    }
-    return `/${target}${p === '/' ? '' : p}`;
+    const stripped = supportedLocales.reduce(
+      (acc, l) => acc.replace(new RegExp(`^/${l}(?=/|$)`), ''),
+      p
+    );
+    const normalized = stripped || '/';
+    return `/${target}${normalized === '/' ? '' : normalized}`;
+  };
+
+  const flagEmojiByCode: Record<string, string> = {
+    de: '🇩🇪',
+    en: '🇬🇧',
+    es: '🇪🇸',
   };
 
   const toggleMenu = () => {
@@ -46,36 +59,39 @@ export default function Header() {
           <div className="flex items-center">
             {/* Logo para móvil */}
             <div className="xl:hidden">
-              <Image
-                src="/images/mf.png"
-                alt={`${t.brand.logoAlt}`}
-                width={32}
-                height={32}
-                className="object-contain"
-                priority
-              />
+              <Link href={withLocale('/')}>
+                <Image
+                  src="/images/mf.png"
+                  alt={t.brand.logoAlt.value}
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                  priority
+                />
+              </Link>
             </div>
 
             {/* Logo para desktop */}
             <div className="hidden xl:flex items-center">
-              <Image
-                src="/images/maleficium.png"
-                alt={`${t.brand.titleAlt}`}
-                width={220}
-                height={50}
-                priority
-                className="h-8 lg:h-10 xl:h-20 w-auto object-contain"
-              />
+              <Link href={withLocale('/')}>
+                <Image
+                  src="/images/maleficium.png"
+                  alt={t.brand.titleAlt.value}
+                  width={220}
+                  height={50}
+                  priority
+                  className="h-8 lg:h-10 xl:h-20 w-auto object-contain"
+                />
+              </Link>
             </div>
           </div>
 
           {/* Desktop Navigation - right */}
           <nav className="hidden md:flex md:col-start-3 justify-end items-center h-full space-x-10">
-            <Link href={withLocale('/')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.home}</Link>
-            <Link href={withLocale('/gallery')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.gallery}</Link>
-            <Link href={withLocale('/artists')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.artists}</Link>
-            <Link href={withLocale('/studio')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.studio}</Link>
-            <Link href={withLocale('/contact')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.contact}</Link>
+            <Link href={withLocale('/gallery')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.gallery.value}</Link>
+            <Link href={withLocale('/artists')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.artists.value}</Link>
+            <Link href={withLocale('/studio')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.studio.value}</Link>
+            <Link href={withLocale('/contact')} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">{t.nav.contact.value}</Link>
 
             {/* Language selector (desktop) */}
             <div className="flex items-center gap-2 pl-4 border-l border-white/30">
@@ -84,9 +100,9 @@ export default function Header() {
                   key={lang.code}
                   href={getHrefForLocale(lang.code)}
                   aria-label={`Change language to ${lang.label}`}
-                  className={`inline-flex items-center justify-center rounded-sm border border-transparent hover:border-white/50 transition-all ${activeLocale === lang.code ? 'ring-2 ring-white' : 'opacity-60 hover:opacity-100'}`}
+                  className={`inline-flex items-center justify-center   transition-all ${activeLocale === lang.code ? '' : 'opacity-60 hover:opacity-100'}`}
                 >
-                  <span className={`fi fi-${lang.flag} text-xl`} aria-hidden="true" />
+                  <span aria-hidden="true" className="text-xl">{flagEmojiByCode[lang.code]}</span>
                   <span className="sr-only">{lang.label}</span>
                 </Link>
               ))}
@@ -97,7 +113,7 @@ export default function Header() {
           <button
             className="md:hidden justify-self-end flex flex-col justify-center items-center w-8 h-8 space-y-1"
             onClick={toggleMenu}
-            aria-label={`${t.a11y.toggleMenu}`}
+            aria-label={`${t.a11y.toggleMenu.value}`}
             aria-controls="mobile-menu"
             aria-expanded={isMenuOpen}
           >
@@ -113,11 +129,10 @@ export default function Header() {
           className={`md:hidden absolute left-0 right-0 bg-black transition-[max-height,opacity] duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden border-b-2 border-b-white`}
         >
           <div className="px-4 pt-3 pb-5 space-y-3">
-            <Link href={withLocale('/')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.home}</Link>
-            <Link href={withLocale('/gallery')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.gallery}</Link>
-            <Link href={withLocale('/artists')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.artists}</Link>
-            <Link href={withLocale('/studio')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.studio}</Link>
-            <Link href={withLocale('/contact')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.contact}</Link>
+            <Link href={withLocale('/gallery')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.gallery.value}</Link>
+            <Link href={withLocale('/artists')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.artists.value}</Link>
+            <Link href={withLocale('/studio')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.studio.value}</Link>
+            <Link href={withLocale('/contact')} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.contact.value}</Link>
 
             {/* Language selector (mobile) */}
             <div className="flex items-center gap-4 pt-2">
@@ -129,7 +144,7 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className={`inline-flex items-center justify-center rounded-sm ${activeLocale === lang.code ? 'ring-2 ring-white' : 'opacity-60 hover:opacity-100'}`}
                 >
-                  <span className={`fi fi-${lang.flag} text-xl`} aria-hidden="true" />
+                  <span aria-hidden="true" className="text-xl">{flagEmojiByCode[lang.code]}</span>
                   <span className="sr-only">{lang.label}</span>
                 </Link>
               ))}

@@ -42,7 +42,7 @@ export default function Button({
   const variantClasses = getVariantClasses(variant);
   const sizeClasses = getSizeClasses(size);
   const widthClasses = fullWidth ? 'w-full' : '';
-  const disabledClasses = (disabled || isLoading) ? 'opacity-50 cursor-not-allowed' : '';
+  const disabledClasses = (disabled || isLoading) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
 
   return (
     <button

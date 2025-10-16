@@ -124,7 +124,7 @@ export default function FlipCard({
         <div className="absolute inset-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-white/10 [backface-visibility:hidden]">
           <div className="absolute inset-0">
             <Image
-              src={image}
+              src={String(image)}
               alt={`${name} - ${role}`}
               fill
               sizes="100vw"

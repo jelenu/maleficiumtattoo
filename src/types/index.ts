@@ -17,7 +17,6 @@ export interface Review {
 export interface ReviewsPopupProps {
   showReviews: boolean;
   setShowReviews: (show: boolean) => void;
-  reviews: Review[];
 }
 
 // Props para información de contacto

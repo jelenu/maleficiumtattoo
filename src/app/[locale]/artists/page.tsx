@@ -1,52 +1,28 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type React from "react";
 import Text from "@/components/ui/basics/Text";
 import FlipCard from "@/components/ui/cards/FlipCard";
 import { SectionWrapper } from "@/components/ui";
 import { Footer } from "@/components/layout";
 import { useRouter, useParams } from "next/navigation";
-import { getLang, tr } from '@/utils/i18n';
+import { useIntlayer } from "next-intlayer";
 
-interface Artist {
-  name: string;
-  image: string;
-  role: string;
-  description: string;
-}
 
 export default function ArtistsPage() {
+  const t = useIntlayer("artists");
+  const router = useRouter();
   const { locale } = useParams<{ locale: string }>();
-  const lang = getLang(locale);
-  const t = {
-    title: tr(lang, { en: 'Meet the Artists', de: 'Lerne die Künstler kennen', es: 'Conoce a los artistas' })
-  };
-  const artists: Artist[] = [
-    {
-      name: "Alexis",
-      image: "/images/alexis.jpg",
-      role: "Tattoo Artist",
-      description:
-        "Especialista en tatuajes realistas y blackwork. Con más de 8 años de experiencia creando obras únicas que reflejan la personalidad de cada cliente. Con más de 8 años de experiencia creando obras únicas que reflejan la personalidad de cada cliente.",
-    },
-    {
-      name: "Manu",
-      image: "/images/alexis.jpg",
-      role: "Tattoo Artist",
-      description:
-        "Maestro en tatuajes tradicionales y neo-tradicionales. Su estilo único combina técnicas clásicas con elementos modernos.",
-    },
-  ];
 
+
+  // Estado de flip y navegación táctil
   const [mobileFlips, setMobileFlips] = useState<boolean[]>(() =>
-    artists.map(() => false)
+    t.artists.map(() => false)
   );
   const [mobileIndex, setMobileIndex] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const touchMoved = useRef(false);
-  const router = useRouter();
 
   const toggleMobileFlip = (idx: number) => {
     setMobileFlips((prev) => prev.map((v, i) => (i === idx ? !v : v)));
@@ -69,32 +45,39 @@ export default function ArtistsPage() {
     const threshold = 50;
     if (touchMoved.current && Math.abs(diff) > threshold) {
       if (diff > 0)
-        setMobileIndex((i) => (i >= artists.length - 1 ? 0 : i + 1));
-      else setMobileIndex((i) => (i <= 0 ? artists.length - 1 : i - 1));
+        setMobileIndex((i) => (i >= t.artists.length - 1 ? 0 : i + 1));
+      else setMobileIndex((i) => (i <= 0 ? t.artists.length - 1 : i - 1));
     }
   };
 
   const goToArtist = (name: string) =>
-    router.push(`/${locale}/artists/${name.toLowerCase()}`);
+    router.push(`/${locale}/artists/${name}`);
 
   return (
     <main>
       {/* Desktop */}
-      <SectionWrapper className="hidden xl:flex justify-center items-center ">
+      <SectionWrapper className="hidden xl:flex justify-center items-center">
         <div className="w-full h-full flex flex-col max-h-[55rem] justify-center items-center py-10 px-20">
-          <Text variant="h1" align="center" className="w-full text-center text-white mb-4">{t.title}</Text>
+          <Text
+            variant="h1"
+            align="center"
+            className="w-full text-center text-white mb-4"
+          >
+            {t.title}
+          </Text>
+
           <div className="flex items-center justify-center gap-40 w-full h-full">
-            {artists.map((artist, index) => (
+            {t.artists.map((artist, index) => (
               <FlipCard
-                key={artist.name}
+                key={index}
                 hoverFlip
-                name={artist.name}
-                image={artist.image}
-                role={artist.role}
-                description={artist.description}
+                name={artist.name.value}
+                image={artist.image.value}
+                role={artist.role.value}
+                description={artist.description.value}
                 sizeClass="h-full max-h-[35rem]"
                 imagePriority={index === 0}
-                onCtaClick={() => goToArtist(artist.name)}
+                onCtaClick={() => goToArtist(artist.name.value.toLowerCase())}
               />
             ))}
           </div>
@@ -104,12 +87,14 @@ export default function ArtistsPage() {
       {/* Mobile & Tablet */}
       <SectionWrapper className="xl:hidden">
         <div
-          className="w-full flex flex-col items-center "
+          className="w-full flex flex-col items-center"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <Text variant="h1" align="center" className="w-full text-white">{t.title}</Text>
+          <Text variant="h1" align="center" className="w-full text-white">
+            {t.title}
+          </Text>
 
           {/* Carrusel */}
           <div className="relative w-full overflow-hidden">
@@ -117,22 +102,22 @@ export default function ArtistsPage() {
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
             >
-              {artists.map((artist, index) => (
+              {t.artists.map((artist, index) => (
                 <div
-                  key={artist.name}
+                  key={index}
                   className="min-w-full flex items-center justify-center px-5 py-15"
                 >
                   <FlipCard
-                    name={artist.name}
-                    image={artist.image}
-                    role={artist.role}
-                    description={artist.description}
+                    name={artist.name.value}
+                    image={artist.image.value}
+                    role={artist.role.value}
+                    description={artist.description.value}
                     flipped={mobileFlips[index]}
                     onToggle={() => toggleMobileFlip(index)}
                     guardToggle={() => !touchMoved.current}
                     sizeClass="w-[85vw] max-w-[35rem]"
                     imagePriority={index === 0}
-                    onCtaClick={() => goToArtist(artist.name)}
+                    onCtaClick={() => goToArtist(artist.name.value.toLowerCase())}
                   />
                 </div>
               ))}
@@ -140,8 +125,8 @@ export default function ArtistsPage() {
           </div>
 
           {/* Dots navegación */}
-          <div className="flex gap-2 ">
-            {artists.map((_, i) => (
+          <div className="flex gap-2">
+            {t.artists.map((_, i) => (
               <button
                 key={i}
                 aria-label={`Ir al artista ${i + 1}`}
@@ -156,6 +141,7 @@ export default function ArtistsPage() {
           </div>
         </div>
       </SectionWrapper>
+
       <Footer />
     </main>
   );

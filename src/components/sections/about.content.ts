@@ -1,3 +1,4 @@
+// src/content/aboutContent.ts
 import { t, type Dictionary } from 'intlayer';
 
 const aboutContent = {
@@ -10,14 +11,14 @@ const aboutContent = {
     }),
     paragraphs: [
       t({
-        en: 'Maleficium Tattoo is an exclusive studio led by the Spanish artist @alexisdarkart, specialized in blackwork tattoos with bold lines in black and white. Appointments only.',
-        de: 'Maleficium Tattoo ist ein exklusives Studio unter der Leitung des spanischen Künstlers @alexisdarkart, spezialisiert auf Blackwork-Tattoos in Schwarz-Weiß mit kräftigen Linien. Nur nach Terminvereinbarung.',
-        es: 'Maleficium Tattoo es un estudio exclusivo dirigido por el artista español @alexisdarkart, especializado en tatuajes blackwork en blanco y negro con líneas marcadas. Solo con cita previa.',
+        en: 'Maleficium Tattoo is an exclusive tattoo studio led by Spanish artist @alexisdarkart, specializing in blackwork tattoos in black and white with strong lines.',
+        de: 'Maleficium Tattoo ist ein exklusives Tattoostudio unter der Leitung des spanischen Künstlers @alexisdarkart, der auf Blackwork-Tattoos in Schwarz-Weiß mit kräftigen Linien spezialisiert ist.',
+        es: 'Maleficium Tattoo es un estudio de tatuajes exclusivo dirigido por el artista español @alexisdarkart, especializado en tatuajes blackwork en blanco y negro con líneas marcadas.',
       }),
       t({
-        en: 'We design unique, custom pieces just for you. We work by appointment to offer a calm, personal, and high-quality experience.',
-        de: 'Wir entwerfen einzigartige, individuelle Motive nur für dich. Wir arbeiten mit Terminen, um dir ein ruhiges, persönliches und hochwertiges Erlebnis zu bieten.',
-        es: 'Diseñamos piezas únicas y personalizadas solo para ti. Trabajamos con cita para ofrecerte una experiencia tranquila, personal y de alta calidad.',
+        en: 'We create unique, custom designs—each motif is crafted just for you. Please note: we work by appointment only to provide a calm, personal, and high-quality experience.',
+        de: 'Bei uns erhältst du individuelle und einzigartige Designs – jedes Motiv wird speziell für dich entworfen. Wichtig: Wir arbeiten ausschließlich nach Terminvereinbarung, um dir ein ruhiges, persönliches und hochwertiges Erlebnis bieten zu können.',
+        es: 'Creamos diseños únicos y personalizados: cada motivo está hecho para ti. Importante: trabajamos solo con cita previa para ofrecerte una experiencia tranquila, personal y de alta calidad.',
       }),
     ],
     buttonText: t({

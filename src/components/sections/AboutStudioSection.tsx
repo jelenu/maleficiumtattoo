@@ -3,41 +3,43 @@ import Image from "next/image";
 import alexisMobile from "../../../public/images/alexishorizontal21.jpg";
 import alexisTablet from "../../../public/images/alexishorizontal.jpg";
 import { SectionWrapper, Button, Text } from "@/components/ui";
-import { useParams } from 'next/navigation';
-import { getLang, tr } from '@/utils/i18n';
+import { motion } from "framer-motion";
+import { useIntlayer } from "next-intlayer";
+import { useRouter, useParams } from "next/navigation";
 
 export default function AboutStudioSection() {
+  const t = useIntlayer("about");
+  const router = useRouter();
   const { locale } = useParams<{ locale?: string }>();
-  const lang = getLang(locale);
-  const t = {
-    title: tr(lang, { en: 'About Maleficium Tattoo', de: 'Über Maleficium Tattoo', es: 'Sobre Maleficium Tattoo' }),
-    button: tr(lang, { en: 'Our Jobs', de: 'Unsere Arbeiten', es: 'Nuestros Trabajos' }),
-    paragraphs: tr(lang, {
-      en: [
-        'Maleficium Tattoo is an exclusive tattoo studio led by Spanish artist @alexisdarkart, specializing in blackwork tattoos in black and white with strong lines.',
-        'We create unique, custom designs—each motif is crafted just for you. Please note: we work by appointment only to provide a calm, personal, and high-quality experience.'
-      ],
-      de: [
-        'Maleficium Tattoo ist ein exklusives Tattoostudio unter der Leitung des spanischen Künstlers @alexisdarkart, der auf Blackwork-Tattoos in Schwarz-Weiß mit kräftigen Linien spezialisiert ist.',
-        'Bei uns erhältst du individuelle und einzigartige Designs – jedes Motiv wird speziell für dich entworfen. Wichtig: Wir arbeiten ausschließlich nach Terminvereinbarung, um dir ein ruhiges, persönliches und hochwertiges Erlebnis bieten zu können.'
-      ],
-      es: [
-        'Maleficium Tattoo es un estudio de tatuajes exclusivo dirigido por el artista español @alexisdarkart, especializado en tatuajes blackwork en blanco y negro con líneas marcadas.',
-        'Creamos diseños únicos y personalizados: cada motivo está hecho para ti. Importante: trabajamos solo con cita previa para ofrecerte una experiencia tranquila, personal y de alta calidad.'
-      ],
-    }),
-    imageAlt: tr(lang, { en: 'Maleficium Tattoo Studio', de: 'Maleficium Tattoo Studio', es: 'Estudio Maleficium Tattoo' }),
-  };
+  const contactHref = locale ? `/${locale}/contact` : "/contact";
+  const goContact = () => router.push(contactHref);
+
   return (
     <>
       {/* Sección Desktop/PC */}
-  <SectionWrapper className="hidden xl:flex justify-center">
+      <SectionWrapper
+        className="hidden xl:flex justify-center"
+        animateOnScroll={false}
+      >
         <div className="max-w-[85rem] max-h-[50rem] h-full py-10 xl:py-15 px-30">
-          <div className="flex bg-black h-full">
+          <div className="flex h-full">
             {/* Contenido izquierdo */}
-            <div className="flex-[2] border-2 border-r-0 border-white p-8 lg:p-10 xl:p-13 flex flex-col justify-between h-full">
+            <motion.div
+              className="flex-[2] border-2 border-r-0 bg-black border-white p-8 lg:p-10 xl:p-13 flex flex-col justify-between h-full"
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 2,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <Text variant="h2" className="text-white">
-                {t.title}
+                {t.title.value}
               </Text>
 
               <div className="space-y-4 lg:space-y-6">
@@ -48,70 +50,151 @@ export default function AboutStudioSection() {
                 ))}
               </div>
 
-              <Button variant="outline" size="lg" className="self-start">
-                {t.button}
+              <Button variant="outline" size="lg" className="self-start" onClick={goContact}>
+                {t.buttonText.value}
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="h-full flex items-center">
+            <motion.div
+              className="h-full flex items-center"
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 2,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <Image
                 src={"/images/alexis.jpg"}
-                alt={t.imageAlt}
+                alt={t.imageAlt.value}
                 width={1600}
                 height={1067}
                 className="h-full w-auto object-contain"
                 style={{ height: "100%", width: "auto" }}
                 priority
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </SectionWrapper>
 
       {/* Sección Móvil/Tablet */}
-  <SectionWrapper className="xl:hidden">
+      <SectionWrapper className="xl:hidden" animateOnScroll={false}>
         <div className=" w-full h-full bg-black flex flex-col">
           {/* Imagen arriba */}
-          <div className="md:hidden w-full">
+          <motion.div
+            className="md:hidden w-full"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 2,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <Image
               src={alexisMobile}
-              alt={t.imageAlt}
+              alt={t.imageAlt.value}
               width={alexisMobile.width}
               height={alexisMobile.height}
               style={{ width: "100%", height: "auto" }}
               className="w-full h-auto object-contain"
               priority
             />
-          </div>
-          <div className="hidden md:flex w-full">
+          </motion.div>
+          <motion.div
+            className="hidden md:flex w-full"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 2,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <Image
               src={alexisTablet}
-              alt={t.imageAlt}
+              alt={t.imageAlt.value}
               width={alexisTablet.width}
               height={alexisTablet.height}
               style={{ width: "100%", height: "auto" }}
               className="w-full h-auto object-contain"
               priority
             />
-          </div>
+          </motion.div>
 
           {/* Contenido abajo */}
           <div className="flex-1 p-3 py-2 md:px-10 flex flex-col justify-evenly">
-            <Text variant="h2" className="text-white" fluidMobile fluidTablet>
-              {t.title}
-            </Text>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 2,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <Text variant="h2" className="text-white" fluidMobile fluidTablet>
+                {t.title.value}
+              </Text>
+            </motion.div>
 
-            <div className="space-y-3 sm:space-y-4 md:space-y-5">
+            <motion.div
+              className="space-y-3 sm:space-y-4 md:space-y-5"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 2,
+                  delay: 0.05,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
               {t.paragraphs.map((paragraph, index) => (
                 <Text key={index} variant="body" muted fluidMobile fluidTablet>
                   {paragraph}
                 </Text>
               ))}
-            </div>
+            </motion.div>
 
-            <Button variant="outline" size="lg" className="self-center md:self-start">
-              {t.button}
-            </Button>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 2,
+                  delay: 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="flex justify-center md:justify-start"
+            >
+              <Button variant="outline" size="lg" onClick={goContact}>
+                {t.buttonText.value}
+              </Button>
+            </motion.div>
           </div>
         </div>
       </SectionWrapper>
