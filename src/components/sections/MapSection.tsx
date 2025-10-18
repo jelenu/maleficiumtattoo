@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout';
 import Text from '@/components/ui/basics/Text';
 import { useParams } from 'next/navigation';
 import { getLang, tr } from '@/utils/i18n';
+import { motion } from 'framer-motion';
 
 export default function MapSection() {
   const { locale } = useParams<{ locale?: string }>();
@@ -25,13 +26,19 @@ export default function MapSection() {
 
     >
       {/* Título */}
-      <Text
-        variant="h1"
-        align="center"
-        className="text-white bg-black pt-6 pb-4 shrink-0"
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }}
+        viewport={{ once: true, amount: 0.2 }}
       >
-        {t.visit}
-      </Text>
+        <Text
+          variant="h1"
+          align="center"
+          className="text-white bg-black pt-6 pb-4 shrink-0"
+        >
+          {t.visit}
+        </Text>
+      </motion.div>
 
       {/* Contenedor del mapa: crece para llenar el espacio libre */}
       <div className="flex-1 w-full relative overflow-hidden">

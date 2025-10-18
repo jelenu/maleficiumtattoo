@@ -1,4 +1,3 @@
-import { intlayerMiddleware } from "next-intlayer/middleware";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
@@ -24,6 +23,8 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
+  const supportedLocales = ["de", "en", "es"];
+
   // Redirigir raíz a locale por defecto (alemán) si se accede exactamente a "/"
   if (pathname === "/") {
     const url = req.nextUrl.clone();
@@ -31,8 +32,16 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Delega en intlayer para manejar locales en el resto de rutas
-  return intlayerMiddleware(req);
+  // Si YA está prefijado con un locale soportado, continuar
+  const isLocalePrefixed = new RegExp(`^/(?:${supportedLocales.join("|")})(?:/|$)`).test(pathname);
+  if (isLocalePrefixed) {
+    return NextResponse.next();
+  }
+
+  // Si NO tiene prefijo de locale, anteponer "/de" preservando el resto del path
+  const url = req.nextUrl.clone();
+  url.pathname = `/de${pathname}`;
+  return NextResponse.redirect(url);
 }
 
 // Matcher amplio: todo, delegando la exclusión al código

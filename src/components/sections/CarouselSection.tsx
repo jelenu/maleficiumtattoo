@@ -6,10 +6,11 @@ import { SectionWrapper } from "@/components/ui";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Text from "@/components/ui/basics/Text";
 import { useIntlayer } from "next-intlayer";
-export default function CarouselSection() {
-    const t = useIntlayer("carousel");
+import { motion } from "framer-motion";
 
- 
+export default function CarouselSection() {
+  const t = useIntlayer("carousel");
+
   const slides = useMemo(
     () => Array.from({ length: 6 }, () => "/images/tattoo.jpg"),
     []
@@ -47,7 +48,12 @@ export default function CarouselSection() {
     <>
       {/* ----------- Versión Desktop ----------- */}
       <SectionWrapper className="hidden xl:flex justify-center" contentClassName="flex w-full">
-        <div className="flex flex-col items-center gap-4 h-full w-full py-10  px-30">
+        <motion.div
+          className="flex flex-col items-center gap-4 h-full w-full py-10  px-30"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1, transition: { duration: 2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {/* Overlay text now above carousel without absolute */}
           <div className="flex flex-col items-center justify-center text-center text-white">
             <Text variant="h1" align="center">{t.title.value}</Text>
@@ -81,10 +87,12 @@ export default function CarouselSection() {
                     key={i}
                     className="min-w-1/3 flex items-center justify-center h-full transition-transform duration-500"
                   >
-                    <div
+                    <motion.div
                       className={`relative w-[90%] h-[80%] transition-transform duration-500 ${
                         i === index ? "scale-120 z-10" : "scale-90 opacity-50"
                       }`}
+                      animate={{ opacity: i === index ? 1 : 0.5 }}
+                      transition={{ duration: 2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <Image
                         src={src}
@@ -94,7 +102,7 @@ export default function CarouselSection() {
                         sizes="33vw"
                         priority={i === 0}
                       />
-                    </div>
+                    </motion.div>
                   </div>
                 ))}
               </div>
@@ -120,7 +128,7 @@ export default function CarouselSection() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </SectionWrapper>
 
       {/* ----------- Versión Tablet y Móvil ----------- */}
@@ -132,27 +140,35 @@ export default function CarouselSection() {
           onTouchEnd={handleTouchEnd}
         >
           {/* Overlay text para móvil/tablet */}
-          <div className="flex flex-col items-center justify-center text-center text-white">
+          <motion.div
+            className="flex flex-col items-center justify-center text-center text-white"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <Text variant="h1" align="center">{t.title.value}</Text>
-            <Text
-              variant="description"
-              align="center"
-              className="opacity-80"
-            >
+            <Text variant="description" align="center" className="opacity-80">
               {t.subtitle.value}
             </Text>
-          </div>
+          </motion.div>
 
-          <div className="overflow-hidden w-full h-full">
+          <motion.div
+            className="overflow-hidden w-full h-full"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <div
               className="flex transition-transform duration-500 ease-out h-full"
-              style={{
-                transform: `translateX(-${index * 100}%)`,
-              }}
+              style={{ transform: `translateX(-${index * 100}%)` }}
             >
               {slides.map((src, i) => (
                 <div key={i} className="min-w-full flex items-center justify-center h-full">
-                  <div className="relative w-full h-full transition-transform duration-500">
+                  <motion.div
+                    className="relative w-full h-full transition-transform duration-500"
+                    animate={{ opacity: i === index ? 1 : 0.5 }}
+                    transition={{ duration: 2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  >
                     <Image
                       src={src}
                       alt={`Tattoo ${i + 1}`}
@@ -161,11 +177,11 @@ export default function CarouselSection() {
                       sizes="100vw"
                       priority={i === 0}
                     />
-                  </div>
+                  </motion.div>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           <div className="w-full flex justify-center gap-2 mt-4">
             {slides.map((_, i) => (

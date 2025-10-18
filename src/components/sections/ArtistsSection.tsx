@@ -6,8 +6,7 @@ import Text from "@/components/ui/basics/Text";
 import FlipCard from "@/components/ui/cards/FlipCard";
 import { useParams, useRouter } from "next/navigation";
 import { useIntlayer } from "next-intlayer";
-
-
+import { motion } from "framer-motion";
 
 export default function ArtistsSection() {
   const t = useIntlayer("artists");
@@ -56,26 +55,54 @@ export default function ArtistsSection() {
       {/* Desktop */}
       <SectionWrapper className="hidden xl:flex justify-center items-center">
         <div className="w-full h-full flex flex-col max-h-[55rem] justify-center items-center py-15 px-20">
-          <Text
-            variant="h1"
-            align="center"
-            className="w-full text-center text-white mb-4"
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 2,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+            viewport={{ once: true, amount: 0.2 }}
           >
-            {t.title.value}
-          </Text>
+            <Text
+              variant="h1"
+              align="center"
+              className="w-full text-center text-white mb-4"
+            >
+              {t.title.value}
+            </Text>
+          </motion.div>
           <div className="flex items-center justify-center gap-40 w-full h-full">
             {t.artists.map((artist, index) => (
-              <FlipCard
+              <motion.div
                 key={index}
-                hoverFlip
-                name={artist.name.value}
-                image={artist.image.value}
-                role={artist.role.value}
-                description={artist.description.value}
-                sizeClass="h-full max-h-[35rem]"
-                imagePriority={index === 0}
-                onCtaClick={() => goToArtist(artist.name.value.toLowerCase())}
-              />
+                initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    duration: 1.1,
+                    delay: 0.1,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+                }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="h-full max-h-[35rem]"
+              >
+                <FlipCard
+                  hoverFlip
+                  name={artist.name.value}
+                  image={artist.image.value}
+                  role={artist.role.value}
+                  description={artist.description.value}
+                  sizeClass="h-full max-h-[35rem]"
+                  imagePriority={index === 0}
+                  onCtaClick={() => goToArtist(artist.name.value.toLowerCase())}
+                />
+              </motion.div>
             ))}
           </div>
         </div>
@@ -89,12 +116,37 @@ export default function ArtistsSection() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <Text variant="h1" align="center" className="w-full text-white">
-            {t.title.value}
-          </Text>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1.2,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <Text variant="h1" align="center" className="w-full text-white">
+              {t.title.value}
+            </Text>
+          </motion.div>
 
           {/* Carrusel */}
-          <div className="relative w-full overflow-hidden">
+          <motion.div
+            className="relative w-full overflow-hidden"
+            initial={{ opacity: 0 }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1.2,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
@@ -119,7 +171,7 @@ export default function ArtistsSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Dots navegación */}
           <div className="flex gap-2">

@@ -13,6 +13,7 @@ import {
 import Text from "@/components/ui/basics/Text";
 import { validateCountryCode, validatePhoneNumber } from "@/utils/validation";
 import { useIntlayer } from "next-intlayer";
+import { motion } from "framer-motion";
 
 export default function ContactForm({ onSubmit }: ContactFormProps) {
   const t = useIntlayer("contact-form");
@@ -116,12 +117,24 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       )}
 
       {/* Heading solo móvil */}
-      <Text variant="h2" className="md:hidden w-full !text-center">
-        {t.heading.value}
-      </Text>
+      <motion.div
+        className="md:hidden w-full"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { duration: 1.0, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <Text variant="h2" className="w-full !text-center">
+          {t.heading.value}
+        </Text>
+      </motion.div>
 
       <form className="flex flex-col h-full" onSubmit={handleSubmit}>
-        <div className="flex flex-col  justify-evenly h-full mb-6">
+        <motion.div
+          className="flex flex-col  justify-evenly h-full mb-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] } }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {/* First Name y Last Name */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <FormField label={t.firstName.value} htmlFor="firstName" required>
@@ -199,10 +212,15 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               className=" file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-200"
             />
           </FormField>
-        </div>
+        </motion.div>
 
         {/* Submit Button pegado abajo */}
-        <div className="mt-auto">
+        <motion.div
+          className="mt-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1, transition: { duration: 1.0, delay: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <Button
             type="submit"
             variant="primary"
@@ -213,7 +231,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           >
             {t.submit.value}
           </Button>
-        </div>
+        </motion.div>
       </form>
     </div>
   );
