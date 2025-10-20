@@ -47,11 +47,6 @@ export default function Header() {
     return collapseSlashes(`/${target}${ensureLeadingSlash(p) === "/" ? "" : p}`);
   };
 
-  const flagEmojiByCode: Record<string, string> = {
-    de: "🇩🇪",
-    en: "🇬🇧",
-    es: "🇪🇸",
-  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -109,15 +104,19 @@ export default function Header() {
 
             {/* Language selector (desktop) */}
             <div className="flex items-center gap-2 pl-4 border-l border-white/30">
-              {locales.map((lang) => (
+              {locales.map((langOpt) => (
                 <Link
-                  key={lang.code}
-                  href={getHrefForLocale(lang.code)}
-                  aria-label={`Change language to ${lang.label}`}
-                  className={`inline-flex items-center justify-center   transition-all ${activeLocale === lang.code ? "" : "opacity-60 hover:opacity-100"}`}
+                  key={langOpt.code}
+                  href={getHrefForLocale(langOpt.code)}
+                  aria-label={`Change language to ${langOpt.label}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`${activeLocale === langOpt.code ? "" : "opacity-70 hover:opacity-100"}`}
                 >
-                  <span aria-hidden="true" className="text-xl">{flagEmojiByCode[lang.code]}</span>
-                  <span className="sr-only">{lang.label}</span>
+                  <span
+                    className={`tracking-widest ${activeLocale === langOpt.code ? "text-sm font-semibold" : "text-xs"}`}
+                  >
+                    {langOpt.code.toUpperCase()}
+                  </span>
                 </Link>
               ))}
             </div>

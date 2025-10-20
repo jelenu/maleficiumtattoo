@@ -19,11 +19,7 @@ const contactInfoContent = {
         de: 'Bitte teilen Sie uns mit, an welchen Künstler Sie sich wenden möchten. Geben Sie möglichst viele Details zu Ihrem gewünschten Tattoo, Ihrer Terminverfügbarkeit und Ihrem Budget (Mindestpreis 150,00 €) an; wir melden uns so schnell wie möglich. Alle Anzahlungen sind nicht erstattungsfähig.',
         es: 'Indícanos con qué artista te gustaría contactar. Proporciona la mayor cantidad de detalles posible sobre tu tatuaje, disponibilidad y presupuesto (mínimo 150,00 €) y te responderemos lo antes posible. Todos los depósitos no son reembolsables.',
       }),
-      t({
-        en: 'You must be 18 years old to get tattooed. (ID required)',
-        de: 'Du musst 18 Jahre alt sein, um tätowiert zu werden. (Ausweis erforderlich)',
-        es: 'Debes tener 18 años para tatuarte. (Se requiere identificación)',
-      }),
+      
     ],
     touchUpsTitle: t({
       en: 'TOUCH UPS (please read)',
