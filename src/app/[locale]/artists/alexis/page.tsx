@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import { galleryImages } from "@/data/gallery";
 import { Text } from "@/components/ui/basics";
 import Gallery from "@/components/ui/gallery/Gallery";
@@ -9,12 +10,11 @@ import { useMemo, useState } from "react";
 import { useIntlayer } from "react-intlayer";
 
 export default function AlexisPage() {
-    const t = useIntlayer("alexis-page");
+  const t = useIntlayer("alexis-page");
   const images = galleryImages.filter((img) => img.artist === "Alexis");
- 
+
   const [selectedStyle, setSelectedStyle] = useState<"all" | "blackwork" | "realism">("all");
 
-   
   const styleOptions: Array<{ key: "all" | "blackwork" | "realism"; label: string }> = [
     { key: "all", label: t.allStyles.value },
     { key: "blackwork", label: t.blackwork.value },
@@ -30,8 +30,24 @@ export default function AlexisPage() {
   const activeBtn = "bg-zinc-200 text-zinc-900 border-zinc-300";
   const inactiveBtn = "bg-zinc-800/60 text-zinc-300 border-zinc-700 hover:bg-zinc-700/70";
 
+  const title = `${t.portfolio.value} – Maleficium Tattoo Studio`;
+  const description = t.description.value;
+  const url = "https://maleficiumtattoo.com/alexis"; // optional: include locale if needed at runtime
+  const image = "https://maleficiumtattoo.com/images/mf.png";
+
   return (
     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border ">
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description as string} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description as string} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
+
       <section className="mb-10 grid grid-cols-1 xl:grid-cols-2 items-stretch">
         <div className="h-full p-5 xl:py-15 xl:pl-20 xl:pr-40 order-2 xl:order-1 border-y-2 xl:border-y-0 xl:border-r-2 xl:border-b-2 bg-black">
           <div className="flex flex-col h-full items-center xl:items-start text-center xl:text-left">

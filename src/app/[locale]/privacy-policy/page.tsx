@@ -1,8 +1,47 @@
 import Link from "next/link";
 import { Footer } from "@/components/layout";
 import { getLang, tr } from "@/utils/i18n";
+import type { Metadata } from "next";
 
 type PageProps = { params: Promise<{ locale?: string }> };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const lang = getLang(locale);
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://maleficiumtattoo.com";
+  const pathname = `/${lang}/privacy-policy`;
+  const title = tr(lang, {
+    en: "Privacy Policy – Maleficium Tattoo Studio",
+    de: "Datenschutzrichtlinie – Maleficium Tattoo Studio",
+    es: "Política de Privacidad – Maleficium Tattoo Studio",
+  });
+  const description = tr(lang, {
+    en: "Learn how we collect, use, and protect your data.",
+    de: "Erfahren Sie, wie wir Ihre Daten erheben, verwenden und schützen.",
+    es: "Conoce cómo recopilamos, usamos y protegemos tus datos.",
+  });
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}${pathname}` },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}${pathname}`,
+      siteName: "Maleficium Tattoo",
+      images: [`${SITE_URL}/images/mf.png`],
+      type: "website",
+      locale: lang,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${SITE_URL}/images/mf.png`],
+    },
+  };
+}
 
 export default async function PrivacyPolicyPage({ params }: PageProps) {
   const { locale } = await params;

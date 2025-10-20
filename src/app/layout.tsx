@@ -16,9 +16,26 @@ const jimNightshade = Jim_Nightshade({
   display: "swap",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://maleficiumtattoo.com";
+
 export const metadata: Metadata = {
   title: "Maleficium Tattoo",
   description: "Professional tattoo studio - Where art meets skin",
+  metadataBase: new URL(SITE_URL),
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Maleficium Tattoo",
+    title: "Maleficium Tattoo",
+    description: "Professional tattoo studio - Where art meets skin",
+    images: [`${SITE_URL}/images/mf.png`],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maleficium Tattoo",
+    description: "Professional tattoo studio - Where art meets skin",
+    images: [`${SITE_URL}/images/mf.png`],
+  },
 };
 
 export default function RootLayout({
