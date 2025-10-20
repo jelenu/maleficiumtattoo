@@ -63,7 +63,7 @@ export default function ContactSection() {
 
       {/* Mobile (< md): Contact Form */}
       <SectionWrapper className="md:hidden xl:hidden" contentClassName="bg-black">
-        <div className="w-full h-full bg-black p-6 pb-20">
+        <div className="w-full h-full bg-black pt-6 px-4 pb-10">
           <ContactForm />
         </div>
       </SectionWrapper>

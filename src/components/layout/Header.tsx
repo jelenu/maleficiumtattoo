@@ -149,17 +149,20 @@ export default function Header() {
             <Link href={toLocalePath("/contact")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.contact.value}</Link>
 
             {/* Language selector (mobile) */}
-            <div className="flex items-center gap-4 pt-2">
-              {locales.map((lang) => (
+            <div className="flex items-center gap-2">
+              {locales.map((langOpt) => (
                 <Link
-                  key={lang.code}
-                  href={getHrefForLocale(lang.code)}
-                  aria-label={`Cambiar idioma a ${lang.label}`}
+                  key={langOpt.code}
+                  href={getHrefForLocale(langOpt.code)}
+                  aria-label={`Change language to ${langOpt.label}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`inline-flex items-center justify-center rounded-sm ${activeLocale === lang.code ? "ring-2 ring-white" : "opacity-60 hover:opacity-100"}`}
+                  className={`${activeLocale === langOpt.code ? "" : "opacity-70 hover:opacity-100"}`}
                 >
-                  <span aria-hidden="true" className="text-xl">{flagEmojiByCode[lang.code]}</span>
-                  <span className="sr-only">{lang.label}</span>
+                  <span
+                    className={`tracking-widest ${activeLocale === langOpt.code ? "text-sm font-semibold" : "text-xs"}`}
+                  >
+                    {langOpt.code.toUpperCase()}
+                  </span>
                 </Link>
               ))}
             </div>

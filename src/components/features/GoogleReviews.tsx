@@ -49,7 +49,7 @@ export default function ReviewsPopup({
       onClick={() => setShowReviews(false)}
     >
       <div
-        className="bg-gray-900 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+        className="bg-gray-900 rounded-lg shadow-2xl max-w-4xl w-full max-h-[70vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

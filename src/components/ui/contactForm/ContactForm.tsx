@@ -185,7 +185,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           viewport={{ once: true, amount: 0.2 }}
         >
           {/* First Name y Last Name */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             <FormField label={t.firstName.value} htmlFor="firstName" required>
               <Input
                 type="text"
@@ -207,8 +207,8 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             </FormField>
           </div>
 
-          {/* Phone + Email: juntos solo entre md y xl */}
-          <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
+          {/* Phone + Email: juntos en todas las resoluciones */}
+          <div className="grid grid-cols-2 gap-3">
             <FormField
               label={t.phoneNumber.value}
               htmlFor="phone"
@@ -245,7 +245,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             <TextArea
               id="description"
               name="description"
-              rows={isTablet ? 2 : 4}
+              rows={isTablet ? 3 : 4}
               required
               placeholder={t.descriptionPH.value}
             />

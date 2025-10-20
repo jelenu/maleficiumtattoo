@@ -9,6 +9,7 @@ import {
     ContactSection,
     MapSection,
 } from "@/components/sections";
+import CookieConsent from "@/components/features/CookieConsent";
 
 const Page: NextPageIntlayer = async ({ params }) => {
     const { locale } = await params;
@@ -25,6 +26,8 @@ const Page: NextPageIntlayer = async ({ params }) => {
                     <ContactSection />
                     <MapSection />
                     <div className="pt-[4rem]" />
+                    {/* Cookie consent banner (fixed, renders once when needed) */}
+      <CookieConsent />
                 </main>
             </IntlayerServerProvider>
         </IntlayerClientProvider>
