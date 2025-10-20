@@ -14,6 +14,9 @@ import Text from "@/components/ui/basics/Text";
 import { validateCountryCode, validatePhoneNumber } from "@/utils/validation";
 import { useIntlayer } from "next-intlayer";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { getLang, tr } from "@/utils/i18n";
 
 export default function ContactForm({ onSubmit }: ContactFormProps) {
   const t = useIntlayer("contact-form");
@@ -104,6 +107,52 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       setIsSubmitting(false);
     }
   };
+
+  // Locale-aware links for policies
+  const { locale } = useParams<{ locale?: string }>();
+  const lang = getLang(locale);
+  const localePrefix = `/${lang}`;
+  const consentNode = tr<React.ReactNode>(lang, {
+    en: (
+      <>
+        I agree to the{" "}
+        <Link href={`${localePrefix}/privacy-policy`} className="underline hover:text-white">
+          Privacy Policy
+        </Link>{" "}
+        and the{" "}
+        <Link href={`${localePrefix}/terms-of-service`} className="underline hover:text-white">
+          Terms of Service
+        </Link>
+        .
+      </>
+    ),
+    de: (
+      <>
+        Ich stimme der{" "}
+        <Link href={`${localePrefix}/privacy-policy`} className="underline hover:text-white">
+          Datenschutzerklärung
+        </Link>{" "}
+        und den{" "}
+        <Link href={`${localePrefix}/terms-of-service`} className="underline hover:text-white">
+          Nutzungsbedingungen
+        </Link>{" "}
+        zu.
+      </>
+    ),
+    es: (
+      <>
+        Acepto la{" "}
+        <Link href={`${localePrefix}/privacy-policy`} className="underline hover:text-white">
+          Política de Privacidad
+        </Link>{" "}
+        y los{" "}
+        <Link href={`${localePrefix}/terms-of-service`} className="underline hover:text-white">
+          Términos del Servicio
+        </Link>
+        .
+      </>
+    ),
+  });
 
   return (
     <div className=" relative h-full flex flex-col ">
@@ -212,6 +261,22 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               className=" file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-200"
             />
           </FormField>
+
+          {/* Consent checkbox */}
+          <div className="mt-2">
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="consent"
+                name="consent"
+                required
+                className="mt-1 h-4 w-4 accent-white"
+              />
+              <label htmlFor="consent" className="text-sm text-zinc-300">
+                {consentNode}
+              </label>
+            </div>
+          </div>
         </motion.div>
 
         {/* Submit Button pegado abajo */}

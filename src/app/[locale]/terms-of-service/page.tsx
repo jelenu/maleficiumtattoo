@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Footer } from "@/components/layout";
 import { getLang, tr } from "@/utils/i18n";
 
-type PageProps = { params: { locale?: string } };
+type PageProps = { params: Promise<{ locale?: string }> };
 
-export default function TermsOfServicePage({ params }: PageProps) {
-  const lang = getLang(params?.locale);
+export default async function TermsOfServicePage({ params }: PageProps) {
+  const { locale } = await params;
+  const lang = getLang(locale);
   const localePrefix = `/${lang}`;
 
   const t = {

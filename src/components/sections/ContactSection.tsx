@@ -51,7 +51,7 @@ export default function ContactSection() {
       </SectionWrapper>
 
       {/* Mobile (< md): Contact Info */}
-      <SectionWrapper className="md:hidden xl:hidden">
+      <SectionWrapper className="md:hidden xl:hidden ">
         <div className="w-full h-full bg-black p-8">
           <ContactInfo onShowReviews={() => setShowReviews(true)} />
         </div>
@@ -62,7 +62,7 @@ export default function ContactSection() {
       </SectionWrapper>
 
       {/* Mobile (< md): Contact Form */}
-      <SectionWrapper className="md:hidden xl:hidden">
+      <SectionWrapper className="md:hidden xl:hidden" contentClassName="bg-black">
         <div className="w-full h-full bg-black p-6 pb-20">
           <ContactForm />
         </div>
