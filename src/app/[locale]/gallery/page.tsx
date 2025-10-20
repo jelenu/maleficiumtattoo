@@ -1,5 +1,4 @@
 'use client';
-import Head from 'next/head';
 import { galleryImages } from '@/data/gallery';
 import { Text } from '@/components/ui/basics';
 import Gallery from '@/components/ui/gallery/Gallery';
@@ -12,26 +11,6 @@ import { motion } from 'framer-motion';
 export default function GalleryPage() {
   const { locale } = useParams<{ locale?: string }>();
   const lang = getLang(locale);
-
-  const meta = {
-    title: tr(lang, {
-      en: 'Gallery – Maleficium Tattoo Studio',
-      de: 'Galerie – Maleficium Tattoo Studio',
-      es: 'Galería – Maleficium Tattoo Studio',
-    }),
-    description: tr(lang, {
-      en: 'Explore our blackwork and realism tattoos crafted by our artists.',
-      de: 'Entdecke unsere Blackwork- und Realismus-Tattoos unserer Künstler.',
-      es: 'Explora nuestros tatuajes blackwork y realismo creados por nuestros artistas.',
-    }),
-    url: tr(lang, {
-      en: `https://maleficiumtattoo.com/en/gallery`,
-      de: `https://maleficiumtattoo.com/de/gallery`,
-      es: `https://maleficiumtattoo.com/es/gallery`,
-    }),
-    image: 'https://maleficiumtattoo.com/images/mf.png',
-  };
-
   const t = {
     title: tr(lang, { en: 'Our Gallery', de: 'Unsere Galerie', es: 'Nuestra Galería' }),
     filters: tr(lang, { en: 'Filters', de: 'Filter', es: 'Filtros' }),
@@ -77,18 +56,8 @@ export default function GalleryPage() {
 
   return (
     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border">
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.description} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={meta.url} />
-        <meta property="og:image" content={meta.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-
       <div className="py-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-30">
+
         {/* Título con animación */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

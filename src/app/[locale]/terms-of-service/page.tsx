@@ -1,47 +1,8 @@
 import Link from "next/link";
 import { Footer } from "@/components/layout";
 import { getLang, tr } from "@/utils/i18n";
-import type { Metadata } from "next";
 
 type PageProps = { params: Promise<{ locale?: string }> };
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { locale } = await params;
-  const lang = getLang(locale);
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://maleficiumtattoo.com";
-  const pathname = `/${lang}/terms-of-service`;
-  const title = tr(lang, {
-    en: "Terms of Service – Maleficium Tattoo Studio",
-    de: "Nutzungsbedingungen – Maleficium Tattoo Studio",
-    es: "Términos del Servicio – Maleficium Tattoo Studio",
-  });
-  const description = tr(lang, {
-    en: "Read the terms governing the use of our site and services.",
-    de: "Lesen Sie die Bedingungen zur Nutzung unserer Website und Dienstleistungen.",
-    es: "Lee los términos que rigen el uso de nuestro sitio y servicios.",
-  });
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `${SITE_URL}${pathname}` },
-    openGraph: {
-      title,
-      description,
-      url: `${SITE_URL}${pathname}`,
-      siteName: "Maleficium Tattoo",
-      images: [`${SITE_URL}/images/mf.png`],
-      type: "website",
-      locale: lang,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [`${SITE_URL}/images/mf.png`],
-    },
-  };
-}
 
 export default async function TermsOfServicePage({ params }: PageProps) {
   const { locale } = await params;
