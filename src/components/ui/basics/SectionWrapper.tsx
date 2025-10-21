@@ -57,7 +57,6 @@ export default function SectionWrapper({
 }: SectionWrapperProps) {
   const snapClass = snapStart ? "snap-start" : "";
   const WrapperTag: ElementType = as || "section";
-  const bgImage = backgroundImage ?? "/images/fondo.png";
   const prefersReducedMotion = useReducedMotion();
 
   // Control de fade-in del background
@@ -111,9 +110,7 @@ export default function SectionWrapper({
   return (
     <WrapperTag
       id={id}
-      className={`relative ${
-        dynamicHeight ? "h-[calc(var(--vh)*100)]" : "h-screen"
-      } ${snapClass} ${className}`}
+      className={`relative ${dynamicHeight ? "h-[calc(var(--vh)*100)]" : "h-screen"} ${snapClass} ${className}`}
     >
       {/* Content */}
       {animateOnScroll ? (
@@ -135,23 +132,21 @@ export default function SectionWrapper({
       )}
 
       {/* Background */}
-      {bgImage ? (
+      {backgroundImage && (
         <>
           <Image
-            src={bgImage}
+            src={backgroundImage}
             alt={backgroundAlt}
             fill
             className={`${imgClassName} transition-opacity duration-700 ${bgLoaded ? "opacity-100" : "opacity-0"}`}
             priority={priority}
             sizes={sizes}
-            onLoad={() => setBgLoaded(true)} // reemplaza onLoadingComplete
+            onLoad={() => setBgLoaded(true)}
           />
           {!disableOverlay && (
             <div className={`absolute inset-0 z-10 pointer-events-none ${overlayClassName}`} />
           )}
         </>
-      ) : (
-        <div className="absolute inset-0 z-0 bg-black" />
       )}
     </WrapperTag>
   );

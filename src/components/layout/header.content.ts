@@ -29,6 +29,11 @@ const headerContent = {
         de: 'Kontakt',
         es: 'Contacto',
       }),
+      blog: t({
+        en: 'Blog',
+        de: 'Blog',
+        es: 'Blog',
+      }),
     },
     a11y: {
       toggleMenu: t({
