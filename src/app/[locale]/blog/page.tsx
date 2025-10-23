@@ -37,6 +37,34 @@ type RawPost = {
   content_de?: string;
 };
 
+const t = {
+  latest: {
+    es: "Últimas publicaciones",
+    en: "Latest posts",
+    de: "Neueste Beiträge",
+  },
+  loading: {
+    es: "Cargando...",
+    en: "Loading...",
+    de: "Wird geladen...",
+  },
+  noTitle: {
+    es: "Sin título",
+    en: "No title",
+    de: "Kein Titel",
+  },
+  noSummary: {
+    es: "Sin resumen disponible.",
+    en: "No summary available.",
+    de: "Keine Zusammenfassung verfügbar.",
+  },
+  noPosts: {
+    es: "No hay publicaciones todavía.",
+    en: "No posts yet.",
+    de: "Noch keine Beiträge.",
+  },
+};
+
 export default function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -98,44 +126,45 @@ export default function BlogPage() {
           Blog
         </Text>
         <Text variant="h2" muted className="mb-6">
-          Últimas publicaciones
+          {t.latest[lang]}
         </Text>
 
-        {loading && <Text className="text-zinc-400">Cargando...</Text>}
+        {loading && <Text className="text-zinc-400">{t.loading[lang]}</Text>}
 
         {!loading && (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {posts.map((post) => (
-              <li key={post.id}>
+              <li key={post.id} className="flex justify-center items-center">
                 <Link
                   href={`/${lang}/blog/${post.slug}`}
-                  className="block bg-zinc-800 p-4 rounded-lg hover:bg-zinc-700 transition no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-white/20 cursor-pointer"
+                  className="group block relative rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-white/20 cursor-pointer aspect-[3/4] h-100 max-w-full"
                 >
                   {post.image_url && (
-                    <div className="relative w-full aspect-[16/9] mb-2 overflow-hidden rounded">
-                      <Image
-                        src={post.image_url}
-                        alt={post.title || "cover"}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 640px) 50vw, 100vw"
-                        unoptimized
-                      />
-                    </div>
+                    <Image
+                      src={post.image_url}
+                      alt={post.title || "cover"}
+                      fill
+                      className="absolute inset-0 object-cover object-center z-0 transition-all duration-500"
+                      sizes="192px"
+                      unoptimized
+                    />
                   )}
-                  <Text variant="h3" className="font-semibold">
-                    {post.title || "Sin título"}
-                  </Text>
-                  <Text className="text-zinc-400">
-                    {post.summary || "Sin resumen disponible."}
-                  </Text>
+                  <div className="absolute inset-0 z-10 bg-black/60 group-hover:bg-black/40 transition-all duration-500" />
+                  <div className="relative z-20 flex flex-col justify-center items-center h-full text-center px-2">
+                    <Text variant="h3" className="font-semibold mb-2">
+                      {post.title || t.noTitle[lang]}
+                    </Text>
+                    <Text className="text-zinc-300 text-sm line-clamp-5 w-full px-2">
+                      {post.summary || t.noSummary[lang]}
+                    </Text>
+                  </div>
                 </Link>
               </li>
             ))}
             {posts.length === 0 && (
               <li className="col-span-full">
                 <Text className="text-zinc-400">
-                  No hay publicaciones todavía.
+                  {t.noPosts[lang]}
                 </Text>
               </li>
             )}

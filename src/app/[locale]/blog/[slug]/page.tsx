@@ -97,7 +97,7 @@ export default function BlogPostPage() {
       {/* Full-width hero with fixed 16:9 aspect */}
       <div className="min-h-screen mb-20">
         {!loading && post && post.image_url && (
-          <div className="relative w-full max-w-5xl mx-auto aspect-[21/9] overflow-hidden">
+          <div className="relative w-full max-w-6xl mx-auto aspect-[21/9] overflow-hidden">
             <Image
               src={post.image_url}
               alt={post.title || "cover"}
