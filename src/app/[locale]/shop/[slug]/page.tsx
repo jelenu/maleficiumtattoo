@@ -7,6 +7,7 @@ import Text from "@/components/ui/basics/Text";
 import Image from "next/image";
 import { Footer } from "@/components/layout";
 import { getLang } from "@/utils/i18n";
+import Link from "next/link";
 
 type ProductImage = {
   image_url: string;
@@ -120,6 +121,21 @@ export default function ProductPage() {
   return (
     <main className="pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] min-h-screen">
       <div className="min-h-screen max-w-3xl mx-auto px-4 py-10">
+        {/* Ir atrás */}
+        <div className="mb-4">
+          <Link
+            href={`/${lang}/shop`}
+            className="text-zinc-200 px-3 py-1 rounded hover:text-white transition no-underline"
+          >
+            ←{" "}
+            {lang === "es"
+              ? "Volver a la tienda"
+              : lang === "de"
+              ? "Zurück zum Shop"
+              : "Back to shop"}
+          </Link>
+        </div>
+
         {/* Título */}
         <Text variant="h2" className="mb-6 text-center">
           {product.title}

@@ -34,6 +34,11 @@ const headerContent = {
         de: 'Blog',
         es: 'Blog',
       }),
+      shop: t({
+        en: 'Shop',
+        de: 'Shop',
+        es: 'Tienda',
+      }),
     },
     a11y: {
       toggleMenu: t({

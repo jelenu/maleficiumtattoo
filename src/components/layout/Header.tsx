@@ -98,6 +98,9 @@ export default function Header() {
             <Link href={toLocalePath("/studio")} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">
               {t.nav.studio.value}
             </Link>
+            <Link href={toLocalePath("/shop")} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">
+              {t.nav.shop.value}
+            </Link>
             <Link href={toLocalePath("/blog")} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">
               {t.nav.blog.value}
             </Link>
@@ -148,6 +151,7 @@ export default function Header() {
             <Link href={toLocalePath("/gallery")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.gallery.value}</Link>
             <Link href={toLocalePath("/artists")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.artists.value}</Link>
             <Link href={toLocalePath("/studio")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.studio.value}</Link>
+            <Link href={toLocalePath("/shop")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.shop.value}</Link>
             <Link href={toLocalePath("/blog")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.blog.value}</Link>
             <Link href={toLocalePath("/contact")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.contact.value}</Link>
 
