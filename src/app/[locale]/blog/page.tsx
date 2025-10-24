@@ -124,7 +124,7 @@ export default function BlogPage() {
 
   return (
     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full min-h-screen box-border">
-      <div className="max-w-5xl mx-auto px-10 py-10 min-h-screen text-white">
+      <div className="max-w-5xl mx-auto px-5 md:px-10 py-10 min-h-screen text-white">
         <Text variant="h1" align="center" className="mb-2">
           Blog
         </Text>
