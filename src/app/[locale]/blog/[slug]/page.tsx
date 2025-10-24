@@ -23,20 +23,17 @@ type Post = {
   content?: string;
 };
 
-type RawPost = {
+type PostTranslation = {
   id: string;
-  slug: string;
-  image_url?: string;
-  published_at: string;
-  title_en?: string;
-  title_es?: string;
-  title_de?: string;
-  summary_en?: string;
-  summary_es?: string;
-  summary_de?: string;
-  content_en?: string;
-  content_es?: string;
-  content_de?: string;
+  post_id: string;
+  lang: string;
+  title?: string;
+  summary?: string;
+  content?: string;
+};
+
+type JoinedPost = Post & {
+  post_translations: PostTranslation[];
 };
 
 export default function BlogPostPage() {
@@ -52,17 +49,19 @@ export default function BlogPostPage() {
     (async () => {
       const { data, error } = await supabase
         .from("posts")
-        .select(
-          `
+        .select(`
+        id,
+        slug,
+        image_url,
+        published_at,
+        post_translations (
           id,
-          slug,
-          image_url,
-          published_at,
-          title_${lang},
-          summary_${lang},
-          content_${lang}
-        `
+          lang,
+          title,
+          summary,
+          content
         )
+      `)
         .eq("slug", slug)
         .single();
 
@@ -73,15 +72,18 @@ export default function BlogPostPage() {
       }
 
       if (active && data) {
-        const p = data as RawPost;
+        const p = data as JoinedPost;
+        const translation = p.post_translations.find(
+          (tr) => tr.lang === lang
+        );
         setPost({
           id: p.id,
           slug: p.slug,
           image_url: p.image_url,
           published_at: p.published_at,
-          title: p[`title_${lang}` as keyof RawPost] as string,
-          summary: p[`summary_${lang}` as keyof RawPost] as string,
-          content: (p[`content_${lang}` as keyof RawPost] as string) || "",
+          title: translation?.title,
+          summary: translation?.summary,
+          content: translation?.content || "",
         });
         setLoading(false);
       }

@@ -21,20 +21,17 @@ type Post = {
   content?: string;
 };
 
-type RawPost = {
+type PostTranslation = {
   id: string;
-  slug: string;
-  image_url?: string;
-  published_at: string;
-  title_en?: string;
-  title_es?: string;
-  title_de?: string;
-  summary_en?: string;
-  summary_es?: string;
-  summary_de?: string;
-  content_en?: string;
-  content_es?: string;
-  content_de?: string;
+  post_id: string;
+  lang: string;
+  title?: string;
+  summary?: string;
+  content?: string;
+};
+
+type JoinedPost = Post & {
+  post_translations: PostTranslation[];
 };
 
 const t = {
@@ -78,17 +75,19 @@ export default function BlogPage() {
     (async () => {
       const { data, error } = await supabase
         .from("posts")
-        .select(
-          `
+        .select(`
+        id,
+        slug,
+        image_url,
+        published_at,
+        post_translations (
           id,
-          slug,
-          image_url,
-          published_at,
-          title_${lang},
-          summary_${lang},
-          content_${lang}
-        `
+          lang,
+          title,
+          summary,
+          content
         )
+      `)
         .order("published_at", { ascending: false });
 
       if (error) {
@@ -97,17 +96,21 @@ export default function BlogPage() {
       }
 
       if (active) {
-        // 👇 Tipamos correctamente el mapeo sin usar `any`
         const localizedPosts: Post[] =
-          (data as RawPost[] | null)?.map((p) => ({
-            id: p.id,
-            slug: p.slug,
-            image_url: p.image_url,
-            published_at: p.published_at,
-            title: p[`title_${lang}` as keyof RawPost] as string,
-            summary: p[`summary_${lang}` as keyof RawPost] as string,
-            content: p[`content_${lang}` as keyof RawPost] as string,
-          })) ?? [];
+          (data as JoinedPost[] | null)?.map((p) => {
+            const translation = p.post_translations.find(
+              (tr) => tr.lang === lang
+            );
+            return {
+              id: p.id,
+              slug: p.slug,
+              image_url: p.image_url,
+              published_at: p.published_at,
+              title: translation?.title,
+              summary: translation?.summary,
+              content: translation?.content,
+            };
+          }) ?? [];
 
         setPosts(localizedPosts);
         setLoading(false);
@@ -132,12 +135,12 @@ export default function BlogPage() {
         {loading && <Text className="text-zinc-400">{t.loading[lang]}</Text>}
 
         {!loading && (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-10">
             {posts.map((post) => (
               <li key={post.id} className="flex justify-center items-center">
                 <Link
                   href={`/${lang}/blog/${post.slug}`}
-                  className="group block relative rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-white/20 cursor-pointer aspect-[3/4] h-100 max-w-full"
+                  className="group block relative rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-white/20 cursor-pointer aspect-[3/4] h-120 max-w-full"
                 >
                   {post.image_url && (
                     <Image
@@ -151,10 +154,10 @@ export default function BlogPage() {
                   )}
                   <div className="absolute inset-0 z-10 bg-black/60 group-hover:bg-black/40 transition-all duration-500" />
                   <div className="relative z-20 flex flex-col justify-center items-center h-full text-center px-2">
-                    <Text variant="h3" className="font-semibold mb-2">
+                    <Text variant="h3" className="font-semibold mb-2" align="center">
                       {post.title || t.noTitle[lang]}
                     </Text>
-                    <Text className="text-zinc-300 text-sm line-clamp-5 w-full px-2">
+                    <Text className="text-zinc-300 text-sm line-clamp-5 w-full px-2" align="center">
                       {post.summary || t.noSummary[lang]}
                     </Text>
                   </div>
