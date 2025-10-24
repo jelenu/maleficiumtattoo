@@ -121,18 +121,18 @@ export default function BlogPage() {
 
   return (
     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full min-h-screen box-border">
-      <div className="max-w-5xl mx-auto px-4 py-10 min-h-screen text-white">
-        <Text variant="h1" className="mb-2">
+      <div className="max-w-5xl mx-auto px-10 py-10 min-h-screen text-white">
+        <Text variant="h1" align="center" className="mb-2">
           Blog
         </Text>
-        <Text variant="h2" muted className="mb-6">
+        <Text variant="h2" muted align="center" className="mb-6">
           {t.latest[lang]}
         </Text>
 
         {loading && <Text className="text-zinc-400">{t.loading[lang]}</Text>}
 
         {!loading && (
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
             {posts.map((post) => (
               <li key={post.id} className="flex justify-center items-center">
                 <Link

@@ -95,9 +95,9 @@ export default function BlogPostPage() {
   return (
     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 min-h-screen box-border">
       {/* Full-width hero with fixed 16:9 aspect */}
-      <div className="min-h-screen mb-20">
+      <div className="min-h-screen xl:mb-20">
         {!loading && post && post.image_url && (
-          <div className="relative w-full max-w-6xl mx-auto aspect-[21/9] overflow-hidden">
+          <div className="relative w-full xl:max-w-6xl mx-auto aspect-[21/9] overflow-hidden">
             <Image
               src={post.image_url}
               alt={post.title || "cover"}
@@ -122,20 +122,22 @@ export default function BlogPostPage() {
               </Link>
             </div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-white">
-              <Text variant="h1" align="center" className="mb-2">
+              <Text variant="h1" align="center" className="mt-2">
                 {post.title || "Sin título"}
               </Text>
-              {post.summary && (
-                <Text align="center" className="text-zinc-200">
-                  {post.summary}
-                </Text>
-              )}
+             
             </div>
           </div>
         )}
 
-        <div className="relative flex justify-center">
-          <div className="max-w-3xl w-full bg-zinc-950 shadow-xl p-10 -mt-25 z-30">
+        <div className="relative flex justify-center w-full">
+          <div
+            className="relative  w-full xl:max-w-3xl shadow-xl px-5 sm:px-20 sm:py-10 xl:p-10 -mt-0 xl:-mt-25 z-30"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/fondo.png')",
+            }}
+          >
             {loading && <Text className="text-zinc-400">Cargando...</Text>}
 
             {!loading && !post && (
@@ -154,7 +156,7 @@ export default function BlogPostPage() {
                   <CustomMarkdown content={post.content || ""} />
                 </div>
                 {post.published_at && (
-                  <Text className="text-sm text-zinc-400">
+                  <Text className="text-sm text-zinc-400 mb-5 sm:mb-0">
                     {new Date(post.published_at).toLocaleDateString(lang)}
                   </Text>
                 )}
