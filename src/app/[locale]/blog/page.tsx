@@ -96,6 +96,7 @@ export default function BlogPage() {
       }
 
       if (active) {
+        const now = new Date();
         const localizedPosts: Post[] =
           (data as JoinedPost[] | null)?.map((p) => {
             const translation = p.post_translations.find(
@@ -110,6 +111,11 @@ export default function BlogPage() {
               summary: translation?.summary,
               content: translation?.content,
             };
+          })
+          // Filtra posts cuya fecha de publicación ya ha llegado
+          .filter((post) => {
+            if (!post.published_at) return false;
+            return new Date(post.published_at) <= now;
           }) ?? [];
 
         setPosts(localizedPosts);
