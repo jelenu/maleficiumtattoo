@@ -18,25 +18,27 @@ export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [editQty, setEditQty] = useState<Record<string, string>>({});
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const { products, loading } = useShopData("es");
 
+  // 🔹 Cargar carrito desde localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("maleficium_cart");
-      if (stored) {
-        setCart(JSON.parse(stored));
-      }
+      if (stored) setCart(JSON.parse(stored));
       setIsLoaded(true);
     }
   }, []);
 
-  // Solo actualiza localStorage si el carrito ya se cargó
+  // 🔹 Guardar carrito actualizado
   useEffect(() => {
     if (isLoaded && typeof window !== "undefined") {
       localStorage.setItem("maleficium_cart", JSON.stringify(cart));
     }
   }, [cart, isLoaded]);
 
+  // 🔹 Sincronizar campos de cantidad
   useEffect(() => {
     const qtyObj: Record<string, string> = {};
     cart.forEach((item) => {
@@ -53,11 +55,7 @@ export default function CartPage() {
     );
   };
 
-  const handleQuantity = (
-    productId: string,
-    variantId: string,
-    qty: number
-  ) => {
+  const handleQuantity = (productId: string, variantId: string, qty: number) => {
     setCart(
       cart.map((item) =>
         item.productId === productId && item.variantId === variantId
@@ -67,6 +65,7 @@ export default function CartPage() {
     );
   };
 
+  // 🔹 Enriquecer productos con detalles de Supabase
   const cartWithDetails = cart.map((item) => {
     const product = products.find((p) => p.id === item.productId);
     const variant = product?.variants.find((v) => v.id === item.variantId);
@@ -83,6 +82,45 @@ export default function CartPage() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  // 🔹 Función para crear la sesión de Stripe Checkout
+  const handleCheckout = async () => {
+    try {
+      setIsProcessing(true);
+      setCheckoutError(null);
+
+      const lineItems = cartWithDetails.map((item) => ({
+        name: item.title,
+        image: item.image_url,
+        unit_amount: Math.round(item.price * 100),
+        quantity: item.quantity,
+      }));
+
+      const res = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cart: lineItems }),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        setCheckoutError(errorData.error || "Error al crear la sesión de pago");
+        setIsProcessing(false);
+        return;
+      }
+
+      const data: { url?: string; error?: string } = await res.json();
+      if (data.url) {
+        window.location.href = data.url; // redirige a Stripe Checkout
+      } else {
+        setCheckoutError(data.error || "No se recibió la URL del pago.");
+        setIsProcessing(false);
+      }
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : "Unexpected error");
+      setIsProcessing(false);
+    }
+  };
 
   return (
     <main className="pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full min-h-screen box-border">
@@ -113,7 +151,7 @@ export default function CartPage() {
                   <div className="flex-1">
                     <Text variant="h3">{item.title}</Text>
                     <Text className="text-white text-sm">
-                      Size: {item.variantName}
+                      Talla: {item.variantName}
                     </Text>
                     <Text className="text-white font-bold mt-2">
                       {item.price}€
@@ -152,13 +190,28 @@ export default function CartPage() {
                 </div>
               );
             })}
+
             <div className="flex justify-between items-center mt-6">
               <Text className="font-bold text-lg">Total:</Text>
               <Text className="text-white font-bold text-lg">
                 {total.toFixed(2)}€
               </Text>
             </div>
-            <Button className="mt-4">Finalizar compra</Button>
+
+            {checkoutError && (
+              <Text className="text-center mb-4 text-red-500">
+                {checkoutError}
+              </Text>
+            )}
+
+            <Button
+              className="mt-4"
+              onClick={handleCheckout}
+              disabled={isProcessing}
+            >
+              {isProcessing ? "Redirigiendo..." : "Finalizar compra"}
+            </Button>
+
             <Link
               href="/shop"
               className="mt-4 text-zinc-300 hover:text-white underline text-center"
