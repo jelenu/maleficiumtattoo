@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useIntlayer } from "next-intlayer";
 import { useParams, usePathname } from "next/navigation";
+import { FaShoppingBasket } from "react-icons/fa";
 
 export default function Header() {
   const t = useIntlayer("header");
@@ -109,7 +110,7 @@ export default function Header() {
             </Link>
 
             {/* Language selector (desktop) */}
-            <div className="flex items-center gap-2 pl-4 border-l border-white/30">
+            <div className="flex items-center gap-2 px-4 border-x border-white/30">
               {locales.map((langOpt) => (
                 <Link
                   key={langOpt.code}
@@ -125,6 +126,17 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
+              
+            </div>
+            <div>
+              {/* Carrito */}
+              <Link
+                href={toLocalePath("/shop/cart")}
+                aria-label="Go to cart"
+                className="ml-2 flex items-center hover:scale-110 transition-transform"
+              >
+                <FaShoppingBasket size={20} className="text-white" />
+              </Link>
             </div>
           </nav>
 
@@ -172,6 +184,15 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
+              {/* Carrito */}
+              <Link
+                href={toLocalePath("/shop/cart")}
+                aria-label="Ir al carrito"
+                className="ml-2 flex items-center hover:scale-110 transition-transform"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FaShoppingBasket size={28} className="text-white" />
+              </Link>
             </div>
           </div>
         </nav>

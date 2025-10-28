@@ -56,8 +56,6 @@ export default function ShopPage() {
           lang={lang}
         />
 
-        {loading && <Text className="text-zinc-400">{t.loading[lang]}</Text>}
-
         {!loading && (
           <ProductList
             products={filteredProducts}
