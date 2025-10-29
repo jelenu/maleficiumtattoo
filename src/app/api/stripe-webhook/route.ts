@@ -33,10 +33,10 @@ export async function POST(req: NextRequest) {
     const session = event.data.object as Stripe.Checkout.Session;
     const customerEmail =
       session.customer_details?.email || session.customer_email;
-    const orderId = session.id;
+    const paymentId = session.payment_intent as string;
 
     // Retrieve purchased items and expand product details
-    const lineItems = await stripe.checkout.sessions.listLineItems(orderId, {
+    const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
       expand: ["data.price.product"],
     });
 
@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
         </div>
         <div style="background-color: #fff; padding: 30px; border-radius: 8px; margin: 20px 0;">
           <h2 style="color: #000; margin-top: 0;">Order Details</h2>
-          <p><strong>Order ID:</strong> ${orderId}</p>
+          <p><strong>Order ID:</strong> ${paymentId}</p>
           <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
             <thead>
               <tr style="background-color: #eee;">
@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
 
         console.log("Webhook received:", {
           customerEmail,
-          orderId,
+          paymentId,
           amountTotal,
         });
       } catch (err) {
