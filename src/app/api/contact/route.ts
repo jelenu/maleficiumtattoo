@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
     // Enviar email
     console.log('📧 Attempting to send email...');
     const emailData = {
-      from: 'Maleficium Tattoo <onboarding@resend.dev>', // Usar el dominio por defecto de Resend
+      from: 'Maleficium Tattoo <onboarding@resend.dev>',
       to: [process.env.STUDIO_EMAIL || 'jesusleon2700@gmail.com'],
       replyTo: email,
       subject: `Nueva Consulta de Tatuaje - ${firstName} ${lastName}`,

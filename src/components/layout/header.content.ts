@@ -39,6 +39,11 @@ const headerContent = {
         de: 'Shop',
         es: 'Tienda',
       }),
+      cart: t({
+        en: 'Cart',
+        de: 'Warenkorb',
+        es: 'Carrito',
+      }),
     },
     a11y: {
       toggleMenu: t({

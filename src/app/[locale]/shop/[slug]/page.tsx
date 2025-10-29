@@ -38,6 +38,18 @@ export default function ProductPage() {
   const sizeLabel =
     lang === "es" ? "Tamaño" : lang === "de" ? "Größe" : "Size";
 
+  // Traducción para "Cantidad"
+  const quantityLabel =
+    lang === "es" ? "Cantidad" : lang === "de" ? "Menge" : "Quantity";
+
+  // Traducción para "Añadir al carrito"
+  const addToCartLabel =
+    lang === "es"
+      ? "Añadir al carrito"
+      : lang === "de"
+      ? "In den Warenkorb"
+      : "Add to cart";
+
   // Añadir al carrito y guardar en localStorage
   const handleAddToCart = () => {
     if (!product || !selectedSize) return;
@@ -95,7 +107,7 @@ export default function ProductPage() {
           {addedMsg}
         </div>
       )}
-      <div className="min-h-screen max-w-6xl mx-auto px-4 py-10">
+      <div className="min-h-screen max-w-5xl mx-auto px-2 sm:px-4 md:px-6 py-8">
         {/* Ir atrás */}
         <div className="mb-4">
           <Link
@@ -111,16 +123,21 @@ export default function ProductPage() {
           </Link>
         </div>
 
-        {/* Layout principal: Carousel izquierda, info derecha */}
-        <div className="flex flex-col md:flex-row gap-10 items-start">
-          {/* Carousel a la izquierda */}
-          <div className="w-full md:w-1/2 max-w-lg mx-auto md:mx-0 mb-8 md:mb-0">
+        {/* Responsive layout */}
+        <div className="flex flex-col xl:flex-row xl:gap-12 gap-0 items-start">
+          {/* Para <xl: título arriba, luego carousel, luego info */}
+          <div className="w-full xl:hidden mb-0">
+            <Text variant="h1" className="mb-4 text-center">
+              {product.title}
+            </Text>
+          </div>
+          <div className="w-full xl:w-1/2 max-w-md mx-auto xl:mx-0 mb-0 xl:mb-0 flex justify-center">
             {carouselImages.length > 1 ? (
-              <div className="relative">
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square">
                 <CarouselShop images={carouselImages} alt={product.title} />
               </div>
             ) : (
-              <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-zinc-900">
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-xl overflow-hidden bg-zinc-900">
                 {carouselImages[0] && (
                   <Image
                     src={carouselImages[0]}
@@ -134,32 +151,29 @@ export default function ProductPage() {
               </div>
             )}
           </div>
-
-          {/* Info a la derecha */}
-          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-            {/* Título */}
-            <Text variant="h2" className="mb-4 text-center md:text-left">
-              {product.title}
-            </Text>
-
-            {/* Descripción */}
-            <Text className="mb-4 text-center md:text-left">
-              {product.description}
-            </Text>
-
+          <div className="w-full xl:w-1/2 flex flex-col items-center xl:items-start">
+            {/* Para <xl: título arriba, así que aquí solo en xl */}
+            <div className="hidden xl:block w-full">
+              <Text variant="h1" className="mb-4 text-left">
+                {product.title}
+              </Text>
+            </div>
             {/* Precio principal */}
             {product.price !== undefined && (
-              <Text className="text-white font-bold text-lg mb-4 text-center md:text-left">
-                {lang === "es" ? "Precio" : lang === "de" ? "Preis" : "Price"}:{" "}
+              <Text variant="h3" className="text-white font-bold text-lg mb-2 text-center xl:text-left">
                 {product.price}€
               </Text>
             )}
+            {/* Descripción */}
+            <Text className="mb-4 text-center xl:text-left">
+              {product.description}
+            </Text>
 
             {/* Variantes como botones de tallas */}
             {product.variants.length > 0 && (
-              <div className="mt-4 flex flex-col items-center md:items-start">
+              <div className="mt-4 flex flex-col items-center xl:items-start w-full">
                 <label className="mb-2 font-medium">{sizeLabel}</label>
-                <div className="flex gap-2 mb-4">
+                <div className="flex gap-2 mb-8 flex-wrap justify-center xl:justify-start">
                   {product.variants.map((variant) => (
                     <button
                       key={variant.id}
@@ -176,9 +190,9 @@ export default function ProductPage() {
                   ))}
                 </div>
                 {/* Selector de cantidad */}
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-6 justify-center xl:justify-start">
                   <label htmlFor="quantity" className="font-medium">
-                    Cantidad:
+                    {quantityLabel}:
                   </label>
                   <input
                     id="quantity"
@@ -199,8 +213,9 @@ export default function ProductPage() {
                     Number(quantity) < 1
                   }
                   onClick={handleAddToCart}
+                  className="w-full max-w-xs"
                 >
-                  Añadir al carrito
+                  {addToCartLabel}
                 </Button>
                 {/* Elimina el mensaje inline */}
               </div>

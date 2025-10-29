@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       shipping_address_collection: {
         allowed_countries: ["ES", "FR", "DE", "AT", "PT", "GB"],
       },
-      success_url: `${req.headers.get("origin")}/success`,
+      success_url: `${req.headers.get("origin")}/shop/success`,
       cancel_url: `${req.headers.get("origin")}/shop/cart`,
     });
 

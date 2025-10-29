@@ -89,7 +89,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation - right */}
-          <nav className="hidden md:flex md:col-start-3 justify-end items-center h-full space-x-10">
+          <nav className="hidden lg:flex lg:col-start-3 justify-end items-center h-full space-x-10">
             <Link href={toLocalePath("/gallery")} className="inline-flex items-center h-full leading-none text-2xl hover:scale-110 transition-transform duration-200 font-display">
               {t.nav.gallery.value}
             </Link>
@@ -142,7 +142,7 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden justify-self-end flex flex-col justify-center items-center w-8 h-8 space-y-1"
+            className="lg:hidden justify-self-end flex flex-col justify-center items-center w-8 h-8 space-y-1"
             onClick={toggleMenu}
             aria-label={`${t.a11y.toggleMenu.value}`}
             aria-controls="mobile-menu"
@@ -157,7 +157,7 @@ export default function Header() {
         {/* Mobile Navigation */}
         <nav
           id="mobile-menu"
-          className={`md:hidden absolute left-0 right-0 bg-black transition-[max-height,opacity] duration-300 ease-in-out ${isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"} overflow-hidden border-b-2 border-b-white`}
+          className={`lg:hidden absolute left-0 right-0 bg-black transition-[max-height,opacity] duration-300 ease-in-out ${isMenuOpen ? "max-h-85 opacity-100" : "max-h-0 opacity-0"} overflow-hidden border-b-2 border-b-white`}
         >
           <div className="px-4 pt-3 pb-5 space-y-3">
             <Link href={toLocalePath("/gallery")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.gallery.value}</Link>
@@ -166,6 +166,7 @@ export default function Header() {
             <Link href={toLocalePath("/shop")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.shop.value}</Link>
             <Link href={toLocalePath("/blog")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.blog.value}</Link>
             <Link href={toLocalePath("/contact")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.contact.value}</Link>
+            <Link href={toLocalePath("/shop/cart")} className="block text-lg font-display hover:text-gray-300 transition-colors duration-200" onClick={() => setIsMenuOpen(false)}>{t.nav.cart.value}</Link>
 
             {/* Language selector (mobile) */}
             <div className="flex items-center gap-2">
@@ -184,15 +185,6 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
-              {/* Carrito */}
-              <Link
-                href={toLocalePath("/shop/cart")}
-                aria-label="Ir al carrito"
-                className="ml-2 flex items-center hover:scale-110 transition-transform"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FaShoppingBasket size={28} className="text-white" />
-              </Link>
             </div>
           </div>
         </nav>
