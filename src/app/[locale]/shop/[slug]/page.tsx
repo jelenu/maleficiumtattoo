@@ -108,7 +108,7 @@ export default function ProductPage() {
       {/* Popup mensaje añadido */}
       {addedMsg && (
         <div
-          className="fixed top-30 left-1/2 z-50 transform -translate-x-1/2  text-black px-6 py-3 rounded shadow-lg font-semibold text-center transition-opacity duration-300"
+          className="fixed top-30 left-1/2 z-50 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded shadow-lg font-semibold text-center transition-opacity duration-300"
           style={{ minWidth: "220px" }}
         >
           {addedMsg}
