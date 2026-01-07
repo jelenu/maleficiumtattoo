@@ -181,21 +181,21 @@ export default function StylesSection() {
         >
           {/* Row 1: Text (izquierda) | Image (derecha) */}
           <div className="grid grid-cols-2 h-1/3 w-full">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
               <TextTile
                 title={t.styles?.[0]?.title.value}
                 description={t.styles?.[0]?.description.value}
               />
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
               <ImgTile
                 src={t.styles?.[0]?.imageSrc.value}
                 alt={t.styles?.[0]?.imageAlt.value}
@@ -205,21 +205,21 @@ export default function StylesSection() {
 
           {/* Row 2: Image (izquierda) | Text (derecha) */}
           <div className="grid grid-cols-2 h-1/3 w-full">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
               <ImgTile
                 src={t.styles?.[1]?.imageSrc.value}
                 alt={t.styles?.[1]?.imageAlt.value}
               />
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
               <TextTile
                 title={t.styles?.[1]?.title.value}
                 description={t.styles?.[1]?.description.value}
@@ -229,21 +229,21 @@ export default function StylesSection() {
 
           {/* Row 3: Text (izquierda) | Image (derecha) */}
           <div className="grid grid-cols-2 h-1/3 w-full">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] } }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] } }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
               <TextTile
                 title={t.styles?.[2]?.title.value}
                 description={t.styles?.[2]?.description.value}
               />
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] } }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] } }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
               <ImgTile
                 src={t.styles?.[2]?.imageSrc.value}
                 alt={t.styles?.[2]?.imageAlt.value}
