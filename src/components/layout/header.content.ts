@@ -39,6 +39,11 @@ const headerContent = {
         de: 'Shop',
         es: 'Tienda',
       }),
+      merch: t({
+        en: 'Merch',
+        de: 'Merch',
+        es: 'Merch',
+      }),
       cart: t({
         en: 'Cart',
         de: 'Warenkorb',
