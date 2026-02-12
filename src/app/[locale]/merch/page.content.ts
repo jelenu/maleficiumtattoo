@@ -4,14 +4,19 @@ const merchPageContent = {
   key: 'merch-page',
   content: {
     title: {
-      es: "Tienda",
+      es: "Merch",
       en: "Merch",
       de: "Merch",
     },
     description: {
-      es: "Bienvenido a nuestra tienda. Explora productos exclusivos y añade tus favoritos al carrito.",
-      en: "Welcome to our shop. Browse exclusive products and add your favorites to the cart.",
-      de: "Willkommen in unserem Shop. Stöbern Sie durch exklusive Produkte und fügen Sie Ihre Favoriten zum Warenkorb hinzu.",
+      es: "Explora nuestro merch exclusivo. Para realizar tu compra, contáctanos a través de ",
+      en: "Explore our exclusive merch. To make a purchase, contact us via ",
+      de: "Entdecken Sie unseren exklusiven Merch. Um einen Kauf zu tätigen, kontaktieren Sie uns über ",
+    },
+    instagram: {
+      es: "Instagram",
+      en: "Instagram",
+      de: "Instagram",
     },
     loading: {
       es: "Cargando productos...",

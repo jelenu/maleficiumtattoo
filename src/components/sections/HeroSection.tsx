@@ -44,6 +44,7 @@ export default function HeroSection() {
       {/* Layout para móvil */}
       <div className="flex flex-col items-center space-y-8 md:hidden">
         <motion.div
+          className="-mt-24"
           key={ready ? "logo-mobile-ready" : "logo-mobile-wait"}
           initial={{ opacity: 0 }} // oculto antes de animar
           whileInView={
@@ -63,8 +64,8 @@ export default function HeroSection() {
           <Image
             src="/images/mf.png"
             alt={String(t.logoAltMobile)}
-            width={300}
-            height={300}
+            width={250}
+            height={250}
             className="max-w-full max-h-full object-contain"
             priority
           />
@@ -148,21 +149,21 @@ export default function HeroSection() {
         </motion.div>
       </div>
       {/* Tres columnas en la parte inferior pegadas abajo */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-6xl z-20 px-16 border-t border-white">
-        <div className="flex flex-row text-white text-center text-lg min-h-[72px] py-4">
-          <div className="flex flex-col justify-center items-center flex-1 relative">
-            <Text variant="subtitle" className="font-semibold">{t.addressLabel}</Text>
-            <Text variant="small">{t.address}</Text>
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-6xl z-20 px-2 md:px-16 border-t border-white">
+        <div className="flex flex-row text-white text-center text-lg min-h-[72px] py-2 md:py-4 gap-1 md:gap-0">
+          <div className="flex flex-col justify-center items-center flex-1 relative px-1">
+            <Text variant="subtitle" className="font-semibold text-xs md:text-base">{t.addressLabel}</Text>
+            <Text variant="small" className="text-xs md:text-sm">{t.address}</Text>
             <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60"></div>
           </div>
-          <div className="flex flex-col justify-center items-center flex-1 relative">
-            <Text variant="subtitle" className="font-semibold">{t.phoneLabel}</Text>
-            <Text variant="small">{t.phone}</Text>
+          <div className="flex flex-col justify-center items-center flex-1 relative px-1">
+            <Text variant="subtitle" className="font-semibold text-xs md:text-base">{t.phoneLabel}</Text>
+            <Text variant="small" className="text-xs md:text-sm">{t.phone}</Text>
             <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60"></div>
           </div>
-          <div className="flex flex-col justify-center items-center flex-1">
-            <Text variant="subtitle" className="font-semibold">{t.hoursLabel}</Text>
-            <Text variant="small">{t.hours}</Text>
+          <div className="flex flex-col justify-center items-center flex-1 px-1">
+            <Text variant="subtitle" className="font-semibold text-xs md:text-base">{t.hoursLabel}</Text>
+            <Text variant="small" className="text-xs md:text-sm">{t.hours}</Text>
           </div>
         </div>
       </div>

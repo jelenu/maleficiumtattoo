@@ -12,6 +12,7 @@ import {
 import CookieConsent from "@/components/features/CookieConsent";
 import type { Metadata } from "next";
 import { getLang, tr } from "@/utils/i18n";
+import ForceSectionSnap from "@/components/ui/ForceSectionSnap";
 
 const Page: NextPageIntlayer = async ({ params }) => {
     const { locale } = await params;
@@ -20,6 +21,8 @@ const Page: NextPageIntlayer = async ({ params }) => {
         <IntlayerClientProvider locale={locale}>
             <IntlayerServerProvider locale={locale}>
                 <main className="h-screen overflow-y-scroll snap-y snap-mandatory scrollbar-hide">
+                    <ForceSectionSnap />
+
                     <HeroSection />
                     <AboutStudioSection />
                     <StylesSection />

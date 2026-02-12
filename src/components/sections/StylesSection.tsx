@@ -2,10 +2,19 @@
 import { SectionWrapper, Text } from "@/components/ui";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
+import { useRouter, useParams } from "next/navigation";
 import { useIntlayer } from "next-intlayer";
 export default function StylesSection() {
   const t = useIntlayer("styles");
+  const router = useRouter();
+  const { locale } = useParams<{ locale?: string }>();
+
+  const handleStyleClick = (styleIndex: number) => {
+    const styleMap = ['blackwork', 'realism', 'blackwork']; // Mapeo de índices a estilos
+    const style = styleMap[styleIndex];
+    const galleryUrl = locale ? `/${locale}/gallery?style=${style}` : `/gallery?style=${style}`;
+    router.push(galleryUrl);
+  };
 
   return (
     <>
@@ -24,6 +33,7 @@ export default function StylesSection() {
                 title={t.styles?.[0]?.title.value}
                 description={t.styles?.[0]?.description.value}
                 className="h-full"
+                onClick={() => handleStyleClick(0)}
               />
             </motion.div>
             <motion.div
@@ -48,6 +58,7 @@ export default function StylesSection() {
                 title={t.styles?.[2]?.title.value}
                 description={t.styles?.[2]?.description.value}
                 className="h-full"
+                onClick={() => handleStyleClick(2)}
               />
             </motion.div>
 
@@ -74,6 +85,7 @@ export default function StylesSection() {
                 title={t.styles?.[1]?.title.value}
                 description={t.styles?.[1]?.description.value}
                 className="h-full"
+                onClick={() => handleStyleClick(1)}
               />
             </motion.div>
             <motion.div
@@ -105,6 +117,7 @@ export default function StylesSection() {
               <TextTile
                 title={t.styles?.[0]?.title.value}
                 description={t.styles?.[0]?.description.value}
+                onClick={() => handleStyleClick(0)}
               />
             </motion.div>
             <motion.div
@@ -139,6 +152,7 @@ export default function StylesSection() {
               <TextTile
                 title={t.styles?.[1]?.title.value}
                 description={t.styles?.[1]?.description.value}
+                onClick={() => handleStyleClick(1)}
               />
             </motion.div>
           </div>
@@ -153,6 +167,7 @@ export default function StylesSection() {
               <TextTile
                 title={t.styles?.[2]?.title.value}
                 description={t.styles?.[2]?.description.value}
+                onClick={() => handleStyleClick(2)}
               />
             </motion.div>
             <motion.div
@@ -189,6 +204,7 @@ export default function StylesSection() {
               <TextTile
                 title={t.styles?.[0]?.title.value}
                 description={t.styles?.[0]?.description.value}
+                onClick={() => handleStyleClick(0)}
               />
             </motion.div>
               <motion.div
@@ -223,6 +239,7 @@ export default function StylesSection() {
               <TextTile
                 title={t.styles?.[1]?.title.value}
                 description={t.styles?.[1]?.description.value}
+                onClick={() => handleStyleClick(1)}
               />
             </motion.div>
           </div>
@@ -237,6 +254,7 @@ export default function StylesSection() {
               <TextTile
                 title={t.styles?.[2]?.title.value}
                 description={t.styles?.[2]?.description.value}
+                onClick={() => handleStyleClick(2)}
               />
             </motion.div>
               <motion.div
@@ -256,12 +274,17 @@ export default function StylesSection() {
   );
 }
 
-function TextTile({ title, description, className = "" }: { title?: string | null; description?: string | null; className?: string }) {
+function TextTile({ title, description, className = "", onClick }: { title?: string | null; description?: string | null; className?: string; onClick?: () => void }) {
   return (
     <div className={`h-full flex flex-col p-3 sm:p-10 ${className}`}>
-      <Text variant="h3" className="uppercase tracking-wide text-white mb-2">
-        {title || ""}
-      </Text>
+      <div 
+        className={`${onClick ? 'cursor-pointer hover:text-zinc-300 transition-colors' : ''}`}
+        onClick={onClick}
+      >
+        <Text variant="h3" className="uppercase tracking-wide text-white mb-2">
+          {title || ""}
+        </Text>
+      </div>
       <Text variant="description" muted>
         {description || ""}
       </Text>

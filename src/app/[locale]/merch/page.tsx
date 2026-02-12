@@ -32,9 +32,20 @@ export default function MerchPage() {
         <Text variant="h1" align="center" className="mb-2">
           {t.title[lang]}
         </Text>
-        <Text align="center" className="mb-6">
-          {t.description[lang]}
-        </Text>
+        <div className="text-center mb-6">
+          <Text className="inline">
+            {t.description[lang]}
+          </Text>
+          <a
+            href="https://www.instagram.com/maleficium.tattoo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline font-bold hover:text-zinc-300 transition-colors underline"
+          >
+            {t.instagram[lang]}
+          </a>
+          <Text className="inline">.</Text>
+        </div>
 
         <CategorySelector
           categories={categories}

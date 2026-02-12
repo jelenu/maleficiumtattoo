@@ -22,9 +22,9 @@ const aboutContent = {
       }),
     ],
     buttonText: t({
-      en: 'Our Jobs',
-      de: 'Unsere Arbeiten',
-      es: 'Nuestros Trabajos',
+      en: 'Our Studio',
+      de: 'Unser Studio',
+      es: 'Nuestro Estudio',
     }),
     imageAlt: t({
       en: 'Maleficium Tattoo Studio',

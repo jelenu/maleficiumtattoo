@@ -11,8 +11,8 @@ export default function AboutStudioSection() {
   const t = useIntlayer("about");
   const router = useRouter();
   const { locale } = useParams<{ locale?: string }>();
-  const contactHref = locale ? `/${locale}/contact` : "/contact";
-  const goContact = () => router.push(contactHref);
+  const studioHref = locale ? `/${locale}/studio` : "/studio";
+  const goStudio = () => router.push(studioHref);
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function AboutStudioSection() {
                 ))}
               </div>
 
-              <Button variant="outline" size="lg" className="self-start" onClick={goContact}>
+              <Button variant="outline" size="lg" className="self-start" onClick={goStudio}>
                 {t.buttonText.value}
               </Button>
             </motion.div>
@@ -191,7 +191,7 @@ export default function AboutStudioSection() {
               viewport={{ once: true, amount: 0.2 }}
               className="flex justify-center md:justify-start"
             >
-              <Button variant="outline" size="lg" onClick={goContact}>
+              <Button variant="outline" size="lg" onClick={goStudio}>
                 {t.buttonText.value}
               </Button>
             </motion.div>

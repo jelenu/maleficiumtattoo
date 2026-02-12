@@ -2,14 +2,15 @@
 import { galleryImages } from '@/data/gallery';
 import { Text } from '@/components/ui/basics';
 import Gallery from '@/components/ui/gallery/Gallery';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Footer } from '@/components/layout';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { getLang, tr } from '@/utils/i18n';
 import { motion } from 'framer-motion';
 
 export default function GalleryPage() {
   const { locale } = useParams<{ locale?: string }>();
+  const searchParams = useSearchParams();
   const lang = getLang(locale);
   const t = {
     title: tr(lang, { en: 'Our Gallery', de: 'Unsere Galerie', es: 'Nuestra Galería' }),
@@ -25,6 +26,14 @@ export default function GalleryPage() {
   const [selectedStyle, setSelectedStyle] = useState<'all' | 'blackwork' | 'realism'>('all');
   const [selectedArtist, setSelectedArtist] = useState<'all' | 'Alexis' | 'Manu'>('all');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  // Leer el parámetro de query ?style= y establecer el filtro inicial
+  useEffect(() => {
+    const styleParam = searchParams.get('style');
+    if (styleParam === 'blackwork' || styleParam === 'realism') {
+      setSelectedStyle(styleParam);
+    }
+  }, [searchParams]);
 
   const filteredImages = useMemo(
     () =>
