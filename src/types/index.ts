@@ -19,11 +19,6 @@ export interface ReviewsPopupProps {
   setShowReviews: (show: boolean) => void;
 }
 
-// Props para información de contacto
-export interface ContactInfoProps {
-  onShowReviews: () => void;
-}
-
 // Props para formulario de contacto
 export interface ContactFormProps {
   onSubmit?: (data: FormData) => void;

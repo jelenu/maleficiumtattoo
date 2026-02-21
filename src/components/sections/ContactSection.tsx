@@ -1,14 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { SectionWrapper } from "@/components/ui";
 import { ContactInfo } from "@/components/ui";
 import ContactForm from "@/components/ui/contactForm/ContactForm";
-import GoogleReviews from "@/components/features/GoogleReviews";
 
 export default function ContactSection() {
-  const [showReviews, setShowReviews] = useState(false);
-
   return (
     <>
       {/* Desktop (xl) */}
@@ -17,7 +13,7 @@ export default function ContactSection() {
           <div className="grid grid-cols-[55%_45%] h-full   p-6 bg-black border-2 border-white">
             {/* Columna izquierda - Información de contacto */}
             <div className="flex flex-col h-full ">
-              <ContactInfo onShowReviews={() => setShowReviews(true)} />
+              <ContactInfo />
             </div>
 
             {/* Columna derecha - Formulario */}
@@ -26,39 +22,24 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-
-        {/* Reviews Popup */}
-        <GoogleReviews
-          showReviews={showReviews}
-          setShowReviews={setShowReviews}
-        />
       </SectionWrapper>
       {/* Tablet (md to < xl): Contact Info + Form en el mismo section */}
       <SectionWrapper className="hidden md:block xl:hidden">
-        <div className="w-full h-full bg-black  px-15 py-10 flex flex-col gap-5">
+        <div className="w-full h-full bg-black  px-10 py-10 flex flex-col gap-5">
           <div className="flex h-full">
-            <ContactInfo onShowReviews={() => setShowReviews(true)} />
+            <ContactInfo />
           </div>
           <div className="h-full">
             <ContactForm />
           </div>
         </div>
-        <GoogleReviews
-          showReviews={showReviews}
-          setShowReviews={setShowReviews}
-         
-        />
       </SectionWrapper>
 
       {/* Mobile (< md): Contact Info */}
       <SectionWrapper className="md:hidden xl:hidden ">
         <div className="w-full h-full bg-black p-8">
-          <ContactInfo onShowReviews={() => setShowReviews(true)} />
+          <ContactInfo />
         </div>
-        <GoogleReviews
-          showReviews={showReviews}
-          setShowReviews={setShowReviews}
-        />
       </SectionWrapper>
 
       {/* Mobile (< md): Contact Form */}
