@@ -7,9 +7,13 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Text from "@/components/ui/basics/Text";
 import { useIntlayer } from "next-intlayer";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export default function CarouselSection() {
   const t = useIntlayer("carousel");
+  const { locale } = useParams<{ locale?: string }>();
+  const galleryHref = locale ? `/${locale}/gallery` : "/gallery";
 
   const slides = useMemo(
     () => Array.from({ length: 6 }, () => "/images/tattoo.jpg"),
@@ -56,7 +60,9 @@ export default function CarouselSection() {
         >
           {/* Overlay text now above carousel without absolute */}
           <div className="flex flex-col items-center justify-center text-center text-white">
-            <Text variant="h1" align="center">{t.title.value}</Text>
+            <Link href={galleryHref} className="hover:opacity-80 transition-opacity">
+              <Text variant="h1" align="center">Nuestra galería</Text>
+            </Link>
             <Text
               variant="description"
               align="center"
@@ -146,7 +152,9 @@ export default function CarouselSection() {
             whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <Text variant="h1" align="center">{t.title.value}</Text>
+            <Link href={galleryHref} className="hover:opacity-80 transition-opacity">
+              <Text variant="h1" align="center">Nuestra galería</Text>
+            </Link>
             <Text variant="description" align="center" className="opacity-80">
               {t.subtitle.value}
             </Text>

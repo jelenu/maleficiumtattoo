@@ -32,21 +32,13 @@ export default function AlexisPage() {
 
   return (
     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border ">
-      <section className="mb-10 grid grid-cols-1 xl:grid-cols-2 items-stretch">
-        <div className="h-full p-5 xl:py-15 xl:pl-20 xl:pr-40 order-2 xl:order-1 border-y-2 xl:border-y-0 xl:border-r-2 xl:border-b-2 bg-black">
+      <section className="mb-10 grid grid-cols-1 xl:grid-cols-[11fr_9fr] items-stretch">
+        <div className="h-full p-7 xl:py-15 xl:pl-20 xl:pr-40 order-2 xl:order-1 border-y-2 xl:border-y-0 xl:border-r-2 xl:border-b-2 bg-black">
           <div className="flex flex-col h-full items-center xl:items-start text-center xl:text-left">
             <Text variant="h2" className="mb-3 text-center xl:text-left">{t.about.value}</Text>
             <div className="flex-1 flex items-center justify-center xl:justify-start">
               <Text variant="description" className="text-zinc-300 text-center xl:text-left">
-                Artista especializado en realismo y blackwork. Apasionado por
-                transformar ideas en piezas únicas que cuentan historias a través de
-                la piel. 
-                Artista especializado en realismo y blackwork. Apasionado por
-                transformar ideas en piezas únicas que cuentan historias a través de
-                la piel.
-                Artista especializado en realismo y blackwork. Apasionado por
-                transformar ideas en piezas únicas que cuentan historias a través de
-                la piel.
+                {t.description.value}
               </Text>
             </div>
             <div className="mt-4 flex items-center gap-4 justify-center xl:justify-start">
@@ -88,7 +80,7 @@ export default function AlexisPage() {
         </div>
       </section>
 
-      <div className="py-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-30">
+      <div className="py-10 px-10 sm:px-6 md:px-8 lg:px-12 xl:px-30">
         <Text variant="h1" align="center" className="mb-6">{t.portfolio.value}</Text>
 
         <div className="mb-6 flex flex-col items-center text-center  ">

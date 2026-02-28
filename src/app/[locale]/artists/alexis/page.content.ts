@@ -34,9 +34,9 @@ const alexisPageContent = {
       es: 'Realismo',
     }),
     description: t({
-      en: 'Artist specialized in realism and blackwork. Passionate about transforming ideas into unique pieces that tell stories through the skin.',
-      de: 'Künstler spezialisiert auf Realismus und Blackwork. Leidenschaftlich darin, Ideen in einzigartige Werke zu verwandeln, die Geschichten auf der Haut erzählen.',
-      es: 'Artista especializado en realismo y blackwork. Apasionado por transformar ideas en piezas únicas que cuentan historias a través de la piel.',
+      en: 'Artist specialized in realism and blackwork. Passionate about transforming ideas into unique pieces that tell stories through the skin. Artist specialized in realism and blackwork. Passionate about transforming ideas into unique pieces that tell stories through the skin.',
+      de: 'Künstler spezialisiert auf Realismus und Blackwork. Leidenschaftlich darin, Ideen in einzigartige Werke zu verwandeln, die Geschichten auf der Haut erzählen. Künstler spezialisiert auf Realismus und Blackwork. Leidenschaftlich darin, Ideen in einzigartige Werke zu verwandeln, die Geschichten auf der Haut erzählen.',
+      es: 'Artista especializado en realismo y blackwork. Apasionado por transformar ideas en piezas únicas que cuentan historias a través de la piel. Artista especializado en realismo y blackwork. Apasionado por transformar ideas en piezas únicas que cuentan historias a través de la piel.',
     }),
     socialInstagramLabel: t({
       en: 'Alexis on Instagram',
