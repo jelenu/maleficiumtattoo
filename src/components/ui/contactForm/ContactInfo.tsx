@@ -105,13 +105,13 @@ export default function ContactInfo() {
         whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <Text variant="h2">
+        <Text variant="contactTitle">
           {t.title.value}
         </Text>
 
-        <div className="flex flex-col flex-grow justify-evenly text-gray-300">
+        <div className="flex flex-col flex-grow justify-evenly">
           {t.info.map((text, index) => (
-            <Text key={index} variant="body">
+            <Text key={index} variant="contactBody">
               {text}
             </Text>
           ))}
@@ -120,21 +120,6 @@ export default function ContactInfo() {
         </div>
       </motion.div>
 
-      <motion.div
-        className="mb-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1, transition: { duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] } }}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <Text variant="subtitle" uppercase>
-          {t.touchUpsTitle.value}
-        </Text>
-        <Text variant="body" className="text-gray-300">
-          {t.touchUpsContent.value}
-        </Text>
-      </motion.div>
-
-      {/* Google Reviews Button - pegado abajo */}
       <div className="mt-auto flex items-end justify-between">
         <motion.div
           className="flex-1"
@@ -182,8 +167,23 @@ export default function ContactInfo() {
                   href={review.reviewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-900/60 rounded-lg p-3 border border-gray-700 hover:bg-gray-900/80 hover:border-gray-600 transition-colors duration-200 cursor-pointer block"
+                  className="bg-gray-900/60 rounded-lg p-3 border border-gray-700 hover:bg-gray-900/80 hover:border-gray-600 transition-colors duration-200 cursor-pointer block relative"
                 >
+                  <div className="hidden xl:flex items-center gap-0.5 absolute top-2 right-2">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className={`w-3 h-3 ${
+                          i < review.rating
+                            ? "text-yellow-400 fill-current"
+                            : "text-gray-600"
+                        }`}
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
                   <div className="flex flex-col md:flex-row md:gap-2 md:items-center xl:flex-col xl:gap-0 xl:items-stretch">
                     <div className="md:w-1/5 xl:w-full">
                       <div className="flex items-center mb-2">
@@ -200,7 +200,7 @@ export default function ContactInfo() {
                     </div>
 
                     <div className="md:w-4/5 xl:w-full">
-                      <div className="flex items-center mb-1">
+                      <div className="flex items-center mb-1 xl:hidden">
                         {[...Array(5)].map((_, i) => (
                           <svg
                             key={i}
@@ -215,7 +215,7 @@ export default function ContactInfo() {
                           </svg>
                         ))}
                       </div>
-                      <p className="text-[11px] text-gray-300 leading-relaxed line-clamp-4 md:line-clamp-2">
+                      <p className="text-[11px] text-gray-300 leading-relaxed line-clamp-2 md:line-clamp-2 xl:line-clamp-3">
                         {review.text}
                       </p>
                     </div>

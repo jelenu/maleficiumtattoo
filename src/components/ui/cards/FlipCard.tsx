@@ -10,6 +10,7 @@ interface FlipCardProps {
   image: string;
   role: string;
   description: string;
+  instagram?: string;
 
   // Behavior
   hoverFlip?: boolean; // desktop: flip con hover
@@ -39,6 +40,7 @@ export default function FlipCard({
   image,
   role,
   description,
+  instagram,
   hoverFlip = false,
   flipped = false,
   onToggle,
@@ -73,12 +75,13 @@ export default function FlipCard({
 
   const resolvedBackClass =
     backClass ??
-    (hoverFlip ? "bg-black p-15" : "bg-black/95 p-6 md:py-20 md:px-15");
+    (hoverFlip ? "bg-black p-10" : "bg-black/95 p-6 md:p-10");
 
   const resolvedHintText = hintText ?? (hoverFlip ? i18n.hoverToRead : i18n.tapToRead);
 
   const resolvedBackHintText = backHintText ?? (hoverFlip ? undefined : i18n.tapToFlip);
   const computedCtaLabel = ctaLabel ?? i18n.viewPortfolio;
+  const instagramHandle = instagram?.trim();
 
   const handleClick = () => {
     if (!interactive) return;
@@ -137,6 +140,11 @@ export default function FlipCard({
             <Text variant="h3" className="text-3xl text-white drop-shadow-md font-display">
               {name}
             </Text>
+            {instagramHandle ? (
+              <span className="text-sm text-white/85">
+                {instagramHandle}
+              </span> 
+            ) : null}
             <Text
               variant="subtitle"
               className="mt-2 tracking-wider bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-md border border-white/20"
@@ -158,8 +166,22 @@ export default function FlipCard({
           <Text variant="h2" className="text-white">
             {name}
           </Text>
+          {instagramHandle ? (
+            <a
+              href={
+                instagramHandle.startsWith("http")
+                  ? instagramHandle
+                  : `https://www.instagram.com/${instagramHandle.replace(/^@/, "")}`
+              }
+              target="_blank"
+              rel="noreferrer"
+              className="mt-1 text-sm text-white/85 hover:text-white transition-colors"
+            >
+              {instagramHandle}
+            </a>
+          ) : null}
           <div className="flex-1 flex items-center justify-center w-full">
-            <Text variant="description" align="center">
+            <Text variant="cardBack" align="center">
               {description}
             </Text>
           </div>

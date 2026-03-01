@@ -37,7 +37,7 @@ export default function ContactSection() {
 
       {/* Mobile (< md): Contact Info */}
       <SectionWrapper className="md:hidden xl:hidden ">
-        <div className="w-full h-full bg-black p-8">
+        <div className="w-full h-full bg-black p-4 ">
           <ContactInfo />
         </div>
       </SectionWrapper>

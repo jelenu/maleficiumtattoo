@@ -25,7 +25,7 @@ export default function AboutStudioSection() {
           <div className="flex h-full">
             {/* Contenido izquierdo */}
             <motion.div
-              className="flex-[2] border-2 border-r-0 bg-black border-white p-8 lg:p-10 xl:p-13 flex flex-col justify-between h-full"
+              className="flex-[2] border-2 border-r-0 bg-black border-white p-8 lg:p-10 xl:p-10 flex flex-col justify-between h-full"
               initial={{ opacity: 0, x: -24 }}
               whileInView={{
                 opacity: 1,
@@ -38,13 +38,13 @@ export default function AboutStudioSection() {
               }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <Text variant="h2" className="text-white">
+              <Text variant="aboutTitle" className="text-white">
                 {t.title.value}
               </Text>
 
               <div className="space-y-4 lg:space-y-6">
                 {t.paragraphs.map((paragraph, index) => (
-                  <Text key={index} variant="body" muted>
+                  <Text key={index} variant="aboutBody" muted>
                     {paragraph}
                   </Text>
                 ))}
@@ -151,7 +151,7 @@ export default function AboutStudioSection() {
               }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <Text variant="h2" className="text-white" fluidMobile fluidTablet>
+              <Text variant="aboutTitle" className="text-white" fluidMobile fluidTablet>
                 {t.title.value}
               </Text>
             </motion.div>
@@ -171,7 +171,7 @@ export default function AboutStudioSection() {
               viewport={{ once: true, amount: 0.2 }}
             >
               {t.paragraphs.map((paragraph, index) => (
-                <Text key={index} variant="body" muted fluidMobile fluidTablet>
+                <Text key={index} variant="aboutBody" muted fluidMobile fluidTablet>
                   {paragraph}
                 </Text>
               ))}
