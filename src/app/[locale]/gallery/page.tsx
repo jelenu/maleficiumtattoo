@@ -2,13 +2,13 @@
 import { galleryImages } from '@/data/gallery';
 import { Text } from '@/components/ui/basics';
 import Gallery from '@/components/ui/gallery/Gallery';
-import { useState, useMemo, useEffect } from 'react';
+import { Suspense, useState, useMemo, useEffect } from 'react';
 import { Footer } from '@/components/layout';
 import { useParams, useSearchParams } from 'next/navigation';
 import { getLang, tr } from '@/utils/i18n';
 import { motion } from 'framer-motion';
 
-export default function GalleryPage() {
+function GalleryPageContent() {
   const { locale } = useParams<{ locale?: string }>();
   const searchParams = useSearchParams();
   const lang = getLang(locale);
@@ -170,5 +170,13 @@ export default function GalleryPage() {
 
       <Footer />
     </main>
+  );
+}
+
+export default function GalleryPage() {
+  return (
+    <Suspense fallback={null}>
+      <GalleryPageContent />
+    </Suspense>
   );
 }
