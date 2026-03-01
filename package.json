@@ -15,7 +15,7 @@
     "framer-motion": "^12.23.22",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.544.0",
-    "next": "15.5.5",
+    "next": "15.5.7",
     "next-intlayer": "^6.1.6",
     "next-sitemap": "^4.2.3",
     "react": "19.1.0",
@@ -39,7 +39,7 @@
     "@types/react-dom": "^19",
     "@types/unist": "^3.0.3",
     "eslint": "^9",
-    "eslint-config-next": "15.5.5",
+    "eslint-config-next": "15.5.7",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
