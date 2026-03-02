@@ -75,7 +75,7 @@ export default function StylesSection() {
     ],
   ];
 
-  const mobileRows: TileSpec[][] = [
+  const mobileTopRows: TileSpec[][] = [
     [
       { kind: "text", index: 0, delay: 0.2 },
       { kind: "image", index: 0, delay: 0.2 },
@@ -84,13 +84,16 @@ export default function StylesSection() {
       { kind: "image", index: 1, delay: 0.4 },
       { kind: "text", index: 1, delay: 0.4 },
     ],
+  ];
+
+  const mobileBottomRows: TileSpec[][] = [
     [
-      { kind: "text", index: 2, delay: 0.6 },
-      { kind: "image", index: 2, delay: 0.6 },
+      { kind: "text", index: 2, delay: 0.2 },
+      { kind: "image", index: 2, delay: 0.2 },
     ],
     [
-      { kind: "image", index: 3, delay: 0.8 },
-      { kind: "text", index: 3, delay: 0.8 },
+      { kind: "image", index: 3, delay: 0.4 },
+      { kind: "text", index: 3, delay: 0.4 },
     ],
   ];
 
@@ -129,16 +132,37 @@ export default function StylesSection() {
       {/* Tablet only section */}
       <SectionWrapper className="hidden sm:block xl:hidden" animateOnScroll={false}>
         <div className="bg-black h-full w-full">
-          {tabletRows.map((row, rowIndex) => (
-            <div key={`tablet-row-${rowIndex}`} className="grid grid-cols-2 h-1/4 w-full">
+          {tabletRows.slice(0, 2).map((row, rowIndex) => (
+            <div key={`tablet-row-${rowIndex}`} className="grid grid-cols-2 h-1/2 max-h-[700px] w-full">
               {row.map((spec, colIndex) => (
                 <motion.div
                   key={`tablet-${rowIndex}-${colIndex}`}
+                  className="h-full"
                   initial={{ opacity: 0, x: spec.motionX ?? 0 }}
                   whileInView={{ opacity: 1, x: 0, transition: { duration: 2, delay: spec.delay ?? 0.2, ease: [0.16, 1, 0.3, 1] } }}
                   viewport={{ once: true, amount: 0.2 }}
                 >
-                  {renderTile(spec)}
+                  {renderTile(spec, "h-full")}
+                </motion.div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper className="hidden sm:block xl:hidden" animateOnScroll={false}>
+        <div className="bg-black h-full w-full">
+          {tabletRows.slice(2, 4).map((row, rowIndex) => (
+            <div key={`tablet-row-${rowIndex + 2}`} className="grid grid-cols-2 h-1/2 max-h-[600px] w-full">
+              {row.map((spec, colIndex) => (
+                <motion.div
+                  key={`tablet-${rowIndex + 2}-${colIndex}`}
+                  className="h-full"
+                  initial={{ opacity: 0, x: spec.motionX ?? 0 }}
+                  whileInView={{ opacity: 1, x: 0, transition: { duration: 2, delay: spec.delay ?? 0.2, ease: [0.16, 1, 0.3, 1] } }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  {renderTile(spec, "h-full")}
                 </motion.div>
               ))}
             </div>
@@ -147,25 +171,49 @@ export default function StylesSection() {
       </SectionWrapper>
 
       {/* Mobile only section */}
-      {/* Mobile only section */}
       <SectionWrapper className="block sm:hidden" animateOnScroll={false}>
-        {/* Contenedor principal con fade */}
         <motion.div
           className="bg-black h-full w-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          {mobileRows.map((row, rowIndex) => (
-            <div key={`mobile-row-${rowIndex}`} className="grid grid-cols-2 h-1/4 w-full">
+          {mobileTopRows.map((row, rowIndex) => (
+            <div key={`mobile-top-row-${rowIndex}`} className="grid grid-cols-2 h-1/2 max-h-[360px] w-full">
               {row.map((spec, colIndex) => (
                 <motion.div
-                  key={`mobile-${rowIndex}-${colIndex}`}
+                  key={`mobile-top-${rowIndex}-${colIndex}`}
+                  className="h-full"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1, transition: { duration: 1.2, delay: spec.delay ?? 0.2, ease: [0.16, 1, 0.3, 1] } }}
                   viewport={{ once: true, amount: 0.2 }}
                 >
-                  {renderTile(spec)}
+                  {renderTile(spec, "h-full")}
+                </motion.div>
+              ))}
+            </div>
+          ))}
+        </motion.div>
+      </SectionWrapper>
+
+      <SectionWrapper className="block sm:hidden" animateOnScroll={false}>
+        <motion.div
+          className="bg-black h-full w-full"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {mobileBottomRows.map((row, rowIndex) => (
+            <div key={`mobile-bottom-row-${rowIndex}`} className="grid grid-cols-2 h-1/2 max-h-[360px] w-full">
+              {row.map((spec, colIndex) => (
+                <motion.div
+                  key={`mobile-bottom-${rowIndex}-${colIndex}`}
+                  className="h-full"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1, transition: { duration: 1.2, delay: spec.delay ?? 0.2, ease: [0.16, 1, 0.3, 1] } }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  {renderTile(spec, "h-full")}
                 </motion.div>
               ))}
             </div>
