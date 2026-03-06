@@ -8,15 +8,14 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { useIntlayer } from "react-intlayer";
 
-export default function ManuPage() {
-  const t = useIntlayer("manu-page");
-  const images = galleryImages.filter((img) => img.artist === "Manu");
+export default function ArnauPage() {
+  const t = useIntlayer("arnau-page");
+  const images = galleryImages.filter((img) => img.artist === "Arnau");
 
-  const [selectedStyle, setSelectedStyle] = useState<"all" | "blackwork" | "realism">("all");
+  const [selectedStyle, setSelectedStyle] = useState<"all" | "realism">("all");
 
-  const styleOptions: Array<{ key: "all" | "blackwork" | "realism"; label: string }> = [
+  const styleOptions: Array<{ key: "all" | "realism"; label: string }> = [
     { key: "all", label: t.allStyles.value },
-    { key: "blackwork", label: t.blackwork.value },
     { key: "realism", label: t.realism.value },
   ];
 
@@ -25,17 +24,18 @@ export default function ManuPage() {
     [images, selectedStyle]
   );
 
-  const baseBtn =
-    "px-3 py-1.5 rounded-md text-xs font-medium tracking-wide transition-colors border";
+  const baseBtn = "px-3 py-1.5 rounded-md text-xs font-medium tracking-wide transition-colors border";
   const activeBtn = "bg-zinc-200 text-zinc-900 border-zinc-300";
   const inactiveBtn = "bg-zinc-800/60 text-zinc-300 border-zinc-700 hover:bg-zinc-700/70";
 
   return (
-    <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border">
-      <section className="mb-10 grid grid-cols-1 xl:grid-cols-2 items-stretch">
-        <div className="h-full p-5 xl:py-15 xl:pl-20 xl:pr-40 order-2 xl:order-1 border-y-2 xl:border-y-0 xl:border-r-2 xl:border-b-2 bg-black">
+    <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border ">
+      <section className="mb-10 grid grid-cols-1 xl:grid-cols-[11fr_9fr] items-stretch">
+        <div className="h-full p-7 xl:py-15 xl:pl-20 xl:pr-40 order-2 xl:order-1 border-y-2 xl:border-y-0 xl:border-r-2 xl:border-b-2 bg-black">
           <div className="flex flex-col h-full items-center xl:items-start text-center xl:text-left">
-            <Text variant="h2" className="mb-3 text-center xl:text-left">{t.about.value}</Text>
+            <Text variant="h2" className="mb-3 text-center xl:text-left">
+              {t.about.value}
+            </Text>
             <div className="flex-1 flex items-center justify-center xl:justify-start">
               <Text variant="description" className="text-zinc-300 text-center xl:text-left">
                 {t.description.value}
@@ -71,7 +71,7 @@ export default function ManuPage() {
         <div className="relative w-full aspect-[1.91/1] order-1 xl:order-2">
           <Image
             src="/images/alexis.jpg"
-            alt="Manu portrait"
+            alt="Arnau portrait"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
@@ -80,10 +80,12 @@ export default function ManuPage() {
         </div>
       </section>
 
-      <div className="py-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-30">
-        <Text variant="h1" align="center" className="mb-6">{t.portfolio.value}</Text>
+      <div className="py-10 px-10 sm:px-6 md:px-8 lg:px-12 xl:px-30">
+        <Text variant="h1" align="center" className="mb-6">
+          {t.portfolio.value}
+        </Text>
 
-        <div className="mb-6 flex flex-col items-center text-center">
+        <div className="mb-6 flex flex-col items-center text-center  ">
           <span className="text-sm tracking-wider text-zinc-400 mb-2 uppercase">{t.styles.value}</span>
           <div className="flex flex-wrap justify-center gap-2">
             {styleOptions.map((opt) => (
