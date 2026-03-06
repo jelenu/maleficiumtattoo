@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Text from "@/components/ui/basics/Text";
 import { Footer } from "@/components/layout";
+import { useIntlayer } from "next-intlayer";
 
 export default function StudioPage() {
+  const t = useIntlayer("studio-page");
+
   return (
     <main className="min-h-screen">
       {/* Hero */}
@@ -28,37 +33,11 @@ export default function StudioPage() {
       {/* Texto */}
       <section className="py-12 px-6 md:px-10">
         <div className="max-w-5xl mx-auto text-white space-y-6">
-          <Text variant="description">
-            Maleficum Tattoo es un estudio privado en Sankt Pölten, Baja Austria,
-            dedicado al tatuaje personalizado en un entorno tranquilo y cuidado.
-            Trabajamos exclusivamente con cita previa, lo que nos permite ofrecer
-            una experiencia enfocada, sin interrupciones y centrada en cada proyecto.
-          </Text>
-          <Text variant="description">
-            El estudio fue fundado por Alexisdarkart, tatuador con más de 10 años
-            de experiencia y originario de Barcelona. Su visión combina precisión
-            técnica, estética sólida y un trato cercano, entendiendo el tatuaje como
-            algo personal y duradero.
-          </Text>
-          <Text variant="description">
-            Somos un espacio inclusivo y respetuoso, abierto a todas las personas.
-            La confianza, la comunicación y la seguridad forman parte esencial de
-            nuestra manera de trabajar.
-          </Text>
-          <Text variant="description">
-            Nos especializamos principalmente en blackwork, ignorant y new school,
-            pero también realizamos tatuajes pequeños y de línea fina (fineline),
-            porque sabemos que las piezas más discretas también tienen significado
-            y merecen la misma atención y calidad que los proyectos de gran formato.
-          </Text>
-          <Text variant="description">
-            Además, contamos regularmente con artistas invitados que amplían la
-            propuesta del estudio con otros estilos y enfoques.
-          </Text>
-          <Text variant="description">
-            En Maleficum Tattoo cada tatuaje, grande o pequeño, se trabaja con el
-            mismo compromiso y dedicación.
-          </Text>
+          {t.paragraphs.map((paragraph, index) => (
+            <Text key={index} variant="description">
+              {paragraph.value}
+            </Text>
+          ))}
         </div>
       </section>
 
