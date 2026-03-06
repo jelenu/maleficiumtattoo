@@ -17,6 +17,14 @@ export default function MerchPage() {
   const { locale } = useParams<{ locale?: string }>();
   const lang = getLang(locale) as "es" | "en" | "de";
 
+  const getLocalizedText = (value: unknown): string => {
+    if (typeof value === "string") return value;
+    if (value && typeof value === "object" && "value" in value) {
+      return String((value as { value?: unknown }).value ?? "");
+    }
+    return String(value ?? "");
+  };
+
   const { products, loading, categories, catLoading } = useMerchData(lang);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -35,10 +43,7 @@ export default function MerchPage() {
         <div className="text-center mb-6 space-y-4">
           {Array.isArray(t.description[lang]) ? (
             t.description[lang].map((paragraph, index) => {
-              const paragraphText =
-                typeof paragraph === "string"
-                  ? paragraph
-                  : paragraph?.value ?? String(paragraph);
+              const paragraphText = getLocalizedText(paragraph);
 
               if (index !== 2) {
                 return (
@@ -48,10 +53,7 @@ export default function MerchPage() {
                 );
               }
 
-              const linkLabel =
-                typeof t.instagram[lang] === "string"
-                  ? t.instagram[lang]
-                  : t.instagram[lang]?.value ?? String(t.instagram[lang]);
+              const linkLabel = getLocalizedText(t.instagram[lang]);
               const parts = paragraphText.split(linkLabel);
 
               return (
@@ -72,9 +74,7 @@ export default function MerchPage() {
           ) : (
             <>
               <Text className="inline">
-                {typeof t.description[lang] === "string"
-                  ? t.description[lang]
-                  : t.description[lang]?.value ?? String(t.description[lang])}
+                {getLocalizedText(t.description[lang])}
               </Text>
               <a
                 href="https://www.instagram.com/maleficium.tattoo"
@@ -82,9 +82,7 @@ export default function MerchPage() {
                 rel="noopener noreferrer"
                 className="inline font-bold hover:text-zinc-300 transition-colors underline"
               >
-                {typeof t.instagram[lang] === "string"
-                  ? t.instagram[lang]
-                  : t.instagram[lang]?.value ?? String(t.instagram[lang])}
+                {getLocalizedText(t.instagram[lang])}
               </a>
               <Text className="inline">.</Text>
             </>
