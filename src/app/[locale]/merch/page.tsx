@@ -32,19 +32,63 @@ export default function MerchPage() {
         <Text variant="h1" align="center" className="mb-2">
           {t.title[lang]}
         </Text>
-        <div className="text-center mb-6">
-          <Text className="inline">
-            {t.description[lang]}
-          </Text>
-          <a
-            href="https://www.instagram.com/maleficium.tattoo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline font-bold hover:text-zinc-300 transition-colors underline"
-          >
-            {t.instagram[lang]}
-          </a>
-          <Text className="inline">.</Text>
+        <div className="text-center mb-6 space-y-4">
+          {Array.isArray(t.description[lang]) ? (
+            t.description[lang].map((paragraph, index) => {
+              const paragraphText =
+                typeof paragraph === "string"
+                  ? paragraph
+                  : paragraph?.value ?? String(paragraph);
+
+              if (index !== 2) {
+                return (
+                  <Text key={index} className="block">
+                    {paragraphText}
+                  </Text>
+                );
+              }
+
+              const linkLabel =
+                typeof t.instagram[lang] === "string"
+                  ? t.instagram[lang]
+                  : t.instagram[lang]?.value ?? String(t.instagram[lang]);
+              const parts = paragraphText.split(linkLabel);
+
+              return (
+                <Text key={index} className="block">
+                  {parts[0]}
+                  <a
+                    href="https://www.instagram.com/maleficium.tattoo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold hover:text-zinc-300 transition-colors underline"
+                  >
+                    {linkLabel}
+                  </a>
+                  {parts.slice(1).join(linkLabel)}
+                </Text>
+              );
+            })
+          ) : (
+            <>
+              <Text className="inline">
+                {typeof t.description[lang] === "string"
+                  ? t.description[lang]
+                  : t.description[lang]?.value ?? String(t.description[lang])}
+              </Text>
+              <a
+                href="https://www.instagram.com/maleficium.tattoo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline font-bold hover:text-zinc-300 transition-colors underline"
+              >
+                {typeof t.instagram[lang] === "string"
+                  ? t.instagram[lang]
+                  : t.instagram[lang]?.value ?? String(t.instagram[lang])}
+              </a>
+              <Text className="inline">.</Text>
+            </>
+          )}
         </div>
 
         <CategorySelector

@@ -9,7 +9,11 @@ const merchPageContent = {
       de: "Merch",
     },
     description: {
-      es: "Explora nuestro merch exclusivo. Para realizar tu compra, contáctanos a través de ",
+      es: [
+        "En esta sección encontrarás una selección de piezas exclusivas creadas por el estudio. Todos los productos están hechos a mano por nosotros y se producen en cantidades limitadas, lo que convierte cada artículo en algo especial y difícil de repetir.",
+        "La tienda online funciona como catálogo; no realizamos ventas directamente a través de la web. Los precios están indicados en la galería y todos se muestran sin gastos de envío.",
+        "Si estás interesado/a en alguna pieza, puedes contactarnos mediante mensaje directo en Instagram para confirmar disponibilidad y gestionar la compra. Preferimos una comunicación directa y personal, acorde con la filosofía del estudio y el cuidado que ponemos en cada creación.",
+      ],
       en: "Explore our exclusive merch. To make a purchase, contact us via ",
       de: "Entdecken Sie unseren exklusiven Merch. Um einen Kauf zu tätigen, kontaktieren Sie uns über ",
     },
