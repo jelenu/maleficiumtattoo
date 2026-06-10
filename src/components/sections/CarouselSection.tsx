@@ -16,9 +16,15 @@ export default function CarouselSection() {
   const galleryHref = locale ? `/${locale}/gallery` : "/gallery";
 
   const slides = useMemo(
-    () => Array.from({ length: 6 }, () => "/images/tattoo.jpg"),
-    []
-  );
+  () => [
+    "/images/alexis/Original/alexis2.webp",
+    "/images/alexis/Original/alexis3.webp",
+    "/images/alexis/Original/alexis4.webp",
+    "/images/alexis/Original/alexis5.webp",
+    "/images/alexis/Original/alexis6.webp",
+  ],
+  []
+);
 
   const [index, setIndex] = useState(1);
   const last = slides.length - 1;
