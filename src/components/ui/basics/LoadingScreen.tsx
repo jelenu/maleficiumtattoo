@@ -14,26 +14,41 @@ export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Función para verificar si todo está cargado
-    const handleLoad = () => {
-      // Esperar un poco más para asegurar que todo esté listo
-      setTimeout(() => {
-        setIsLoading(false);
-        // Notificar que la app está lista
-        requestAnimationFrame(() => {
-          window.__APP_LOADED = true; // <- sin any
-          document.documentElement.classList.add('app-loaded');
-          window.dispatchEvent(new Event('app-loaded'));
-        });
-      }, 1500); // 1.5 segundos para una transición suave
+    if (typeof window === 'undefined') return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const alreadyLoaded = window.__APP_LOADED || sessionStorage.getItem('app_loaded') === '1';
+
+    const markLoaded = () => {
+      setIsLoading(false);
+      requestAnimationFrame(() => {
+        window.__APP_LOADED = true;
+        sessionStorage.setItem('app_loaded', '1');
+        document.documentElement.classList.add('app-loaded');
+        window.dispatchEvent(new Event('app-loaded'));
+      });
     };
 
-    // Si la página ya está cargada
+    if (alreadyLoaded || prefersReducedMotion) {
+      markLoaded();
+      return;
+    }
+
+    // Función para verificar si todo está cargado
+    const handleLoad = () => {
+      // Delay mínimo para evitar flash y no bloquear el LCP
+      const finish = () => markLoaded();
+      if ('requestIdleCallback' in window) {
+        (window as Window & { requestIdleCallback?: (cb: () => void) => void }).requestIdleCallback?.(finish);
+      } else {
+        setTimeout(finish, 250);
+      }
+    };
+
     if (document.readyState === 'complete') {
       handleLoad();
     } else {
-      // Escuchar cuando la página termine de cargar
-      window.addEventListener('load', handleLoad);
+      window.addEventListener('load', handleLoad, { once: true });
       return () => window.removeEventListener('load', handleLoad);
     }
   }, []);

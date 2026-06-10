@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 
 // Tipos para las props del mapa
@@ -33,9 +33,6 @@ const createLeafletMap = ({
     const { MapContainer, TileLayer, Marker, AttributionControl } = reactLeaflet;
     
     return function MapComponent() {
-      useEffect(() => {
-        // Fix para iconos de Leaflet en Next.js se hace automáticamente
-      }, []);
 
       // Función para abrir Google Maps
       const openGoogleMaps = () => {
@@ -95,6 +92,43 @@ const createLeafletMap = ({
 );
 
 export default function InteractiveMap(props: MapProps) {
-  const LeafletMap = createLeafletMap(props);
+  useEffect(() => {
+    const existing = document.getElementById('leaflet-css');
+    if (existing) return;
+
+    const link = document.createElement('link');
+    link.id = 'leaflet-css';
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    link.media = 'print';
+    link.onload = () => {
+      link.media = 'all';
+    };
+    document.head.appendChild(link);
+  }, []);
+
+  const LeafletMap = useMemo(
+    () =>
+      createLeafletMap({
+        coordinates: props.coordinates,
+        zoom: props.zoom,
+        height: props.height,
+        iconUrl: props.iconUrl,
+        iconSize: props.iconSize,
+        iconAnchor: props.iconAnchor,
+        googleMapsUrl: props.googleMapsUrl,
+        className: props.className,
+      }),
+    [
+      props.coordinates,
+      props.zoom,
+      props.height,
+      props.iconUrl,
+      props.iconSize,
+      props.iconAnchor,
+      props.googleMapsUrl,
+      props.className,
+    ]
+  );
   return <LeafletMap />;
 }

@@ -4,6 +4,9 @@ import { ReactNode, ElementType, useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants, type Transition } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
+let vhListenerCount = 0;
+let vhResizeHandler: (() => void) | null = null;
+
 interface SectionWrapperProps {
   children: ReactNode;
   backgroundImage?: string | StaticImageData;
@@ -97,13 +100,24 @@ export default function SectionWrapper({
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
     };
-    setVh();
-    window.addEventListener("resize", setVh);
-    window.visualViewport?.addEventListener("resize", setVh);
+
+    vhListenerCount += 1;
+    if (vhListenerCount === 1) {
+      vhResizeHandler = setVh;
+      setVh();
+      window.addEventListener("resize", setVh);
+      window.visualViewport?.addEventListener("resize", setVh);
+    } else {
+      setVh();
+    }
 
     return () => {
-      window.removeEventListener("resize", setVh);
-      window.visualViewport?.removeEventListener("resize", setVh);
+      vhListenerCount -= 1;
+      if (vhListenerCount === 0 && vhResizeHandler) {
+        window.removeEventListener("resize", vhResizeHandler);
+        window.visualViewport?.removeEventListener("resize", vhResizeHandler);
+        vhResizeHandler = null;
+      }
     };
   }, [dynamicHeight]);
 

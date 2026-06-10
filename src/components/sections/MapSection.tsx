@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { InteractiveMap, SectionWrapper } from '@/components/ui';
 import { Footer } from '@/components/layout';
 import Text from '@/components/ui/basics/Text';
@@ -14,11 +14,25 @@ export default function MapSection() {
   const t = {
     visit: tr(lang, { en: 'Visit Our Studio', de: 'Besuche unser Studio', es: 'Visita nuestro estudio' }),
   } as const;
-  const [isClient, setIsClient] = useState(false);
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    if (!mapContainerRef.current || shouldLoadMap) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+
+    observer.observe(mapContainerRef.current);
+    return () => observer.disconnect();
+  }, [shouldLoadMap]);
 
   return (
     <SectionWrapper
@@ -40,9 +54,8 @@ export default function MapSection() {
         </Text>
       </motion.div>
 
-      {/* Contenedor del mapa: crece para llenar el espacio libre */}
-      <div className="flex-1 w-full relative overflow-hidden">
-        {isClient && (
+      <div className="flex-1 w-full relative overflow-hidden" ref={mapContainerRef}>
+        {shouldLoadMap && (
           <InteractiveMap
             coordinates={[48.21440360933248, 15.636723973788701]}
             zoom={13}

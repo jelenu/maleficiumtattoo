@@ -26,13 +26,18 @@ export default function HeroSection() {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.__APP_LOADED) {
+    const alreadyLoaded = window.__APP_LOADED || sessionStorage.getItem('app_loaded') === '1';
+    if (alreadyLoaded) {
       setReady(true);
       return;
     }
     const onReady = () => setReady(true);
     window.addEventListener("app-loaded", onReady);
-    return () => window.removeEventListener("app-loaded", onReady);
+    const fallback = window.setTimeout(onReady, 1200);
+    return () => {
+      window.removeEventListener("app-loaded", onReady);
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (
@@ -40,6 +45,8 @@ export default function HeroSection() {
       backgroundImage="/images/bg.jpg"
       backgroundAlt={String(t.bgAlt)}
       animateOnScroll={ready}
+      priority
+      sizes="100vw"
     >
       {/* Layout para móvil */}
       <div className="flex flex-col items-center space-y-8 md:hidden">
