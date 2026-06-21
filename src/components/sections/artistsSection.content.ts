@@ -8,7 +8,7 @@ const artistsSectionContent = {
       {
         name: t({ en: 'Alexis', de: 'Alexis', es: 'Alexis' }),
         role: t({ en: 'Resident Artist', de: 'Tattoo-Künstler', es: 'Tatuador residente' }),
-        image: '/images/alexis.jpg',
+        image: '/images/Alexis/Original/alexis1.webp',
         instagram: t({ en: '@alexisdarkart', de: '@alexisdarkart', es: '@alexisdarkart' }),
         description: t({
           en: 'Originally from Barcelona, Spain, Alexis has been tattooing for over 10 years. His style focuses on blackwork, combining thick and thin lines, high contrast, and whip shading. His tattoos are clean, bold and solid, ideal for covering scars or old tattoos. He is also specialized in tattooing intimate areas. His approach blends darkness and precision, creating unique pieces adapted to both the body and the character of each person.',
@@ -19,12 +19,23 @@ const artistsSectionContent = {
       {
         name: t({ en: 'Manu', de: 'Manu', es: 'Manu' }),
         role: t({ en: 'Resident Artist', de: 'Tattoo-Künstler', es: 'Tatuador residente' }),
-        image: '/images/alexis.jpg',
+        image: '/images/Manu/Original/manu1.webp',
         instagram: t({ en: '@knoblauchbanane', de: '@knoblauchbanane', es: '@knoblauchbanane' }),
         description: t({
           en: 'Originally from Sankt Pölten, Austria, Manu has been tattooing for one year. Her style focuses on black and grey illustrations, engraving-inspired work, and ornamental elements. Her work fuses a strong, bold aesthetic with soft and magical aspects, creating a contrast that defines her artistic signature. This duality also reflects her personality - tough in appearance yet sensitive and shy - resulting in tattoos full of character, delicacy, and expressive depth.',
           de: 'Manu kommt aus Sankt Pölten und tätowiert seit einem Jahr. Ihr Fokus liegt auf Schwarz-Weiß Illustrationen, in denen man oft Einflüsse des „Etching -Styles“ wiederfindet. Zusätzlich entwirft und sticht sie sehr gerne Ornamente. Ihre Tattoos verbinden eine markante, kraftvolle Ästhetik mit weichen, verspielten Details. Dieser Kontrast prägt ihren Stil und verleiht ihren Arbeiten Charakter und Tiefe.',
           es: 'Originaria de Sankt Pölten, Austria, Manu lleva un año tatuando con un estilo centrado en ilustraciones en blanco y negro, grabado y elementos ornamentales. Su trabajo se caracteriza por la fusión de una estética fuerte y contundente con aspectos suaves y mágicos, creando un contraste que define su firma artística. Esta dualidad refleja también su personalidad: una presencia dura en apariencia que esconde un alma sensible y tímida, dando lugar a tatuajes con carácter, delicadeza y un fuerte componente expresivo.',
+        }),
+      },
+      {
+        name: t({ en: 'Arnau', de: 'Arnau', es: 'Arnau' }),
+        role: t({ en: 'Regular Guest Artist', de: 'Tattoo-Künstler', es: 'Tatuador invitado regular' }),
+        image: '/images/Arnau/Original/arnau1.webp',
+        instagram: t({ en: '@arnau_kurtis_tattoo', de: '@arnau_kurtis_tattoo', es: '@arnau_kurtis_tattoo' }),
+        description: t({
+          en: 'Originally from Barcelona, Spain, Arnau has over 10 years of experience. He specializes in realism, using clean and contrasted shading to ensure his pieces age perfectly over time. Able to replicate photographs onto skin with exceptional precision, his work stands out for originality and an artistic approach beyond the conventional, creating truly unique pieces.',
+          de: 'Arnau kommt aus Barcelona und verfügt über mehr als 10 Jahre Erfahrung. Er ist spezialisiert auf Realismus und arbeitet mit klaren, kontrastreichen Schattierungen, damit seine Tattoos langfristig gut altern. Er überträgt Fotografien mit hoher Präzision auf die Haut und verbindet technische Genauigkeit mit einem eigenständigen künstlerischen Ansatz.',
+          es: 'Originario de Barcelona, España, Arnau cuenta con más de 10 años de experiencia en tatuaje. Su especialidad es el realismo, con sombreados limpios y contrastados que aseguran que sus piezas se mantengan impecables con el paso del tiempo. Capaz de replicar fotografías en la piel con precisión superior, su trabajo se distingue por originalidad y un enfoque artístico fuera de lo convencional, creando tatuajes que son verdaderas obras únicas.',
         }),
       },
       {
@@ -38,17 +49,7 @@ const artistsSectionContent = {
           es: 'Originario de Ybbs an der Donau (Ybbs City), Austria, Christoph lleva 15 años tatuando con un estilo centrado en el New School Colour. Su trabajo se caracteriza por líneas bold, colores vibrantes y personajes únicos, combinados con diseños dinámicos y perspectivas marcadas. Especializado en proyectos de gran formato, crea tatuajes potentes y llenos de energía que destacan por su impacto visual y su identidad propia.',
         }),
       },
-      {
-        name: t({ en: 'Arnau', de: 'Arnau', es: 'Arnau' }),
-        role: t({ en: 'Regular Guest Artist', de: 'Tattoo-Künstler', es: 'Tatuador invitado regular' }),
-        image: '/images/alexis.jpg',
-        instagram: t({ en: '@arnau_kurtis_tattoo', de: '@arnau_kurtis_tattoo', es: '@arnau_kurtis_tattoo' }),
-        description: t({
-          en: 'Originally from Barcelona, Spain, Arnau has over 10 years of experience. He specializes in realism, using clean and contrasted shading to ensure his pieces age perfectly over time. Able to replicate photographs onto skin with exceptional precision, his work stands out for originality and an artistic approach beyond the conventional, creating truly unique pieces.',
-          de: 'Arnau kommt aus Barcelona und verfügt über mehr als 10 Jahre Erfahrung. Er ist spezialisiert auf Realismus und arbeitet mit klaren, kontrastreichen Schattierungen, damit seine Tattoos langfristig gut altern. Er überträgt Fotografien mit hoher Präzision auf die Haut und verbindet technische Genauigkeit mit einem eigenständigen künstlerischen Ansatz.',
-          es: 'Originario de Barcelona, España, Arnau cuenta con más de 10 años de experiencia en tatuaje. Su especialidad es el realismo, con sombreados limpios y contrastados que aseguran que sus piezas se mantengan impecables con el paso del tiempo. Capaz de replicar fotografías en la piel con precisión superior, su trabajo se distingue por originalidad y un enfoque artístico fuera de lo convencional, creando tatuajes que son verdaderas obras únicas.',
-        }),
-      },
+      
       {
         name: t({ en: 'Juani', de: 'Juani', es: 'Juani' }),
         role: t({ en: 'Regular Guest Artist', de: 'Tattoo-Künstler', es: 'Tatuador invitado regular' }),
