@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Jim_Nightshade } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  preload: false,
   display: "swap",
 });
-const jimNightshade = Jim_Nightshade({
-  variable: "--font-jim-nightshade",
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -22,10 +22,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${jimNightshade.variable} antialiased font-sans bg-black text-white`}>
+      <body
+        className={`${inter.variable} ${cormorant.variable} antialiased bg-black text-white`}
+      >
         {children}
       </body>
     </html>
