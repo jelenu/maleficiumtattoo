@@ -137,7 +137,7 @@ export default function BlogPostPage() {
             className="relative  w-full xl:max-w-3xl shadow-xl px-5 sm:px-20 sm:py-10 xl:p-10 -mt-0 xl:-mt-25 z-30"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/fondo.png')",
+                "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/fondo.webp')",
             }}
           >
             {loading && <Text className="text-zinc-400">Cargando...</Text>}

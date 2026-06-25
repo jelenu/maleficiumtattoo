@@ -20,7 +20,7 @@ const createLeafletMap = ({
   coordinates, 
   zoom = 14, 
   height = 'h-120', 
-  iconUrl = '/images/maleficiumLogo.png',
+  iconUrl = '/images/maleficiumLogo.webp',
   iconSize = [90, 120],
   iconAnchor = [45, 40],
   googleMapsUrl,

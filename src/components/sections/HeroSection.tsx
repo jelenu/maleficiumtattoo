@@ -69,7 +69,7 @@ export default function HeroSection() {
           viewport={ready ? { once: true, amount: 0.2 } : undefined}
         >
           <Image
-            src="/images/mf.png"
+            src="/images/mf.webp"
             alt={String(t.logoAltMobile)}
             width={250}
             height={250}
@@ -122,7 +122,7 @@ export default function HeroSection() {
           viewport={ready ? { once: true, amount: 0.2 } : undefined}
         >
           <Image
-            src="/images/maleficium.png"
+            src="/images/maleficium.webp"
             alt={String(t.logoAlt)}
             width={800}
             height={600}

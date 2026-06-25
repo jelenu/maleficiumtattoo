@@ -46,7 +46,7 @@ export default function Footer() {
 
             <div className="shrink-0">
               <Image
-                src="/images/mf.png"
+                src="/images/mf.webp"
                 alt="Maleficium Tattoo Studio"
                 width={80}
                 height={80}
@@ -120,7 +120,7 @@ export default function Footer() {
 
           <div className="flex justify-center md:justify-start">
             <Image
-              src="/images/maleficiumLogo.png"
+              src="/images/maleficiumLogo.webp"
               alt="Maleficium Tattoo Studio"
               width={80}
               height={100}

@@ -62,7 +62,7 @@ export default function LoadingScreen() {
       {/* Logo animado */}
       <div className="relative mb-8 animate-pulse">
         <Image
-          src="/images/maleficiumLogo.png"
+          src="/images/maleficiumLogo.webp"
           alt="Maleficium Tattoo Logo"
           width={300}
           height={400}

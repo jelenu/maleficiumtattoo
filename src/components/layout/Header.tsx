@@ -62,7 +62,7 @@ export default function Header() {
             <div className="xl:hidden">
               <Link href={toLocalePath("/")}>
                 <Image
-                  src="/images/mf.png"
+                  src="/images/mf.webp"
                   alt={t.brand.logoAlt.value}
                   width={32}
                   height={32}
@@ -76,7 +76,7 @@ export default function Header() {
             <div className="hidden xl:flex items-center">
               <Link href={toLocalePath("/")}>
                 <Image
-                  src="/images/maleficium.png"
+                  src="/images/maleficium.webp"
                   alt={t.brand.titleAlt.value}
                   width={220}
                   height={50}

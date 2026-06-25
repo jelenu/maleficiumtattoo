@@ -5,7 +5,7 @@ interface WhiteBoxProps {
   /**
    * Background style options:
    *  - 'black': solid black background
-   *  - 'image': uses /images/fondo.png as background
+   *  - 'image': uses /images/fondo.webp as background
    *  - 'transparent': no background (fully transparent)
    */
   background?: 'black' | 'image' | 'transparent';
@@ -32,7 +32,7 @@ export default function WhiteBox({
 
   const imageStyle = isImage
     ? ({
-        backgroundImage: 'url(/images/fondo.png)',
+        backgroundImage: 'url(/images/fondo.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
