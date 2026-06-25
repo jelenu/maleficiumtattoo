@@ -16,21 +16,27 @@ export default function CarouselSection() {
   const galleryHref = locale ? `/${locale}/gallery` : "/gallery";
 
   const slides = useMemo(
-  () => [
-    "/images/Alexis/Original/alexis2.webp",
-    "/images/Alexis/Original/alexis3.webp",
-    "/images/Alexis/Original/alexis4.webp",
-    "/images/Alexis/Original/alexis5.webp",
-    "/images/Alexis/Original/alexis6.webp",
-  ],
-  []
-);
+    () => [
+      "/images/Alexis/Original/alexis2.webp",
+      "/images/Alexis/Original/alexis3.webp",
+      "/images/Alexis/Original/alexis4.webp",
+      "/images/Alexis/Original/alexis5.webp",
+      "/images/Alexis/Original/alexis6.webp",
+    ],
+    [],
+  );
 
   const [index, setIndex] = useState(1);
   const last = slides.length - 1;
 
-  const next = useCallback(() => setIndex((i) => (i >= last ? 0 : i + 1)), [last]);
-  const prev = useCallback(() => setIndex((i) => (i <= 0 ? last : i - 1)), [last]);
+  const next = useCallback(
+    () => setIndex((i) => (i >= last ? 0 : i + 1)),
+    [last],
+  );
+  const prev = useCallback(
+    () => setIndex((i) => (i <= 0 ? last : i - 1)),
+    [last],
+  );
 
   // 👉 Variables para manejar el gesto táctil
   const touchStartX = useRef(0);
@@ -49,7 +55,8 @@ export default function CarouselSection() {
     const threshold = 50; // distancia mínima en px para detectar swipe
 
     if (Math.abs(diff) > threshold) {
-      if (diff > 0) next(); // swipe left
+      if (diff > 0)
+        next(); // swipe left
       else prev(); // swipe right
     }
   };
@@ -57,23 +64,30 @@ export default function CarouselSection() {
   return (
     <>
       {/* ----------- Versión Desktop ----------- */}
-      <SectionWrapper className="hidden xl:flex justify-center" contentClassName="flex w-full">
+      <SectionWrapper
+        className="hidden xl:flex justify-center"
+        contentClassName="flex w-full"
+      >
         <motion.div
           className="flex flex-col items-center gap-4 h-full w-full py-10  px-30"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1, transition: { duration: 2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+          whileInView={{
+            opacity: 1,
+            transition: { duration: 2, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+          }}
           viewport={{ once: true, amount: 0.2 }}
         >
           {/* Overlay text now above carousel without absolute */}
           <div className="flex flex-col items-center justify-center text-center text-white">
-            <Link href={galleryHref} className="hover:opacity-80 transition-opacity">
-              <Text variant="h1" align="center">Nuestra galería</Text>
-            </Link>
-            <Text
-              variant="description"
-              align="center"
-              className="opacity-80"
+            <Link
+              href={galleryHref}
+              className="hover:opacity-80 transition-opacity"
             >
+              <Text variant="h1" align="center">
+                {t.title.value}
+              </Text>
+            </Link>
+            <Text variant="description" align="center" className="opacity-80">
               {t.subtitle.value}
             </Text>
           </div>
@@ -104,7 +118,11 @@ export default function CarouselSection() {
                         i === index ? "scale-120 z-10" : "scale-90 opacity-50"
                       }`}
                       animate={{ opacity: i === index ? 1 : 0.5 }}
-                      transition={{ duration: 2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{
+                        duration: 2,
+                        delay: 0.2,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                     >
                       <Image
                         src={src}
@@ -135,7 +153,9 @@ export default function CarouselSection() {
                 aria-label={`Go to slide ${i + 1}`}
                 onClick={() => setIndex(i)}
                 className={`h-2.5 rounded-full transition-all ${
-                  i === index ? "w-6 bg-white" : "w-2.5 bg-white/60 hover:bg-white/80"
+                  i === index
+                    ? "w-6 bg-white"
+                    : "w-2.5 bg-white/60 hover:bg-white/80"
                 }`}
               />
             ))}
@@ -155,11 +175,23 @@ export default function CarouselSection() {
           <motion.div
             className="flex flex-col items-center justify-center text-center text-white"
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1.2,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <Link href={galleryHref} className="hover:opacity-80 transition-opacity">
-              <Text variant="h1" align="center">Nuestra galería</Text>
+            <Link
+              href={galleryHref}
+              className="hover:opacity-80 transition-opacity"
+            >
+              <Text variant="h1" align="center">
+                {t.title.value}
+              </Text>
             </Link>
             <Text variant="description" align="center" className="opacity-80">
               {t.subtitle.value}
@@ -169,7 +201,14 @@ export default function CarouselSection() {
           <motion.div
             className="overflow-hidden w-full h-full"
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1.2,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
             viewport={{ once: true, amount: 0.2 }}
           >
             <div
@@ -177,11 +216,18 @@ export default function CarouselSection() {
               style={{ transform: `translateX(-${index * 100}%)` }}
             >
               {slides.map((src, i) => (
-                <div key={i} className="min-w-full flex items-center justify-center h-full">
+                <div
+                  key={i}
+                  className="min-w-full flex items-center justify-center h-full"
+                >
                   <motion.div
                     className="relative w-full h-full transition-transform duration-500"
                     animate={{ opacity: i === index ? 1 : 0.5 }}
-                    transition={{ duration: 2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{
+                      duration: 2,
+                      delay: 0.2,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
                   >
                     <Image
                       src={src}
@@ -204,7 +250,9 @@ export default function CarouselSection() {
                 aria-label={`Go to slide ${i + 1}`}
                 onClick={() => setIndex(i)}
                 className={`h-2.5 rounded-full transition-all ${
-                  i === index ? "w-6 bg-white" : "w-2.5 bg-white/60 hover:bg-white/80"
+                  i === index
+                    ? "w-6 bg-white"
+                    : "w-2.5 bg-white/60 hover:bg-white/80"
                 }`}
               />
             ))}

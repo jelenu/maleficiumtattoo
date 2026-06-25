@@ -1,26 +1,25 @@
 import type { NextLayoutIntlayer } from "next-intlayer";
 import { IntlayerClientProvider } from "next-intlayer";
 import { IntlayerServerProvider } from "next-intlayer/server";
-
 import Header from "@/components/layout/Header";
-import { LoadingScreen } from "@/components/ui";
+import AppShell from "@/components/ui/AppShell";
 
-export { generateStaticParams } from "next-intlayer";
 export const dynamicParams = false;
 
 const LocaleLayout: NextLayoutIntlayer = async ({ children, params }) => {
   const { locale } = await params;
 
   return (
-    <>
-      <IntlayerClientProvider locale={locale}>
-        <IntlayerServerProvider locale={locale}>
-          <LoadingScreen />
-          <Header />
+    <IntlayerClientProvider locale={locale}>
+      <IntlayerServerProvider locale={locale}>
+        <Header />
+
+        <AppShell>
           {children}
-        </IntlayerServerProvider>
-      </IntlayerClientProvider>
-    </>
+        </AppShell>
+
+      </IntlayerServerProvider>
+    </IntlayerClientProvider>
   );
 };
 
