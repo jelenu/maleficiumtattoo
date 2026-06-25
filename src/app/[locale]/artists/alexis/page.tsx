@@ -70,7 +70,7 @@ export default function AlexisPage() {
 
         <div className="relative w-full aspect-[1.91/1] order-1 xl:order-2">
           <Image
-            src="/images/alexis.jpg"
+            src="/images/alexis.webp"
             alt="Alexis portrait"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"

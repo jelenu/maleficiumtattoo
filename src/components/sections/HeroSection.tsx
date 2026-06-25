@@ -42,7 +42,7 @@ export default function HeroSection() {
 
   return (
     <SectionWrapper
-      backgroundImage="/images/bg.jpg"
+      backgroundImage="/images/bg.webp"
       backgroundAlt={String(t.bgAlt)}
       animateOnScroll={ready}
       priority

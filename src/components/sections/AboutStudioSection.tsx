@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import alexisMobile from "../../../public/images/alexishorizontal21.jpg";
-import alexisTablet from "../../../public/images/alexishorizontal.jpg";
+import alexisMobile from "../../../public/images/alexishorizontal21.webp";
+import alexisTablet from "../../../public/images/alexishorizontal.webp";
 import { SectionWrapper, Button, Text } from "@/components/ui";
 import { motion } from "framer-motion";
 import { useIntlayer } from "next-intlayer";
@@ -70,7 +70,7 @@ export default function AboutStudioSection() {
               viewport={{ once: true, amount: 0.2 }}
             >
               <Image
-                src={"/images/alexis.jpg"}
+                src={"/images/alexis.webp"}
                 alt={t.imageAlt.value}
                 width={1600}
                 height={1067}

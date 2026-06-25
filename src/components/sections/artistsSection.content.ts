@@ -41,7 +41,7 @@ const artistsSectionContent = {
       {
         name: t({ en: 'Christoph', de: 'Christoph', es: 'Christoph' }),
         role: t({ en: 'Resident Artist', de: 'Tattoo-Künstler', es: 'Tatuador residente' }),
-        image: '/images/alexis.jpg',
+        image: '/images/alexis.webp',
         instagram: t({ en: '@y_c_tattoo', de: '@y_c_tattoo', es: '@y_c_tattoo' }),
         description: t({
           en: 'Originally from Ybbs an der Donau, Austria, Christoph has 15 years of tattooing experience. His style focuses on New School Colour. His work is characterized by bold lines, vibrant colors, unique characters, and dynamic compositions. Specialized in large-scale projects, he creates powerful, high-energy tattoos with strong visual identity.',
@@ -53,7 +53,7 @@ const artistsSectionContent = {
       {
         name: t({ en: 'Juani', de: 'Juani', es: 'Juani' }),
         role: t({ en: 'Regular Guest Artist', de: 'Tattoo-Künstler', es: 'Tatuador invitado regular' }),
-        image: '/images/alexis.jpg',
+        image: '/images/alexis.webp',
         instagram: t({ en: '@juani_olivencia', de: '@juani_olivencia', es: '@juani_olivencia' }),
         description: t({
           en: 'Originally from Málaga and owner of his own studio in Zaragoza, Spain, Juani has more than 15 years of experience. He specializes in American traditional tattooing. His work features bold lines and bright, intense colors, distinct from European traditional. His tattoos are built to last, maintaining strength and character as the skin changes over time - proving that old school is still alive.',

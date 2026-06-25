@@ -14,7 +14,7 @@ export default function StudioPage() {
       <section className="py-6 px-0 xl:px-10">
         <div className="relative h-[40vh] sm:h-[45vh] md:h-[48vh] xl:h-[60vh] min-h-[240px] xl:min-h-[420px] w-full max-w-none xl:max-w-7xl mx-auto overflow-hidden rounded-none xl:rounded-2xl">
           <Image
-            src="/images/bg.jpg"
+            src="/images/bg.webp"
             alt="Nuestro estudio"
             fill
             priority
@@ -49,37 +49,37 @@ export default function StudioPage() {
     <div className="md:hidden space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="relative h-[260px] overflow-hidden rounded-xl md:col-span-2">
-          <Image src="/images/bg.jpg" alt="Estudio principal" fill className="object-cover" />
+          <Image src="/images/bg.webp" alt="Estudio principal" fill className="object-cover" />
         </div>
 
         <div className="relative h-[260px] overflow-hidden rounded-xl">
-          <Image src="/images/alexis.jpg" alt="Detalle estudio" fill className="object-cover" />
+          <Image src="/images/alexis.webp" alt="Detalle estudio" fill className="object-cover" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="relative h-[260px] overflow-hidden rounded-xl">
-          <Image src="/images/tattoo.jpg" alt="Tattoo" fill className="object-cover" />
+          <Image src="/images/tattoo.webp" alt="Tattoo" fill className="object-cover" />
         </div>
 
         <div className="relative h-[260px] overflow-hidden rounded-xl md:col-span-2">
-          <Image src="/images/alexishorizontal.jpg" alt="Zona de trabajo" fill className="object-cover" />
+          <Image src="/images/alexishorizontal.webp" alt="Zona de trabajo" fill className="object-cover" />
         </div>
       </div>
 
       <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl">
-        <Image src="/images/alexishorizontal21.jpg" alt="Vista panorámica del estudio" fill className="object-cover" />
+        <Image src="/images/alexishorizontal21.webp" alt="Vista panorámica del estudio" fill className="object-cover" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/alexis.jpg" alt="Detalle 1" fill className="object-cover" />
+          <Image src="/images/alexis.webp" alt="Detalle 1" fill className="object-cover" />
         </div>
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/bg.jpg" alt="Detalle 2" fill className="object-cover" />
+          <Image src="/images/bg.webp" alt="Detalle 2" fill className="object-cover" />
         </div>
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/tattoo.jpg" alt="Detalle 3" fill className="object-cover" />
+          <Image src="/images/tattoo.webp" alt="Detalle 3" fill className="object-cover" />
         </div>
       </div>
     </div>
@@ -89,42 +89,42 @@ export default function StudioPage() {
 
       {/* grande */}
       <div className="relative h-[420px] overflow-hidden rounded-xl">
-        <Image src="/images/bg.jpg" alt="Estudio principal" fill className="object-cover" />
+        <Image src="/images/bg.webp" alt="Estudio principal" fill className="object-cover" />
       </div>
 
       {/* dos pequeñas */}
       <div className="grid grid-cols-2 gap-6">
         <div className="relative h-[260px] overflow-hidden rounded-xl">
-          <Image src="/images/alexis.jpg" alt="Detalle estudio" fill className="object-cover" />
+          <Image src="/images/alexis.webp" alt="Detalle estudio" fill className="object-cover" />
         </div>
 
         <div className="relative h-[260px] overflow-hidden rounded-xl">
-          <Image src="/images/tattoo.jpg" alt="Tattoo" fill className="object-cover" />
+          <Image src="/images/tattoo.webp" alt="Tattoo" fill className="object-cover" />
         </div>
       </div>
 
       {/* siguiente grande */}
       <div className="relative h-[420px] overflow-hidden rounded-xl">
-        <Image src="/images/alexishorizontal.jpg" alt="Zona de trabajo" fill className="object-cover" />
+        <Image src="/images/alexishorizontal.webp" alt="Zona de trabajo" fill className="object-cover" />
       </div>
 
       {/* panorámica */}
       <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl">
-        <Image src="/images/alexishorizontal21.jpg" alt="Vista panorámica del estudio" fill className="object-cover" />
+        <Image src="/images/alexishorizontal21.webp" alt="Vista panorámica del estudio" fill className="object-cover" />
       </div>
 
       {/* tres pequeñas (sin cambios) */}
       <div className="grid grid-cols-3 gap-6">
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/alexis.jpg" alt="Detalle 1" fill className="object-cover" />
+          <Image src="/images/alexis.webp" alt="Detalle 1" fill className="object-cover" />
         </div>
 
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/bg.jpg" alt="Detalle 2" fill className="object-cover" />
+          <Image src="/images/bg.webp" alt="Detalle 2" fill className="object-cover" />
         </div>
 
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/tattoo.jpg" alt="Detalle 3" fill className="object-cover" />
+          <Image src="/images/tattoo.webp" alt="Detalle 3" fill className="object-cover" />
         </div>
       </div>
     </div>
@@ -134,39 +134,39 @@ export default function StudioPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="relative h-[420px] md:col-span-2 overflow-hidden rounded-xl">
-          <Image src="/images/bg.jpg" alt="Estudio principal" fill className="object-cover" />
+          <Image src="/images/bg.webp" alt="Estudio principal" fill className="object-cover" />
         </div>
 
         <div className="relative h-[420px] overflow-hidden rounded-xl">
-          <Image src="/images/alexis.jpg" alt="Detalle estudio" fill className="object-cover" />
+          <Image src="/images/alexis.webp" alt="Detalle estudio" fill className="object-cover" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="relative h-[420px] overflow-hidden rounded-xl">
-          <Image src="/images/tattoo.jpg" alt="Tattoo" fill className="object-cover" />
+          <Image src="/images/tattoo.webp" alt="Tattoo" fill className="object-cover" />
         </div>
 
         <div className="relative h-[420px] md:col-span-2 overflow-hidden rounded-xl">
-          <Image src="/images/alexishorizontal.jpg" alt="Zona de trabajo" fill className="object-cover" />
+          <Image src="/images/alexishorizontal.webp" alt="Zona de trabajo" fill className="object-cover" />
         </div>
       </div>
 
       <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl">
-        <Image src="/images/alexishorizontal21.jpg" alt="Vista panorámica del estudio" fill className="object-cover" />
+        <Image src="/images/alexishorizontal21.webp" alt="Vista panorámica del estudio" fill className="object-cover" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/alexis.jpg" alt="Detalle 1" fill className="object-cover" />
+          <Image src="/images/alexis.webp" alt="Detalle 1" fill className="object-cover" />
         </div>
 
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/bg.jpg" alt="Detalle 2" fill className="object-cover" />
+          <Image src="/images/bg.webp" alt="Detalle 2" fill className="object-cover" />
         </div>
 
         <div className="relative aspect-square overflow-hidden rounded-xl">
-          <Image src="/images/tattoo.jpg" alt="Detalle 3" fill className="object-cover" />
+          <Image src="/images/tattoo.webp" alt="Detalle 3" fill className="object-cover" />
         </div>
       </div>
     </div>
