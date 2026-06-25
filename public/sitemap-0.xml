@@ -1,36 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://maleficiumtattoo.com/de/studio</loc><lastmod>2026-03-01T20:55:01.834Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/studio</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/studio</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/terms-of-service</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/terms-of-service</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/terms-of-service</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/artists/manu</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/artists/manu</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/artists/manu</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/artists/alexis</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/artists/alexis</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/artists/alexis</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/artists</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/artists</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/artists</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/privacy-policy</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/privacy-policy</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/privacy-policy</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/blog</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/blog</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/blog</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/gallery</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/gallery</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/gallery</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/merch</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/merch</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/merch</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/de/contact</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/en/contact</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://maleficiumtattoo.com/es/contact</loc><lastmod>2026-03-01T20:55:01.835Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- HOME (prioridad máxima) -->
+  <url>
+    <loc>https://maleficiumtattoo.com/de</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/en</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/es</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- STUDIO -->
+  <url>
+    <loc>https://maleficiumtattoo.com/de/studio</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/en/studio</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/es/studio</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ARTISTS -->
+  <url>
+    <loc>https://maleficiumtattoo.com/de/artists</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/en/artists</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/es/artists</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ARTISTS PROFILES -->
+  <url>
+    <loc>https://maleficiumtattoo.com/de/artists/manu</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/de/artists/alexis</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- CONTACT -->
+  <url>
+    <loc>https://maleficiumtattoo.com/de/contact</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/en/contact</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maleficiumtattoo.com/es/contact</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- GALLERY -->
+  <url>
+    <loc>https://maleficiumtattoo.com/de/gallery</loc>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

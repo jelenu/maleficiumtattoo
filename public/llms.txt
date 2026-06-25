@@ -1,0 +1,37 @@
+# Maleficium Tattoo
+
+Maleficium Tattoo is a professional tattoo studio based in Vilanova i la Geltrú, Barcelona, Spain.
+
+We specialize in high-quality custom tattoos, including blackwork, realism, and fine line styles.
+
+Our focus is on artistic excellence, hygiene, and personalized designs for each client.
+
+## Website Structure
+
+- Home: https://maleficiumtattoo.com/
+- Studio: https://maleficiumtattoo.com/de/studio
+- Artists: https://maleficiumtattoo.com/de/artists
+- Gallery: https://maleficiumtattoo.com/de/gallery
+- Contact: https://maleficiumtattoo.com/de/contact
+- Blog: https://maleficiumtattoo.com/de/blog
+- Merch: https://maleficiumtattoo.com/de/merch
+
+## Artists
+
+- Alexis: https://maleficiumtattoo.com/de/artists/alexis
+- Manu: https://maleficiumtattoo.com/de/artists/manu
+
+## Languages
+
+The website is available in:
+- English (EN)
+- Spanish (ES)
+- German (DE)
+
+## Location
+
+Sankt Pölten, Austria
+
+## Booking
+
+Appointments are available via contact form or social media.
