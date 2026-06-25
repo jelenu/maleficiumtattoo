@@ -17,11 +17,11 @@ export default function CarouselSection() {
 
   const slides = useMemo(
   () => [
-    "/images/alexis/Original/alexis2.webp",
-    "/images/alexis/Original/alexis3.webp",
-    "/images/alexis/Original/alexis4.webp",
-    "/images/alexis/Original/alexis5.webp",
-    "/images/alexis/Original/alexis6.webp",
+    "/images/Alexis/Original/alexis2.webp",
+    "/images/Alexis/Original/alexis3.webp",
+    "/images/Alexis/Original/alexis4.webp",
+    "/images/Alexis/Original/alexis5.webp",
+    "/images/Alexis/Original/alexis6.webp",
   ],
   []
 );
