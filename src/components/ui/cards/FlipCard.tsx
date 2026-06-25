@@ -187,7 +187,7 @@ export default function FlipCard({
           </div>
           {showCta ? (
             <button
-              className="mt-4 bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-md text-center self-center"
+              className="mt-4 bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-md text-center self-center cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation(); // evita flip al clickear el CTA
                 onCtaClick?.();
