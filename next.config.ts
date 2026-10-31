@@ -3,9 +3,18 @@ import { withIntlayer } from "next-intlayer/server";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["jiowyjwepebnofaavcpp.supabase.co"], 
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "jiowyjwepebnofaavcpp.supabase.co",
+      },
+    ],
   },
-  optimizePackageImports: ["lucide-react", "react-icons"],
+
+  experimental: {
+    optimizePackageImports: ["lucide-react", "react-icons"],
+  },
+
   poweredByHeader: false,
   compress: true,
 };
