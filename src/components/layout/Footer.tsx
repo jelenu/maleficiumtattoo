@@ -124,7 +124,7 @@ export default function Footer() {
                 onClick={openCookieSettings}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Cookies
+                Cookie-Einstellungen
               </button>
 
             </div>
@@ -168,7 +168,7 @@ export default function Footer() {
                 onClick={openCookieSettings}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Cookies
+                Cookie-Einstellungen
               </button>
 
             </div>
