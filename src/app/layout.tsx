@@ -32,8 +32,11 @@ export default function RootLayout({
         className={`${inter.variable} ${cormorant.variable} antialiased bg-black text-white`}
       >
         {children}
-        <Script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91aa3a1a94d648bdbd6eeaa032cd5b46"}'></script>
-      </body>
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "91aa3a1a94d648bdbd6eeaa032cd5b46"}'
+          strategy="afterInteractive"
+        />      </body>
     </html>
   );
 }
