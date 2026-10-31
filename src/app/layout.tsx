@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import { Inter, Cormorant_Garamond } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,7 +37,10 @@ export default function RootLayout({
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "91aa3a1a94d648bdbd6eeaa032cd5b46"}'
           strategy="afterInteractive"
-        />      </body>
+        />
+        <GoogleAnalytics gaId="G-EYR45T8C3Z" />
+
+      </body>
     </html>
   );
 }
