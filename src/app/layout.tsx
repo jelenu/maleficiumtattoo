@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import { Inter, Cormorant_Garamond } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Consent Mode v2 - Default consent */}
+        {/* Google Consent Mode v2: denegado por defecto */}
         <Script
           id="consent-default"
           strategy="beforeInteractive"
@@ -75,15 +74,79 @@ export default function RootLayout({
 
         {children}
 
+        {/* Cargar Google Analytics solamente con consentimiento estadístico */}
+        <Script
+          id="google-analytics-consent"
+          strategy="afterInteractive"
+          data-cookieconsent="ignore"
+        >
+          {`
+            (function () {
+              var measurementId = 'G-EYR45T8C3Z';
+              var gaLoaded = false;
+
+              function checkConsent() {
+                var hasStatisticsConsent =
+                  window.Cookiebot &&
+                  window.Cookiebot.consent &&
+                  window.Cookiebot.consent.statistics === true;
+
+                if (!hasStatisticsConsent) {
+                  window.gtag('consent', 'update', {
+                    'analytics_storage': 'denied'
+                  });
+                  return;
+                }
+
+                window.gtag('consent', 'update', {
+                  'analytics_storage': 'granted'
+                });
+
+                if (gaLoaded) return;
+
+                gaLoaded = true;
+
+                window.gtag('js', new Date());
+                window.gtag('config', measurementId);
+
+                var script = document.createElement('script');
+                script.async = true;
+                script.src =
+                  'https://www.googletagmanager.com/gtag/js?id=' +
+                  measurementId;
+
+                document.head.appendChild(script);
+              }
+
+              window.addEventListener(
+                'CookiebotOnConsentReady',
+                checkConsent
+              );
+
+              window.addEventListener(
+                'CookiebotOnAccept',
+                checkConsent
+              );
+
+              window.addEventListener(
+                'CookiebotOnDecline',
+                checkConsent
+              );
+
+              // Comprobar también si ya existía un consentimiento guardado
+              if (window.Cookiebot) {
+                checkConsent();
+              }
+            })();
+          `}
+        </Script>
+
         {/* Cloudflare Insights */}
         <Script
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "91aa3a1a94d648bdbd6eeaa032cd5b46"}'
           strategy="afterInteractive"
         />
-
-        {/* Google Analytics 4 */}
-        <GoogleAnalytics gaId="G-EYR45T8C3Z" />
       </body>
     </html>
   );
