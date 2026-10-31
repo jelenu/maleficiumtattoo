@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
@@ -30,40 +31,58 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Cookiebot — debe cargar antes que todo */}
+        {/* Google Consent Mode v2 - Default consent */}
         <Script
-          id="Cookiebot"
-          src="https://consent.cookiebot.com/uc.js"
-          data-cbid="518527e6-ee12-4f0d-89c6-cca6f68786c5"
-          data-blockingmode="auto"
-          type="text/javascript"
+          id="consent-default"
           strategy="beforeInteractive"
-        />
-        {/* Consent Mode v2 — todo bloqueado por defecto hasta que el usuario acepte */}
-        <Script id="consent-default" strategy="beforeInteractive">
+          data-cookieconsent="ignore"
+        >
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('consent', 'default', {
+
+            window.gtag = function() {
+              window.dataLayer.push(arguments);
+            };
+
+            window.gtag('consent', 'default', {
               'analytics_storage': 'denied',
               'ad_storage': 'denied',
               'ad_user_data': 'denied',
               'ad_personalization': 'denied',
+              'functionality_storage': 'denied',
+              'personalization_storage': 'denied',
+              'security_storage': 'granted',
               'wait_for_update': 500
             });
+
+            window.gtag('set', 'ads_data_redaction', true);
+            window.gtag('set', 'url_passthrough', false);
           `}
         </Script>
       </head>
+
       <body
         className={`${inter.variable} ${cormorant.variable} antialiased bg-black text-white`}
       >
+        {/* Cookiebot CMP */}
+        <Script
+          id="cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="518527e6-ee12-4f0d-89c6-cca6f68786c5"
+          data-blockingmode="auto"
+          strategy="beforeInteractive"
+        />
+
         {children}
+
+        {/* Cloudflare Insights */}
         <Script
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "91aa3a1a94d648bdbd6eeaa032cd5b46"}'
           strategy="afterInteractive"
         />
-        {/* Google Analytics — Cookiebot lo activa cuando el usuario acepta */}
+
+        {/* Google Analytics 4 */}
         <GoogleAnalytics gaId="G-EYR45T8C3Z" />
       </body>
     </html>

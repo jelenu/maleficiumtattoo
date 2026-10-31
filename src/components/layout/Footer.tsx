@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -10,6 +11,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { locale } = useParams<{ locale?: string }>();
   const lang = getLang(locale);
+
+  // Abrir las preferencias de cookies de Cookiebot
+  const openCookieSettings = () => {
+    if (typeof window !== "undefined" && window.Cookiebot) {
+      window.Cookiebot.renew();
+    }
+  };
 
   const t = {
     rights: tr(lang, {
@@ -90,13 +98,13 @@ export default function Footer() {
               </Link>
 
             </div>
-
           </div>
 
           <div className="text-center text-white">
             <p className="text-xs mb-3">{t.rights}</p>
 
             <div className="flex flex-row justify-center gap-4 text-xs">
+
               <Link
                 href={`/${locale || "de"}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
@@ -110,15 +118,17 @@ export default function Footer() {
               >
                 {t.terms}
               </Link>
-              <Link
-                href="javascript:Cookiebot.renew()"
+
+              <button
+                type="button"
+                onClick={openCookieSettings}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 Cookies
-              </Link>
+              </button>
+
             </div>
           </div>
-
         </div>
 
         {/* ================= DESKTOP ================= */}
@@ -138,6 +148,7 @@ export default function Footer() {
             <p className="text-sm mb-3">{t.rights}</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 text-xs">
+
               <Link
                 href={`/${locale || "de"}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
@@ -151,12 +162,15 @@ export default function Footer() {
               >
                 {t.terms}
               </Link>
-              <Link
-                href="javascript:Cookiebot.renew()"
+
+              <button
+                type="button"
+                onClick={openCookieSettings}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 Cookies
-              </Link>
+              </button>
+
             </div>
           </div>
 
@@ -196,7 +210,6 @@ export default function Footer() {
             </Link>
 
           </div>
-
         </div>
 
       </div>
