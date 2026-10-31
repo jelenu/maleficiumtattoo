@@ -110,6 +110,12 @@ export default function Footer() {
               >
                 {t.terms}
               </Link>
+              <Link
+                href="javascript:Cookiebot.renew()"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Cookies
+              </Link>
             </div>
           </div>
 
@@ -144,6 +150,12 @@ export default function Footer() {
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.terms}
+              </Link>
+              <Link
+                href="javascript:Cookiebot.renew()"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Cookies
               </Link>
             </div>
           </div>
