@@ -3,6 +3,7 @@ import { withIntlayer } from "next-intlayer/server";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
