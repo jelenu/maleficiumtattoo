@@ -8,63 +8,52 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Maleficium Tattoo",
-  description: "Professional tattoo studio - Where art meets skin",
+  description: "Professional tattoo studio - Where art meets skin.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <head>
-        {/* Google Consent Mode v2 - Default consent */}
+        {/* Google Consent Mode v2: consentimiento denegado por defecto */}
         <Script
-          id="consent-default"
+          id="google-consent-mode"
           strategy="beforeInteractive"
           data-cookieconsent="ignore"
         >
           {`
             window.dataLayer = window.dataLayer || [];
-
-            window.gtag = function() {
-              window.dataLayer.push(arguments);
-            };
-
-            window.gtag('consent', 'default', {
-              'analytics_storage': 'denied',
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
               'ad_storage': 'denied',
               'ad_user_data': 'denied',
               'ad_personalization': 'denied',
+              'analytics_storage': 'denied',
               'functionality_storage': 'denied',
               'personalization_storage': 'denied',
               'security_storage': 'granted',
               'wait_for_update': 500
             });
-
-            window.gtag('set', 'ads_data_redaction', true);
-            window.gtag('set', 'url_passthrough', false);
+            gtag('set', 'ads_data_redaction', true);
+            gtag('set', 'url_passthrough', false);
           `}
         </Script>
-      </head>
 
-      <body
-        className={`${inter.variable} ${cormorant.variable} antialiased bg-black text-white`}
-      >
-        {/* Cookiebot CMP */}
+        {/* Cookiebot */}
         <Script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
@@ -72,14 +61,16 @@ export default function RootLayout({
           data-blockingmode="auto"
           strategy="beforeInteractive"
         />
+      </head>
 
+      <body className={`${inter.variable} ${cormorant.variable}`}>
         {children}
 
-        {/* Cloudflare Insights */}
+        {/* Cloudflare Web Analytics */}
         <Script
+          defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "91aa3a1a94d648bdbd6eeaa032cd5b46"}'
-          strategy="afterInteractive"
         />
 
         {/* Google Analytics 4 */}
