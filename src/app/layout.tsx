@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 
 const inter = Inter({
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${inter.variable} ${cormorant.variable} antialiased bg-black text-white`}
       >
         {children}
+        <Script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91aa3a1a94d648bdbd6eeaa032cd5b46"}'></script>
       </body>
     </html>
   );
