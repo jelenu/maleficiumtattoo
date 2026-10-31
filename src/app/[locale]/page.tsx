@@ -3,7 +3,6 @@ import {
   HeroSection,
 } from "@/components/sections";
 
-import CookieConsent from "@/components/features/CookieConsent";
 import ForceSectionSnap from "@/components/ui/ForceSectionSnap";
 import dynamic from "next/dynamic";
 
@@ -48,8 +47,6 @@ const Page: NextPageIntlayer = async () => {
       <Map />
 
       <div className="pt-[4rem]" />
-
-      <CookieConsent />
     </main>
   );
 };
