@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import { Inter, Cormorant_Garamond } from "next/font/google";
+import type { ReactNode } from "react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,8 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
-}) {
+  children: ReactNode;}) {
   return (
     <html lang="de">
       <head>
