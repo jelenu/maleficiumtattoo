@@ -30,10 +30,20 @@ export default function Footer() {
       de: "Datenschutz",
       es: "Política de privacidad",
     }),
+    impressum: tr(lang, {
+      en: "Legal Notice",
+      de: "Impressum",
+      es: "Aviso legal",
+    }),
     terms: tr(lang, {
       en: "Terms of Service",
       de: "Nutzungsbedingungen",
       es: "Términos del servicio",
+    }),
+    cookies: tr(lang, {
+      en: "Cookie Settings",
+      de: "Cookie-Einstellungen",
+      es: "Configuración de cookies",
     }),
   } as const;
 
@@ -103,13 +113,21 @@ export default function Footer() {
           <div className="text-center text-white">
             <p className="text-xs mb-3">{t.rights}</p>
 
-            <div className="flex flex-row justify-center gap-4 text-xs">
+            <div className="flex flex-row flex-wrap justify-center gap-4 text-xs">
 
               <Link
                 href={`/${locale || "de"}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.privacy}
+              </Link>
+
+              {/* Impressum */}
+              <Link
+                href={`/${locale || "de"}/impressum`}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                {t.impressum}
               </Link>
 
               <Link
@@ -124,7 +142,7 @@ export default function Footer() {
                 onClick={openCookieSettings}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Cookie-Einstellungen
+                {t.cookies}
               </button>
 
             </div>
@@ -156,6 +174,14 @@ export default function Footer() {
                 {t.privacy}
               </Link>
 
+              {/* Impressum */}
+              <Link
+                href={`/${locale || "de"}/impressum`}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                {t.impressum}
+              </Link>
+
               <Link
                 href={`/${locale || "de"}/terms-of-service`}
                 className="text-gray-300 hover:text-white transition-colors"
@@ -168,7 +194,7 @@ export default function Footer() {
                 onClick={openCookieSettings}
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Cookie-Einstellungen
+                {t.cookies}
               </button>
 
             </div>
