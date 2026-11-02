@@ -25,21 +25,25 @@ export default function Footer() {
       de: `© ${currentYear} Maleficium Tattoo Studio. Alle Rechte vorbehalten.`,
       es: `© ${currentYear} Maleficium Tattoo Studio. Todos los derechos reservados.`,
     }),
+
     privacy: tr(lang, {
       en: "Privacy Policy",
       de: "Datenschutz",
       es: "Política de privacidad",
     }),
+
     impressum: tr(lang, {
       en: "Legal Notice",
       de: "Impressum",
       es: "Aviso legal",
     }),
+
     terms: tr(lang, {
       en: "Terms of Service",
       de: "Nutzungsbedingungen",
       es: "Términos del servicio",
     }),
+
     cookies: tr(lang, {
       en: "Cookie Settings",
       de: "Cookie-Einstellungen",
@@ -111,10 +115,14 @@ export default function Footer() {
           </div>
 
           <div className="text-center text-white">
-            <p className="text-xs mb-3">{t.rights}</p>
+
+            <p className="text-xs mb-3">
+              {t.rights}
+            </p>
 
             <div className="flex flex-row flex-wrap justify-center gap-4 text-xs">
 
+              {/* Privacy Policy */}
               <Link
                 href={`/${locale || "de"}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
@@ -130,6 +138,7 @@ export default function Footer() {
                 {t.impressum}
               </Link>
 
+              {/* Terms of Service */}
               <Link
                 href={`/${locale || "de"}/terms-of-service`}
                 className="text-gray-300 hover:text-white transition-colors"
@@ -137,6 +146,7 @@ export default function Footer() {
                 {t.terms}
               </Link>
 
+              {/* Cookie Settings */}
               <button
                 type="button"
                 onClick={openCookieSettings}
@@ -163,10 +173,14 @@ export default function Footer() {
           </div>
 
           <div className="text-center text-white">
-            <p className="text-sm mb-3">{t.rights}</p>
+
+            <p className="text-sm mb-3">
+              {t.rights}
+            </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 text-xs">
 
+              {/* Privacy Policy */}
               <Link
                 href={`/${locale || "de"}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
@@ -182,6 +196,7 @@ export default function Footer() {
                 {t.impressum}
               </Link>
 
+              {/* Terms of Service */}
               <Link
                 href={`/${locale || "de"}/terms-of-service`}
                 className="text-gray-300 hover:text-white transition-colors"
@@ -189,6 +204,7 @@ export default function Footer() {
                 {t.terms}
               </Link>
 
+              {/* Cookie Settings */}
               <button
                 type="button"
                 onClick={openCookieSettings}
