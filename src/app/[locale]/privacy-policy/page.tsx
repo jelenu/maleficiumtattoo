@@ -28,27 +28,27 @@ export default async function PrivacyPolicyPage({
     studioName: "Maleficium Tattoo Studio",
 
     owner: tr(lang, {
-      es: "Propietario: [Tu nombre completo]",
-      de: "Inhaber: [Ihr vollständiger Name]",
-      en: "Owner: [Your full name]",
+      es: "Propietario: Alexis Massó Galiano",
+      de: "Inhaber: Alexis Massó Galiano",
+      en: "Owner: Alexis Massó Galiano",
     }),
 
     address: tr(lang, {
-      es: "Dirección: [Calle, Número, Ciudad, Código Postal, País]",
-      de: "Adresse: [Straße, Nummer, Stadt, PLZ, Land]",
-      en: "Address: [Street, Number, City, ZIP, Country]",
+      es: "Dirección: Herzogenburger Strasse 66/1, 3100 Sankt Pölten, Austria",
+      de: "Adresse: Herzogenburger Strasse 66/1, 3100 Sankt Pölten, Österreich",
+      en: "Address: Herzogenburger Strasse 66/1, 3100 Sankt Pölten, Austria",
     }),
 
     email: tr(lang, {
-      es: "Correo electrónico: [tu-email@ejemplo.com]",
-      de: "E-Mail: [your-email@example.com]",
-      en: "Email: [your-email@example.com]",
+      es: "Correo electrónico: Maleficium.tattoo@gmail.com",
+      de: "E-Mail: Maleficium.tattoo@gmail.com",
+      en: "Email: Maleficium.tattoo@gmail.com",
     }),
 
     phone: tr(lang, {
-      es: "Teléfono: [+34 123 456 789]",
-      de: "Telefon: [+34 123 456 789]",
-      en: "Phone: [+34 123 456 789]",
+      es: "Teléfono: 06766726865",
+      de: "Telefon: 06766726865",
+      en: "Phone: 06766726865",
     }),
 
     s1Title: tr(lang, {
@@ -264,9 +264,9 @@ export default async function PrivacyPolicyPage({
     ],
 
     s5HowTo: tr(lang, {
-      es: "Para ejercer tus derechos, puedes enviar una solicitud a [tu-email@ejemplo.com]. También puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD): https://www.aepd.es.",
-      de: "Zur Ausübung Ihrer Rechte senden Sie bitte eine Anfrage an [your-email@example.com]. Außerdem können Sie sich bei der zuständigen Datenschutzaufsichtsbehörde beschweren.",
-      en: "To exercise your rights, please send a request to [your-email@example.com]. You may also lodge a complaint with your relevant data protection authority.",
+      es: "Para ejercer tus derechos, puedes enviar una solicitud a Maleficium.tattoo@gmail.com. También puedes presentar una reclamación ante la autoridad de protección de datos de Austria (Datenschutzbehörde): https://www.dsb.gv.at/.",
+      de: "Zur Ausübung Ihrer Rechte können Sie eine Anfrage an Maleficium.tattoo@gmail.com senden. Außerdem können Sie eine Beschwerde bei der österreichischen Datenschutzbehörde einreichen: https://www.dsb.gv.at/.",
+      en: "To exercise your rights, please send a request to Maleficium.tattoo@gmail.com. You may also lodge a complaint with the Austrian Data Protection Authority (Datenschutzbehörde): https://www.dsb.gv.at/.",
     }),
 
     s6Title: tr(lang, {
