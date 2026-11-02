@@ -1,4 +1,6 @@
+
 'use client';
+
 import { galleryImages } from '@/data/gallery';
 import { Text } from '@/components/ui/basics';
 import Gallery from '@/components/ui/gallery/Gallery';
@@ -12,25 +14,91 @@ function GalleryPageContent() {
   const { locale } = useParams<{ locale?: string }>();
   const searchParams = useSearchParams();
   const lang = getLang(locale);
+
   const t = {
-    title: tr(lang, { en: 'Our Gallery', de: 'Unsere Galerie', es: 'Nuestra Galería' }),
-    filters: tr(lang, { en: 'Filters', de: 'Filter', es: 'Filtros' }),
-    styles: tr(lang, { en: 'Styles', de: 'Stile', es: 'Estilos' }),
-    artists: tr(lang, { en: 'Artists', de: 'Künstler', es: 'Artistas' }),
-    allStyles: tr(lang, { en: 'All Styles', de: 'Alle Stile', es: 'Todos los estilos' }),
-    blackwork: tr(lang, { en: 'Blackwork', de: 'Blackwork', es: 'Blackwork' }),
-    realism: tr(lang, { en: 'Realism', de: 'Realismus', es: 'Realismo' }),
-    allArtists: tr(lang, { en: 'All Artists', de: 'Alle Künstler', es: 'Todos los artistas' }),
+    title: tr(lang, {
+      en: 'Our Gallery',
+      de: 'Unsere Galerie',
+      es: 'Nuestra Galería',
+    }),
+    filters: tr(lang, {
+      en: 'Filters',
+      de: 'Filter',
+      es: 'Filtros',
+    }),
+    styles: tr(lang, {
+      en: 'Styles',
+      de: 'Stile',
+      es: 'Estilos',
+    }),
+    artists: tr(lang, {
+      en: 'Artists',
+      de: 'Künstler',
+      es: 'Artistas',
+    }),
+    allStyles: tr(lang, {
+      en: 'All Styles',
+      de: 'Alle Stile',
+      es: 'Todos los estilos',
+    }),
+    blackwork: tr(lang, {
+      en: 'Blackwork',
+      de: 'Blackwork',
+      es: 'Blackwork',
+    }),
+    realism: tr(lang, {
+      en: 'Realism',
+      de: 'Realismus',
+      es: 'Realismo',
+    }),
+    ignorant: tr(lang, {
+      en: 'Ignorant',
+      de: 'Ignorant',
+      es: 'Ignorant',
+    }),
+    fineline: tr(lang, {
+      en: 'Fine Line',
+      de: 'Fineline',
+      es: 'Fine Line',
+    }),
+    newschool: tr(lang, {
+      en: 'New School',
+      de: 'New School',
+      es: 'New School',
+    }),
+    allArtists: tr(lang, {
+      en: 'All Artists',
+      de: 'Alle Künstler',
+      es: 'Todos los artistas',
+    }),
   };
 
-  const [selectedStyle, setSelectedStyle] = useState<'all' | 'blackwork' | 'realism'>('all');
-  const [selectedArtist, setSelectedArtist] = useState<'all' | 'Alexis' | 'Manu'>('all');
+  const [selectedStyle, setSelectedStyle] = useState<
+    | 'all'
+    | 'blackwork'
+    | 'realism'
+    | 'ignorant'
+    | 'fineline'
+    | 'newschool'
+  >('all');
+
+  const [selectedArtist, setSelectedArtist] = useState<
+    'all' | 'Alexis' | 'Manu'
+  >('all');
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Leer el parámetro de query ?style= y establecer el filtro inicial
   useEffect(() => {
     const styleParam = searchParams.get('style');
-    if (styleParam === 'blackwork' || styleParam === 'realism') {
+
+    if (
+      styleParam === 'blackwork' ||
+      styleParam === 'realism' ||
+      styleParam === 'ignorant' ||
+      styleParam === 'fineline' ||
+      styleParam === 'newschool'
+    ) {
       setSelectedStyle(styleParam);
     }
   }, [searchParams]);
@@ -45,13 +113,28 @@ function GalleryPageContent() {
     [selectedStyle, selectedArtist]
   );
 
-  const styleOptions: Array<{ key: 'all' | 'blackwork' | 'realism'; label: string }> = [
+  const styleOptions: Array<{
+    key:
+      | 'all'
+      | 'blackwork'
+      | 'realism'
+      | 'ignorant'
+      | 'fineline'
+      | 'newschool';
+    label: string;
+  }> = [
     { key: 'all', label: t.allStyles },
     { key: 'blackwork', label: t.blackwork },
     { key: 'realism', label: t.realism },
+    { key: 'ignorant', label: t.ignorant },
+    { key: 'fineline', label: t.fineline },
+    { key: 'newschool', label: t.newschool },
   ];
 
-  const artistOptions: Array<{ key: 'all' | 'Alexis' | 'Manu'; label: string }> = [
+  const artistOptions: Array<{
+    key: 'all' | 'Alexis' | 'Manu';
+    label: string;
+  }> = [
     { key: 'all', label: t.allArtists },
     { key: 'Alexis', label: 'Alexis' },
     { key: 'Manu', label: 'Manu' },
@@ -59,7 +142,9 @@ function GalleryPageContent() {
 
   const baseBtn =
     'px-3 py-1.5 rounded-md text-xs font-medium tracking-wide transition-colors border';
+
   const activeBtn = 'bg-zinc-200 text-zinc-900 border-zinc-300';
+
   const inactiveBtn =
     'bg-zinc-800/60 text-zinc-300 border-zinc-700 hover:bg-zinc-700/70';
 
@@ -121,15 +206,21 @@ function GalleryPageContent() {
           className={`${mobileFiltersOpen ? 'block' : 'hidden'} md:block`}
         >
           <div className="mb-12 flex flex-col items-center md:flex-row md:items-start justify-center gap-6 md:gap-50">
+
             {/* Styles */}
             <div className="flex flex-col items-center text-center">
-              <span className="text-sm tracking-wider text-zinc-400 mb-2 uppercase">{t.styles}</span>
+              <span className="text-sm tracking-wider text-zinc-400 mb-2 uppercase">
+                {t.styles}
+              </span>
+
               <div className="flex flex-wrap justify-center gap-2">
                 {styleOptions.map((opt) => (
                   <button
                     key={opt.key}
                     onClick={() => setSelectedStyle(opt.key)}
-                    className={`${baseBtn} ${selectedStyle === opt.key ? activeBtn : inactiveBtn}`}
+                    className={`${baseBtn} ${
+                      selectedStyle === opt.key ? activeBtn : inactiveBtn
+                    }`}
                   >
                     {opt.label}
                   </button>
@@ -139,19 +230,25 @@ function GalleryPageContent() {
 
             {/* Artists */}
             <div className="flex flex-col items-center text-center">
-              <span className="text-sm tracking-wider text-zinc-400 mb-2 uppercase">{t.artists}</span>
+              <span className="text-sm tracking-wider text-zinc-400 mb-2 uppercase">
+                {t.artists}
+              </span>
+
               <div className="flex flex-wrap justify-center gap-2">
                 {artistOptions.map((opt) => (
                   <button
                     key={opt.key}
                     onClick={() => setSelectedArtist(opt.key)}
-                    className={`${baseBtn} ${selectedArtist === opt.key ? activeBtn : inactiveBtn}`}
+                    className={`${baseBtn} ${
+                      selectedArtist === opt.key ? activeBtn : inactiveBtn
+                    }`}
                   >
                     {opt.label}
                   </button>
                 ))}
               </div>
             </div>
+
           </div>
         </motion.div>
 
@@ -166,6 +263,7 @@ function GalleryPageContent() {
         >
           <Gallery images={filteredImages} />
         </motion.div>
+
       </div>
 
       <Footer />
