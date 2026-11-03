@@ -3,6 +3,11 @@ import { t, type Dictionary } from "intlayer";
 const studioPageContent = {
   key: "studio-page",
   content: {
+      title: t({
+    de: "Unser Studio",
+    en: "Our Studio",
+    es: "Nuestro estudio",
+  }),
     paragraphs: [
       t({
         de: "Maleficium Tattoo ist ein privates Studio für individuelle Tätowierungen in einer ruhigen, bewusst gestalteten Umgebung.",
