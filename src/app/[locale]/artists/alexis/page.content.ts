@@ -34,10 +34,10 @@ const alexisPageContent = {
       es: 'Realismo',
     }),
     description: t({
-      en: 'Artist specialized in realism and blackwork. Passionate about transforming ideas into unique pieces that tell stories through the skin. Artist specialized in realism and blackwork. Passionate about transforming ideas into unique pieces that tell stories through the skin.',
-      de: 'Künstler spezialisiert auf Realismus und Blackwork. Leidenschaftlich darin, Ideen in einzigartige Werke zu verwandeln, die Geschichten auf der Haut erzählen. Künstler spezialisiert auf Realismus und Blackwork. Leidenschaftlich darin, Ideen in einzigartige Werke zu verwandeln, die Geschichten auf der Haut erzählen.',
-      es: 'Artista especializado en realismo y blackwork. Apasionado por transformar ideas en piezas únicas que cuentan historias a través de la piel. Artista especializado en realismo y blackwork. Apasionado por transformar ideas en piezas únicas que cuentan historias a través de la piel.',
-    }),
+          en: 'Originally from Barcelona, Spain, Alexis has been tattooing for over 10 years. His style focuses on blackwork, combining thick and thin lines, high contrast, and whip shading. His tattoos are clean, bold and solid, ideal for covering scars or old tattoos. He is also specialized in tattooing intimate areas. His approach blends darkness and precision, creating unique pieces adapted to both the body and the character of each person.',
+          de: 'Alexis stammt ursprünglich aus Barcelona und tätowiert seit über 10 Jahren. Sein Schwerpunkt liegt auf Blackwork mit starken Kontrasten sowie der Kombination aus dicken und feinen Linien, ergänzt durch Whip Shading. Seine Arbeiten sind klar, kraftvoll und langlebig – besonders geeignet für Narben- oder Cover-up-Projekte. Er ist außerdem auf Tätowierungen im Intimbereich spezialisiert. Jedes Tattoo wird individuell nach Kund:innenwunsch entworfen und an Körper und Persönlichkeit angepasst.',
+          es: 'Originario de Barcelona, España, Alexis lleva más de 10 años tatuando con un estilo centrado en blackwork, combinando líneas gruesas y finas, alto contraste y sombreado whip shading. Sus tatuajes son limpios, sólidos y con presencia, ideales para cubrir cicatrices o antiguos tatuajes, y también especializado en tatuar partes íntimas. Su enfoque combina oscuridad y precisión, creando piezas únicas que se adaptan al cuerpo y al carácter de cada persona',
+        }),
     socialInstagramLabel: t({
       en: 'Alexis on Instagram',
       de: 'Alexis auf Instagram',

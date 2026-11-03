@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, MapPin, Star } from "lucide-react";
+import { Instagram, MapPin } from "lucide-react";
 import { useParams } from "next/navigation";
 import { getLang, tr } from "@/utils/i18n";
 
@@ -61,9 +61,6 @@ export default function Footer() {
     }),
   } as const;
 
-  const reviewsUrl =
-    "https://www.google.com/search?q=maleficiumtattoo+reviews";
-
   const mapsUrl =
     "https://www.google.com/maps/search/?api=1&query=maleficiumtattoo";
 
@@ -109,18 +106,6 @@ export default function Footer() {
               >
                 <MapPin className="w-6 h-6" />
               </Link>
-
-              {/* Reviews */}
-              <Link
-                href={reviewsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:scale-125 transition-transform duration-300"
-                aria-label="Reviews"
-              >
-                <Star className="w-6 h-6" />
-              </Link>
-
             </div>
           </div>
 
@@ -265,18 +250,6 @@ export default function Footer() {
             >
               <MapPin className="w-6 h-6" />
             </Link>
-
-            {/* Reviews */}
-            <Link
-              href={reviewsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:scale-125 transition-transform duration-300"
-              aria-label="Reviews"
-            >
-              <Star className="w-6 h-6" />
-            </Link>
-
           </div>
         </div>
 
