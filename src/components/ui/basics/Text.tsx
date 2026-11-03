@@ -179,7 +179,7 @@ export default function Text({
           stylesBody: "md:text-[clamp(1.4rem,2.0vh,1.8rem)]",
           artistsTitle: "md:text-[clamp(2rem,4.4vh,3.25rem)]",
           contactTitle: "md:text-[clamp(1.75rem,3.2vh,2.75rem)]",
-          contactBody: "md:text-[clamp(1rem,1.6vh,1.25rem)]",
+          contactBody: "md:text-[clamp(0.8rem,1.2vh,1.40rem)]",
           cardBack: "md:text-[clamp(1.3rem,1.3vh,1.4rem)]",
           description: "md:text-[clamp(0.9rem,1.8vh,2.2rem)]",
           subtitle: "md:text-[clamp(1.125rem,2.3vh,1.5rem)]",

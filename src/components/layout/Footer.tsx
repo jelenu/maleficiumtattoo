@@ -11,10 +11,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { locale } = useParams<{ locale?: string }>();
   const lang = getLang(locale);
+  const localePrefix = `/${lang}`;
 
   // Abrir las preferencias de cookies de Cookiebot
   const openCookieSettings = () => {
-    if (typeof window !== "undefined" && window.Cookiebot) {
+    if (
+      typeof window !== "undefined" &&
+      window.Cookiebot
+    ) {
       window.Cookiebot.renew();
     }
   };
@@ -42,6 +46,12 @@ export default function Footer() {
       en: "Terms of Service",
       de: "Nutzungsbedingungen",
       es: "Términos del servicio",
+    }),
+
+    bookingTerms: tr(lang, {
+      en: "Booking Terms",
+      de: "Buchungsbedingungen",
+      es: "Condiciones de cita",
     }),
 
     cookies: tr(lang, {
@@ -80,7 +90,7 @@ export default function Footer() {
 
               {/* Instagram */}
               <Link
-                href="https://www.instagram.com/maleficiumtattoo"
+                href="https://www.instagram.com/maleficium.tattoo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:scale-125 transition-transform duration-300"
@@ -124,7 +134,7 @@ export default function Footer() {
 
               {/* Privacy Policy */}
               <Link
-                href={`/${locale || "de"}/privacy-policy`}
+                href={`${localePrefix}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.privacy}
@@ -132,7 +142,7 @@ export default function Footer() {
 
               {/* Impressum */}
               <Link
-                href={`/${locale || "de"}/impressum`}
+                href={`${localePrefix}/impressum`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.impressum}
@@ -140,10 +150,18 @@ export default function Footer() {
 
               {/* Terms of Service */}
               <Link
-                href={`/${locale || "de"}/terms-of-service`}
+                href={`${localePrefix}/terms-of-service`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.terms}
+              </Link>
+
+              {/* Booking Terms */}
+              <Link
+                href={`${localePrefix}/booking-terms`}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                {t.bookingTerms}
               </Link>
 
               {/* Cookie Settings */}
@@ -178,11 +196,11 @@ export default function Footer() {
               {t.rights}
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4 text-xs">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 text-xs">
 
               {/* Privacy Policy */}
               <Link
-                href={`/${locale || "de"}/privacy-policy`}
+                href={`${localePrefix}/privacy-policy`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.privacy}
@@ -190,7 +208,7 @@ export default function Footer() {
 
               {/* Impressum */}
               <Link
-                href={`/${locale || "de"}/impressum`}
+                href={`${localePrefix}/impressum`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.impressum}
@@ -198,10 +216,18 @@ export default function Footer() {
 
               {/* Terms of Service */}
               <Link
-                href={`/${locale || "de"}/terms-of-service`}
+                href={`${localePrefix}/terms-of-service`}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t.terms}
+              </Link>
+
+              {/* Booking Terms */}
+              <Link
+                href={`${localePrefix}/booking-terms`}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                {t.bookingTerms}
               </Link>
 
               {/* Cookie Settings */}
@@ -220,7 +246,7 @@ export default function Footer() {
 
             {/* Instagram */}
             <Link
-              href="https://www.instagram.com/maleficiumtattoo"
+              href="https://www.instagram.com/maleficium.tattoo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:scale-125 transition-transform duration-300"

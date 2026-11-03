@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ReactNode, ElementType, useEffect, useState } from "react";
@@ -10,6 +11,8 @@ let vhResizeHandler: (() => void) | null = null;
 interface SectionWrapperProps {
   children: ReactNode;
   backgroundImage?: string | StaticImageData;
+  backgroundVideo?: string;
+  videoPoster?: string;
   backgroundAlt?: string;
   snapStart?: boolean;
   id?: string;
@@ -32,13 +35,15 @@ interface SectionWrapperProps {
   /** Retardo de la animación (s) */
   delay?: number;
   /** Viewport trigger options */
-  inViewAmount?: number; // 0..1
+  inViewAmount?: number;
   inViewOnce?: boolean;
 }
 
 export default function SectionWrapper({
   children,
   backgroundImage,
+  backgroundVideo,
+  videoPoster,
   backgroundAlt = "Background",
   snapStart = true,
   id,
@@ -68,7 +73,7 @@ export default function SectionWrapper({
   // Definir transición tipada
   const transition: Transition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration, delay, ease: [0.16, 1, 0.3, 1] }; // easeOut cubic-bezier
+    : { duration, delay, ease: [0.16, 1, 0.3, 1] };
 
   // Variantes de animación
   const variants: Variants = {
@@ -89,7 +94,13 @@ export default function SectionWrapper({
           return { opacity: 0, y: 24 };
       }
     })(),
-    visible: { opacity: 1, x: 0, y: 0, scale: 1, transition },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition,
+    },
   };
 
   // Solo activamos useEffect para mobile/tablet
@@ -102,6 +113,7 @@ export default function SectionWrapper({
     };
 
     vhListenerCount += 1;
+
     if (vhListenerCount === 1) {
       vhResizeHandler = setVh;
       setVh();
@@ -113,6 +125,7 @@ export default function SectionWrapper({
 
     return () => {
       vhListenerCount -= 1;
+
       if (vhListenerCount === 0 && vhResizeHandler) {
         window.removeEventListener("resize", vhResizeHandler);
         window.visualViewport?.removeEventListener("resize", vhResizeHandler);
@@ -124,7 +137,9 @@ export default function SectionWrapper({
   return (
     <WrapperTag
       id={id}
-      className={`relative ${dynamicHeight ? "h-[calc(var(--vh)*100)]" : "h-screen"} ${snapClass} ${className}`}
+      className={`relative ${
+        dynamicHeight ? "h-[calc(var(--vh)*100)]" : "h-screen"
+      } ${snapClass} ${className}`}
     >
       {/* Content */}
       {animateOnScroll ? (
@@ -146,21 +161,49 @@ export default function SectionWrapper({
       )}
 
       {/* Background */}
-      {backgroundImage && (
+      {backgroundVideo ? (
         <>
-          <Image
-            src={backgroundImage}
-            alt={backgroundAlt}
-            fill
-            className={`${imgClassName} transition-opacity duration-700 ${bgLoaded ? "opacity-100" : "opacity-0"}`}
-            priority={priority}
-            sizes={sizes}
-            onLoad={() => setBgLoaded(true)}
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={videoPoster}
+            aria-hidden="true"
+            className={`absolute inset-0 w-full h-full object-cover ${imgClassName}`}
+          >
+            <source src={backgroundVideo} type="video/webm" />
+          </video>
+
           {!disableOverlay && (
-            <div className={`absolute inset-0 z-10 pointer-events-none ${overlayClassName}`} />
+            <div
+              className={`absolute inset-0 z-10 pointer-events-none ${overlayClassName}`}
+            />
           )}
         </>
+      ) : (
+        backgroundImage && (
+          <>
+            <Image
+              src={backgroundImage}
+              alt={backgroundAlt}
+              fill
+              className={`${imgClassName} transition-opacity duration-700 ${
+                bgLoaded ? "opacity-100" : "opacity-0"
+              }`}
+              priority={priority}
+              sizes={sizes}
+              onLoad={() => setBgLoaded(true)}
+            />
+
+            {!disableOverlay && (
+              <div
+                className={`absolute inset-0 z-10 pointer-events-none ${overlayClassName}`}
+              />
+            )}
+          </>
+        )
       )}
     </WrapperTag>
   );

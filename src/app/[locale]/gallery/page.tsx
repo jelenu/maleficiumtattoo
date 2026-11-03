@@ -83,7 +83,7 @@ function GalleryPageContent() {
   >('all');
 
   const [selectedArtist, setSelectedArtist] = useState<
-    'all' | 'Alexis' | 'Manu'
+    'all' | 'Alexis' | 'Manu' | 'Christoph' | 'Arnau'
   >('all');
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -132,12 +132,14 @@ function GalleryPageContent() {
   ];
 
   const artistOptions: Array<{
-    key: 'all' | 'Alexis' | 'Manu';
+    key: 'all' | 'Alexis' | 'Manu' | 'Christoph' | 'Arnau';
     label: string;
   }> = [
     { key: 'all', label: t.allArtists },
     { key: 'Alexis', label: 'Alexis' },
     { key: 'Manu', label: 'Manu' },
+    { key: 'Christoph', label: 'Christoph' },
+    { key: 'Arnau', label: 'Arnau' },
   ];
 
   const baseBtn =

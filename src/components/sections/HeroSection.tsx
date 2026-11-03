@@ -1,4 +1,6 @@
+
 "use client";
+
 import Image from "next/image";
 import { SectionWrapper, Button } from "@/components/ui";
 import { useIntlayer } from "react-intlayer";
@@ -6,7 +8,6 @@ import { useRouter, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Text from "@/components/ui/basics/Text";
-
 
 // Añadir tipado para la propiedad global
 declare global {
@@ -19,21 +20,31 @@ export default function HeroSection() {
   const t = useIntlayer("hero");
   const router = useRouter();
   const { locale } = useParams<{ locale?: string }>();
+
   const contactHref = locale ? `/${locale}/contact` : "/contact";
   const goContact = () => router.push(contactHref);
 
   // Esperar a que el LoadingScreen termine
   const [ready, setReady] = useState(false);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const alreadyLoaded = window.__APP_LOADED || sessionStorage.getItem('app_loaded') === '1';
+
+    const alreadyLoaded =
+      window.__APP_LOADED ||
+      sessionStorage.getItem("app_loaded") === "1";
+
     if (alreadyLoaded) {
       setReady(true);
       return;
     }
+
     const onReady = () => setReady(true);
+
     window.addEventListener("app-loaded", onReady);
+
     const fallback = window.setTimeout(onReady, 1200);
+
     return () => {
       window.removeEventListener("app-loaded", onReady);
       window.clearTimeout(fallback);
@@ -42,18 +53,16 @@ export default function HeroSection() {
 
   return (
     <SectionWrapper
-      backgroundImage="/images/bg.webp"
-      backgroundAlt={String(t.bgAlt)}
+      backgroundVideo="/images/hero-video.webm"
+      videoPoster="/images/fondo.webp"
       animateOnScroll={ready}
-      priority
-      sizes="100vw"
     >
       {/* Layout para móvil */}
       <div className="flex flex-col items-center space-y-8 md:hidden">
         <motion.div
           className="-mt-24"
           key={ready ? "logo-mobile-ready" : "logo-mobile-wait"}
-          initial={{ opacity: 0 }} // oculto antes de animar
+          initial={{ opacity: 0 }}
           whileInView={
             ready
               ? {
@@ -80,7 +89,7 @@ export default function HeroSection() {
 
         <motion.div
           key={ready ? "cta-mobile-ready" : "cta-mobile-wait"}
-          initial={{ opacity: 0, y: 24 }} // oculto y desplazado antes de animar
+          initial={{ opacity: 0, y: 24 }}
           whileInView={
             ready
               ? {
@@ -155,22 +164,37 @@ export default function HeroSection() {
           </Button>
         </motion.div>
       </div>
+
       {/* Tres columnas en la parte inferior pegadas abajo */}
       <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-6xl z-20 px-2 md:px-16 border-t border-white">
         <div className="flex flex-row text-white text-center text-lg min-h-[72px] py-2 md:py-4 gap-1 md:gap-0">
           <div className="flex flex-col justify-center items-center flex-1 relative px-1">
-            <Text variant="subtitle" className="font-semibold text-xs md:text-base">{t.addressLabel}</Text>
-            <Text variant="small" className="text-xs md:text-sm">{t.address}</Text>
-            <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60"></div>
+            <Text variant="subtitle" className="font-semibold text-xs md:text-base">
+              {t.addressLabel}
+            </Text>
+            <Text variant="small" className="text-xs md:text-sm">
+              {t.address}
+            </Text>
+            <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60" />
           </div>
+
           <div className="flex flex-col justify-center items-center flex-1 relative px-1">
-            <Text variant="subtitle" className="font-semibold text-xs md:text-base">{t.phoneLabel}</Text>
-            <Text variant="small" className="text-xs md:text-sm">{t.phone}</Text>
-            <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60"></div>
+            <Text variant="subtitle" className="font-semibold text-xs md:text-base">
+              {t.phoneLabel}
+            </Text>
+            <Text variant="small" className="text-xs md:text-sm">
+              {t.phone}
+            </Text>
+            <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60" />
           </div>
+
           <div className="flex flex-col justify-center items-center flex-1 px-1">
-            <Text variant="subtitle" className="font-semibold text-xs md:text-base">{t.hoursLabel}</Text>
-            <Text variant="small" className="text-xs md:text-sm">{t.hours}</Text>
+            <Text variant="subtitle" className="font-semibold text-xs md:text-base">
+              {t.hoursLabel}
+            </Text>
+            <Text variant="small" className="text-xs md:text-sm">
+              {t.hours}
+            </Text>
           </div>
         </div>
       </div>

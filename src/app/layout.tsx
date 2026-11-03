@@ -69,7 +69,7 @@ export default function RootLayout({
           src="https://consent.cookiebot.com/uc.js"
           data-cbid="518527e6-ee12-4f0d-89c6-cca6f68786c5"
           data-blockingmode="auto"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
 
         {children}

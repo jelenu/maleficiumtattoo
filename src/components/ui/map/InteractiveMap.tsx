@@ -63,7 +63,7 @@ const createLeafletMap = ({
           >
             <TileLayer
               attribution='© OpenStreetMap © CARTO'
-              url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+              url="https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=cb1_51c8_1_c510d1f9b7a6e4ee5f5915ab"
             />
             <AttributionControl 
               position="bottomright" 

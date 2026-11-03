@@ -17,11 +17,13 @@ export default function CarouselSection() {
 
   const slides = useMemo(
     () => [
-      "/images/Alexis/Original/alexis2.webp",
-      "/images/Alexis/Original/alexis3.webp",
-      "/images/Alexis/Original/alexis4.webp",
-      "/images/Alexis/Original/alexis5.webp",
-      "/images/Alexis/Original/alexis6.webp",
+      "/images/tattoo/blackwork/blackngrey/BAT DAGGER - Emma(no IG).webp",
+      "/images/tattoo/Realism/black n grey/scaled_DSC04811.webp",
+      "/images/tattoo/blackwork/blackngrey/SHARK.webp",
+      "/images/tattoo/Ignorant/Black n grey/scaled_image00007_web.webp",
+      "/images/tattoo/blackwork/blackngrey/FOX - @graveyardlana.webp",
+      "/images/tattoo/fineline/scaled_IMG_4563_web.webp",
+      "/images/tattoo/New school/color/scaled_image1.webp",
     ],
     [],
   );

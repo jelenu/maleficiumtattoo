@@ -1,7 +1,8 @@
+
 "use client";
 
 import { ContactFormProps } from "@/types";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Input,
@@ -11,7 +12,10 @@ import {
   Alert,
 } from "@/components/ui";
 import Text from "@/components/ui/basics/Text";
-import { validateCountryCode, validatePhoneNumber } from "@/utils/validation";
+import {
+  validateCountryCode,
+  validatePhoneNumber,
+} from "@/utils/validation";
 import { useIntlayer } from "next-intlayer";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -26,20 +30,129 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     type: "success" | "error";
     text: string;
   } | null>(null);
-  const [phoneError, setPhoneError] = useState<string>("");
+  const [phoneError, setPhoneError] = useState("");
   const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    // Antes:  Ahora: móvil + tablet (<=1279px)
+    // Móvil + tablet (<=1279px)
     const mq = window.matchMedia("(max-width: 1279px)");
     const update = () => setIsTablet(mq.matches);
+
     update();
     mq.addEventListener("change", update);
+
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Locale-aware links for policies
+  const { locale } = useParams<{ locale?: string }>();
+  const lang = getLang(locale);
+  const localePrefix = `/${lang}`;
+
+  const consentNode = tr<React.ReactNode>(lang, {
+    en: (
+      <>
+        I agree to the{" "}
+        <Link
+          href={`${localePrefix}/privacy-policy`}
+          className="underline hover:text-white"
+        >
+          Privacy Policy
+        </Link>{" "}
+        and the{" "}
+        <Link
+          href={`${localePrefix}/terms-of-service`}
+          className="underline hover:text-white"
+        >
+          Terms of Service
+        </Link>
+        .
+      </>
+    ),
+    de: (
+      <>
+        Ich stimme der{" "}
+        <Link
+          href={`${localePrefix}/privacy-policy`}
+          className="underline hover:text-white"
+        >
+          Datenschutzerklärung
+        </Link>{" "}
+        und den{" "}
+        <Link
+          href={`${localePrefix}/terms-of-service`}
+          className="underline hover:text-white"
+        >
+          Nutzungsbedingungen
+        </Link>{" "}
+        zu.
+      </>
+    ),
+    es: (
+      <>
+        Acepto la{" "}
+        <Link
+          href={`${localePrefix}/privacy-policy`}
+          className="underline hover:text-white"
+        >
+          Política de Privacidad
+        </Link>{" "}
+        y los{" "}
+        <Link
+          href={`${localePrefix}/terms-of-service`}
+          className="underline hover:text-white"
+        >
+          Términos del Servicio
+        </Link>
+        .
+      </>
+    ),
+  });
+
+  const bookingConsentNode = tr<React.ReactNode>(lang, {
+    en: (
+      <>
+        I agree to the{" "}
+        <Link
+          href={`${localePrefix}/booking-terms`}
+          className="underline hover:text-white"
+        >
+          Booking Terms and Conditions
+        </Link>
+        .
+      </>
+    ),
+    de: (
+      <>
+        Ich akzeptiere die{" "}
+        <Link
+          href={`${localePrefix}/booking-terms`}
+          className="underline hover:text-white"
+        >
+          Buchungsbedingungen
+        </Link>
+        .
+      </>
+    ),
+    es: (
+      <>
+        Acepto las{" "}
+        <Link
+          href={`${localePrefix}/booking-terms`}
+          className="underline hover:text-white"
+        >
+          condiciones de cita
+        </Link>
+        .
+      </>
+    ),
+  });
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
+
     setIsSubmitting(true);
     setMessage(null);
     setPhoneError("");
@@ -50,14 +163,18 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       const countryCode = formData.get("countryCode") as string;
       const phoneNumber = formData.get("phone") as string;
 
-      const countryCodeValidation = validateCountryCode(countryCode);
+      const countryCodeValidation =
+        validateCountryCode(countryCode);
+
       if (!countryCodeValidation.isValid) {
         setPhoneError(countryCodeValidation.error || "");
         setIsSubmitting(false);
         return;
       }
 
-      const phoneValidation = validatePhoneNumber(phoneNumber);
+      const phoneValidation =
+        validatePhoneNumber(phoneNumber);
+
       if (!phoneValidation.isValid) {
         setPhoneError(phoneValidation.error || "");
         setIsSubmitting(false);
@@ -81,6 +198,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         });
 
         const form = e.currentTarget;
+
         if (form) {
           form.reset();
         }
@@ -108,54 +226,8 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     }
   };
 
-  // Locale-aware links for policies
-  const { locale } = useParams<{ locale?: string }>();
-  const lang = getLang(locale);
-  const localePrefix = `/${lang}`;
-  const consentNode = tr<React.ReactNode>(lang, {
-    en: (
-      <>
-        I agree to the{" "}
-        <Link href={`${localePrefix}/privacy-policy`} className="underline hover:text-white">
-          Privacy Policy
-        </Link>{" "}
-        and the{" "}
-        <Link href={`${localePrefix}/terms-of-service`} className="underline hover:text-white">
-          Terms of Service
-        </Link>
-        .
-      </>
-    ),
-    de: (
-      <>
-        Ich stimme der{" "}
-        <Link href={`${localePrefix}/privacy-policy`} className="underline hover:text-white">
-          Datenschutzerklärung
-        </Link>{" "}
-        und den{" "}
-        <Link href={`${localePrefix}/terms-of-service`} className="underline hover:text-white">
-          Nutzungsbedingungen
-        </Link>{" "}
-        zu.
-      </>
-    ),
-    es: (
-      <>
-        Acepto la{" "}
-        <Link href={`${localePrefix}/privacy-policy`} className="underline hover:text-white">
-          Política de Privacidad
-        </Link>{" "}
-        y los{" "}
-        <Link href={`${localePrefix}/terms-of-service`} className="underline hover:text-white">
-          Términos del Servicio
-        </Link>
-        .
-      </>
-    ),
-  });
-
   return (
-    <div className=" relative h-full flex flex-col ">
+    <div className="relative h-full flex flex-col">
       {message && (
         <Alert
           type={message.type}
@@ -169,7 +241,14 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       <motion.div
         className="md:hidden w-full"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1, transition: { duration: 1.0, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }}
+        whileInView={{
+          opacity: 1,
+          transition: {
+            duration: 1.0,
+            delay: 0.1,
+            ease: [0.16, 1, 0.3, 1],
+          },
+        }}
         viewport={{ once: true, amount: 0.2 }}
       >
         <Text variant="h2" className="w-full !text-center">
@@ -177,16 +256,30 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </Text>
       </motion.div>
 
-      <form className="flex flex-col h-full" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col h-full"
+        onSubmit={handleSubmit}
+      >
         <motion.div
-          className="flex flex-col  justify-evenly h-full mb-6"
+          className="flex flex-col justify-evenly h-full mb-6"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1, transition: { duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] } }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 1.2,
+              delay: 0.15,
+              ease: [0.16, 1, 0.3, 1],
+            },
+          }}
           viewport={{ once: true, amount: 0.2 }}
         >
           {/* First Name y Last Name */}
           <div className="grid grid-cols-2 gap-3">
-            <FormField label={t.firstName.value} htmlFor="firstName" required>
+            <FormField
+              label={t.firstName.value}
+              htmlFor="firstName"
+              required
+            >
               <Input
                 type="text"
                 id="firstName"
@@ -196,7 +289,11 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               />
             </FormField>
 
-            <FormField label={t.lastName.value} htmlFor="lastName" required>
+            <FormField
+              label={t.lastName.value}
+              htmlFor="lastName"
+              required
+            >
               <Input
                 type="text"
                 id="lastName"
@@ -207,7 +304,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             </FormField>
           </div>
 
-          {/* Phone + Email: juntos en todas las resoluciones */}
+          {/* Phone + Email */}
           <div className="grid grid-cols-2 gap-3">
             <FormField
               label={t.phoneNumber.value}
@@ -225,7 +322,11 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               />
             </FormField>
 
-            <FormField label={t.email.value} htmlFor="email" required>
+            <FormField
+              label={t.email.value}
+              htmlFor="email"
+              required
+            >
               <Input
                 type="email"
                 id="email"
@@ -252,28 +353,56 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           </FormField>
 
           {/* Image Upload */}
-          <FormField label={t.refImage.value} htmlFor="image">
+          <FormField
+            label={t.refImage.value}
+            htmlFor="image"
+          >
             <Input
               type="file"
               id="image"
               name="image"
               accept="image/*"
-              className=" file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-200"
+              className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-200"
             />
           </FormField>
 
-          {/* Consent checkbox */}
-          <div className="mt-2">
+          {/* Consent checkboxes */}
+          <div className="mt-2 flex flex-col gap-3">
+            {/* Privacy Policy and Terms of Service */}
             <div className="flex items-start gap-3">
               <input
                 type="checkbox"
                 id="consent"
                 name="consent"
+                value="true"
                 required
                 className="mt-1 h-4 w-4 accent-white"
               />
-              <label htmlFor="consent" className="text-sm text-zinc-300">
+
+              <label
+                htmlFor="consent"
+                className="text-sm text-zinc-300"
+              >
                 {consentNode}
+              </label>
+            </div>
+
+            {/* Booking Terms and Conditions */}
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="bookingConsent"
+                name="bookingConsent"
+                value="true"
+                required
+                className="mt-1 h-4 w-4 accent-white"
+              />
+
+              <label
+                htmlFor="bookingConsent"
+                className="text-sm text-zinc-300"
+              >
+                {bookingConsentNode}
               </label>
             </div>
           </div>
@@ -283,7 +412,14 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         <motion.div
           className="mt-auto"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1, transition: { duration: 1.0, delay: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 1.0,
+              delay: 0.4,
+              ease: [0.16, 1, 0.3, 1],
+            },
+          }}
           viewport={{ once: true, amount: 0.2 }}
         >
           <Button
