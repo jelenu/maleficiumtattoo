@@ -19,7 +19,7 @@ const artistsSectionContent = {
       {
         name: t({ en: 'Manu', de: 'Manu', es: 'Manu' }),
         role: t({ en: 'Resident Artist', de: 'Tattoo-Künstler', es: 'Tatuador residente' }),
-        image: '/images/tattoo/Ignorant/manu.webp',
+        image: '/images/tattoo/Ignorant/scaled_PERFIL TARJETA.webp',
         instagram: t({ en: '@knoblauchbanane', de: '@knoblauchbanane', es: '@knoblauchbanane' }),
         description: t({
           en: 'Originally from Sankt Pölten, Austria, Manu has been tattooing for one year. Her style focuses on black and grey illustrations, engraving-inspired work, and ornamental elements. Her work fuses a strong, bold aesthetic with soft and magical aspects, creating a contrast that defines her artistic signature. This duality also reflects her personality - tough in appearance yet sensitive and shy - resulting in tattoos full of character, delicacy, and expressive depth.',
@@ -28,9 +28,9 @@ const artistsSectionContent = {
         }),
       },
       {
-        name: t({ en: 'Christoph (Epi)', de: 'Christoph (Epi)', es: 'Christoph (Epi)' }),
+        name: t({ en: 'Christoph', de: 'Christoph', es: 'Christoph' }),
         role: t({ en: 'Resident Artist', de: 'Tattoo-Künstler', es: 'Tatuador residente' }),
-        image: '/images/tattoo/New school/scaled_IMG_3032.webp',
+        image: '/images/tattoo/New school/scaled_Perfil Tarjeta.webp',
         instagram: t({ en: '@y_c_tattoo', de: '@y_c_tattoo', es: '@y_c_tattoo' }),
         description: t({
           en: 'Originally from Ybbs an der Donau, Austria, Christoph has 15 years of tattooing experience. His style focuses on New School Colour. His work is characterized by bold lines, vibrant colors, unique characters, and dynamic compositions. Specialized in large-scale projects, he creates powerful, high-energy tattoos with strong visual identity.',
@@ -54,7 +54,7 @@ const artistsSectionContent = {
       {
         name: t({ en: 'Juani', de: 'Juani', es: 'Juani' }),
         role: t({ en: 'Regular Guest Artist', de: 'Tattoo-Künstler', es: 'Tatuador invitado regular' }),
-        image: '/images/alexis.webp',
+        image: '/images/tattoo/tradicional/Tätowierer bei traditioneller Handarbeit.webp',
         instagram: t({ en: '@juani_olivencia', de: '@juani_olivencia', es: '@juani_olivencia' }),
         description: t({
           en: 'Originally from Málaga and owner of his own studio in Zaragoza, Spain, Juani has more than 15 years of experience. He specializes in American traditional tattooing. His work features bold lines and bright, intense colors, distinct from European traditional. His tattoos are built to last, maintaining strength and character as the skin changes over time - proving that old school is still alive.',
