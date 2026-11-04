@@ -39,32 +39,36 @@ export default async function ImpressumPage({
       en: "Owner: Alexis Massó Galiano, sole proprietor",
     }),
 
-    address: "Herzogenburger Straße 66/1, 3100 St. Pölten, Österreich",
+    address: tr(lang, {
+      es: "Herzogenburger Straße 66/1, 3100 St. Pölten, Austria",
+      de: "Herzogenburger Straße 66/1, 3100 St. Pölten, Österreich",
+      en: "Herzogenburger Straße 66/1, 3100 St. Pölten, Austria",
+    }),
 
     phone: "+43 676 6726865",
 
     email: "maleficium.tattoo@gmail.com",
 
     trade: tr(lang, {
-      es: "Licencias comerciales",
+      es: "Licencias",
       de: "Gewerbe",
       en: "Trade licences",
     }),
 
     trade1: tr(lang, {
-      es: "Cosmética (cuidado de belleza), limitada a tatuajes (n.º GISA 37396176).",
+      es: "Cosmética, limitada a tatuaje (n.º GISA 37396176).",
       de: "Kosmetik (Schönheitspflege), eingeschränkt auf Tätowieren (GISA-Zahl 37396176).",
       en: "Cosmetics (beauty care), limited to tattooing (GISA no. 37396176).",
     }),
 
     trade2: tr(lang, {
-      es: "Comercio general, excepto comercios regulados y agentes comerciales (n.º GISA 39059819).",
+      es: "Comercio, excepto comercios regulados y agentes comerciales (n.º GISA 39059819).",
       de: "Handelsgewerbe mit Ausnahme der reglementierten Handelsgewerbe und Handelsagent (GISA-Zahl 39059819).",
       en: "General trade, excluding regulated trades and commercial agents (GISA no. 39059819).",
     }),
 
     chamber: tr(lang, {
-      es: "Miembro de la Cámara de Comercio de Baja Austria (WKO): gremio de podología, cosmética y masajes; gremio de comercio de moda y artículos de ocio.",
+      es: "Miembro de la Cámara de Comercio de Baja Austria (WKO): gremio de podología, cosmética y masaje; gremio de comercio de moda y artículos de ocio.",
       de: "Mitglied der Wirtschaftskammer Niederösterreich: Landesinnung der Fußpfleger, Kosmetiker und Masseure; Landesgremium Handel mit Mode und Freizeitartikeln.",
       en: "Member of the Austrian Economic Chamber, Lower Austria: guild of foot care, cosmetics and massage; trade group for fashion and leisure goods.",
     }),
@@ -106,7 +110,7 @@ export default async function ImpressumPage({
     }),
 
     imageText: tr(lang, {
-      es: "Las fotografías de los tatuajes pertenecen a los respectivos artistas. Su utilización solo está permitida con autorización.",
+      es: "Las fotos de los tatuajes pertenecen a los respectivos artistas. Su utilización solo está permitida con autorización.",
       de: "Die Fotos der Tattoos gehören den jeweiligen Künstlern. Verwendung nur mit Erlaubnis.",
       en: "The tattoo photos belong to the respective artists. Use only with permission.",
     }),
@@ -118,9 +122,9 @@ export default async function ImpressumPage({
     }),
 
     updated: tr(lang, {
-      es: "Última actualización: 3 de noviembre de 2026",
-      de: "Letzte Aktualisierung: 3. November 2026",
-      en: "Last updated: November 3, 2026",
+      es: "Última actualización: 4 de noviembre de 2026",
+      de: "Letzte Aktualisierung: 4. November 2026",
+      en: "Last updated: November 4, 2026",
     }),
   };
 

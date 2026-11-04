@@ -10,11 +10,9 @@ export default function StudioPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero */}
-      {/* Hero */}
+      {/* HERO */}
       <section className="py-6 px-0 xl:px-10">
         <div className="relative h-[40vh] sm:h-[45vh] md:h-[48vh] xl:h-[60vh] min-h-[240px] xl:min-h-[420px] w-full max-w-none xl:max-w-7xl mx-auto overflow-hidden rounded-none xl:rounded-2xl">
-          {/* Vídeo de fondo */}
           <video
             autoPlay
             muted
@@ -26,10 +24,8 @@ export default function StudioPage() {
             <source src="/images/hero-video.webm" type="video/webm" />
           </video>
 
-          {/* Capa oscura */}
           <div className="absolute inset-0 bg-black/75" />
 
-          {/* Título */}
           <div className="relative z-10 h-full flex items-center justify-center px-6">
             <Text variant="h1" align="center" className="text-white">
               {t.title.value}
@@ -38,7 +34,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Texto */}
+      {/* TEXTO */}
       <section className="py-12 px-6 md:px-10">
         <div className="max-w-5xl mx-auto text-white space-y-6">
           {t.paragraphs.map((paragraph, index) => (
@@ -49,252 +45,222 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Galería */}
+      {/* GALERÍA */}
       <section className="pb-16 px-6 md:px-10">
         <div className="max-w-6xl mx-auto space-y-6">
-          {/* ================= MOBILE (sin cambios) ================= */}
+
+          {/* ================= MOBILE ================= */}
           <div className="md:hidden space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="relative h-[260px] overflow-hidden rounded-xl md:col-span-2">
-                <Image
-                  src="/images/Los3horizontal.webp"
-                  alt="Estudio principal"
-                  fill
-                  className="object-cover"
-                />
-              </div>
 
-              <div className="relative h-[260px] overflow-hidden rounded-xl">
-                <Image
-                  src="/images/alexis.webp"
-                  alt="Detalle estudio"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="relative h-[260px] overflow-hidden rounded-xl">
-                <Image
-                  src="/images/tattoo.webp"
-                  alt="Tattoo"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="relative h-[260px] overflow-hidden rounded-xl md:col-span-2">
-                <Image
-                  src="/images/alexishorizontal.webp"
-                  alt="Zona de trabajo"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl">
+            {/* Primera imagen */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
               <Image
-                src="/images/alexishorizontal21.webp"
-                alt="Vista panorámica del estudio"
+                src="/images/Studio_1_H.webp"
+                alt="Estudio principal"
                 fill
+                sizes="100vw"
                 className="object-cover"
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="relative aspect-square overflow-hidden rounded-xl">
+            {/* Segunda imagen */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+              <Image
+                src="/images/Studio_5.webp"
+                alt="Detalle estudio"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Panorámica */}
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl">
+              <Image
+                src="/images/Studio_2_H.webp"
+                alt="Vista panorámica del estudio"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Tres imágenes cuadradas */}
+            <div className="grid grid-cols-1 gap-6">
+              <div className="relative aspect-square w-full overflow-hidden rounded-xl">
                 <Image
-                  src="/images/alexis.webp"
+                  src="/images/Studio_4.webp"
                   alt="Detalle 1"
                   fill
+                  sizes="100vw"
                   className="object-cover"
                 />
               </div>
-              <div className="relative aspect-square overflow-hidden rounded-xl">
+
+              <div className="relative aspect-square w-full overflow-hidden rounded-xl">
                 <Image
-                  src="/images/fondo.webp"
+                  src="/images/Studio_1.webp"
                   alt="Detalle 2"
                   fill
+                  sizes="100vw"
                   className="object-cover"
                 />
               </div>
-              <div className="relative aspect-square overflow-hidden rounded-xl">
+
+              <div className="relative aspect-square w-full overflow-hidden rounded-xl">
                 <Image
-                  src="/images/tattoo.webp"
+                  src="/images/Studio_6.webp"
                   alt="Detalle 3"
                   fill
+                  sizes="100vw"
                   className="object-cover"
                 />
               </div>
             </div>
           </div>
 
-          {/* ================= TABLET (NUEVO ORDEN) ================= */}
+          {/* ================= TABLET ================= */}
           <div className="hidden md:block lg:hidden space-y-6">
-            {/* grande */}
-            <div className="relative h-[420px] overflow-hidden rounded-xl">
-              <Image
-                src="/images/Los3_horizontal.webp"
-                alt="Estudio principal"
-                fill
-                className="object-cover"
-              />
-            </div>
 
-            {/* dos pequeñas */}
+            {/* Dos imágenes grandes */}
             <div className="grid grid-cols-2 gap-6">
-              <div className="relative h-[260px] overflow-hidden rounded-xl">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
                 <Image
-                  src="/images/alexis.webp"
+                  src="/images/Studio_1_H.webp"
+                  alt="Estudio principal"
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
+                <Image
+                  src="/images/Studio_5.webp"
                   alt="Detalle estudio"
                   fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="relative h-[260px] overflow-hidden rounded-xl">
-                <Image
-                  src="/images/tattoo.webp"
-                  alt="Tattoo"
-                  fill
+                  sizes="50vw"
                   className="object-cover"
                 />
               </div>
             </div>
 
-            {/* siguiente grande */}
-            <div className="relative h-[420px] overflow-hidden rounded-xl">
-              <Image
-                src="/images/alexishorizontal.webp"
-                alt="Zona de trabajo"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* panorámica */}
+            {/* Panorámica */}
             <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl">
               <Image
-                src="/images/alexishorizontal21.webp"
+                src="/images/Studio_2_H.webp"
                 alt="Vista panorámica del estudio"
                 fill
+                sizes="100vw"
                 className="object-cover"
               />
             </div>
 
-            {/* tres pequeñas (sin cambios) */}
+            {/* Tres imágenes cuadradas */}
             <div className="grid grid-cols-3 gap-6">
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
-                  src="/images/alexis.webp"
+                  src="/images/Studio_4.webp"
                   alt="Detalle 1"
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>
 
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
-                  src="/images/fondo.webp"
+                  src="/images/Studio_1.webp"
                   alt="Detalle 2"
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>
 
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
-                  src="/images/tattoo.webp"
+                  src="/images/Studio_6.webp"
                   alt="Detalle 3"
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>
             </div>
           </div>
 
-          {/* ================= DESKTOP (ORIGINAL) ================= */}
+          {/* ================= DESKTOP ================= */}
           <div className="hidden lg:block space-y-6">
+
+            {/* Primera fila */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="relative h-[420px] md:col-span-2 overflow-hidden rounded-xl">
                 <Image
-                  src="/images/Los3_horizontal.webp"
+                  src="/images/Studio_1_H.webp"
                   alt="Estudio principal"
                   fill
+                  sizes="66vw"
                   className="object-cover"
                 />
               </div>
 
               <div className="relative h-[420px] overflow-hidden rounded-xl">
                 <Image
-                  src="/images/alexis.webp"
+                  src="/images/Studio_5.webp"
                   alt="Detalle estudio"
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="relative h-[420px] overflow-hidden rounded-xl">
-                <Image
-                  src="/images/tattoo.webp"
-                  alt="Tattoo"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="relative h-[420px] md:col-span-2 overflow-hidden rounded-xl">
-                <Image
-                  src="/images/alexishorizontal.webp"
-                  alt="Zona de trabajo"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
+            {/* Panorámica */}
             <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl">
               <Image
-                src="/images/alexishorizontal21.webp"
+                src="/images/Studio_2_H.webp"
                 alt="Vista panorámica del estudio"
                 fill
+                sizes="100vw"
                 className="object-cover"
               />
             </div>
 
+            {/* Tres imágenes cuadradas */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
-                  src="/images/alexis.webp"
+                  src="/images/Studio_4.webp"
                   alt="Detalle 1"
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>
 
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
-                  src="/images/fondo.webp"
+                  src="/images/Studio_1.webp"
                   alt="Detalle 2"
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>
 
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
-                  src="/images/tattoo.webp"
+                  src="/images/Studio_6.webp"
                   alt="Detalle 3"
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
