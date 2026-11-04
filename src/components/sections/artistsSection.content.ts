@@ -19,7 +19,7 @@ const artistsSectionContent = {
       {
         name: t({ en: 'Manu', de: 'Manu', es: 'Manu' }),
         role: t({ en: 'Resident Artist', de: 'Tattoo-Künstler', es: 'Tatuador residente' }),
-        image: '/images/tattoo/Ignorant/scaled_PERFIL TARJETA.webp',
+        image: '/images/tattoo/Ignorant/manu.webp',
         instagram: t({ en: '@knoblauchbanane', de: '@knoblauchbanane', es: '@knoblauchbanane' }),
         description: t({
           en: 'Originally from Sankt Pölten, Austria, Manu has been tattooing for one year. Her style focuses on black and grey illustrations, engraving-inspired work, and ornamental elements. Her work fuses a strong, bold aesthetic with soft and magical aspects, creating a contrast that defines her artistic signature. This duality also reflects her personality - tough in appearance yet sensitive and shy - resulting in tattoos full of character, delicacy, and expressive depth.',

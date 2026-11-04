@@ -58,7 +58,7 @@ export default function ManuPage() {
 
         <div className="relative w-full aspect-[4/5]">
           <Image
-            src="/images/tattoo/Ignorant/scaled_PERFIL TARJETA.webp"
+            src="/images/tattoo/Ignorant/manu.webp"
             alt="Manu portrait"
             fill
             sizes="100vw"
@@ -109,7 +109,7 @@ export default function ManuPage() {
 
         <div className="relative w-[60%] aspect-[4/5] mx-auto mt-8 shrink-0">
           <Image
-            src="/images/tattoo/Ignorant/scaled_PERFIL TARJETA.webp"
+            src="/images/tattoo/Ignorant/manu.webp"
             alt="Manu portrait"
             fill
             sizes="60vw"
@@ -159,7 +159,7 @@ export default function ManuPage() {
 
         <div className="relative w-full aspect-[4/5]">
           <Image
-            src="/images/tattoo/Ignorant/scaled_PERFIL TARJETA.webp"
+            src="/images/tattoo/Ignorant/manu.webp"
             alt="Manu portrait"
             fill
             sizes="25vw"
