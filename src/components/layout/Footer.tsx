@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, MapPin } from "lucide-react";
+import { Instagram, MapPin, Facebook  } from "lucide-react";
 import { useParams } from "next/navigation";
 import { getLang, tr } from "@/utils/i18n";
 
@@ -95,6 +95,17 @@ export default function Footer() {
               >
                 <Instagram className="w-6 h-6" />
               </Link>
+
+              {/* Facebook */}
+<Link
+  href="https://www.facebook.com/share/1F8gCLaGCF/?mibextid=wwXIfr"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-white hover:scale-125 transition-transform duration-300"
+  aria-label="Facebook"
+>
+  <Facebook className="w-6 h-6" />
+</Link>
 
               {/* Maps */}
               <Link
@@ -239,6 +250,17 @@ export default function Footer() {
             >
               <Instagram className="w-6 h-6" />
             </Link>
+
+            {/* Facebook */}
+<Link
+  href="https://www.facebook.com/share/1F8gCLaGCF/?mibextid=wwXIfr"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-white hover:scale-125 transition-transform duration-300"
+  aria-label="Facebook"
+>
+  <Facebook className="w-6 h-6" />
+</Link>
 
             {/* Maps */}
             <Link

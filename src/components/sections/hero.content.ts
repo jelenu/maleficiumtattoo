@@ -35,9 +35,9 @@ const heroContent = {
       es: 'Herzogenburger Straße 66/1, 3100 St. Pölten, Austria'
     }),
     phoneLabel: t({
-      en: 'Call us',
-      de: 'Ruf uns an',
-      es: 'Llámanos'
+      en: 'WhatsApp',
+      de: 'WhatsApp',
+      es: 'WhatsApp'
     }),
     phone: t({
       en: '+43 676 672 6865',

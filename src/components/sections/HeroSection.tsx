@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -31,8 +30,7 @@ export default function HeroSection() {
     if (typeof window === "undefined") return;
 
     const alreadyLoaded =
-      window.__APP_LOADED ||
-      sessionStorage.getItem("app_loaded") === "1";
+      window.__APP_LOADED || sessionStorage.getItem("app_loaded") === "1";
 
     if (alreadyLoaded) {
       setReady(true);
@@ -165,39 +163,83 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Tres columnas en la parte inferior pegadas abajo */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-6xl z-20 px-2 md:px-16 border-t border-white">
-        <div className="flex flex-row text-white text-center text-lg min-h-[72px] py-2 md:py-4 gap-1 md:gap-0">
-          <div className="flex flex-col justify-center items-center flex-1 relative px-1">
-            <Text variant="subtitle" className="font-semibold text-xs md:text-base">
-              {t.addressLabel}
-            </Text>
-            <Text variant="small" className="text-xs md:text-sm">
-              {t.address}
-            </Text>
-            <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60" />
-          </div>
+{/* Información inferior */}
+<div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full max-w-6xl z-20 px-3 lg:px-16 border-t border-white">
+  <div className="flex flex-col lg:flex-row text-white text-center min-h-[72px] py-2 lg:py-4 gap-2 lg:gap-0">
 
-          <div className="flex flex-col justify-center items-center flex-1 relative px-1">
-            <Text variant="subtitle" className="font-semibold text-xs md:text-base">
-              {t.phoneLabel}
-            </Text>
-            <Text variant="small" className="text-xs md:text-sm">
-              {t.phone}
-            </Text>
-            <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 h-3/4 border-r border-white/60" />
-          </div>
+    {/* Dirección */}
+    <div className="flex flex-col justify-center items-center w-full lg:flex-1 relative px-1 lg:border-r lg:border-white/60">
+      <Text
+        variant="subtitle"
+        className="font-semibold text-xs lg:text-base text-center"
+      >
+        {t.addressLabel}
+      </Text>
+      <Text
+        variant="small"
+        className="text-xs lg:text-sm text-center"
+      >
+        {t.address}
+      </Text>
+    </div>
 
-          <div className="flex flex-col justify-center items-center flex-1 px-1">
-            <Text variant="subtitle" className="font-semibold text-xs md:text-base">
-              {t.hoursLabel}
-            </Text>
-            <Text variant="small" className="text-xs md:text-sm">
-              {t.hours}
-            </Text>
-          </div>
-        </div>
+    {/* Línea horizontal: solo móvil y tablet */}
+    <div className="w-full h-px bg-white/40 lg:hidden" />
+
+    {/* WhatsApp y horario */}
+    <div className="flex flex-row w-full lg:flex-1">
+
+      {/* WhatsApp */}
+      <div className="flex flex-col justify-center items-center flex-1 relative px-1">
+        <a
+          href="https://wa.me/436766726865"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-center hover:underline cursor-pointer"
+        >
+          <Text
+            variant="subtitle"
+            className="font-semibold text-xs lg:text-base text-center"
+          >
+            {t.phoneLabel}
+          </Text>
+        </a>
+
+        <a
+          href="tel:+436766726865"
+          className="text-center hover:underline cursor-pointer"
+        >
+          <Text
+            variant="small"
+            className="text-xs lg:text-sm text-center"
+          >
+            {t.phone}
+          </Text>
+        </a>
       </div>
+
+      {/* Línea vertical */}
+      <div className="w-px bg-white/40 my-1" />
+
+      {/* Horario */}
+      <div className="flex flex-col justify-center items-center flex-1 px-1">
+        <Text
+          variant="subtitle"
+          className="font-semibold text-xs lg:text-base text-center"
+        >
+          {t.hoursLabel}
+        </Text>
+        <Text
+          variant="small"
+          className="text-xs lg:text-sm text-center"
+        >
+          {t.hours}
+        </Text>
+      </div>
+
+    </div>
+  </div>
+</div>
     </SectionWrapper>
   );
 }

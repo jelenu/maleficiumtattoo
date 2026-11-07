@@ -54,12 +54,13 @@ export default async function BookingTermsPage({
             en: "Your appointment is only confirmed once we receive the deposit. Without a deposit, we don't book the date.",
           }),
           tr(lang, {
-            es: "El depósito se descuenta del precio final. En tatuajes de varias sesiones, se descuenta de la última.",
+            es: "El depósito se descuenta del precio final. En tatuajes de varias sesiones, se descuenta de la última sesión.",
             de: "Die Anzahlung wird vom Endpreis abgezogen. Bei Tattoos mit mehreren Sitzungen von der letzten Sitzung.",
             en: "The deposit is deducted from the final price. For tattoos with several sessions, it is deducted from the last session.",
           }),
         ],
       },
+
       {
         title: tr(lang, {
           es: "2. Cambiar o cancelar la cita",
@@ -68,9 +69,9 @@ export default async function BookingTermsPage({
         }),
         items: [
           tr(lang, {
-            es: "Puedes cancelar o cambiar tu cita hasta 72 horas antes. Si cancelas a tiempo, te devolvemos el depósito.",
-            de: "Du kannst deinen Termin bis 72 Stunden vorher absagen oder verschieben. Bei einer rechtzeitigen Absage bekommst du die Anzahlung zurück.",
-            en: "You can cancel or reschedule your appointment up to 72 hours before. If you cancel in time, you get your deposit back.",
+            es: "Puedes cancelar o cambiar tu cita gratis hasta 48 horas antes. Si cancelas a tiempo, te devolvemos el depósito.",
+            de: "Du kannst deinen Termin bis 48 Stunden vorher kostenlos absagen oder verschieben. Bei einer rechtzeitigen Absage bekommst du die Anzahlung zurück.",
+            en: "You can cancel or reschedule your appointment free of charge up to 48 hours before. If you cancel in time, you get your deposit back.",
           }),
           tr(lang, {
             es: "Puedes cambiar tu cita dos veces. Si la cambias una tercera vez sin un motivo justificado, pierdes el depósito y necesitas uno nuevo para otra fecha.",
@@ -78,17 +79,18 @@ export default async function BookingTermsPage({
             en: "You can reschedule twice. If you reschedule a third time without a valid reason, the deposit is lost and a new deposit is needed for a new date.",
           }),
           tr(lang, {
-            es: "Si cancelas con menos de 72 horas, pierdes el depósito.",
-            de: "Bei einer Absage weniger als 72 Stunden vorher verfällt die Anzahlung.",
-            en: "If you cancel less than 72 hours before, the deposit is lost.",
+            es: "Si cancelas con menos de 48 horas de antelación o no te presentas, nos quedamos el depósito como compensación por el tiempo reservado y el diseño ya realizado.",
+            de: "Bei einer Absage weniger als 48 Stunden vorher oder wenn du nicht erscheinst, behalten wir die Anzahlung als Entschädigung für den reservierten Termin und den bereits erstellten Entwurf ein.",
+            en: "If you cancel less than 48 hours before your appointment or don't show up, we keep the deposit as compensation for the reserved appointment and the design already drawn.",
           }),
           tr(lang, {
-            es: "Excepción: enfermedad con justificante médico.",
-            de: "Ausnahme: Krankheit mit ärztlicher Bestätigung.",
-            en: "Exception: illness with a doctor's note.",
+            es: "Esto no se aplica si podemos ofrecer la cita a otra persona, si acreditas un motivo importante (por ejemplo, enfermedad con justificante médico) o si demuestras que no hemos sufrido ningún perjuicio o que este ha sido menor.",
+            de: "Das gilt nicht, wenn wir den Termin anderweitig vergeben können, wenn du einen wichtigen Grund nachweist (z. B. Krankheit mit ärztlicher Bestätigung), oder wenn du nachweist, dass uns kein oder ein geringerer Schaden entstanden ist.",
+            en: "This does not apply if we can give the appointment to someone else, if you prove an important reason (e.g. illness with a doctor's note), or if you prove that we suffered no loss or a smaller loss.",
           }),
         ],
       },
+
       {
         title: tr(lang, {
           es: "3. Retrasos y no presentarse",
@@ -97,17 +99,18 @@ export default async function BookingTermsPage({
         }),
         items: [
           tr(lang, {
-            es: "Esperamos 30 minutos. Si no nos has avisado antes, la cita se cancela y pierdes el depósito.",
-            de: "Wir warten 30 Minuten. Wenn du dich bis dahin nicht gemeldet hast, gilt der Termin als abgesagt und die Anzahlung verfällt.",
-            en: "We wait 30 minutes. If you haven't contacted us by then, the appointment is cancelled and the deposit is lost.",
+            es: "Esperamos 30 minutos. Si no nos has avisado antes, la cita se considera cancelada.",
+            de: "Wir warten 30 Minuten. Wenn du dich bis dahin nicht gemeldet hast, gilt der Termin als abgesagt.",
+            en: "We wait 30 minutes. If you haven't contacted us by then, the appointment is considered cancelled.",
           }),
           tr(lang, {
-            es: "Si no te presentas, también pierdes el depósito.",
-            de: "Wenn du nicht erscheinst, verfällt die Anzahlung ebenfalls.",
-            en: "If you don't show up, the deposit is also lost.",
+            es: "Si no te presentas, se aplican las condiciones de cancelación indicadas en el apartado anterior.",
+            de: "Wenn du nicht erscheinst, gelten die oben genannten Stornierungsbedingungen.",
+            en: "If you don't show up, the cancellation conditions described in the previous section apply.",
           }),
         ],
       },
+
       {
         title: tr(lang, {
           es: "4. Si cancelamos nosotros",
@@ -127,6 +130,7 @@ export default async function BookingTermsPage({
           }),
         ],
       },
+
       {
         title: tr(lang, {
           es: "5. Diseño",
@@ -146,6 +150,7 @@ export default async function BookingTermsPage({
           }),
         ],
       },
+
       {
         title: tr(lang, {
           es: "6. Precio y pago",
@@ -165,6 +170,7 @@ export default async function BookingTermsPage({
           }),
         ],
       },
+
       {
         title: tr(lang, {
           es: "7. El día de la cita",
@@ -184,22 +190,118 @@ export default async function BookingTermsPage({
           }),
           tr(lang, {
             es: "No tatuamos bajo los efectos del alcohol, durante el embarazo o la lactancia, símbolos que representen odio (a criterio del artista), ni en ningún caso que no permita la ley austriaca.",
-            de: "Wir tätowieren nicht: unter Alkoholeinfluss, während Schwangerschaft oder Stillzeit, Symbole, die Hass darstellen (nach Einschätzung des Künstlers), und in keinem Fall, in dem es nach österreichischem Recht nicht erlaubt ist.",
-            en: "We don't tattoo: under the influence of alcohol, during pregnancy or breastfeeding, symbols that represent hate (at the artist's discretion), or in any case not allowed under Austrian law.",
+            de: "Wir tätowieren nicht unter Alkoholeinfluss, während Schwangerschaft oder Stillzeit, Symbole, die Hass darstellen (nach Einschätzung des Künstlers), und in keinem Fall, in dem es nach österreichischem Recht nicht erlaubt ist.",
+            en: "We don't tattoo under the influence of alcohol, during pregnancy or breastfeeding, symbols that represent hate (at the artist's discretion), or in any case not allowed under Austrian law.",
           }),
         ],
       },
+
       {
         title: tr(lang, {
-          es: "8. Retoques",
-          de: "8. Nachstechen",
-          en: "8. Touch-ups",
+          es: "8. Salud",
+          de: "8. Gesundheit",
+          en: "8. Health",
+        }),
+        items: [
+          tr(lang, {
+            es: "Antes de tatuarte, cuéntanos lo mejor que sepas si tienes enfermedades, alergias u otros problemas físicos (sobre todo diabetes, anticoagulantes, etc.).",
+            de: "Bitte teile uns vor dem Tätowieren Erkrankungen, Allergien oder andere körperliche Beschwerden (insbesondere Diabetes, Blutverdünnung usw.) nach bestem Wissen und Gewissen mit.",
+            en: "Before your tattoo, please tell us to the best of your knowledge about any illnesses, allergies or other physical conditions (especially diabetes, blood thinners, etc.).",
+          }),
+          tr(lang, {
+            es: "Responde con cuidado y con la verdad a las preguntas de salud de la hoja de consentimiento, para que podamos evitar complicaciones.",
+            de: "Bitte beantworte die Fragen zu deinem Gesundheitszustand in der Einverständniserklärung gewissenhaft und wahrheitsgemäß, damit wir Komplikationen vermeiden können.",
+            en: "Please answer the health questions in the consent form carefully and truthfully, so that we can avoid complications.",
+          }),
+        ],
+      },
+
+      {
+        title: tr(lang, {
+          es: "9. Retoques",
+          de: "9. Nachstechen",
+          en: "9. Touch-ups",
         }),
         items: [
           tr(lang, {
             es: "El retoque es gratis entre el primer y el segundo mes después del tatuaje, según el criterio del artista que lo hizo.",
             de: "Ein Nachstechen ist zwischen dem ersten und zweiten Monat nach dem Tattoo kostenlos, nach Einschätzung des Künstlers, der es gestochen hat.",
             en: "A touch-up is free between the first and second month after the tattoo, at the discretion of the artist who did it.",
+          }),
+        ],
+      },
+
+      {
+        title: tr(lang, {
+          es: "10. Vales regalo",
+          de: "10. Gutscheine",
+          en: "10. Gift vouchers",
+        }),
+        items: [
+          tr(lang, {
+            es: "Los vales se emiten por una cantidad de dinero y se pueden canjear por cualquier tatuaje en Maleficium.",
+            de: "Gutscheine werden auf einen bestimmten Geldbetrag ausgestellt und können für alle Tattoos bei Maleficium eingelöst werden.",
+            en: "Gift vouchers are issued for a specific amount and can be redeemed for any tattoo at Maleficium.",
+          }),
+          tr(lang, {
+            es: "Son válidos durante 5 años desde su emisión. El tatuaje debe realizarse dentro de ese plazo.",
+            de: "Sie sind 5 Jahre ab Ausstellung gültig; das Tattoo muss innerhalb dieser Frist gestochen werden.",
+            en: "They are valid for 5 years from the date of issue; the tattoo must be done within this period.",
+          }),
+          tr(lang, {
+            es: "Para pedir la cita se aplican estas condiciones de reserva.",
+            de: "Für die Terminvereinbarung gelten diese Buchungsbedingungen.",
+            en: "These booking terms apply to making the appointment.",
+          }),
+          tr(lang, {
+            es: "Los vales no se cambian por dinero en efectivo. El saldo restante se conserva como crédito.",
+            de: "Eine Barauszahlung ist nicht möglich. Ein Restbetrag bleibt als Guthaben erhalten.",
+            en: "Vouchers cannot be exchanged for cash. Any remaining balance stays as credit.",
+          }),
+          tr(lang, {
+            es: "Los vales se pueden transferir a otra persona.",
+            de: "Gutscheine sind übertragbar.",
+            en: "Vouchers are transferable.",
+          }),
+        ],
+      },
+
+      {
+        title: tr(lang, {
+          es: "11. Protección de datos – Comprobación de la edad",
+          de: "11. Datenschutz – Altersnachweis",
+          en: "11. Data protection – Proof of age",
+        }),
+        items: [
+          tr(lang, {
+            es: "Solo tatuamos a personas mayores de 18 años. Para comprobarlo, revisamos un documento oficial (DNI, pasaporte o carnet de conducir). No hacemos ninguna copia del documento.",
+            de: "Wir tätowieren nur Personen ab 18 Jahren. Dafür prüfen wir einen amtlichen Ausweis (Personalausweis, Reisepass oder Führerschein). Wir machen keine Kopie des Ausweises.",
+            en: "We only tattoo people aged 18 or over. We check an official ID (ID card, passport or driving licence). We do not make a copy of the ID.",
+          }),
+          tr(lang, {
+            es: "En la hoja de consentimiento solo anotamos que se ha comprobado la edad y qué tipo de documento se ha mostrado.",
+            de: "In der Einverständniserklärung vermerken wir nur, dass das Alter geprüft wurde und mit welcher Art von Ausweis.",
+            en: "In the consent form we only note that the age was checked and which type of ID was shown.",
+          }),
+          tr(lang, {
+            es: "Base legal: interés legítimo en acreditar la edad (art. 6.1.f del RGPD).",
+            de: "Rechtsgrundlage: berechtigtes Interesse am Nachweis des Alters (Art. 6 Abs. 1 lit. f DSGVO).",
+            en: "Legal basis: legitimate interest in proving age (Art. 6(1)(f) GDPR).",
+          }),
+        ],
+      },
+
+      {
+        title: tr(lang, {
+          es: "12. Otros",
+          de: "12. Sonstiges",
+          en: "12. Miscellaneous",
+        }),
+        items: [
+          tr(lang, {
+            es: "Si alguna cláusula de estas condiciones no fuera válida o dejara de serlo, el resto de cláusulas seguirán siendo válidas.",
+            de: "Sollte eine Bestimmung dieser Buchungsbedingungen unwirksam sein oder werden, bleibt die Gültigkeit der übrigen Bestimmungen davon unberührt.",
+            en: "If any provision of these booking terms is or becomes invalid, the validity of the remaining provisions remains unaffected.",
           }),
         ],
       },
@@ -212,9 +314,9 @@ export default async function BookingTermsPage({
     }),
 
     updatedDate: tr(lang, {
-    es: "3 de noviembre de 2026",
-    de: "3. November 2026",
-    en: "November 3, 2026",
+      es: "7 de noviembre de 2026",
+      de: "7. November 2026",
+      en: "November 7, 2026",
     }),
 
     contactCta: tr(lang, {

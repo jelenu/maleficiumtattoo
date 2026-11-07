@@ -2,20 +2,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import localFont from "next/font/local";
 import type { ReactNode } from "react";
+import "leaflet/dist/leaflet.css";
 
-const inter = Inter({
+const inter = localFont({
+  src: "./fonts/Inter-VariableFont_opsz,wght.ttf",
   variable: "--font-inter",
-  subsets: ["latin"],
   display: "swap",
+  weight: "100 900",
 });
 
-const cormorant = Cormorant_Garamond({
+const cormorant = localFont({
+  src: "./fonts/CormorantGaramond-VariableFont_wght.ttf",
   variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  weight: "300 700",
 });
 
 export const metadata: Metadata = {
