@@ -5,6 +5,29 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "leaflet/dist/leaflet.css";
 
+type Locale = "de" | "en" | "es";
+
+const metadataByLocale: Record<
+  Locale,
+  { title: string; description: string }
+> = {
+  en: {
+    title: "Maleficium Tattoo | Professional Studio in St. Pölten",
+    description:
+      "Discover Maleficium Tattoo in St. Pölten, Austria. Explore unique tattoo styles and meet our experienced artists in a professional creative studio.",
+  },
+  de: {
+    title: "Maleficium Tattoo | Professionelles Studio in St. Pölten",
+    description:
+      "Entdecke Maleficium Tattoo in St. Pölten, Österreich. Lerne unsere verschiedenen Tattoo-Stile und erfahrenen Tätowierer in unserem professionellen Studio kennen.",
+  },
+  es: {
+    title: "Maleficium Tattoo | Estudio profesional en St. Pölten",
+    description:
+      "Descubre Maleficium Tattoo en St. Pölten, Austria. Explora diferentes estilos de tatuaje y conoce a nuestros artistas profesionales.",
+  },
+};
+
 const inter = localFont({
   src: "./fonts/Inter-VariableFont_opsz,wght.ttf",
   variable: "--font-inter",
@@ -19,19 +42,45 @@ const cormorant = localFont({
   weight: "300 700",
 });
 
-export const metadata: Metadata = {
-  title: "Maleficium Tattoo | Tattoo Studio in St. Pölten",
-  description:
-    "Discover Maleficium Tattoo, a professional tattoo studio in St. Pölten, Austria. Explore unique tattoo styles and meet our experienced tattoo artists.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
 
-export default function RootLayout({
+  const currentLocale: Locale = ["de", "en", "es"].includes(locale)
+    ? (locale as Locale)
+    : "de";
+
+  return {
+    ...metadataByLocale[currentLocale],
+    alternates: {
+      languages: {
+        de: "/de",
+        en: "/en",
+        es: "/es",
+        "x-default": "/de",
+      },
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+
+  const currentLocale: Locale = ["de", "en", "es"].includes(locale)
+    ? (locale as Locale)
+    : "de";
+
   return (
-    <html lang="de">
+    <html lang={currentLocale}>
       <head>
         {/* Google Consent Mode v2: denegado por defecto */}
         <Script
