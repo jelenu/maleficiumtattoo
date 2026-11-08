@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
@@ -21,14 +20,16 @@ const cormorant = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Maleficium Tattoo",
-  description: "Professional tattoo studio - Where art meets skin",
+  title: "Maleficium Tattoo | Tattoo Studio in St. Pölten",
+  description:
+    "Discover Maleficium Tattoo, a professional tattoo studio in St. Pölten, Austria. Explore unique tattoo styles and meet our experienced tattoo artists.",
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: ReactNode;}) {
+  children: ReactNode;
+}) {
   return (
     <html lang="de">
       <head>
