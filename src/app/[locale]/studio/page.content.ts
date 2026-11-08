@@ -3,41 +3,41 @@ import { t, type Dictionary } from "intlayer";
 const studioPageContent = {
   key: "studio-page",
   content: {
-      title: t({
-    de: "Unser Studio",
-    en: "Our Studio",
-    es: "Nuestro estudio",
-  }),
+    title: t({
+      de: "Unser Studio",
+      en: "Our Studio",
+      es: "Nuestro estudio",
+    }),
     paragraphs: [
       t({
-        de: "Maleficium Tattoo ist ein privates Studio für individuelle Tätowierungen in einer ruhigen, bewusst gestalteten Umgebung.",
-        en: "Maleficium Tattoo is a private studio dedicated to custom tattooing in a calm and carefully curated environment. Working by appointment only allows us to offer a focused and uninterrupted experience centered around each project.",
-        es: "Maleficum Tattoo es un estudio privado en Sankt Pölten, Baja Austria, dedicado al tatuaje personalizado en un entorno tranquilo y cuidado. Trabajamos exclusivamente con cita previa, lo que nos permite ofrecer una experiencia enfocada, sin interrupciones y centrada en cada proyecto.",
+        de: "Maleficium Tattoo ist ein privates Tattoo-Atelier für maßgeschneiderte Motive in einer entspannten und harmonisch eingerichteten Atmosphäre.",
+        en: "Maleficium Tattoo is an independent private tattoo space focused on bespoke artwork in a peaceful and thoughtfully arranged setting. Appointments are scheduled individually to ensure dedicated attention and a relaxed experience throughout every tattoo project.",
+        es: "Maleficium Tattoo es un estudio privado situado en Sankt Pölten, Baja Austria, especializado en crear tatuajes a medida en un espacio acogedor y cuidadosamente acondicionado. Atendemos únicamente mediante cita concertada para dedicar el tiempo necesario a cada diseño y ofrecer una experiencia tranquila y personalizada.",
       }),
       t({
-        de: "Durch das Arbeiten nach Termin können wir uns voll und ohne Unterbrechung auf jedes Projekt konzentrieren. Für uns ist Tätowieren etwas Persönliches und Dauerhaftes.",
-        en: "The studio was founded by Alexisdarkart, whose vision combines technical precision, solid aesthetics, and close communication. For us, tattooing is personal and long-lasting.",
-        es: "El estudio fue fundado por Alexisdarkart, tatuador con más de 10 años de experiencia y originario de Barcelona. Su visión combina precisión técnica, estética sólida y un trato cercano, entendiendo el tatuaje como algo personal y duradero.",
+        de: "Dank unserer ausschließlichen Terminvergabe können wir jedem Motiv unsere ungeteilte Aufmerksamkeit widmen. Ein Tattoo ist für uns eine individuelle Entscheidung mit bleibendem Wert.",
+        en: "Alexisdarkart established the studio with a creative approach built on precise craftsmanship, a distinctive visual identity, and personal interaction. We believe that every tattoo represents something meaningful and remains part of each person for a lifetime.",
+        es: "El proyecto nació de la mano de Alexisdarkart, tatuador procedente de Barcelona con más de 10 años de trayectoria profesional. Su filosofía se basa en combinar un trabajo técnico preciso, una identidad artística definida y una comunicación directa, dando valor al carácter único y permanente de cada tatuaje.",
       }),
       t({
-        de: "Wir sind ein respektvoller, inklusiver Ort. Vertrauen, klare Kommunikation und Sicherheit sind zentrale Bestandteile unserer Arbeit.",
-        en: "We are an inclusive and respectful space. Trust, communication, and safety are essential parts of our work philosophy.",
-        es: "Somos un espacio inclusivo y respetuoso, abierto a todas las personas. La confianza, la comunicación y la seguridad forman parte esencial de nuestra manera de trabajar.",
+        de: "Unser Studio steht für Offenheit und gegenseitige Wertschätzung. Ein vertrauensvolles Miteinander, transparente Gespräche und hygienische Sicherheit prägen jeden Schritt unserer Arbeit.",
+        en: "Our studio welcomes people from all backgrounds in an environment built around acceptance and mutual respect. We place great importance on honest conversations, personal trust, and maintaining safe practices throughout the entire process.",
+        es: "En nuestro estudio damos la bienvenida a personas de cualquier procedencia e identidad, creando un entorno donde el respeto y la diversidad son fundamentales. Apostamos por una relación cercana, una comunicación transparente y unas condiciones de higiene y seguridad cuidadas en todo momento.",
       }),
       t({
-        de: "Ob großflächiges Projekt oder kleines Fineline-Motiv – jedes Tattoo wird mit derselben Sorgfalt umgesetzt.",
-        en: "We mainly specialize in blackwork, ignorant, and new school, but we also create small and fineline tattoos - even the most discreet pieces carry meaning and deserve the same quality and attention as large-scale projects.",
-        es: "Nos especializamos principalmente en blackwork, ignorant y new school, pero también realizamos tatuajes pequeños y de línea fina (fineline), porque sabemos que las piezas más discretas también tienen significado y merecen la misma atención y calidad que los proyectos de gran formato.",
+        de: "Von umfangreichen Tattoo-Kompositionen bis hin zu filigranen Fineline-Motiven legen wir bei jeder Arbeit größten Wert auf Präzision und eine sorgfältige Ausführung.",
+        en: "Our artistic focus includes blackwork, ignorant, and new school tattooing. We also take on delicate fineline designs and smaller pieces, giving every creation the same careful execution, artistic consideration, and attention to detail as a large-scale tattoo.",
+        es: "Nuestro trabajo abarca principalmente estilos como blackwork, ignorant y new school, aunque también desarrollamos diseños pequeños y tatuajes fineline. Cada pieza, independientemente de sus dimensiones, recibe el mismo cuidado en los detalles, precisión y dedicación que un proyecto de mayor tamaño.",
       }),
       t({
         de: "",
-        en: "At Maleficium Tattoo, every tattoo, no matter how big or small, is created with the same commitment and dedication.",
-        es: "Además, contamos regularmente con artistas invitados que amplían la propuesta del estudio con otros estilos y enfoques.",
+        en: "Every design at Maleficium Tattoo is approached individually, with consistent care and attention regardless of its size or complexity.",
+        es: "A lo largo del año también recibimos la visita de tatuadores invitados que aportan nuevas perspectivas creativas, técnicas diferentes y especialidades artísticas que enriquecen la variedad de estilos disponibles en el estudio.",
       }),
       t({
         de: "",
         en: "",
-        es: "En Maleficum Tattoo cada tatuaje, grande o pequeño, se trabaja con el mismo compromiso y dedicación.",
+        es: "Para nosotros, tanto un tatuaje de pequeño formato como una composición extensa merecen el mismo nivel de dedicación, compromiso y atención durante todo el proceso.",
       }),
     ],
   },

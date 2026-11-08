@@ -1,4 +1,3 @@
-// src/data/intlayer/manuPageContent.ts
 import { type Dictionary, t } from "intlayer";
 
 const manuPageContent = {
@@ -35,10 +34,10 @@ const manuPageContent = {
       es: "Realismo",
     }),
     description: t({
-          en: 'Originally from Sankt Pölten, Austria, Manu has been tattooing for one year. Her style focuses on black and grey illustrations, engraving-inspired work, and ornamental elements. Her work fuses a strong, bold aesthetic with soft and magical aspects, creating a contrast that defines her artistic signature. This duality also reflects her personality - tough in appearance yet sensitive and shy - resulting in tattoos full of character, delicacy, and expressive depth.',
-          de: 'Manu kommt aus Sankt Pölten und tätowiert seit einem Jahr. Ihr Fokus liegt auf Schwarz-Weiß Illustrationen, in denen man oft Einflüsse des „Etching -Styles“ wiederfindet. Zusätzlich entwirft und sticht sie sehr gerne Ornamente. Ihre Tattoos verbinden eine markante, kraftvolle Ästhetik mit weichen, verspielten Details. Dieser Kontrast prägt ihren Stil und verleiht ihren Arbeiten Charakter und Tiefe.',
-          es: 'Originaria de Sankt Pölten, Austria, Manu lleva un año tatuando con un estilo centrado en ilustraciones en blanco y negro, grabado y elementos ornamentales. Su trabajo se caracteriza por la fusión de una estética fuerte y contundente con aspectos suaves y mágicos, creando un contraste que define su firma artística. Esta dualidad refleja también su personalidad: una presencia dura en apariencia que esconde un alma sensible y tímida, dando lugar a tatuajes con carácter, delicadeza y un fuerte componente expresivo.',
-        }),
+      en: "Manu is a tattoo artist based in Sankt Pölten, Austria, who began her professional journey in tattooing one year ago. Her artistic language combines black and grey illustration, techniques inspired by traditional engraving, and decorative ornamental designs. She enjoys exploring the balance between powerful imagery and delicate, almost dreamlike details. This contrast is central to her creative identity, reflecting both her strong outward presence and her more sensitive, reserved nature. The result is expressive tattoo artwork that brings together personality, subtlety, and visual depth.",
+      de: "Die aus Sankt Pölten in Österreich stammende Manu ist seit einem Jahr als Tätowiererin tätig. In ihren Arbeiten verbindet sie Schwarz-Weiß-Illustrationen mit Einflüssen aus der traditionellen Gravurkunst und dekorativen Ornamenten. Besonders interessant findet sie das Zusammenspiel von ausdrucksstarken Motiven und filigranen, beinahe märchenhaften Details. Dieser Gegensatz macht ihre künstlerische Handschrift aus und spiegelt zugleich ihre Persönlichkeit wider: nach außen kraftvoll, im Inneren jedoch sensibel und eher zurückhaltend. So entstehen Tattoos mit Ausdruck, feinen Details und einer besonderen visuellen Tiefe.",
+      es: "Manu desarrolla su actividad como tatuadora en Sankt Pölten, Austria, donde comenzó su trayectoria profesional hace un año. Su universo creativo combina ilustraciones en negro y gris, recursos visuales propios del grabado y composiciones ornamentales. Le gusta experimentar con el contraste entre imágenes de gran intensidad y detalles delicados con un aire casi fantástico. Esta mezcla define su identidad artística y también guarda relación con su personalidad: una apariencia fuerte que convive con un carácter sensible y reservado. Sus diseños destacan por transmitir expresividad, sutileza y profundidad visual.",
+    }),
     socialInstagramLabel: t({
       en: "Manu on Instagram",
       de: "Manu auf Instagram",

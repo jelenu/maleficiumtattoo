@@ -206,7 +206,7 @@ export default function HeroSection() {
         </a>
 
         <a
-          href="tel:+436766726865"
+          href="https://wa.me/436766726865"
           className="text-center hover:underline cursor-pointer"
         >
           <Text

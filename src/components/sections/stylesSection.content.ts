@@ -4,10 +4,10 @@ const stylesContent = {
   key: "styles",
   content: {
     title: t({
-      en: "Our Styles",
-      de: "Unsere Stile",
-      es: "Nuestros Estilos",
-    }),
+  en: "Explore Our Tattoo Styles",
+  de: "Entdecke unsere Tattoo-Stile",
+  es: "Descubre nuestros estilos de tatuaje",
+}),
     hoverToRead: t({
       en: "Hover to read bio",
       de: "Zum Lesen der Bio hovern",
