@@ -68,9 +68,9 @@ export const galleryImages: GalleryImage[] = [
   { id: 40, src: '/images/tattoo/Ignorant/Black n grey/scaled_image00009_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
 
   { id: 41, src: '/images/tattoo/New school/color/scaled_image0 (1).webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 42, src: '/images/tattoo/tradicional/color/BUTTERFLY SKULL.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 42, src: '/images/tattoo/tradicional/color/BUTTERFLY SKULL.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
   { id: 43, src: '/images/tattoo/New school/color/scaled_image0.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 44, src: '/images/tattoo/tradicional/color/DRAGON.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 44, src: '/images/tattoo/tradicional/color/DRAGON.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 45, src: '/images/tattoo/fineline/scaled_IMG_7025_web.webp', alt: 'Fineline', style: 'fineline', artist: '...' },
   { id: 46, src: '/images/tattoo/blackwork/blackngrey/COFFIN - @emma.pcnr.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
@@ -78,50 +78,50 @@ export const galleryImages: GalleryImage[] = [
   { id: 48, src: '/images/tattoo/fineline/scaled_IMG_7037_web.webp', alt: 'Fineline', style: 'fineline', artist: '...' },
 
   { id: 49, src: '/images/tattoo/New school/color/scaled_image1.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 50, src: '/images/tattoo/tradicional/color/DRAKE HEAD.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 50, src: '/images/tattoo/tradicional/color/DRAKE HEAD.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
   { id: 51, src: '/images/tattoo/New school/color/scaled_image2.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
 
   { id: 52, src: '/images/tattoo/blackwork/blackngrey/CREEPY JELLYFISH - @westphaljasper_wien.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 53, src: '/images/tattoo/Ignorant/Black n grey/scaled_image00011_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
   { id: 54, src: '/images/tattoo/fineline/scaled_IMG_7221_web.webp', alt: 'Fineline', style: 'fineline', artist: '...' },
   { id: 55, src: '/images/tattoo/New school/color/scaled_IMG_0044.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 56, src: '/images/tattoo/tradicional/color/FISH.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 56, src: '/images/tattoo/tradicional/color/FISH.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 57, src: '/images/tattoo/blackwork/blackngrey/CREEPY MOUTH - @gb23232323.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 58, src: '/images/tattoo/Ignorant/Black n grey/scaled_image00012_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
   { id: 59, src: '/images/tattoo/fineline/scaled_IMG_7222_web.webp', alt: 'Fineline', style: 'fineline', artist: '...' },
   { id: 60, src: '/images/tattoo/New school/color/scaled_IMG_0045.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 61, src: '/images/tattoo/tradicional/color/GEISHA.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 61, src: '/images/tattoo/tradicional/color/GEISHA.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 62, src: '/images/tattoo/blackwork/blackngrey/CROSS - @lena._marry.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 63, src: '/images/tattoo/Ignorant/Black n grey/scaled_image00013_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
   { id: 64, src: '/images/tattoo/New school/color/scaled_IMG_0260.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 65, src: '/images/tattoo/tradicional/color/HINDI.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 65, src: '/images/tattoo/tradicional/color/HINDI.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 66, src: '/images/tattoo/blackwork/blackngrey/DAGGERS & SNAKES - Elisabeth (no IG).webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 67, src: '/images/tattoo/Ignorant/Black n grey/scaled_image00014_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
   { id: 68, src: '/images/tattoo/New school/color/scaled_IMG_1307.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 69, src: '/images/tattoo/tradicional/color/MONEY BAG.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 69, src: '/images/tattoo/tradicional/color/MONEY BAG.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 70, src: '/images/tattoo/blackwork/blackngrey/DILOPHOSAURUS - Flora (no IG).webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 71, src: '/images/tattoo/Ignorant/color/scaled_Estilo_tradicional_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
   { id: 72, src: '/images/tattoo/New school/color/scaled_IMG_2557.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 73, src: '/images/tattoo/tradicional/color/ROSE FACE.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 73, src: '/images/tattoo/tradicional/color/ROSE FACE.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 74, src: '/images/tattoo/blackwork/blackngrey/DRAGON - @just__a__dream.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 75, src: '/images/tattoo/Ignorant/color/scaled_image00002_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
   { id: 76, src: '/images/tattoo/New school/color/scaled_IMG_2780.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 77, src: '/images/tattoo/tradicional/color/SKULL.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 77, src: '/images/tattoo/tradicional/color/SKULL.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 78, src: '/images/tattoo/blackwork/blackngrey/EAGLE - @maerznmane.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 79, src: '/images/tattoo/Ignorant/color/scaled_image00005_web.webp', alt: 'Manu', style: 'ignorant', artist: 'Manu' },
   { id: 80, src: '/images/tattoo/New school/color/scaled_IMG_3031.webp', alt: 'Christoph', style: 'newschool', artist: 'Christoph' },
-  { id: 81, src: '/images/tattoo/tradicional/color/SWALLOW.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 81, src: '/images/tattoo/tradicional/color/SWALLOW.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 82, src: '/images/tattoo/blackwork/blackngrey/FALLEN ANGEL - Reinhard (no IG).webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
-  { id: 83, src: '/images/tattoo/tradicional/color/TATTOO MACHINE.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 83, src: '/images/tattoo/tradicional/color/TATTOO MACHINE.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
   { id: 84, src: '/images/tattoo/blackwork/blackngrey/FLOWER - @taniasadur.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
-  { id: 85, src: '/images/tattoo/tradicional/color/WITCH.webp', alt: 'Juani', style: 'tradicional', artist: 'Juani' },
+  { id: 85, src: '/images/tattoo/tradicional/color/WITCH.webp', alt: 'Juani', style: 'traditional', artist: 'Juani' },
 
   { id: 86, src: '/images/tattoo/blackwork/blackngrey/FLOWER HEART - Louisa (no IG).webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },
   { id: 87, src: '/images/tattoo/blackwork/blackngrey/FLOWERS - @michael.fbg.webp', alt: 'Alexis', style: 'blackwork', artist: 'Alexis' },

@@ -8,6 +8,11 @@ const stylesContent = {
       de: "Unsere Stile",
       es: "Nuestros Estilos",
     }),
+    hoverToRead: t({
+      en: "Hover to read bio",
+      de: "Zum Lesen der Bio hovern",
+      es: "Pasa el ratón para leer la descripción",
+    }),
     styles: [
       {
         title: t({ en: "Blackwork", de: "Blackwork", es: "Blackwork" }),
@@ -32,10 +37,10 @@ const stylesContent = {
       {
         title: t({ en: "New School", de: "New School", es: "New School" }),
         description: t({
-          en: "A colorful and expressive style, also possible in black and grey. It is characterized by exaggerated proportions, dynamic compositions and strong connections to graffiti culture.",
-          de: "Ein farbenintensiver, ausdrucksstarker Stil, der auch in Black & Grey umsetzbar ist. Typisch für New School sind überzeichnete Proportionen, dynamische Kompositionen und Einflüsse aus der Graffiti-Kultur.",
-          es: "El new school es un estilo muy colorido pero con posibilidad de trabajarse en blanco y negro, se distingue por usar la exageración de las proporciones del diseño y está muy vinculado al graffiti.",
-        }),
+  en: "A colorful, expressive style with exaggerated proportions, dynamic compositions, and strong graffiti influences. Also available in black and grey.",
+  de: "Ein farbenfroher Stil mit überzeichneten Proportionen, dynamischen Kompositionen und Graffiti-Einflüssen. Auch in Black & Grey möglich.",
+  es: "Un estilo colorido y expresivo, con proporciones exageradas, composiciones dinámicas e influencias del graffiti. También en blanco y negro.",
+}),
         imageSrc: "/images/tattoo/New school/color/scaled_image0 (1).webp",
         imageAlt: t({ en: "New School Tattoo", de: "New School Tattoo", es: "Tatuaje New School" }),
       },
@@ -49,6 +54,44 @@ const stylesContent = {
         imageSrc: "/images/tattoo/fineline/scaled_IMG_2442_web.webp",
         imageAlt: t({ en: "Fineline Tattoo", de: "Fineline Tattoo", es: "Tatuaje Fineline" }),
       },
+      
+{
+  title: t({
+    en: "Traditional",
+    de: "Traditional",
+    es: "Tradicional",
+  }),
+  description: t({
+  en: "Traditional tattoos feature bold black outlines, vibrant colors, and iconic designs inspired by classic American tattooing.",
+  de: "Traditional Tattoos zeichnen sich durch kräftige schwarze Konturen, intensive Farben und ikonische Motive aus, inspiriert vom klassischen amerikanischen Tattoo-Stil.",
+  es: "El estilo tradicional destaca por sus contornos negros gruesos, colores intensos y diseños icónicos inspirados en el tatuaje clásico americano.",
+}),
+  imageSrc: "/images/tattoo/tradicional/color/HINDI.webp",
+  imageAlt: t({
+    en: "Traditional Tattoo",
+    de: "Traditional Tattoo",
+    es: "Tatuaje Tradicional",
+  }),
+},
+{
+  title: t({
+    en: "Realism",
+    de: "Realismus",
+    es: "Realismo",
+  }),
+  description: t({
+  en: "Realism recreates images with incredible detail, capturing light, shadows, and textures to create lifelike tattoos in black and grey or color.",
+  de: "Realismus gibt Motive detailgetreu wieder und fängt Licht, Schatten und Texturen ein, um lebensechte Tattoos in Black & Grey oder Farbe zu schaffen.",
+  es: "El realismo reproduce imágenes con gran detalle, capturando luces, sombras y texturas para crear tatuajes que parecen fotografías, en blanco y negro o color.",
+}),
+  imageSrc: "/images/tattoo/Realism/color/scaled_DSC05156.webp",
+  imageAlt: t({
+    en: "Realism Tattoo",
+    de: "Realismus Tattoo",
+    es: "Tatuaje Realista",
+  }),
+},
+
     ],
   },
 } satisfies Dictionary;

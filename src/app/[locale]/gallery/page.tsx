@@ -71,20 +71,26 @@ function GalleryPageContent() {
       de: 'Alle Künstler',
       es: 'Todos los artistas',
     }),
+    traditional: tr(lang, {
+      en: 'Traditional',
+      de: 'Traditional',
+      es: 'Tradicional',
+    }),
   };
 
-  const [selectedStyle, setSelectedStyle] = useState<
-    | 'all'
-    | 'blackwork'
-    | 'realism'
-    | 'ignorant'
-    | 'fineline'
-    | 'newschool'
-  >('all');
+const [selectedStyle, setSelectedStyle] = useState<
+  | 'all'
+  | 'blackwork'
+  | 'realism'
+  | 'ignorant'
+  | 'fineline'
+  | 'newschool'
+  | 'traditional'
+>('all');
 
-  const [selectedArtist, setSelectedArtist] = useState<
-    'all' | 'Alexis' | 'Manu' | 'Christoph' | 'Arnau'
-  >('all');
+const [selectedArtist, setSelectedArtist] = useState<
+  'all' | 'Alexis' | 'Manu' | 'Christoph' | 'Arnau' | 'Juani'
+>('all');
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -92,15 +98,16 @@ function GalleryPageContent() {
   useEffect(() => {
     const styleParam = searchParams.get('style');
 
-    if (
-      styleParam === 'blackwork' ||
-      styleParam === 'realism' ||
-      styleParam === 'ignorant' ||
-      styleParam === 'fineline' ||
-      styleParam === 'newschool'
-    ) {
-      setSelectedStyle(styleParam);
-    }
+   if (
+  styleParam === 'blackwork' ||
+  styleParam === 'realism' ||
+  styleParam === 'ignorant' ||
+  styleParam === 'fineline' ||
+  styleParam === 'newschool' ||
+  styleParam === 'traditional'
+) {
+  setSelectedStyle(styleParam);
+}
   }, [searchParams]);
 
   const filteredImages = useMemo(
@@ -113,33 +120,36 @@ function GalleryPageContent() {
     [selectedStyle, selectedArtist]
   );
 
-  const styleOptions: Array<{
-    key:
-      | 'all'
-      | 'blackwork'
-      | 'realism'
-      | 'ignorant'
-      | 'fineline'
-      | 'newschool';
-    label: string;
-  }> = [
+const styleOptions: Array<{
+  key:
+    | 'all'
+    | 'blackwork'
+    | 'realism'
+    | 'ignorant'
+    | 'fineline'
+    | 'newschool'
+    | 'traditional';
+  label: string;
+}> = [
     { key: 'all', label: t.allStyles },
     { key: 'blackwork', label: t.blackwork },
     { key: 'realism', label: t.realism },
     { key: 'ignorant', label: t.ignorant },
     { key: 'fineline', label: t.fineline },
     { key: 'newschool', label: t.newschool },
+    { key: 'traditional', label: t.traditional },
   ];
 
-  const artistOptions: Array<{
-    key: 'all' | 'Alexis' | 'Manu' | 'Christoph' | 'Arnau';
-    label: string;
-  }> = [
+const artistOptions: Array<{
+  key: 'all' | 'Alexis' | 'Manu' | 'Christoph' | 'Arnau' | 'Juani';
+  label: string;
+}> = [
     { key: 'all', label: t.allArtists },
     { key: 'Alexis', label: 'Alexis' },
     { key: 'Manu', label: 'Manu' },
     { key: 'Christoph', label: 'Christoph' },
     { key: 'Arnau', label: 'Arnau' },
+    { key: 'Juani', label: 'Juani' },
   ];
 
   const baseBtn =
@@ -151,8 +161,8 @@ function GalleryPageContent() {
     'bg-zinc-800/60 text-zinc-300 border-zinc-700 hover:bg-zinc-700/70';
 
   return (
-    <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 h-full box-border">
-      <div className="py-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-30">
+     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 min-h-screen box-border flex flex-col">
+    <div className="py-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-30 flex-1">
 
         {/* Título con animación */}
         <motion.div
