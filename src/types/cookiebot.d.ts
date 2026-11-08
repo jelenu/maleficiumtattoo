@@ -5,7 +5,10 @@ declare global {
     Cookiebot?: {
       renew: () => void;
       consent?: {
+        necessary?: boolean;
+        preferences?: boolean;
         statistics?: boolean;
+        marketing?: boolean;
       };
     };
 

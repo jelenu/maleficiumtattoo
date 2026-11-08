@@ -9,19 +9,6 @@ import { useParams } from 'next/navigation';
 import { getLang, tr } from '@/utils/i18n';
 import { motion } from 'framer-motion';
 
-declare global {
-  interface Window {
-    Cookiebot?: {
-      consent?: {
-        necessary: boolean;
-        preferences: boolean;
-        statistics: boolean;
-        marketing: boolean;
-      };
-    };
-  }
-}
-
 export default function MapSection() {
   const { locale } = useParams<{ locale?: string }>();
   const lang = getLang(locale);
