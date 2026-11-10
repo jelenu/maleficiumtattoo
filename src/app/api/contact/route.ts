@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
 
     // 7. Configurar email
     const emailData = {
-      from: 'Maleficium Tattoo <onboarding@resend.dev>',
+      from: 'Maleficium Tattoo <contact@maleficiumtattoo.com>',
       to: [
         process.env.STUDIO_EMAIL || 'jesusleon2700@gmail.com',
       ],
