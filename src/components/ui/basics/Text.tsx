@@ -54,7 +54,7 @@ const defaultTagByVariant: Record<TextVariant, ElementType> = {
   aboutBody: "p",
   stylesTitle: "h3",
   stylesBody: "p",
-  artistsTitle: "h1",
+  artistsTitle: "h2",
   contactTitle: "h2",
   contactBody: "p",
   cardBack: "p",

@@ -223,7 +223,7 @@ export default function StylesSection() {
             viewport={{ once: true, amount: 0.2 }}
           >
             <Text
-              variant="h1"
+              variant="h2"
               align="center"
               className="w-full text-white"
             >

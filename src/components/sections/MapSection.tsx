@@ -90,7 +90,7 @@ export default function MapSection() {
         viewport={{ once: true, amount: 0.2 }}
       >
         <Text
-          variant="h1"
+          variant="h2"
           align="center"
           className="text-white bg-black pt-6 pb-4 shrink-0"
         >

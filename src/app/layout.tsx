@@ -4,6 +4,8 @@ import Script from "next/script";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "leaflet/dist/leaflet.css";
+import LocalBusinessSchema from "../components/seo/LocalBusinesSchema"
+
 
 const inter = localFont({
   src: "./fonts/Inter-VariableFont_opsz,wght.ttf",
@@ -66,6 +68,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${cormorant.variable} antialiased bg-black text-white`}
       >
+      <LocalBusinessSchema />
+
         {/* Cookiebot CMP */}
         <Script
           id="cookiebot"

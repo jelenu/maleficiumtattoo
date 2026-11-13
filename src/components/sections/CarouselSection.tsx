@@ -86,7 +86,7 @@ export default function CarouselSection() {
               href={galleryHref}
               className="hover:opacity-80 transition-opacity"
             >
-              <Text variant="h1" align="center">
+              <Text variant="h2" align="center">
                 {t.title.value}
               </Text>
             </Link>
@@ -192,7 +192,7 @@ export default function CarouselSection() {
               href={galleryHref}
               className="hover:opacity-80 transition-opacity"
             >
-              <Text variant="h1" align="center">
+              <Text variant="h2" align="center">
                 {t.title.value}
               </Text>
             </Link>
