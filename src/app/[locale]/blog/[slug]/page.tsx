@@ -16,7 +16,7 @@ type LocaleCode = "en" | "de" | "es";
 type Post = {
   id: string;
   slug: string;
-  image_url?: string;
+  image_header?: string;
   published_at: string;
   title?: string;
   summary?: string;
@@ -52,7 +52,7 @@ export default function BlogPostPage() {
         .select(`
         id,
         slug,
-        image_url,
+        image_header,
         published_at,
         post_translations (
           id,
@@ -79,7 +79,7 @@ export default function BlogPostPage() {
         setPost({
           id: p.id,
           slug: p.slug,
-          image_url: p.image_url,
+          image_header: p.image_header,
           published_at: p.published_at,
           title: translation?.title,
           summary: translation?.summary,
@@ -98,10 +98,10 @@ export default function BlogPostPage() {
     <main className="p-0 pt-safe-top pt-[4rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[5.5rem] relative z-20 min-h-screen box-border">
       {/* Full-width hero with fixed 16:9 aspect */}
       <div className="min-h-screen xl:mb-20">
-        {!loading && post && post.image_url && (
+        {!loading && post && post.image_header && (
           <div className="relative w-full xl:max-w-6xl mx-auto aspect-[15/9] sm:aspect-[21/9] overflow-hidden">
             <Image
-              src={post.image_url}
+              src={post.image_header}
               alt={post.title || "cover"}
               fill
               className="object-cover object-center"
