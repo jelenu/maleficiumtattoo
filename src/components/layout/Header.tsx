@@ -32,7 +32,9 @@ export default function Header() {
 
   // Detect locale from URL
   const currentLocaleFromPath = supportedLocales.find(
-    (l) => pathname.startsWith(`/${l}/`) || pathname === `/${l}`
+    (l) =>
+      pathname.startsWith(`/${l}/`) ||
+      pathname === `/${l}`
   );
 
   const activeLocale =
@@ -111,8 +113,8 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Social Icons - Desktop */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Social Icons - All devices */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
 
               <a
                 href={socialLinks.instagram}
@@ -226,11 +228,13 @@ export default function Header() {
                 isMenuOpen ? "rotate-45 translate-y-1.5" : ""
               }`}
             />
+
             <span
               className={`block w-6 h-0.5 bg-white transition-opacity duration-300 ${
                 isMenuOpen ? "opacity-0" : ""
               }`}
             />
+
             <span
               className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${
                 isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
@@ -288,9 +292,6 @@ export default function Header() {
               {t.nav.contact.value}
             </Link>
 
-            {/* Social Icons - Mobile, above languages */}
-           
-
             {/* Language selector - Mobile */}
             <div className="flex items-center gap-2">
               {locales.map((langOpt) => (
@@ -316,39 +317,6 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
-            </div>
-             <div className="flex items-center gap-5 pt-2">
-
-              <a
-                href={socialLinks.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="hover:text-gray-400 transition-colors duration-200"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-
-              <a
-                href={socialLinks.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="hover:text-gray-400 transition-colors duration-200"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-
-              <a
-                href={socialLinks.maps}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Maps"
-                className="hover:text-gray-400 transition-colors duration-200"
-              >
-                <MapPin className="w-5 h-5" />
-              </a>
-
             </div>
 
           </div>
