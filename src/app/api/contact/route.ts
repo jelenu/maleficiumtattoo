@@ -183,7 +183,7 @@ export async function POST(request: NextRequest) {
     const emailData = {
       from: 'Maleficium Tattoo <contact@maleficiumtattoo.com>',
       to: [
-        process.env.STUDIO_EMAIL || 'jesusleon2700@gmail.com',
+        process.env.STUDIO_EMAIL || 'maleficium.tattoo@gmail.com',
       ],
       replyTo: email,
       subject: `Nueva Consulta de Tatuaje - ${firstName} ${lastName}`,
