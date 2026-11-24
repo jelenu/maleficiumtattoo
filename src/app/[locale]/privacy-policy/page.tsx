@@ -26,9 +26,9 @@ export default async function PrivacyPolicyPage({
     }),
 
     controllerText: tr(lang, {
-      es: "Alexis Massó Galiano, Maleficium Tattoo, Herzogenburger Straße 66/1, 3100 St. Pölten, Austria. Tel.: +43 676 6726865, email: maleficium.tattoo@gmail.com",
-      de: "Alexis Massó Galiano, Maleficium Tattoo, Herzogenburger Straße 66/1, 3100 St. Pölten, Österreich. Tel.: +43 676 6726865, E-Mail: maleficium.tattoo@gmail.com",
-      en: "Alexis Massó Galiano, Maleficium Tattoo, Herzogenburger Straße 66/1, 3100 St. Pölten, Austria. Phone: +43 676 6726865, email: maleficium.tattoo@gmail.com",
+      es: "Alexis Massó Galiano, Maleficium Tattoo, Herzogenburger Straße 66/1, 3100 St. Pölten, Austria. Tel.: +43 6645085917, email: maleficium.tattoo@gmail.com",
+      de: "Alexis Massó Galiano, Maleficium Tattoo, Herzogenburger Straße 66/1, 3100 St. Pölten, Österreich. Tel.: +43 6645085917, E-Mail: maleficium.tattoo@gmail.com",
+      en: "Alexis Massó Galiano, Maleficium Tattoo, Herzogenburger Straße 66/1, 3100 St. Pölten, Austria. Phone: +43 6645085917, email: maleficium.tattoo@gmail.com",
     }),
 
     sections: [

@@ -45,7 +45,7 @@ export default async function ImpressumPage({
       en: "Herzogenburger Straße 66/1, 3100 St. Pölten, Austria",
     }),
 
-    phone: "+43 676 6726865",
+    phone: "+43 6645085917",
 
     email: "maleficium.tattoo@gmail.com",
 

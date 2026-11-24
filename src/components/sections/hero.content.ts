@@ -40,9 +40,9 @@ const heroContent = {
       es: 'WhatsApp'
     }),
     phone: t({
-      en: '+43 676 672 6865',
-      de: '+43 676 672 6865',
-      es: '+43 676 672 6865'
+      en: '+43 6645085917',
+      de: '+43 6645085917',
+      es: '+43 6645085917'
     }),
     hoursLabel: t({
       en: 'Opening hours',

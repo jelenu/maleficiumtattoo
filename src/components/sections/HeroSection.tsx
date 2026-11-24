@@ -192,7 +192,7 @@ export default function HeroSection() {
       {/* WhatsApp */}
       <div className="flex flex-col justify-center items-center flex-1 relative px-1">
         <a
-          href="https://wa.me/436766726865"
+          href="https://wa.me/436645085917"
           target="_blank"
           rel="noopener noreferrer"
           className="text-center hover:underline cursor-pointer"
@@ -206,7 +206,7 @@ export default function HeroSection() {
         </a>
 
         <a
-          href="https://wa.me/436766726865"
+          href="https://wa.me/436645085917"
           className="text-center hover:underline cursor-pointer"
         >
           <Text
